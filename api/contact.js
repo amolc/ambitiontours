@@ -56,7 +56,7 @@ console.log(req.body);
 		},function (err,vals){
 
     })
-     var recipientEmail = 'nadyshaikh@gmail.com,ceo@80startups.com,office@80startups.com ,shital.talole@fountaintechies.com,pravinshelar999@gmail.com';
+     var recipientEmail = 'sadiarahman1@yahoo.com,nadyshaikh@gmail.com,ceo@80startups.com,office@80startups.com ,shital.talole@fountaintechies.com,pravinshelar999@gmail.com';
     //var recipientEmail = 'pravinshelar999@gmail.com'; //,ceo@80startups.com,shital.talole@fountaintechies.com'; //,ceo@80startups.com,shital.talole@80startups.com
     var subject = "[ambitiontours.COM] Ambition Tours Booking";
     var mailbody = '<table>\
@@ -122,7 +122,7 @@ console.log(req.body);
     },function (err,vals){
 
     })
-     var recipientEmail = 'nadyshaikh@gmail.com,ceo@80startups.com,shital.talole@fountaintechies.com,office@80startups.com';
+     var recipientEmail = 'sadiarahman1@yahoo.com,nadyshaikh@gmail.com,ceo@80startups.com,shital.talole@fountaintechies.com,office@80startups.com';
     //var recipientEmail = 'pravinshelar999@gmail.com'; //,ceo@80startups.com,shital.talole@fountaintechies.com'; //,ceo@80startups.com,shital.talole@80startups.com
     var subject = "[ambitiontours.COM] Ambition Tours Custom Tour Enquiry";
     var mailbody = '<table>\
