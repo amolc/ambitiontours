@@ -12,7 +12,7 @@ app.controller('contactcontroller', function ($scope, $location, $http, $window)
      window.localStorage.removeItem("packagename");
      window.localStorage.removeItem("packagePrice");
       window.localStorage.clear();
-      
+
     window.localStorage.setItem("packagename",packagename);
     window.localStorage.setItem("packagePrice",price);
    /* $scope.packagename = packagename;
@@ -89,7 +89,7 @@ app.controller('contactcontroller', function ($scope, $location, $http, $window)
     $("#thankyou").show();
     $("#thankyou").delay(3200).hide(300);
 
-    //location.href='/index.html';
+    location.href='/index.html';
   }
 
 $scope.initfunc = function () {
