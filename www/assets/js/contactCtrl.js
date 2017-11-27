@@ -9,6 +9,10 @@ app.controller('contactcontroller', function ($scope, $location, $http, $window)
  // $scope.data = {};
  $scope.enquiryButton = function(packagename,price){
  // alert(+"--"+price);
+     window.localStorage.removeItem("packagename");
+     window.localStorage.removeItem("packagePrice");
+      window.localStorage.clear();
+      
     window.localStorage.setItem("packagename",packagename);
     window.localStorage.setItem("packagePrice",price);
    /* $scope.packagename = packagename;
