@@ -14,6 +14,12 @@
         
         <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 
+            <script type="text/javascript" src="assets/js/angular.min.js"></script>
+  <script type="text/javascript" src="assets/js/angular-storage.min.js"></script>
+  <script type="text/javascript" src="assets/js/app.js"></script>
+  <script type="text/javascript" src="assets/js/contactCtrl.js"></script>
+
+
         <link id="bsdp-css" href="bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
     </head>
     <body>
@@ -69,7 +75,7 @@
                 </div>
             </div>
         </header>
-        <section id="pakeges-wrap">
+        <section id="pakeges-wrap" data-ng-app="80consult" data-ng-controller="contactcontroller">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
@@ -114,7 +120,7 @@
                                     <div class="price-right-block">
                                         <span>From SGD</span>
                                         <h4>$136</h4>
-                                        <a href="enquiry.html" class="pakege-btn">Book Now</a>
+                                        <a href="#" ng-click="enquiryButton('Day Trip to Agra including Taj Mahal and Agra Fort','136');" class="pakege-btn">Book Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -150,7 +156,7 @@
                                     <div class="price-right-block">
                                         <span>From SGD</span>
                                         <h4>$1500</h4>
-                                        <a href="enquiry.html" class="pakege-btn">Book Now</a>
+                                        <a href="#" ng-click="enquiryButton('20-Day Cultural Heritage Tour of Rajasthan','1500');" class="pakege-btn">Book Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -187,7 +193,7 @@
                                     <div class="price-right-block">
                                         <span>From SGD</span>
                                         <h4>$900</h4>
-                                        <a href="enquiry.html" class="pakege-btn">Book Now</a>
+                                        <a href="#" ng-click="enquiryButton('Best of Kerala Private Tour','900');" class="pakege-btn">Book Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -224,7 +230,7 @@
                                     <div class="price-right-block">
                                         <span>From SGD</span>
                                         <h4>$1400</h4>
-                                        <a href="enquiry.html" class="pakege-btn">Book Now</a>
+                                        <a href="#" ng-click="enquiryButton('06 Nights tour of Paradise of Earth Kashmir','1400');" class="pakege-btn">Book Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -261,7 +267,7 @@
                                     <div class="price-right-block">
                                         <span>From SGD</span>
                                         <h4>$800</h4>
-                                        <a href="enquiry.html" class="pakege-btn">Book Now</a>
+                                        <a href="#" ng-click="enquiryButton('6-Day Andaman and Nicobar Islands Tour','800');" class="pakege-btn">Book Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -298,7 +304,7 @@
                                     <div class="price-right-block">
                                         <span>From SGD</span>
                                         <h4>$2000</h4>
-                                        <a href="enquiry.html" class="pakege-btn">Book Now</a>
+                                        <a href="#" ng-click="enquiryButton('10-Day Goa Adventure Tour including Crocodile Cruise','2000');" class="pakege-btn">Book Now</a>
                                     </div>
                                 </div>
                             </div>

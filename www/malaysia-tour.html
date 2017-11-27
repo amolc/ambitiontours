@@ -14,6 +14,12 @@
         
         <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 
+        <script type="text/javascript" src="assets/js/angular.min.js"></script>
+  <script type="text/javascript" src="assets/js/angular-storage.min.js"></script>
+  <script type="text/javascript" src="assets/js/app.js"></script>
+  <script type="text/javascript" src="assets/js/contactCtrl.js"></script>
+
+
         <link id="bsdp-css" href="bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
     </head>
     <body>
@@ -69,7 +75,7 @@
                 </div>
             </div>
         </header>
-        <section id="pakeges-wrap">
+        <section id="pakeges-wrap" data-ng-app="80consult" data-ng-controller="contactcontroller">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
@@ -114,7 +120,7 @@
                                     <div class="price-right-block">
                                         <span>From SGD</span>
                                         <h4>$50</h4>
-                                        <a href="enquiry.html" class="pakege-btn">Book Now</a>
+                                        <a href="#" ng-click="enquiryButton('Kuala Lumpur Petronas Twin Towers Admission Tickets','50');" class="pakege-btn">Book Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -150,7 +156,7 @@
                                     <div class="price-right-block">
                                         <span>From SGD</span>
                                         <h4>$100</h4>
-                                        <a href="enquiry.html" class="pakege-btn">Book Now</a>
+                                        <a href="#" ng-click="enquiryButton('Historical Malacca Full-Day Tour from Kuala Lumpur','100');" class="pakege-btn">Book Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -187,7 +193,7 @@
                                     <div class="price-right-block">
                                         <span>From SGD</span>
                                         <h4>$50</h4>
-                                        <a href="enquiry.html" class="pakege-btn">Book Now</a>
+                                        <a href="#" ng-click="enquiryButton('Full-Day Cameron Highlands','50');" class="pakege-btn">Book Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -224,7 +230,7 @@
                                     <div class="price-right-block">
                                         <span>From SGD</span>
                                         <h4>$181</h4>
-                                        <a href="enquiry.html" class="pakege-btn">Book Now</a>
+                                        <a href="#" ng-click="enquiryButton('Langkawi Sailing and Island Hopping Adventure','181');" class="pakege-btn">Book Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -261,7 +267,7 @@
                                     <div class="price-right-block">
                                         <span>From SGD</span>
                                         <h4>$97</h4>
-                                        <a href="enquiry.html" class="pakege-btn">Book Now</a>
+                                        <a href="#" ng-click="enquiryButton('Private Langkawi Tour with SkyBridge, Cable Car','97');" class="pakege-btn">Book Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -298,7 +304,7 @@
                                     <div class="price-right-block">
                                         <span>From SGD</span>
                                         <h4>$74</h4>
-                                        <a href="enquiry.html" class="pakege-btn">Book Now</a>
+                                        <a href="#" ng-click="enquiryButton('Penang Hill and Kek Lok Si Buddhist Temple','74');" class="pakege-btn">Book Now</a>
                                     </div>
                                 </div>
                             </div>

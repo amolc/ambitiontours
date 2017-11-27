@@ -14,6 +14,12 @@
         
         <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 
+        <script type="text/javascript" src="assets/js/angular.min.js"></script>
+  <script type="text/javascript" src="assets/js/angular-storage.min.js"></script>
+  <script type="text/javascript" src="assets/js/app.js"></script>
+  <script type="text/javascript" src="assets/js/contactCtrl.js"></script>
+
+
         <link id="bsdp-css" href="bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
     </head>
     <body>
@@ -69,7 +75,7 @@
                 </div>
             </div>
         </header>
-        <section id="pakeges-wrap">
+        <section id="pakeges-wrap" data-ng-app="80consult" data-ng-controller="contactcontroller">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
@@ -150,7 +156,7 @@
                                     <div class="price-right-block">
                                         <span>From SGD</span>
                                         <h4>$104</h4>
-                                        <a href="enquiry.html" class="pakege-btn">Book Now</a>
+                                        <a href="#" ng-click="enquiryButton('Doi Inthanon National Park','104');" class="pakege-btn">Book Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -187,7 +193,7 @@
                                     <div class="price-right-block">
                                         <span>From SGD</span>
                                         <h4>$45</h4>
-                                        <a href="enquiry.html" class="pakege-btn">Book Now</a>
+                                        <a href="#" ng-click="enquiryButton('Bangkok Dream World Admission Ticket','45');" class="pakege-btn">Book Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -224,7 +230,7 @@
                                     <div class="price-right-block">
                                         <span>From SGD</span>
                                         <h4>$48</h4>
-                                        <a href="enquiry.html" class="pakege-btn">Book Now</a>
+                                        <a href="#" ng-click="enquiryButton('Splash Jungle Water Park Admission','48');" class="pakege-btn">Book Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -261,7 +267,7 @@
                                     <div class="price-right-block">
                                         <span>From SGD</span>
                                         <h4>$14</h4>
-                                        <a href="enquiry.html" class="pakege-btn">Book Now</a>
+                                        <a href="#" ng-click="enquiryButton('Admission to The Upside Down House Phuket','14');" class="pakege-btn">Book Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -298,7 +304,7 @@
                                     <div class="price-right-block">
                                         <span>From SGD</span>
                                         <h4>$16</h4>
-                                        <a href="enquiry.html" class="pakege-btn">Book Now</a>
+                                        <a href="#" ng-click="enquiryButton('Hat Yai Magic Eye 3D Museum Admission Ticket','16');" class="pakege-btn">Book Now</a>
                                     </div>
                                 </div>
                             </div>
