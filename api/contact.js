@@ -24,13 +24,20 @@ var transporter = nodemailer.createTransport({
 ////-----------------CONTACT-----------------
 
 exports.consult = function (req, res) {
-
+console.log(req.body);
   var fullName = req.body.fullname;
   var email = req.body.email;
   var phoneNumber = req.body.phonenumber;
   var travelDate = req.body.travelDate;
+
+
+   // var travleDate = $scope.travelDate;
+    var tdate = travelDate.split("T");
+    console.log(tdate);
+    var travelDate = tdate[0];
   var message = req.body.message;
-  var packageName = req.body.packageName;
+   var packageName = req.body.packageName;
+  var packagePrice = req.body.packagePrice;
   var adults = req.body.adults;
   var Child = req.body.Child;
   var promoCode = req.body.promoCode;
@@ -49,7 +56,7 @@ exports.consult = function (req, res) {
 		},function (err,vals){
 
     })
-     var recipientEmail = 'nadyshaikh@gmail.com,ceo@80startups.com,shital.talole@fountaintechies.com,pravinshelar999@gmail.com';
+     var recipientEmail = 'nadyshaikh@gmail.com,ceo@80startups.com,office@80startups.com ,shital.talole@fountaintechies.com,pravinshelar999@gmail.com';
     //var recipientEmail = 'pravinshelar999@gmail.com'; //,ceo@80startups.com,shital.talole@fountaintechies.com'; //,ceo@80startups.com,shital.talole@80startups.com
     var subject = "[ambitiontours.COM] Ambition Tours Booking";
     var mailbody = '<table>\
@@ -65,7 +72,7 @@ exports.consult = function (req, res) {
                         <td>You have one enquiry from the following client:</td>\
                       </tr>\
                       <tr>\
-                        <td>The details are as follow :<br><br><strong> Package Name:   ' + packageName + '</strong> <br><br><strong> Name:   ' + fullName + '</strong><br><br><strong> Email:   ' + email + '</strong><br><br><strong> Contact Number:   ' + phoneNumber + '</strong><br><br><strong> No of Adults:   ' + adults + '</strong><br><br><strong> No of Child:   ' + Child + '</strong><br><br><strong> Travel Date:   ' + travelDate + '</strong><br><br><strong>Message:   ' + message + '</strong><br><br><strong> Promo Code:   ' + promoCode + '</strong><br><br></td>\
+                        <td>The details are as follow :<br><br><strong> Package Name:   ' + packageName + '</strong><br><br><strong> Package Price: SGD  ' + packagePrice + '</strong>  <br><br><strong> Name:   ' + fullName + '</strong><br><br><strong> Email:   ' + email + '</strong><br><br><strong> Contact Number:   ' + phoneNumber + '</strong><br><br><strong> No of Adults:   ' + adults + '</strong><br><br><strong> No of Child:   ' + Child + '</strong><br><br><strong> Travel Date:   ' + travelDate + '</strong><br><br><strong>Message:   ' + message + '</strong><br><br><strong> Promo Code:   ' + promoCode + '</strong><br><br></td>\
                       </tr>\
                       <tr>\
                         <td>Best wishes,</td>\
@@ -80,6 +87,73 @@ exports.consult = function (req, res) {
 
       send_mail(recipientEmail, subject, mailbody);
 }
+
+
+exports.customTour = function (req, res) {
+console.log(req.body);
+  var fullName = req.body.fullname;
+  var email = req.body.email;
+  var phoneNumber = req.body.phonenumber;
+  var travelDate = req.body.travelDate;
+
+
+   // var travleDate = $scope.travelDate;
+    var tdate = travelDate.split("T");
+    console.log(tdate);
+    var travelDate = tdate[0];
+  var message = req.body.message;
+  /* var packageName = req.body.packageName;
+  var packagePrice = req.body.packagePrice;
+  var adults = req.body.adults;
+  var Child = req.body.Child;
+  var promoCode = req.body.promoCode;*/
+
+
+  consultCRUD.create({
+      'fullName': fullName,
+      'email': email,
+      'phonenumber': phoneNumber,
+      'travelDate': travelDate,
+      'packageName': "",
+      'adults': "",
+      'Child': "",
+      'promoCode': "",
+      'message': message,
+    },function (err,vals){
+
+    })
+     var recipientEmail = 'nadyshaikh@gmail.com,ceo@80startups.com,shital.talole@fountaintechies.com,office@80startups.com';
+    //var recipientEmail = 'pravinshelar999@gmail.com'; //,ceo@80startups.com,shital.talole@fountaintechies.com'; //,ceo@80startups.com,shital.talole@80startups.com
+    var subject = "[ambitiontours.COM] Ambition Tours Custom Tour Enquiry";
+    var mailbody = '<table>\
+                        <tr>\
+                        <td><img src="https://ambitiontours.80startups.com/assets/img/logo.jpg"></td><br>\
+                      </tr>\
+                      <tr>\
+                        <td><h1>Dear Ambition Tours,</td>\
+                      </tr>\
+                      <tr>\
+                      </tr>\
+                      <tr>\
+                        <td>You have one enquiry from the following client:</td>\
+                      </tr>\
+                      <tr>\
+                        <td>The details are as follow :  <br><br><strong> Name:   ' + fullName + '</strong><br><br><strong> Email:   ' + email + '</strong><br><br><strong> Contact Number:   ' + phoneNumber + '</strong><br><br><strong> Travel Date:   ' + travelDate + '</strong><br><br><strong>Message:   ' + message + '</strong><br><br></td>\
+                      </tr>\
+                      <tr>\
+                        <td>Best wishes,</td>\
+                      </tr>\
+                      <tr>\
+                        <td><h2>ambitiontours.com</h2></td>\
+                      </tr>\
+                      <tr>\
+                        <td bgcolor="#000000"><font color ="white">This is a one-time email. Please do not reply to this email.</font></td>\
+                      </tr>\
+                    </table>';
+
+      send_mail(recipientEmail, subject, mailbody);
+}
+
 
 ///____________________END______________________
 

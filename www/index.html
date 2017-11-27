@@ -14,6 +14,12 @@
         
         <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 
+
+  <script type="text/javascript" src="assets/js/angular.min.js"></script>
+  <script type="text/javascript" src="assets/js/angular-storage.min.js"></script>
+  <script type="text/javascript" src="assets/js/app.js"></script>
+  <script type="text/javascript" src="assets/js/contactCtrl.js"></script>
+
         <link id="bsdp-css" href="bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
     </head>
     <body>
@@ -69,7 +75,7 @@
                 </div>
             </div>
         </header>
-        <section id="pakeges-wrap">
+        <section id="pakeges-wrap" data-ng-app="80consult" data-ng-controller="contactcontroller">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
@@ -106,7 +112,7 @@
                                     <div class="price-right-block">
                                         <span>From SGD</span>
                                         <h4>$76</h4>
-                                        <a href="enquiry.html" class="pakege-btn">Book Now</a>
+                                        <a href="#" ng-click="enquiryButton('Universal Studios Singapore One-Day Pass','76');" class="pakege-btn">Book Now</a>
                                     </div>
                                 </div>
                             </div>

@@ -195,9 +195,11 @@
               <label for="pwd">Promo Code :</label>
               <input type="text" class="form-control" ng-model="promoCode" name="promoCode" id="promoCode">
             </div>
+            
                 </div>
               <div class="clearfix"></div>
            <!--  <input type="text" class="form-control" ng-model="packageName" name="packageName" id="packageName"> -->
+            <input type="hidden" class="form-control" ng-model="packagePrice" value="{{packagePrice}}" name="packagePrice" id="packagePrice">
              <input type="hidden" class="form-control" ng-model="packagename" value="{{packagename}}" name="packageName" id="packageName">
             <button class="btn btn-success orenge-btn" type="submit" value="Apply" class="wpcf7-form-control wpcf7-submit">BOOKING</button>
           </form>
