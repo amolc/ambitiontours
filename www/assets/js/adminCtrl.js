@@ -83,6 +83,23 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
           location.href = "index.html"
     }  
 
+    $scope.getAdminDetails = function() {             
+
+           var UserId = window.localStorage.getItem('Admin_Id');
+            $http.get(baseurl + 'getAdminDetails/'+ UserId ).success(function (res) {
+
+                  if (res.status == 'false') {
+
+                  }
+                  else {
+                      $scope.info = res;
+                     // console.log($scope.info);
+                  }
+
+              }).error(function () {
+
+              });
+    }  
 
     $scope.updatepassword = function(info) {      
 
@@ -114,7 +131,6 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
                         }
                         else
                         {
-                            document.editpassword.reset(); 
                             window.location.href = "dashboard.html";
                         }
 
@@ -197,11 +213,31 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
     var attachmentfile1 = [];
     var filelength;
 
-     $scope.fileinit = function(ele) {
+     $scope.forminit = function(ele) {
 
-        
+     
         if (typeof $scope.Tour === 'undefined')
         $scope.Tour = {};
+        var url = window.location.href;
+        var parts = url.split("?");
+        if(parts.length>1){
+
+           var urlparams = parts[1];
+           var params = urlparams.split("&");
+           var type = urlparams.split("=")
+           if (type[0]=='Type') 
+           {
+             $scope.Tour.TourType = type[1];
+           }
+           else
+          {
+              window.location.href = 'dashboard.html';
+          }
+        }
+        else
+        {
+           window.location.href = 'dashboard.html';
+        }
         $scope.attachmentCount = {};
         $scope.attachment = {};
         $scope.imgSrc = "";
@@ -272,25 +308,85 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
         
     }
 
-    $scope.addTour = function() {             
+    $scope.addTour = function() {   
 
 
-             if (Object.keys($scope.attachment).length>0) {
+          $("#alertmessage").hide();
+
+          if (typeof $scope.Tour.CountryId === 'undefined') 
+          {
+               $scope.alertmessage = "Please Select Country"
+               $("#alertmessage").show('slow');
+          }
+          else
+          {
+
+            if (Object.keys($scope.attachment).length>0) {
                 $scope.Tour.image = $scope.attachment.images[0];
               }else{
                 $scope.Tour.image = '';
               }
 
+            console.log($scope.Tour);
+
             $http.post(baseurl + 'addTour/',$scope.Tour).success(function(res) {
-
                   
-
+                //console.log(res);
+                if (res.status == true) 
+                {
+                  if ($scope.Tour.TourType == 'Tour')
+                    window.location.href = 'tours.html';
+                  if ($scope.Tour.TourType == 'Attraction')
+                    window.location.href = 'attractions.html';
+                }
 
                 }).error(function() {
-                      // alert("Please check your internet connection or data source..");
+                    
                 });
 
+          }          
+
     }
+
+    $scope.getTourDetails = function() {             
+
+
+
+        var url = window.location.href;
+        var parts = url.split("?");
+        if(parts.length>1){
+
+           var urlparams = parts[1];
+           var params = urlparams.split("&");
+           var id = urlparams.split("=")
+           if (id[0]=='TourId') 
+           {
+             $http.get(baseurl + 'getTourDetails/'+id[1]).success(function (res) {
+
+                  if (res.status == 'false') {
+
+                  }
+                  else {
+                      $scope.Tour = res;
+                      $scope.attachmentCount = {};
+                      $scope.attachment = {};
+                      $scope.imgSrc = "";
+                  }
+
+              }).error(function () {
+
+              });
+           }
+           else
+          {
+              window.location.href = 'dashboard.html';
+          }
+        }
+        else
+        {
+            window.location.href = 'dashboard.html';
+        }
+    } 
 
     $scope.updateTour = function() {             
 
@@ -302,25 +398,44 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
               }
 
             $http.post(baseurl + 'updateTour/',$scope.Tour).success(function(res) {
-
-                  
-
+  
+                 if (res.status == true) 
+                {
+                  if ($scope.Tour.TourType == 'Tour')
+                    window.location.href = 'tours.html';
+                  if ($scope.Tour.TourType == 'Attraction')
+                    window.location.href = 'attractions.html';
+                }
 
                 }).error(function() {
                       // alert("Please check your internet connection or data source..");
                 });
     } 
 
-       $scope.deleteTour = function(id) {             
+       $scope.deleteTour = function(id,type) {    
 
+
+       var r = confirm("Are You Sure You want to Delete It?");
+        if (r == true) 
+        { 
           $http.get(baseurl + 'deleteTour/'+id).success(function(res) {
 
                   
-
+               if (res.status == true) 
+                {
+                  if (type == 'Tour')
+                    window.location.href = 'tours.html';
+                  if (type == 'Attraction')
+                    window.location.href = 'attractions.html';
+                }
 
           }).error(function() {
                       // alert("Please check your internet connection or data source..");
-        });
+         });
+            
+        }         
+
+         
     }     
 
   
