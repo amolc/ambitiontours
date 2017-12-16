@@ -13,6 +13,8 @@ var http = require("http").createServer(app);
 var contact = require('./api/contact.js');
 var startup = require('./api/startup.js');
 var investor = require('./api/investor.js');
+var admin = require('./api/admin.js');
+
 
 
 /*app.use(function(req, res, next){
@@ -45,6 +47,7 @@ app.post('/api/customTour', contact.customTour);
 app.post('/api/apply', startup.apply);
 app.post('/api/invest', investor.invest);
 
+app.post('/api/adminlogin', admin.adminlogin);
 
 app.listen(6008, function () {
   console.log('CORS-enabled web server listening on port 6008')
