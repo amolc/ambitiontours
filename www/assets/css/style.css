@@ -775,7 +775,10 @@ section#footer {
     box-shadow: 0px 2px 1px rgba(28, 28, 29, 0.42);
     font-weight: 600;
 }
-
+.login-logo img{
+  width: 60%;
+  margin: 0 auto;
+}
 
 
 
