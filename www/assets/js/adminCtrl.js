@@ -1,10 +1,6 @@
 app.controller('admincontroller', function ($scope, $location, $http, $window) {
 
 
-
-
-
-
           $scope.adminlogin = function(){
 
             $("#alertmessage").hide(); 
@@ -90,7 +86,7 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
 
     $scope.updatepassword = function(info) {      
 
-          $scope.info.Admin_Id = window.localStorage.getItem('Admin_Id');
+          $scope.info.UserId = window.localStorage.getItem('Admin_Id');
 
            if (info.Password!=info.opassword) 
           {
@@ -124,11 +120,208 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
 
                     });  
 
-          }     
-
-        
+          }            
           
     } 
+
+    $scope.getCountries = function() {
+
+    $http.get(baseurl + 'allcountries').success(function (res) {
+
+            if (res.status == 'false') {
+
+            }
+            else {
+               // console.log(res);
+                $scope.countrylist = res;
+               // $scope.registration.CountryId = $scope.countrylist[0].CountryId;
+               //console.log($scope.countrylist);
+            }
+
+        }).error(function () {
+
+        });
+
+   }
+
+   $scope.getAllAttractions = function() {
+
+    $http.get(baseurl + 'getAllAttractions').success(function (res) {
+
+            if (res.status == 'false') {
+
+            }
+            else {
+                $scope.attractionlist = res;
+            }
+
+        }).error(function () {
+
+        });
+
+   }
+
+   $scope.getAllTours = function() {
+
+    $http.get(baseurl + 'getAllTours').success(function (res) {
+
+            if (res.status == 'false') {
+
+            }
+            else {
+                $scope.tourlist = res;
+            }
+
+        }).error(function () {
+
+        });
+
+   }
+    $scope.getAllBookings = function() {
+
+    $http.get(baseurl + 'getAllBookings').success(function (res) {
+
+            if (res.status == 'false') {
+
+            }
+            else {
+                $scope.bookinglist = res;
+            }
+
+        }).error(function () {
+
+        });
+
+   }
+
+    var attachmentfile1 = [];
+    var filelength;
+
+     $scope.fileinit = function(ele) {
+
+        
+        if (typeof $scope.Tour === 'undefined')
+        $scope.Tour = {};
+        $scope.attachmentCount = {};
+        $scope.attachment = {};
+        $scope.imgSrc = "";
+
+    };
+
+    $scope.updateattachment = function(file_browse) {
+
+        var fileDisplayArea = document.getElementById('fileDisplayArea');
+        // console.log(fileDisplayArea)
+        if (file_browse == 'file_browse1') {
+            var newfile = document.getElementById("file_browse1").files;
+        }            
+        var imageType = /image.*/;
+
+         function readAndPreview(file) {
+
+          // Make sure `file.name` matches our extensions criteria
+          if ( /\.(jpe?g|png|gif)$/i.test(file.name) ) {
+            var reader = new FileReader();
+
+            reader.addEventListener("load", function () {
+              var image = new Image();
+              image.height = 100;
+              image.title = file.name;
+              image.class = 'avatar img-circle img-thumbnail';
+              image.src = this.result;
+              //attachmentfile1.push(this.result); 
+              attachmentfile1[0] = this.result;
+              $scope.Tour.TourImage = file.name;
+              
+              /*if(filelength==index){
+                callback(attachmentfile1);
+              }*/
+              imagepreview.appendChild( image );
+            }, false);
+
+            reader.readAsDataURL(file);
+          }
+
+        }
+
+        if (newfile) {
+          filelength = newfile.length;
+          /*var index=0;
+          for (var i = 0; i < newfile.length; i++) {
+              readAndPreview(newfile[i],function(){
+                console.log("done");
+              });
+              if(i==(newfile.length-1))
+                console.log(attachmentfile1);
+
+          };*/
+
+          [].forEach.call(newfile,readAndPreview);
+          setTimeout(function() { 
+            //console.log(attachmentfile1.length);
+            $scope.attachment.images = attachmentfile1;
+            //$scope.userdetails.profile_image = attachmentfile1[0];
+            $scope.attachmentCount.imagecount = attachmentfile1.length;
+            //$scope.parameters.attachment = "testes testett";//{images:attachmentfile1};
+            //$scope.parameters.attachment = JSON.stringify(images); 
+            //$scope.addProduct($scope.parameters);
+            //console.log(attachmentfile1); 
+          }, 3000);
+          
+        }
+        
+    }
+
+    $scope.addTour = function() {             
+
+
+             if (Object.keys($scope.attachment).length>0) {
+                $scope.Tour.image = $scope.attachment.images[0];
+              }else{
+                $scope.Tour.image = '';
+              }
+
+            $http.post(baseurl + 'addTour/',$scope.Tour).success(function(res) {
+
+                  
+
+
+                }).error(function() {
+                      // alert("Please check your internet connection or data source..");
+                });
+
+    }
+
+    $scope.updateTour = function() {             
+
+
+             if (Object.keys($scope.attachment).length>0) {
+                $scope.Tour.image = $scope.attachment.images[0];
+              }else{
+                $scope.Tour.image = '';
+              }
+
+            $http.post(baseurl + 'updateTour/',$scope.Tour).success(function(res) {
+
+                  
+
+
+                }).error(function() {
+                      // alert("Please check your internet connection or data source..");
+                });
+    } 
+
+       $scope.deleteTour = function(id) {             
+
+          $http.get(baseurl + 'deleteTour/'+id).success(function(res) {
+
+                  
+
+
+          }).error(function() {
+                      // alert("Please check your internet connection or data source..");
+        });
+    }     
 
   
 });
