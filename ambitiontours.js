@@ -46,6 +46,16 @@ app.post('/api/apply', startup.apply);
 app.post('/api/invest', investor.invest);
 
 app.post('/api/adminlogin', admin.adminlogin);
+app.post('/api/updatepassword', admin.updatepassword);
+app.get('/api/allcountries', admin.allcountries);
+app.get('/api/getAllAttractions', admin.getAllAttractions);
+app.get('/api/getAllTours', admin.getAllTours);
+app.get('/api/getAllBookings', admin.getAllBookings);
+
+app.get('/api/getTourDetails/:id', admin.getTourDetails);
+app.get('/api/addTour', admin.addTour);
+app.get('/api/updateTour', admin.updateTour);
+app.get('/api/deleteTour/:id', admin.deleteTour);
 
 app.listen(6008, function () {
   console.log('CORS-enabled web server listening on port 6008')

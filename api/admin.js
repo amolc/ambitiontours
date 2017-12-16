@@ -1,5 +1,9 @@
 var http = require('http');
 var mysql = require('mysql');
+// var randomString = require('random-string');
+// var moment = require("moment");
+var verifycode = randomString();
+var now = moment();
 var db = mysql.createPool({
   database: 'ambitiontours',
   user: 'root',
@@ -9,6 +13,7 @@ var db = mysql.createPool({
 
 var CRUD = require('mysql-crud');
 var userCRUD = CRUD(db, 'tbl_Users');
+var tourCRUD = CRUD(db, 'tbl_Tours');
 
 var nodemailer = require('nodemailer');
 var mg = require('nodemailer-mailgun-transport');
@@ -90,6 +95,263 @@ exports.adminlogin = function (req, res) {
 
     });
 };
+
+exports.updatepassword = function(req, res){
+
+     dateToday = now.format("DD/MM/YYYY hh:mm a");
+     var updateObj = {
+
+              'Password': req.body.npassword,
+              'ModifiedOn' : dateToday,
+
+      };
+
+    userCRUD.update({UserId: req.body.UserId}, updateObj,function(err, val) {
+
+        if (!err) 
+        {
+            var resdata = {
+                status: true,
+                value:val,
+                message: 'Details successfully updated'
+            };
+
+            res.jsonp(resdata);
+        }
+        else
+        {
+            var resdata = {
+                status: false,
+                error: err,
+                message: 'Error: Details not successfully updated. '
+            };
+
+            res.jsonp(resdata);
+        }
+
+    });
+    
+};
+
+exports.allcountries = function (req, res) {
+    var sql = "SELECT `CountryId`,`CountryTitle`,`CountryImage` FROM `tbl_Countries` AND t.`IsDeleted` = '0'";
+    db.query(sql, function (err, data) {
+        res.json(data);
+    });
+};
+
+exports.getAllAttractions = function(req, res){
+
+  var sql = "SELECT t.*,c.`CountryId`,c.`CountryTitle` FROM `tbl_Tours` as t LEFT JOIN `tbl_Countries` as c ON c.`CountryId` = t.`CountryId` WHERE t.`TourType` = 'Tour' AND t.`IsDeleted` = '0' ORDER BY t.`TourId` DESC";
+    db.query(sql, function (err, data) {
+        res.json(data);
+    });
+    
+};
+
+exports.getAllTours = function(req, res){
+
+  var sql = "SELECT t.*,c.`CountryId`,c.`CountryTitle` FROM `tbl_Tours` as t LEFT JOIN `tbl_Countries` as c ON c.`CountryId` = t.`CountryId` WHERE t.`TourType` = 'Attraction' AND t.`IsDeleted` = '0' ORDER BY t.`TourId` DESC";
+    db.query(sql, function (err, data) {
+        res.json(data);
+    });
+    
+};
+
+exports.getAllBookings = function(req, res){
+
+  var sql = "SELECT b.* FROM `tbl_Bookings` as b ORDER BY b.`BookingId` DESC";
+    db.query(sql, function (err, data) {
+        res.json(data);
+    });
+    
+};
+
+exports.getTourDetails = function(req, res){
+
+  var tourid = req.params.id;
+  var sql = "SELECT t.*,c.`CountryId`,c.`CountryTitle` FROM `tbl_Tours as t` LEFT JOIN `tbl_Countries` as c ON c.`CountryId` = t.CountryId WHERE TourId = "+tourid;
+    db.query(sql, function (err, data) {
+        res.json(data[0]);
+    });
+    
+};
+
+exports.addTour = function (req, res) {
+
+    dateToday = now.format("DD/MM/YYYY hh:mm a");
+    date = now.format("DD/MM/YYYY");
+
+     verifycode = randomString();
+     if (req.body.image) {
+         var imagedata = req.body.image;
+         var matches = "";
+
+         function decodeBase64Image(dataString) {
+             var matches = dataString.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/),
+                 response = {};
+             if (matches.length !== 3) {
+                 return new Error('Invalid input string');
+             }
+             response.type = matches[1];
+             response.data = new Buffer(matches[2], 'base64');
+             return response;
+         }
+         var decodedImg = decodeBase64Image(imagedata);
+         var imageBuffer = decodedImg.data;
+         var type = decodedImg.type;
+         fileName = date+'_'+verifycode+'_'+req.body.TourImage;
+         fs.writeFileSync('www/uploads/tours/' + fileName, imageBuffer, 'utf8');
+     }else {
+         fileName = '';
+         console.log("image not present");
+     }
+        
+    var createObj = {
+                                "CountryId" :  req.body.CountryId,
+                                "TourType": req.body.TourType || "",
+                                "TourTitle" : req.body.TourTitle,
+                                "TourDescription":req.body.TourDescription,
+                                "TourLocation": req.body.TourLocation || "",
+                                "TourImage": filename || "", 
+                                "TourCost": req.body.TourCost || "", 
+                                "CreatedOn": dateToday || "",        
+                            };
+                            // console.log("after", createObj);
+
+                            tourCRUD.create(createObj, function (err, data) {
+
+                                if (!err) 
+                                {
+                                    var resdata = {
+                                        status: true,
+                                        value:data.insertId,
+                                        message: 'Details successfully added',
+                                        date : dateToday
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                                else
+                                {
+                                    var resdata = {
+                                        status: false,
+                                        error: err,
+                                        message: 'Error: Details not successfully added. '
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                            });
+};
+
+
+exports.updateTour = function (req, res) {
+
+    dateToday = now.format("DD/MM/YYYY hh:mm a");
+    date = now.format("DD/MM/YYYY");
+
+     verifycode = randomString();
+     if (req.body.image) {
+         var imagedata = req.body.image;
+         var matches = "";
+
+         function decodeBase64Image(dataString) {
+             var matches = dataString.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/),
+                 response = {};
+             if (matches.length !== 3) {
+                 return new Error('Invalid input string');
+             }
+             response.type = matches[1];
+             response.data = new Buffer(matches[2], 'base64');
+             return response;
+         }
+         var decodedImg = decodeBase64Image(imagedata);
+         var imageBuffer = decodedImg.data;
+         var type = decodedImg.type;
+         fileName = date+'_'+verifycode+'_'+req.body.TourImage;
+         fs.writeFileSync('www/uploads/tours/' + fileName, imageBuffer, 'utf8');
+     }else {
+         fileName = req.body.TourImage;
+         console.log("image not present");
+     }
+        
+    var updateObj = {
+                                "CountryId" :  req.body.CountryId,
+                                "TourType": req.body.TourType || "",
+                                "TourTitle" : req.body.TourTitle,
+                                "TourDescription":req.body.TourDescription,
+                                "TourLocation": req.body.TourLocation || "",
+                                "TourImage": filename || "", 
+                                "TourCost": req.body.TourCost || "", 
+                                "ModifiedOn": dateToday || "",        
+                            };
+                            // console.log("after", createObj);
+
+                            tourCRUD.update({TourId: req.body.TourId}, updateObj,function (err, data) {
+
+                                if (!err) 
+                                {
+                                    var resdata = {
+                                        status: true,
+                                        value:data.insertId,
+                                        message: 'Details successfully updated',
+                                        date : dateToday
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                                else
+                                {
+                                    var resdata = {
+                                        status: false,
+                                        error: err,
+                                        message: 'Error: Details not successfully updated. '
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                            });
+};
+
+
+
+exports.deleteTour = function (req, res) {
+
+    dateToday = now.format("DD/MM/YYYY hh:mm a");
+    var tourid = req.params.id;
+    var updateObj = {
+                         "IsDeleted" :  '1',
+      
+                    };
+                            // console.log("after", createObj);
+
+                            tourCRUD.update({TourId: tourid}, updateObj,function (err, data) {
+
+                                if (!err) 
+                                {
+                                    var resdata = {
+                                        status: true,
+                                        value:data.insertId,
+                                        message: 'Details successfully deleted',
+                                        date : dateToday
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                                else
+                                {
+                                    var resdata = {
+                                        status: false,
+                                        error: err,
+                                        message: 'Error: Details not successfully deleted. '
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                            });
+};
+
 ///____________________END______________________
 
 function send_mail(usermail, subject, mailbody) {
