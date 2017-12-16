@@ -735,7 +735,7 @@ section#footer {
   background-image: url(../img/bg-img.jpg);
   background-size: cover;
   background-repeat: no-repeat;
-  position: absolute;
+  position: fixed;
   height: 100%;
   width: 100%;
   top: 0;
