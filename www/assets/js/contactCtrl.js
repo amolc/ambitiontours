@@ -7,6 +7,17 @@ app.controller('contactcontroller', function ($scope, $location, $http, $window)
  // $scope.urlParams = $location.search();
  // console.log($location.search());
  // $scope.data = {};
+
+  $scope.checkPassword = function(){
+ 
+      $('#alert').hide();
+      if ($scope.password == 'ambitiontours')
+        $('#form-wrap').hide();
+      else
+        $('#alert').show();
+
+ }
+
  $scope.enquiryButton = function(packagename,price){
  // alert(+"--"+price);
      window.localStorage.removeItem("packagename");
