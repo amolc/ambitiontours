@@ -386,9 +386,9 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
                  if (res.status == true) 
                 {
                   if ($scope.Tour.TourType == 'Tour')
-                    window.location.href = 'tourlist.html';
-                  if ($scope.Tour.TourType == 'Attraction')
                     window.location.href = 'tours.html';
+                  if ($scope.Tour.TourType == 'Attraction')
+                    window.location.href = 'attractions.html';
                 }
 
                 }).error(function() {
@@ -396,16 +396,30 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
                 });
     } 
 
-       $scope.deleteTour = function(id) {             
+       $scope.deleteTour = function(id,type) {    
 
+
+       var r = confirm("Are You Sure You want to Delete It?");
+        if (r == true) 
+        { 
           $http.get(baseurl + 'deleteTour/'+id).success(function(res) {
 
                   
-
+               if (res.status == true) 
+                {
+                  if (type == 'Tour')
+                    window.location.href = 'tours.html';
+                  if (type == 'Attraction')
+                    window.location.href = 'attractions.html';
+                }
 
           }).error(function() {
                       // alert("Please check your internet connection or data source..");
-        });
+         });
+            
+        }         
+
+         
     }     
 
   
