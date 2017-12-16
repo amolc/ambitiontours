@@ -33,26 +33,16 @@ exports.adminlogin = function (req, res) {
 
     userCRUD.load({
         UserName: username,
-        Type : 'Admin'
+        UserType : 'Admin'
     }, function (err, val) {
 
 
         if (val.length > 0) 
         {
 
-            userCRUD.load({
-                UserName: username,
-                Type : 'Admin',
-                VerificationCode: null
-            },function (err3, val3) {
-
-                if (val3.length > 0) 
-                {
-
                    userCRUD.load({
                         UserName: username,
-                        Type : 'Admin',
-                        VerificationCode: null,
+                        UserType : 'Admin',
                         Password: password,
                     },function (err2, val2) {
 
@@ -83,23 +73,6 @@ exports.adminlogin = function (req, res) {
 
 
                     });
-
-                }
-                else
-                {
-
-                    var resdata3 = {
-                        verifyValid: false,
-                        error: err3,
-                        message: 'Please confirm your email!'
-                    };
-
-                    res.jsonp(resdata3);
-
-                }
-
-
-            });
 
         } 
         else 

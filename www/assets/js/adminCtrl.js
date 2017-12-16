@@ -2,8 +2,10 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
 
 
 
-          $scope.adminlogin = function(){
 
+
+
+          $scope.adminlogin = function(){
 
             $("#alertmessage").hide(); 
 
@@ -16,13 +18,6 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
 
                     $scope.alertmessage=data.message;
                     $("#alertmessage").show('slow');  
-
-                }
-                else if(data.verifyValid === false)
-                {
-
-                    $scope.alertmessage=data.message;
-                    $("#alertmessage").show('slow');    
 
                 }
                 else
