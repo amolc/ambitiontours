@@ -197,11 +197,31 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
     var attachmentfile1 = [];
     var filelength;
 
-     $scope.fileinit = function(ele) {
+     $scope.forminit = function(ele) {
 
-        
+     
         if (typeof $scope.Tour === 'undefined')
         $scope.Tour = {};
+        var url = window.location.href;
+        var parts = url.split("?");
+        if(parts.length>1){
+
+           var urlparams = parts[1];
+           var params = urlparams.split("&");
+           var type = urlparams.split("=")
+           if (type[0]=='Type') 
+           {
+             $scope.Tour.TourType = type[1];
+           }
+           else
+          {
+              window.history.back();
+          }
+        }
+        else
+        {
+            window.history.back();
+        }
         $scope.attachmentCount = {};
         $scope.attachment = {};
         $scope.imgSrc = "";
@@ -272,25 +292,85 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
         
     }
 
-    $scope.addTour = function() {             
+    $scope.addTour = function() {   
 
 
-             if (Object.keys($scope.attachment).length>0) {
+          $("#alertmessage").hide();
+
+          if (typeof $scope.Tour.CountryId === 'undefined') 
+          {
+               $scope.alertmessage = "Please Select Country"
+               $("#alertmessage").show('slow');
+          }
+          else
+          {
+
+            if (Object.keys($scope.attachment).length>0) {
                 $scope.Tour.image = $scope.attachment.images[0];
               }else{
                 $scope.Tour.image = '';
               }
 
+            console.log($scope.Tour);
+
             $http.post(baseurl + 'addTour/',$scope.Tour).success(function(res) {
-
                   
-
+                //console.log(res);
+                if (res.status == true) 
+                {
+                  if ($scope.Tour.TourType == 'Tour')
+                    window.location.href = 'tourlist.html';
+                  if ($scope.Tour.TourType == 'Attraction')
+                    window.location.href = 'attractionlist.html';
+                }
 
                 }).error(function() {
-                      // alert("Please check your internet connection or data source..");
+                    
                 });
 
+          }          
+
     }
+
+    $scope.getTourDetails = function() {             
+
+
+
+        var url = window.location.href;
+        var parts = url.split("?");
+        if(parts.length>1){
+
+           var urlparams = parts[1];
+           var params = urlparams.split("&");
+           var id = urlparams.split("=")
+           if (id[0]=='TourId') 
+           {
+             $http.get(baseurl + 'getTourDetails/'+id[1]).success(function (res) {
+
+                  if (res.status == 'false') {
+
+                  }
+                  else {
+                      $scope.Tour = res;
+                      $scope.attachmentCount = {};
+                      $scope.attachment = {};
+                      $scope.imgSrc = "";
+                  }
+
+              }).error(function () {
+
+              });
+           }
+           else
+          {
+              window.history.back();
+          }
+        }
+        else
+        {
+            window.history.back();
+        }
+    } 
 
     $scope.updateTour = function() {             
 
@@ -302,9 +382,14 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
               }
 
             $http.post(baseurl + 'updateTour/',$scope.Tour).success(function(res) {
-
-                  
-
+  
+                 if (res.status == true) 
+                {
+                  if ($scope.Tour.TourType == 'Tour')
+                    window.location.href = 'tourlist.html';
+                  if ($scope.Tour.TourType == 'Attraction')
+                    window.location.href = 'attractionlist.html';
+                }
 
                 }).error(function() {
                       // alert("Please check your internet connection or data source..");

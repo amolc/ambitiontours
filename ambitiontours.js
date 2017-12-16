@@ -9,6 +9,7 @@ var bodyParser = require( 'body-parser' );
 var nodemailer = require( 'nodemailer' );
 var cors = require('cors');
 var http = require("http").createServer(app);
+fs = require('fs-extra');
 
 var contact = require('./api/contact.js');
 var startup = require('./api/startup.js');
@@ -53,8 +54,8 @@ app.get('/api/getAllTours', admin.getAllTours);
 app.get('/api/getAllBookings', admin.getAllBookings);
 
 app.get('/api/getTourDetails/:id', admin.getTourDetails);
-app.get('/api/addTour', admin.addTour);
-app.get('/api/updateTour', admin.updateTour);
+app.post('/api/addTour', admin.addTour);
+app.post('/api/updateTour', admin.updateTour);
 app.get('/api/deleteTour/:id', admin.deleteTour);
 
 app.listen(6008, function () {

@@ -1,9 +1,9 @@
 var http = require('http');
 var mysql = require('mysql');
-// var randomString = require('random-string');
-// var moment = require("moment");
-// var verifycode = randomString();
-// var now = moment();
+var randomString = require('random-string');
+var moment = require("moment");
+var verifycode = randomString();
+var now = moment();
 var db = mysql.createPool({
   database: 'ambitiontours',
   user: 'root',
@@ -134,7 +134,7 @@ exports.updatepassword = function(req, res){
 };
 
 exports.allcountries = function (req, res) {
-    var sql = "SELECT `CountryId`,`CountryTitle`,`CountryImage` FROM `tbl_Countries` AND t.`IsDeleted` = '0'";
+    var sql = "SELECT `CountryId`,`CountryTitle`,`CountryImage` FROM `tbl_Countries` WHERE `IsDeleted` = '0'";
     db.query(sql, function (err, data) {
         res.json(data);
     });
@@ -170,7 +170,7 @@ exports.getAllBookings = function(req, res){
 exports.getTourDetails = function(req, res){
 
   var tourid = req.params.id;
-  var sql = "SELECT t.*,c.`CountryId`,c.`CountryTitle` FROM `tbl_Tours as t` LEFT JOIN `tbl_Countries` as c ON c.`CountryId` = t.CountryId WHERE TourId = "+tourid;
+  var sql = "SELECT t.*,c.`CountryId`,c.`CountryTitle` FROM `tbl_Tours` as t LEFT JOIN `tbl_Countries` as c ON c.`CountryId` = t.CountryId WHERE TourId = "+tourid;
     db.query(sql, function (err, data) {
         res.json(data[0]);
     });
@@ -200,8 +200,12 @@ exports.addTour = function (req, res) {
          var decodedImg = decodeBase64Image(imagedata);
          var imageBuffer = decodedImg.data;
          var type = decodedImg.type;
-         fileName = date+'_'+verifycode+'_'+req.body.TourImage;
-         fs.writeFileSync('www/uploads/tours/' + fileName, imageBuffer, 'utf8');
+         fileName = verifycode+'_'+req.body.TourImage;
+         if (req.body.TourType == 'Tour')
+          fs.writeFileSync('www/uploads/tours/' + fileName, imageBuffer, 'utf8');
+         if (req.body.TourType == 'Attraction')
+          fs.writeFileSync('www/uploads/attractions/' + fileName, imageBuffer, 'utf8');
+
      }else {
          fileName = '';
          console.log("image not present");
@@ -213,7 +217,8 @@ exports.addTour = function (req, res) {
                                 "TourTitle" : req.body.TourTitle,
                                 "TourDescription":req.body.TourDescription,
                                 "TourLocation": req.body.TourLocation || "",
-                                "TourImage": filename || "", 
+                                "TourDuration": req.body.TourDuration || "",
+                                "TourImage": fileName || "", 
                                 "TourCost": req.body.TourCost || "", 
                                 "CreatedOn": dateToday || "",        
                             };
@@ -269,8 +274,11 @@ exports.updateTour = function (req, res) {
          var decodedImg = decodeBase64Image(imagedata);
          var imageBuffer = decodedImg.data;
          var type = decodedImg.type;
-         fileName = date+'_'+verifycode+'_'+req.body.TourImage;
-         fs.writeFileSync('www/uploads/tours/' + fileName, imageBuffer, 'utf8');
+         fileName = verifycode+'_'+req.body.TourImage;
+         if (req.body.TourType == 'Tour')
+          fs.writeFileSync('www/uploads/tours/' + fileName, imageBuffer, 'utf8');
+        if (req.body.TourType == 'Attraction')
+          fs.writeFileSync('www/uploads/attractions/' + fileName, imageBuffer, 'utf8');
      }else {
          fileName = req.body.TourImage;
          console.log("image not present");
@@ -282,7 +290,8 @@ exports.updateTour = function (req, res) {
                                 "TourTitle" : req.body.TourTitle,
                                 "TourDescription":req.body.TourDescription,
                                 "TourLocation": req.body.TourLocation || "",
-                                "TourImage": filename || "", 
+                                "TourDuration": req.body.TourDuration || "",
+                                "TourImage": fileName || "", 
                                 "TourCost": req.body.TourCost || "", 
                                 "ModifiedOn": dateToday || "",        
                             };
