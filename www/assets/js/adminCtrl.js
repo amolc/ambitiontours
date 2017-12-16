@@ -319,9 +319,9 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
                 if (res.status == true) 
                 {
                   if ($scope.Tour.TourType == 'Tour')
-                    window.location.href = 'tourlist.html';
+                    window.location.href = 'tours.html';
                   if ($scope.Tour.TourType == 'Attraction')
-                    window.location.href = 'attractionlist.html';
+                    window.location.href = 'attractions.html';
                 }
 
                 }).error(function() {
@@ -388,7 +388,7 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
                   if ($scope.Tour.TourType == 'Tour')
                     window.location.href = 'tourlist.html';
                   if ($scope.Tour.TourType == 'Attraction')
-                    window.location.href = 'attractionlist.html';
+                    window.location.href = 'tours.html';
                 }
 
                 }).error(function() {
