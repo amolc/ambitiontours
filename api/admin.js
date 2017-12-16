@@ -2,8 +2,8 @@ var http = require('http');
 var mysql = require('mysql');
 // var randomString = require('random-string');
 // var moment = require("moment");
-var verifycode = randomString();
-var now = moment();
+// var verifycode = randomString();
+// var now = moment();
 var db = mysql.createPool({
   database: 'ambitiontours',
   user: 'root',
