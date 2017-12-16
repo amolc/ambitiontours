@@ -427,6 +427,7 @@ section#footer {
     font-family: 'Lato', sans-serif;
     font-size: 16px;
     font-weight: 600;
+    line-height: 34px;
 }
 
 /* Underline Reveal */
@@ -822,11 +823,13 @@ section#footer {
   width: 100% !important;
 }
 .pro-img{
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
   background-color: #ffffff;
   overflow: hidden;
   border-radius: 50%;
+  display: inline-table;
+  margin: 0px 5px;
 }
 .pro-img img{
   width: 100%;
@@ -842,7 +845,21 @@ section#footer {
 .mr-b20{
   margin-bottom: 20px;
 }
-
+.navbar-default .navbar-nav>.open>a, 
+.navbar-default .navbar-nav>.open>a:focus, 
+.navbar-default .navbar-nav>.open>a:hover{
+  background-color: transparent;
+  color: #ffffff;
+}
+.navbar-nav>li>a{
+  padding: 10px 15px;
+}
+.dropdown-menu>li>a{
+  padding: 8px 20px;
+}
+.navbar-nav>li>.dropdown-menu{
+  padding: 0;
+}
 
 
 
