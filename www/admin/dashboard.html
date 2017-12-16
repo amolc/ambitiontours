@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 
+ <script type="text/javascript">
+         if (window.localStorage.getItem('Admin_Id')<=0) 
+                {
+                   window.location.href="index.html";
+                }
+    </script>
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,7 +29,7 @@
   <script type="text/javascript" src="../assets/js/adminCtrl.js"></script>
 </head>
 
-<body>
+<body data-ng-app="80consult" data-ng-controller="admincontroller" ng-init="getAllBookings();">
 <!-- Start Header -->
        <header id="top-header">
             <div class="orenge-logo-strip">
@@ -62,6 +69,7 @@
                                         <li><a href="dashboard.html" class="hvr-underline-reveal">Dashboard</a></li>
                                         <li><a href="attractions.html" class="hvr-underline-reveal">Attractions</a></li>
                                         <li><a href="tours.html" class="hvr-underline-reveal">Tours</a></li>
+                                          <li><a href="changepassword.html" class="hvr-underline-reveal">Change Password</a></li>
                                         <li><a href="index.html" class="hvr-underline-reveal">Logout</a></li>
 
                                       </ul>
@@ -79,7 +87,7 @@
             <div class="row">
               <div class="col-sm-12 col-md-12">
                 <div class="attractions-form profile signin-form">
-                  <h2 class="text-center">Dashboard</h2>
+                  <h2 class="text-center">Bookings</h2>
                   <div class="dashboard-table">
                  <table id="table">
                       <thead>
@@ -87,11 +95,18 @@
                         <th>Name</th>
                         <th>Email Id</th>
                         <th>Mobile No.</th>
-                        <th>Travel</th>
+                        <th>Travel Date</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
+
+                      <tr ng-repeat="book in bookinglist">
+                          <td>{{book.fullName}}</td>
+                          <td>{{book.email}}</td>
+                          <td>{{book.phoneNumber}}</td>
+                          <td>{{book.travelDate | limitTo : 10}}</td>
+                        </tr>
+                        <!-- <tr>
                           <td>Pravin Shelar</td>
                           <td>Pravinshelar.demo@gmail.com</td>
                           <td>9503254562</td>
@@ -103,7 +118,7 @@
                           <td>Pravinshelar.demo@gmail.com</td>
                           <td>9503254562</td>
                           <td>23-12-2017</td>
-                        </tr>
+                        </tr> -->
 
                       </tbody>
                     </table>
