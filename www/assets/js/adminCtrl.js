@@ -215,12 +215,12 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
            }
            else
           {
-              window.history.back();
+              window.location.href = 'dashboard.html';
           }
         }
         else
         {
-            window.history.back();
+           window.location.href = 'dashboard.html';
         }
         $scope.attachmentCount = {};
         $scope.attachment = {};
@@ -363,12 +363,12 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
            }
            else
           {
-              window.history.back();
+              window.location.href = 'dashboard.html';
           }
         }
         else
         {
-            window.history.back();
+            window.location.href = 'dashboard.html';
         }
     } 
 

@@ -27,7 +27,7 @@
   <script type="text/javascript" src="../assets/js/adminCtrl.js"></script>
 </head>
 
-<body data-ng-app="80consult" data-ng-controller="admincontroller" ng-init="getTourDetails();">
+<body data-ng-app="80consult" data-ng-controller="admincontroller" ng-init="getAllTours();">
 <!-- Start Header -->
        <header id="top-header">
             <div class="orenge-logo-strip">
@@ -83,59 +83,39 @@
         <section id="andttr-form-wrap">
           <div class="container">
             <div class="row">
-              <div class="col-sm-12 col-md-12">
-               <form id="addtour" name="addtour" ng-submit="updateTour()" ng-init="getCountries()">
-                  <div class="attractions-form profile signin-form">
-                  <h2 class="text-center">Tours and Attractions</h2>
-                  <div class="col-sm-8 col-md-8 pd0">
-                    <div class="col-sm-6 col-md-6">
-                    <select ng-model="Tour.TourType" disabled="">
-                      <option value="Attraction">Attraction </option>
-                      <option value="Tour">Tour</option>
-                    </select>
-                  </div>
-                  <div class="col-sm-6 col-md-6">
-                      <select id="country" name="country" ng-options="cou.CountryId as cou.CountryTitle for cou in countrylist" ng-model="Tour.CountryId" required="">
-                      </select>
-                  </div>
-                  <div class="col-sm-6 col-md-6">
-                    <input type="text" name="title" placeholder="Title" required="" ng-model="Tour.TourTitle">
-                  </div>
-                  <div class="col-sm-6 col-md-6">
-                    <input type="text" name="price" placeholder="Price" pattern="[0-9]{1,5}[.]{0,1}[0-9]{0,2}" oninvalid="setCustomValidity('Enter Valid Price')" onchange="try{setCustomValidity('')}catch(e){}" required="" ng-model="Tour.TourCost">
-                  </div>
-                  <div class="col-sm-6 col-md-6">
-                    <input type="text" name="duration" placeholder="Duration" required="" ng-model="Tour.TourDuration">
-                  </div>
-                  <div class="col-sm-6 col-md-6">
-                    <input type="text" name="duration" placeholder="Location" required="" ng-model="Tour.TourLocation" id="address">
-                  </div>
-                  
-                  </div>
-                  <div class="col-sm-4 col-md-4">
-                    <textarea rows="9" placeholder="Description" required="" ng-model="Tour.TourDescription"></textarea>
-                  </div>
-                  <div class="col-sm-6 col-md-6">
-                     <input id="file_browse1" class="form-control" type='file' name="productimage" onchange="angular.element(this).scope().updateattachment('file_browse1');   $('#imagepreview').children().remove();" accept="image/*">
-                      <input type="hidden" name="imagename" ng-model="Tour.imagename">
-                  </div>
-                   <div class="col-sm-6 col-md-6 ">
-                     <div id="imagepreview">
-                     <img src="../uploads/tours/{{Tour.TourImage}}" ng-if="Tour.TourType=='Tour'">
-                     <img src="../uploads/attractions/{{Tour.TourImage}}" ng-if="Tour.TourType=='Attraction'">  
-                     </div>
-                   </div>
-                  <div class="col-sm-12 col-md-12">
-                      <label id="alertmessage" hidden>{{alertmessage}}</label>
-                  </div>
-                  <div class="col-sm-6 col-md-6 ">
-                    <input type="submit" value="Save" class="small-btn brawon-btn pull-right">
-                  </div>
-                  
-                  <div class="clearfix"></div>
-                </div>
-               </form>
-              </div>
+              <div class="col-sm-12">
+                        <h2 class="section-title">
+                            All Tours
+                        </h2>
+                    </div>
+                    <div class="col-sm-6" ng-repeat="Tour in tourlist">
+                        <div class="packges-block">
+                            <div class="col-sm-5 pd0">
+                                <div class="place-img">
+                                    <img src="../uploads/tours/{{Tour.TourImage}}" class="img-responsive" alt="" title="">
+                                </div>
+                            </div>
+                            <div class="col-sm-7">
+                                <div class="packeg-details-text">
+                                    <h5><a href="#">{{Tour.TourImage}}</a></h5>
+                                    <p> {{Tour.TourDescription}}</p>
+                                    <div class="right-blck">
+                                        <p class="gray-small-text"><span>Location: {{Tour.TourLocation}}<br>
+                                            Duration: {{Tour.TourDuration}}</span>
+                                        </p>
+                                        
+                                    </div>
+                                    <div class="price-right-block">
+                                        <span>From SGD</span>
+                                        <h4>${{Tour.TourCost}}</h4>
+                                        <a href="edit_attractions-form.html?TourId={{TourId}}">Edit</a>
+                                         <a href="javascript:void(0)" ng-click="" class="pakege-btn">Delete</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
             </div>
           </div>
         </section>
