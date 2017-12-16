@@ -140,7 +140,7 @@ exports.allcountries = function (req, res) {
     });
 };
 
-exports.getAllAttractions = function(req, res){
+exports.getAllTours = function(req, res){
 
   var sql = "SELECT t.*,c.`CountryId`,c.`CountryTitle` FROM `tbl_Tours` as t LEFT JOIN `tbl_Countries` as c ON c.`CountryId` = t.`CountryId` WHERE t.`TourType` = 'Tour' AND t.`IsDeleted` = '0' ORDER BY t.`TourId` DESC";
     db.query(sql, function (err, data) {
@@ -149,7 +149,7 @@ exports.getAllAttractions = function(req, res){
     
 };
 
-exports.getAllTours = function(req, res){
+exports.getAllAttractions = function(req, res){
 
   var sql = "SELECT t.*,c.`CountryId`,c.`CountryTitle` FROM `tbl_Tours` as t LEFT JOIN `tbl_Countries` as c ON c.`CountryId` = t.`CountryId` WHERE t.`TourType` = 'Attraction' AND t.`IsDeleted` = '0' ORDER BY t.`TourId` DESC";
     db.query(sql, function (err, data) {
