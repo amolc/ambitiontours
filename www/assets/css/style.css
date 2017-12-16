@@ -53,7 +53,19 @@ section#header {
     padding-bottom: 50px;
 }
 
-
+.brawon-btn{
+  outline: none;
+  padding: 0.8em 0;
+  text-align: center;
+  font-size: 1.2em;
+  margin-top: 1em;
+  border: none;
+  color: #FFFFFF;
+  cursor: pointer;
+  background: #280f0a;
+  box-shadow: 0px 2px 1px rgba(28, 28, 29, 0.42);
+  font-weight: 600;
+}
 
 .context-head {
     color: #324B73;
@@ -482,7 +494,7 @@ section#footer {
     color: #ff6624;
     cursor: pointer;
 }
-#pakeges-wrap{
+#pakeges-wrap, #andttr-form-wrap{
     background-color: #f1eada;
 }
 .right-blck{
@@ -733,8 +745,13 @@ section#footer {
   text-align: center;
   width: 31%;
   margin: 30px auto;
+  box-shadow: 0px 0px 2px 1px rgba(37, 37, 37, 0.39);
+  -webkit-box-shadow: 0px 0px 2px 1px rgba(37, 37, 37, 0.39);
+  -moz-box-shadow: 0px 0px 2px 1px rgba(37, 37, 37, 0.39);
+  -ms-box-shadow: 0px 0px 2px 1px rgba(37, 37, 37, 0.39);
+  -o-box-shadow: 0px 0px 2px 1px rgba(37, 37, 37, 0.39);
 }
-.signin-form.profile h2 {
+.profile h2 {
   text-transform: uppercase;
   color: #000;
   margin: 0.5em 0 1.5em 0;
@@ -745,7 +762,9 @@ section#footer {
 .login-form {
   margin: 1em 0 2.5em;
 }
-.signin-form input[type="email"], .signin-form input[type="text"], .signin-form input[type="password"] {
+.signin-form input, 
+.signin-form select, 
+.signin-form textarea{
     width: 100%;
     padding: 0.8em 0.8em;
     font-size: 1em;
@@ -755,16 +774,11 @@ section#footer {
     border: none;
     border: 1px solid #b9c0c3;
     letter-spacing: 1px;
-    text-align: center;
-}
-.signin-form input[type="email"] {
-    background: none;
-    display: block;
+    text-align: left;
 }
 .signin-form input[type="submit"] {
     outline: none;
-    padding: 0.8em 0;
-    width: 100%;
+    padding: 0.8em 3em;
     text-align: center;
     font-size: 1.2em;
     margin-top: 1em;
@@ -775,9 +789,37 @@ section#footer {
     box-shadow: 0px 2px 1px rgba(28, 28, 29, 0.42);
     font-weight: 600;
 }
+.signin-form input[type="file"]{
+  border: 0px;
+  padding: 0px;
+}
 .login-logo img{
   width: 60%;
   margin: 0 auto;
+}
+.attractions-form{
+  width: 85%;
+  margin: 0 auto;
+  background-color: #ffffff;
+  padding: 30px;
+  box-shadow: 0px 0px 2px 1px rgba(37, 37, 37, 0.39);
+  -webkit-box-shadow: 0px 0px 2px 1px rgba(37, 37, 37, 0.39);
+  -moz-box-shadow: 0px 0px 2px 1px rgba(37, 37, 37, 0.39);
+  -ms-box-shadow: 0px 0px 2px 1px rgba(37, 37, 37, 0.39);
+  -o-box-shadow: 0px 0px 2px 1px rgba(37, 37, 37, 0.39);
+}
+
+.attractions-form input{
+  margin: 1.4em 0;
+}
+
+
+.small-btn{
+  padding: 0.8em 3em !important;
+  width: 200px !important;
+}
+.large-btn{
+  width: 100% !important;
 }
 
 
@@ -801,11 +843,6 @@ section#footer {
 
 
 
-
-
-
-
-
-
-
-
+.mr-t20{
+  margin-top: 20px;
+}
