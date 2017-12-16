@@ -177,6 +177,16 @@ exports.getTourDetails = function(req, res){
     
 };
 
+exports.getAdminDetails = function(req, res){
+
+  var userid = req.params.id;
+  var sql = "SELECT `Password` FROM `tbl_Users` WHERE UserId = "+userid;
+    db.query(sql, function (err, data) {
+        res.json(data[0]);
+    });
+    
+};
+
 exports.addTour = function (req, res) {
 
     dateToday = now.format("DD/MM/YYYY hh:mm a");

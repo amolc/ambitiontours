@@ -58,6 +58,8 @@ app.post('/api/addTour', admin.addTour);
 app.post('/api/updateTour', admin.updateTour);
 app.get('/api/deleteTour/:id', admin.deleteTour);
 
+app.get('/api/getAdminDetails/:id', admin.getAdminDetails);
+
 app.listen(6008, function () {
   console.log('CORS-enabled web server listening on port 6008')
 })

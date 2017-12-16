@@ -83,6 +83,23 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
           location.href = "index.html"
     }  
 
+    $scope.getAdminDetails = function() {             
+
+           var UserId = window.localStorage.getItem('Admin_Id');
+            $http.get(baseurl + 'getAdminDetails/'+ UserId ).success(function (res) {
+
+                  if (res.status == 'false') {
+
+                  }
+                  else {
+                      $scope.info = res;
+                     // console.log($scope.info);
+                  }
+
+              }).error(function () {
+
+              });
+    }  
 
     $scope.updatepassword = function(info) {      
 
@@ -114,7 +131,6 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
                         }
                         else
                         {
-                            document.editpassword.reset(); 
                             window.location.href = "dashboard.html";
                         }
 
