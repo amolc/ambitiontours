@@ -494,7 +494,7 @@ section#footer {
     color: #ff6624;
     cursor: pointer;
 }
-#pakeges-wrap, #andttr-form-wrap{
+#pakeges-wrap, #andttr-form-wrap, #dashboard-wrap{
     background-color: #f1eada;
 }
 .right-blck{
