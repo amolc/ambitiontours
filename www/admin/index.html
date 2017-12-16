@@ -30,8 +30,8 @@
             <div class="signin-form profile">
                           <h2>Log In</h2>
                           <div class="login-form">
-                            <form action="#" method="post">
-                              <input type="email" name="email" placeholder="E-mail" required="">
+                            <form method="post" ng-submit="adminlogin()">
+                              <input type="text" name="username" placeholder="Username" required="">
                               <input type="password" name="password" placeholder="Password" required="">
                               <div class="tp">
                                 <input type="submit" value="SIGN IN">
