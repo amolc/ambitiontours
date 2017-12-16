@@ -42,7 +42,7 @@ exports.adminlogin = function (req, res) {
 
             userCRUD.load({
                 UserName: username,
-                Type : 'Admin'
+                Type : 'Admin',
                 VerificationCode: null
             },function (err3, val3) {
 
@@ -51,7 +51,7 @@ exports.adminlogin = function (req, res) {
 
                    userCRUD.load({
                         UserName: username,
-                        Type : 'Admin'
+                        Type : 'Admin',
                         VerificationCode: null,
                         Password: password,
                     },function (err2, val2) {
