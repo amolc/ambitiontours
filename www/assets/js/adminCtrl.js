@@ -236,7 +236,7 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
                   }
                   else {
 
-                     $http.get(baseurl + 'getCountryName/'+id[1]).success(function (data) {
+                     $http.get(baseurl + 'getCountryDetails/'+id[1]).success(function (data) {
 
                           if (data.status == 'false') {
 
@@ -567,7 +567,70 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
         }         
 
          
-    }     
+    }
+
+     $scope.addCountry = function() {   
+
+
+
+             setTimeout(function() { 
+
+               if (Object.keys($scope.attachment).length>0) {
+                $scope.Tour.image = $scope.attachment.images[0];
+              }else{
+                $scope.Tour.image = '';
+              }
+
+
+            $http.post(baseurl + 'addCountry/',$scope.Tour).success(function(res) {
+                  
+                //console.log(res);
+                if (res.status == true) 
+                {
+                  
+                    window.location.href = 'countries.html';
+                }
+
+                }).error(function() {
+                    
+                });
+         
+              }, 1000);    
+
+    }
+
+    $scope.updateCountry = function() {   
+
+
+
+             setTimeout(function() { 
+
+               if (Object.keys($scope.attachment).length>0) {
+                $scope.Tour.image = $scope.attachment.images[0];
+              }else{
+                $scope.Tour.image = '';
+              }
+
+
+            $http.post(baseurl + 'addCountry/',$scope.Tour).success(function(res) {
+                  
+                //console.log(res);
+                if (res.status == true) 
+                {
+                  
+                    window.location.href = 'countries.html';
+                }
+
+                }).error(function() {
+                    
+                });
+         
+              }, 1000);    
+
+    }
+
+
+
 
   
 });

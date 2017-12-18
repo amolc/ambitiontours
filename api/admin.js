@@ -14,6 +14,7 @@ var db = mysql.createPool({
 var CRUD = require('mysql-crud');
 var userCRUD = CRUD(db, 'tbl_Users');
 var tourCRUD = CRUD(db, 'tbl_Tours');
+var countriesCRUD = CRUD(db, 'tbl_Countries');
 
 var nodemailer = require('nodemailer');
 var mg = require('nodemailer-mailgun-transport');
@@ -157,7 +158,7 @@ exports.getCountryId = function(req, res){
     
 };
 
-exports.getCountryName = function(req, res){
+exports.getCountryDetails = function(req, res){
 
   var id = req.params.id;
   var sql = "SELECT `CountryTitle`,`CountryImage` FROM `tbl_Countries` WHERE CountryId = '"+id+"'";    
@@ -223,6 +224,72 @@ exports.getAdminDetails = function(req, res){
     });
     
 };
+
+
+exports.addCountry = function (req, res) {
+
+    dateToday = now.format("DD/MM/YYYY hh:mm a");
+    date = now.format("DD/MM/YYYY");
+
+     verifycode = randomString();
+     if (req.body.image) {
+         var imagedata = req.body.image;
+         var matches = "";
+
+         function decodeBase64Image(dataString) {
+             var matches = dataString.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/),
+                 response = {};
+             if (matches.length !== 3) {
+                 return new Error('Invalid input string');
+             }
+             response.type = matches[1];
+             response.data = new Buffer(matches[2], 'base64');
+             return response;
+         }
+         var decodedImg = decodeBase64Image(imagedata);
+         var imageBuffer = decodedImg.data;
+         var type = decodedImg.type;
+         fileName = verifycode+'_'+req.body.TourImage;
+         fs.writeFileSync('www/uploads/countries/' + fileName, imageBuffer, 'utf8');
+
+     }else {
+         fileName = '';
+         console.log("image not present");
+     }
+        
+    var createObj = {
+                                "CountryTitle" : req.body.CountryTitle,
+                                "CountryImage": fileName || "", 
+                                "CreatedOn": dateToday || "",        
+                            };
+                            // console.log("after", createObj);
+
+                            countriesCRUD.create(createObj, function (err, data) {
+
+                                if (!err) 
+                                {
+                                    var resdata = {
+                                        status: true,
+                                        value:data.insertId,
+                                        message: 'Details successfully added',
+                                        date : dateToday
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                                else
+                                {
+                                    var resdata = {
+                                        status: false,
+                                        error: err,
+                                        message: 'Error: Details not successfully added. '
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                            });
+};
+
 
 exports.addTour = function (req, res) {
 
@@ -296,6 +363,7 @@ exports.addTour = function (req, res) {
                                 }
                             });
 };
+
 
 
 exports.updateTour = function (req, res) {

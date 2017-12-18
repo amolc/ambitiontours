@@ -54,13 +54,18 @@ app.get('/api/getAllAttractions', admin.getAllAttractions);
 app.get('/api/getAllTours', admin.getAllTours);
 app.get('/api/getAllBookings', admin.getAllBookings);
 app.get('/api/getCountryTours/:id', admin.getCountryTours);
-app.get('/api/getCountryName/:id', admin.getCountryName);
 app.get('/api/getCountryId/:id', admin.getCountryId);
 
 app.get('/api/getTourDetails/:id', admin.getTourDetails);
 app.post('/api/addTour', admin.addTour);
 app.post('/api/updateTour', admin.updateTour);
 app.get('/api/deleteTour/:id', admin.deleteTour);
+
+
+app.get('/api/getCountryDetails/:id', admin.getCountryDetails);
+app.post('/api/addCountry', admin.addCountry);
+// app.post('/api/updateCountry', admin.updateCountry);
+// app.get('/api/deleteCountry/:id', admin.deleteCountry);
 
 app.get('/api/getAdminDetails/:id', admin.getAdminDetails);
 
