@@ -532,7 +532,8 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
                  if (res.status == true) 
                 {
                   if ($scope.Tour.TourType == 'Tour')
-                    window.location.href = 'tours.html';
+                      window.history.back();
+                    //window.location.href = 'tours.html';
                   if ($scope.Tour.TourType == 'Attraction')
                     window.location.href = 'attractions.html';
                 }
@@ -555,7 +556,8 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
                if (res.status == true) 
                 {
                   if (type == 'Tour')
-                    window.location.href = 'tours.html';
+                      window.history.back();
+                    //window.location.href = 'tours.html';
                   if (type == 'Attraction')
                     window.location.href = 'attractions.html';
                 }
