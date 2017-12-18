@@ -294,6 +294,7 @@ exports.updateCountry = function (req, res) {
 
     dateToday = now.format("DD/MM/YYYY hh:mm a");
     date = now.format("DD/MM/YYYY");
+    // console.log(req.body.TourImage);
 
      verifycode = randomString();
      if (req.body.image) {

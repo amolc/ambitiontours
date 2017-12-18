@@ -650,7 +650,7 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
               }else{
                 $scope.Tour.image = '';
               }
-
+             // console.log($scope.Tour);
 
             $http.post(baseurl + 'updateCountry/',$scope.Tour).success(function(res) {
                   
