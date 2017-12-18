@@ -9,15 +9,17 @@ app.controller('contactcontroller', function ($scope, $location, $http, $window)
  // $scope.data = {};
   $scope.hide = window.sessionStorage.getItem('hide');
 
-  $scope.checkPassword = function(){
+  $scope.checkPassword = function(password){
  
+      //console.log(password);
       $('#alert').hide();
       // if ($scope.password == 'ambitiontours')
       //   $('#form-wrap').hide();
       // else
       //   $('#alert').show();
-       if ($scope.password == 'ambitiontours')
+       if (password == 'ambitiontours')
        {
+         $('#form-wrap').hide();
          window.sessionStorage.setItem('hide','hidden');
          $scope.hide = 'hidden';
        }

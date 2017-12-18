@@ -622,7 +622,7 @@
             <p>Copyright 2017- Ambition Tours - All Rights Reserved.</p>
         </footer>
 
-        <section id="form-wrap" ng-style="{'display': hide=='hidden' ? 'none' : 'block'}">
+        <section id="form-wrap" ng-if="hide!=='hidden'">
     <div class="container">
       <div class="row">
         <div class="col-sm-12 col-md-12">
@@ -631,7 +631,7 @@
                           <h2>WelCome</h2>
 
                           <div class="login-form">
-                            <form method="post" ng-submit="checkPassword()">
+                            <form method="post" ng-submit="checkPassword(password)">
                               <input type="password" name="password" placeholder="Password" required="" ng-model="password">
                               <label id="alert" hidden="">Password Incorrect</label>
                               <div class="tp">
