@@ -314,6 +314,11 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
     $scope.addTour = function() {   
 
 
+      setTimeout(function() { 
+         
+          }, 3000);
+
+
           $("#alertmessage").hide();
 
           if (typeof $scope.Tour.CountryId === 'undefined') 
@@ -324,13 +329,14 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
           else
           {
 
-            if (Object.keys($scope.attachment).length>0) {
+             setTimeout(function() { 
+
+               if (Object.keys($scope.attachment).length>0) {
                 $scope.Tour.image = $scope.attachment.images[0];
               }else{
                 $scope.Tour.image = '';
               }
 
-            console.log($scope.Tour);
 
             $http.post(baseurl + 'addTour/',$scope.Tour).success(function(res) {
                   
@@ -346,6 +352,10 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
                 }).error(function() {
                     
                 });
+         
+              }, 4000);
+
+           
 
           }          
 
@@ -394,6 +404,8 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
     $scope.updateTour = function() {             
 
 
+        setTimeout(function() { 
+
              if (Object.keys($scope.attachment).length>0) {
                 $scope.Tour.image = $scope.attachment.images[0];
               }else{
@@ -413,6 +425,7 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
                 }).error(function() {
                       // alert("Please check your internet connection or data source..");
                 });
+         }, 4000);
     } 
 
        $scope.deleteTour = function(id,type) {    
