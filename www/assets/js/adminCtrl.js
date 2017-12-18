@@ -599,6 +599,46 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
 
     }
 
+        $scope.getCountryDetails = function() {             
+
+
+
+        var url = window.location.href;
+        var parts = url.split("?");
+        if(parts.length>1){
+
+           var urlparams = parts[1];
+           var params = urlparams.split("&");
+           var id = urlparams.split("=")
+           if (id[0]=='CountryId') 
+           {
+             $http.get(baseurl + 'getCountryDetails/'+id[1]).success(function (res) {
+
+                  if (res.status == 'false') {
+
+                  }
+                  else {
+                      $scope.Tour = res;
+                      $scope.attachmentCount = {};
+                      $scope.attachment = {};
+                      $scope.imgSrc = "";
+                  }
+
+              }).error(function () {
+
+              });
+           }
+           else
+          {
+              window.location.href = 'countries.html';
+          }
+        }
+        else
+        {
+            window.location.href = 'countries.html';
+        }
+    } 
+
     $scope.updateCountry = function() {   
 
 
@@ -612,7 +652,7 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
               }
 
 
-            $http.post(baseurl + 'addCountry/',$scope.Tour).success(function(res) {
+            $http.post(baseurl + 'updateCountry/',$scope.Tour).success(function(res) {
                   
                 //console.log(res);
                 if (res.status == true) 
@@ -629,21 +669,19 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
 
     }
 
-    $scope.deleteTour = function(id,type) {    
+    $scope.deleteCountry = function(id) {    
 
 
        var r = confirm("Are You Sure You want to Delete It?");
         if (r == true) 
         { 
-          $http.get(baseurl + 'deleteTour/'+id).success(function(res) {
+          $http.get(baseurl + 'deleteCountry/'+id).success(function(res) {
 
                   
                if (res.status == true) 
                 {
-                  if (type == 'Tour')
-                    window.location.href = 'tours.html';
-                  if (type == 'Attraction')
-                    window.location.href = 'attractions.html';
+
+                    window.location.href = 'countries.html';
                 }
 
           }).error(function() {
@@ -651,7 +689,6 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
          });
             
         }         
-
          
     }
 

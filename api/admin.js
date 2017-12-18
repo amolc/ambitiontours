@@ -290,6 +290,107 @@ exports.addCountry = function (req, res) {
                             });
 };
 
+exports.updateCountry = function (req, res) {
+
+    dateToday = now.format("DD/MM/YYYY hh:mm a");
+    date = now.format("DD/MM/YYYY");
+
+     verifycode = randomString();
+     if (req.body.image) {
+         var imagedata = req.body.image;
+         var matches = "";
+
+         function decodeBase64Image(dataString) {
+             var matches = dataString.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/),
+                 response = {};
+             if (matches.length !== 3) {
+                 return new Error('Invalid input string');
+             }
+             response.type = matches[1];
+             response.data = new Buffer(matches[2], 'base64');
+             return response;
+         }
+         var decodedImg = decodeBase64Image(imagedata);
+         var imageBuffer = decodedImg.data;
+         var type = decodedImg.type;
+         fileName = verifycode+'_'+req.body.TourImage;
+         fs.writeFileSync('www/uploads/countries/' + fileName, imageBuffer, 'utf8');
+     }else {
+         fileName = req.body.CountryImage;
+         console.log("image not present");
+     }
+        
+    var updateObj = {
+                                "CountryTitle" : req.body.CountryTitle,
+                                "CountryImage": fileName || "", 
+                                "ModifiedOn": dateToday || "",        
+                            };
+                            // console.log("after", createObj);
+
+                            countriesCRUD.update({CountryId: req.body.CountryId}, updateObj,function (err, data) {
+
+                                if (!err) 
+                                {
+                                    var resdata = {
+                                        status: true,
+                                        value:data.insertId,
+                                        message: 'Details successfully updated',
+                                        date : dateToday
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                                else
+                                {
+                                    var resdata = {
+                                        status: false,
+                                        error: err,
+                                        message: 'Error: Details not successfully updated. '
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                            });
+};
+
+
+
+exports.deleteCountry = function (req, res) {
+
+    dateToday = now.format("DD/MM/YYYY hh:mm a");
+    var id = req.params.id;
+    var updateObj = {
+                         "IsDeleted" :  '1',
+      
+                    };
+                            // console.log("after", createObj);
+
+                            countriesCRUD.update({CountryId: id}, updateObj,function (err, data) {
+
+                                if (!err) 
+                                {
+                                    var resdata = {
+                                        status: true,
+                                        value:data.insertId,
+                                        message: 'Details successfully deleted',
+                                        date : dateToday
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                                else
+                                {
+                                    var resdata = {
+                                        status: false,
+                                        error: err,
+                                        message: 'Error: Details not successfully deleted. '
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                            });
+};
+
 
 exports.addTour = function (req, res) {
 

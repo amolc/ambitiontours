@@ -64,8 +64,8 @@ app.get('/api/deleteTour/:id', admin.deleteTour);
 
 app.get('/api/getCountryDetails/:id', admin.getCountryDetails);
 app.post('/api/addCountry', admin.addCountry);
-// app.post('/api/updateCountry', admin.updateCountry);
-// app.get('/api/deleteCountry/:id', admin.deleteCountry);
+app.post('/api/updateCountry', admin.updateCountry);
+app.get('/api/deleteCountry/:id', admin.deleteCountry);
 
 app.get('/api/getAdminDetails/:id', admin.getAdminDetails);
 
