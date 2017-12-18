@@ -556,8 +556,7 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
                if (res.status == true) 
                 {
                   if (type == 'Tour')
-                     // $scope.getCountryTours();
-                    window.location.href = 'country-tour.html?country='+id;
+                      $scope.getCountryTours();
                     //window.location.href = 'tours.html';
                   if (type == 'Attraction')
                     window.location.href = 'attractions.html';
