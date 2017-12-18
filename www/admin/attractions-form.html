@@ -100,19 +100,24 @@
               <div class="col-sm-12 col-md-12">
                <form id="addtour" name="addtour" ng-submit="addTour()" ng-init="getCountries()">
                   <div class="attractions-form profile signin-form">
-                  <h2 class="text-center">Tours and Attractions</h2>
+                  <h2 class="text-center">Singapore Attractions</h2>
+                  <input type="hidden" name="type" ng-model="Tour.TourType" ng-init = "Tour.TourType='Attraction'">
+                  <input type="hidden" name="type" ng-model="Tour.CountryId" ng-init = "Tour.CountryId=1">
                   <div class="col-sm-8 col-md-8 pd0">
-                    <div class="col-sm-6 col-md-6">
+                   <!--  <div class="col-sm-6 col-md-6">
                     <select ng-model="Tour.TourType" disabled="">
                       <option value="Attraction">Attraction </option>
                       <option value="Tour">Tour</option>
                     </select>
-                  </div>
-                  <div class="col-sm-6 col-md-6">
-                      <select id="country" name="country" ng-options="cou.CountryId as cou.CountryTitle for cou in countrylist" ng-model="Tour.CountryId" required="">
+                  </div> -->
+                  <!-- <div class="col-sm-6 col-md-6">
+                      <select id="country" name="country" ng-options="cou.CountryId as cou.CountryTitle for cou in countrylist" ng-model="Tour.CountryId" ng-init="Tour.CountryId=1" required="">
                       </select>
+                  </div> -->
+                  <div class="col-sm-12 col-md-12">
+                    <input type="text" name="duration" placeholder="Location" required="" ng-model="Tour.TourLocation" id="address">
                   </div>
-                  <div class="col-sm-6 col-md-6">
+                  <div class="col-sm-12 col-md-12">
                     <input type="text" name="title" placeholder="Title" required="" ng-model="Tour.TourTitle">
                   </div>
                   <div class="col-sm-6 col-md-6">
@@ -121,23 +126,24 @@
                   <div class="col-sm-6 col-md-6">
                     <input type="text" name="duration" placeholder="Duration" required="" ng-model="Tour.TourDuration">
                   </div>
-                  <div class="col-sm-6 col-md-6">
-                    <input type="text" name="duration" placeholder="Location" required="" ng-model="Tour.TourLocation" id="address">
+                  <div class="col-sm-12 col-md-12">
+                   <textarea rows="9" placeholder="Description" required="" ng-model="Tour.TourDescription"></textarea>
                   </div>
                   
                   </div>
                   <div class="col-sm-4 col-md-4">
-                    <textarea rows="9" placeholder="Description" required="" ng-model="Tour.TourDescription"></textarea>
-                  </div>
-                  <div class="col-sm-6 col-md-6">
-                     <input id="file_browse1" class="form-control" type='file' name="productimage" onchange="angular.element(this).scope().updateattachment('file_browse1');   $('#imagepreview').children().remove();" accept="image/*" required=""/>
+                   <div class="col-sm-12 col-md-12">
+                     <input id="file_browse1" class="form-control" type='file' name="productimage" onchange="angular.element(this).scope().updateattachment('file_browse1');   $('#imagepreview').children().remove();" accept="image/*">
                       <input type="hidden" name="imagename" ng-model="Tour.imagename">
                   </div>
-                   <div class="col-sm-6 col-md-6 ">
+                   <div class="col-sm-12 col-md-12 ">
                      <div id="imagepreview">
                        
                      </div>
                    </div>
+                    
+                  </div>
+                 
                   <div class="col-sm-12 col-md-12">
                       <label id="alertmessage" hidden>{{alertmessage}}</label>
                   </div>

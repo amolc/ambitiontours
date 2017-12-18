@@ -239,7 +239,8 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
         //    window.location.href = 'dashboard.html';
         // }
         if (typeof $scope.Tour === 'undefined')
-          $scope.Tour = {};
+        $scope.Tour = {};
+       // $scope.Tour.CountryId = 1;
         $scope.attachmentCount = {};
         $scope.attachment = {};
         $scope.imgSrc = "";
