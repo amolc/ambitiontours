@@ -101,21 +101,20 @@
               <div class="col-sm-12 col-md-12">
                <form id="addtour" name="addtour" ng-submit="updateTour()" ng-init="getCountries()">
                   <div class="attractions-form profile signin-form">
-                  <h2 class="text-center">Singapore Attractions</h2>
+                  <h2 class="text-center">Asia Tours</h2>
                   <input type="hidden" name="type" ng-model="Tour.TourType">
-                  <input type="hidden" name="type" ng-model="Tour.CountryId">
                   <div class="col-sm-8 col-md-8 pd0">
                    <!--  <div class="col-sm-6 col-md-6">
                     <select ng-model="Tour.TourType" disabled="">
                       <option value="Attraction">Attraction </option>
                       <option value="Tour">Tour</option>
                     </select>
-                  </div> 
+                  </div> -->
                   <div class="col-sm-6 col-md-6">
                       <select id="country" name="country" ng-options="cou.CountryId as cou.CountryTitle for cou in countrylist" ng-model="Tour.CountryId" required="">
                       </select>
-                  </div>-->
-                   <div class="col-sm-12 col-md-12">
+                  </div>
+                   <div class="col-sm-6 col-md-6">
                     <input type="text" name="duration" placeholder="Location" required="" ng-model="Tour.TourLocation" id="address">
                   </div>
                   <div class="col-sm-12 col-md-12">
