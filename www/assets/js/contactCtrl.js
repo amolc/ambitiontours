@@ -7,14 +7,23 @@ app.controller('contactcontroller', function ($scope, $location, $http, $window)
  // $scope.urlParams = $location.search();
  // console.log($location.search());
  // $scope.data = {};
+  $scope.hide = window.sessionStorage.getItem('hide');
 
   $scope.checkPassword = function(){
  
       $('#alert').hide();
-      if ($scope.password == 'ambitiontours')
-        $('#form-wrap').hide();
-      else
+      // if ($scope.password == 'ambitiontours')
+      //   $('#form-wrap').hide();
+      // else
+      //   $('#alert').show();
+       if ($scope.password == 'ambitiontours')
+       {
+         window.sessionStorage.setItem('hide','hidden');
+         $scope.hide = 'hidden';
+       }
+       else
         $('#alert').show();
+
 
  }
 
