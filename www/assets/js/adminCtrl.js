@@ -314,11 +314,6 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
     $scope.addTour = function() {   
 
 
-      setTimeout(function() { 
-         
-          }, 3000);
-
-
           $("#alertmessage").hide();
 
           if (typeof $scope.Tour.CountryId === 'undefined') 
