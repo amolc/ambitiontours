@@ -216,28 +216,30 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
      $scope.forminit = function(ele) {
 
      
-        if (typeof $scope.Tour === 'undefined')
-        $scope.Tour = {};
-        var url = window.location.href;
-        var parts = url.split("?");
-        if(parts.length>1){
+        // if (typeof $scope.Tour === 'undefined')
+        // $scope.Tour = {};
+        // var url = window.location.href;
+        // var parts = url.split("?");
+        // if(parts.length>1){
 
-           var urlparams = parts[1];
-           var params = urlparams.split("&");
-           var type = urlparams.split("=")
-           if (type[0]=='Type') 
-           {
-             $scope.Tour.TourType = type[1];
-           }
-           else
-          {
-              window.location.href = 'dashboard.html';
-          }
-        }
-        else
-        {
-           window.location.href = 'dashboard.html';
-        }
+        //    var urlparams = parts[1];
+        //    var params = urlparams.split("&");
+        //    var type = urlparams.split("=")
+        //    if (type[0]=='Type') 
+        //    {
+        //      $scope.Tour.TourType = type[1];
+        //    }
+        //    else
+        //   {
+        //       window.location.href = 'dashboard.html';
+        //   }
+        // }
+        // else
+        // {
+        //    window.location.href = 'dashboard.html';
+        // }
+        if (typeof $scope.Tour === 'undefined')
+          $scope.Tour = {};
         $scope.attachmentCount = {};
         $scope.attachment = {};
         $scope.imgSrc = "";
