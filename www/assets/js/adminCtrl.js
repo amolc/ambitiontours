@@ -305,7 +305,7 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
             //$scope.parameters.attachment = JSON.stringify(images); 
             //$scope.addProduct($scope.parameters);
             //console.log(attachmentfile1); 
-          }, 3000);
+          }, 1000);
           
         }
         
@@ -348,7 +348,7 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
                     
                 });
          
-              }, 4000);
+              }, 1000);
 
            
 
@@ -420,7 +420,7 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
                 }).error(function() {
                       // alert("Please check your internet connection or data source..");
                 });
-         }, 4000);
+         }, 1000);
     } 
 
        $scope.deleteTour = function(id,type) {    
