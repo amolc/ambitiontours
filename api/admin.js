@@ -140,9 +140,46 @@ exports.allcountries = function (req, res) {
     });
 };
 
+exports.getallcountries = function (req, res) {
+    var sql = "SELECT `CountryId`,`CountryTitle`,`CountryImage` FROM `tbl_Countries` WHERE `IsDeleted` = '0' AND `CountryTitle`!='Singapore'";
+    db.query(sql, function (err, data) {
+        res.json(data);
+    });
+};
+
+exports.getCountryId = function(req, res){
+
+  var country = req.params.id;
+  var sql = "SELECT `CountryId`,`CountryImage` FROM `tbl_Countries` WHERE CountryTitle = '"+country+"'";
+    db.query(sql, function (err, data) {
+        res.json(data[0]);
+    });
+    
+};
+
+exports.getCountryName = function(req, res){
+
+  var id = req.params.id;
+  var sql = "SELECT `CountryTitle`,`CountryImage` FROM `tbl_Countries` WHERE CountryId = '"+id+"'";    
+  db.query(sql, function (err, data) {
+        res.json(data[0]);
+    });
+    
+};
+
 exports.getAllTours = function(req, res){
 
   var sql = "SELECT t.*,c.`CountryId`,c.`CountryTitle` FROM `tbl_Tours` as t LEFT JOIN `tbl_Countries` as c ON c.`CountryId` = t.`CountryId` WHERE t.`TourType` = 'Tour' AND t.`IsDeleted` = '0' ORDER BY t.`TourId` DESC";
+    db.query(sql, function (err, data) {
+        res.json(data);
+    });
+    
+};
+
+exports.getCountryTours = function(req, res){
+
+  var CountryId = req.params.id;
+  var sql = "SELECT t.*,c.`CountryId`,c.`CountryTitle` FROM `tbl_Tours` as t LEFT JOIN `tbl_Countries` as c ON c.`CountryId` = t.`CountryId` WHERE t.`TourType` = 'Tour' AND t.`IsDeleted` = '0' AND t.`CountryId` = "+CountryId+" ORDER BY t.`TourId` DESC";
     db.query(sql, function (err, data) {
         res.json(data);
     });

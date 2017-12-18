@@ -49,9 +49,13 @@ app.post('/api/invest', investor.invest);
 app.post('/api/adminlogin', admin.adminlogin);
 app.post('/api/updatepassword', admin.updatepassword);
 app.get('/api/allcountries', admin.allcountries);
+app.get('/api/getallcountries', admin.getallcountries);
 app.get('/api/getAllAttractions', admin.getAllAttractions);
 app.get('/api/getAllTours', admin.getAllTours);
 app.get('/api/getAllBookings', admin.getAllBookings);
+app.get('/api/getCountryTours/:id', admin.getCountryTours);
+app.get('/api/getCountryName/:id', admin.getCountryName);
+app.get('/api/getCountryId/:id', admin.getCountryId);
 
 app.get('/api/getTourDetails/:id', admin.getTourDetails);
 app.post('/api/addTour', admin.addTour);

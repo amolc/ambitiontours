@@ -160,6 +160,27 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
 
    }
 
+
+    $scope.getallcountries = function() {
+
+    $http.get(baseurl + 'getallcountries').success(function (res) {
+
+            if (res.status == 'false') {
+
+            }
+            else {
+               // console.log(res);
+                $scope.countrylist = res;
+               // $scope.registration.CountryId = $scope.countrylist[0].CountryId;
+               //console.log($scope.countrylist);
+            }
+
+        }).error(function () {
+
+        });
+
+   }
+
    $scope.getAllAttractions = function() {
 
     $http.get(baseurl + 'getAllAttractions').success(function (res) {
@@ -193,6 +214,58 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
         });
 
    }
+
+
+   $scope.getCountryTours = function() {
+
+
+     var url = window.location.href;
+        var parts = url.split("?");
+        if(parts.length>1){
+
+           var urlparams = parts[1];
+           var params = urlparams.split("&");
+           var id = urlparams.split("=")
+           if (id[0]=='country') 
+           {
+
+              $http.get(baseurl + 'getCountryTours/'+id[1]).success(function (res) {
+
+                  if (res.status == 'false') {
+
+                  }
+                  else {
+
+                     $http.get(baseurl + 'getCountryName/'+id[1]).success(function (data) {
+
+                          if (data.status == 'false') {
+
+                          }
+                          else {
+
+                              $scope.CountryId = id[1];
+                              $scope.CountryTitle = data.CountryTitle;
+                              $scope.tourlist = res;
+                          }
+
+                      }).error(function () {
+
+                      });
+                  }
+
+              }).error(function () {
+
+              });
+
+           }
+           else
+          {
+              window.location.href = 'tours.html';
+          }
+        }
+
+   }
+
     $scope.getAllBookings = function() {
 
     $http.get(baseurl + 'getAllBookings').success(function (res) {
@@ -240,6 +313,53 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
         // }
         if (typeof $scope.Tour === 'undefined')
         $scope.Tour = {};
+        var url = window.location.href;
+        var parts = url.split("?");
+        var pageurl = parts[0].split("/");
+        var filename = pageurl.pop();
+        var country = 'Singapore';
+        $http.get(baseurl + 'getCountryId/'+country).success(function (res) {
+
+                    if (res.status == 'false') {
+
+                    }
+                    else {
+                        $scope.CountryId = res.CountryId
+                        if (filename === 'attractions-form.html') 
+                        { 
+                            $scope.Tour.CountryId = $scope.CountryId;
+                        }
+                        else if (filename === 'tours-form.html') 
+                          {
+
+                              if(parts.length>1){
+
+                                 var urlparams = parts[1];
+                                 var params = urlparams.split("&");
+                                 var id = urlparams.split("=")
+                                 if (id[0]=='country') 
+                                 {
+
+                                    $scope.Tour.CountryId = parseInt(id[1]);
+                                 }
+
+                              }
+                              else
+                              {
+                                 $scope.Tour.CountryId = $scope.CountryId;
+                                   
+                              }
+
+                          }
+                    }
+
+                }).error(function () {
+
+                });
+      
+        
+        
+        
        // $scope.Tour.CountryId = 1;
         $scope.attachmentCount = {};
         $scope.attachment = {};
