@@ -522,7 +522,8 @@ section#footer {
     background: #ff6624;
     padding: 5px 14px 7px;
     display: inline-block;
-    margin-top: 5px;
+    margin-top: 13px;
+    float: right;
 }
 .social-links ul{
     margin: 5px 0px 0px;
@@ -947,8 +948,33 @@ section#footer {
   font-weight: 500;
   margin-bottom: 20px;
 }
+.foot-social-icon .foot-text ul li a{
+  color: #ffffff;
+}
 
-
+.foot-social-icon .foot-text ul li:nth-child(1) a{
+  background-color: #3b5998;
+}
+.foot-social-icon .foot-text ul li:nth-child(2) a{
+  background-color: #30a0f2;
+}
+.foot-social-icon .foot-text ul li:nth-child(3) a{
+  background: rgb(102,88,200);
+background: -moz-linear-gradient(-45deg, rgb(102,88,200) 3%, rgb(212,54,143) 26%, rgb(251,195,96) 79%);
+background: -webkit-linear-gradient(-45deg, rgb(102,88,200) 3%,rgb(212,54,143) 26%,rgb(251,195,96) 79%);
+background: linear-gradient(135deg, rgb(102,88,200) 3%,rgb(212,54,143) 26%,rgb(251,195,96) 79%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6658c8', endColorstr='#fbc360',GradientType=1 );
+}
+.foot-social-icon .foot-text ul li:nth-child(4) a{
+  background-color: #f60002;
+}
+.foot-social-icon .foot-text ul li:nth-child(5) a{
+  background-color: #2277b6;
+}
+.foot-social-icon .foot-text ul li a:hover{
+  background-color: #ffffff;
+  color: #000000;
+}
 
 
 
