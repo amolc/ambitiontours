@@ -30,7 +30,7 @@
                         <div class="col-sm-12">
                             <div class="logo-img">
                                 <a href="index.html">
-                                  <img src="assets/img/logo.png" class="img-responsive" alt="" title="">
+                                    <img src="assets/img/logo.png" alt="" title="">
                                 </a>
                             </div>
                         </div>
@@ -55,14 +55,39 @@
                                       <!-- <a class="navbar-brand" href="#">Brand</a> -->
                                     </div>
 
+
                                     <!-- Collect the nav links, forms, and other content for toggling -->
                                     <div class="collapse navbar-collapse pd0" id="bs-example-navbar-collapse-1">
                                       <ul class="nav navbar-nav">
-                                        <li><a href="index.html" class="hvr-underline-reveal">Singapore</a></li>
-                                        <li><a href="asia.html" class="hvr-underline-reveal">Asia</a></li>
-                                        <!-- <li><a href="europe.html" class="hvr-underline-reveal">Europe</a></li>
+                                        <!-- <li><a href="index.html" class="hvr-underline-reveal">Destinations</a></li> -->
+                                        <li class="dropdown" ng-init="getCountries()">
+                                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Destinations <span class="caret"></span></a>
+                                          <ul class="dropdown-menu">
+                                            <!-- <li><a href="#">India</a></li>
+                                            <li><a href="#">Malaysia</a></li>
+                                            <li><a href="#">Thailand</a></li>
+                                            <li><a href="#">Combodia</a></li>
+                                            <li><a href="#">Hong Kong</a></li> -->
+                                            <li ng-repeat="c in countrylist">
+                                             <a href="country-attractions.html?country={{c.CountryId}}">{{c.CountryTitle}}</a>
+                                            </li>
+                                          </ul>
+                                        </li>
+                                       <!--  <li><a href="asia.html" class="hvr-underline-reveal">Our Services</a></li> -->
+                                         <li class="dropdown">
+                                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Our Services<span class="caret"></span></a>
+                                          <ul class="dropdown-menu">
+                                            <li><a href="#">Package Tours</a></li>
+                                            <li><a href="custom-tour.html">Custom Tours</a></li>
+                                            <li><a href="air-ticket.html">Air Ticketing</a></li>
+                                            <li><a href="visa-services.html">Visa Services</a></li>
+                                            <li><a href="#">Travel Gift Vouchers</a></li>
+                                            <li><a href="#">Travel Insurance</a></li>
+                                          </ul>
+                                        </li>
+                                       <!--  <li><a href="europe.html" class="hvr-underline-reveal">Europe</a></li>
                                         <li><a href="visa.html" class="hvr-underline-reveal">Visa</a></li> -->
-                                        <li><a href="custom-tour.html" class="hvr-underline-reveal">Custom Tour</a></li>
+                                        <li><a href="custom-tour.html" class="hvr-underline-reveal">Contact Us</a></li>
                                       </ul>
                                     </div><!-- /.navbar-collapse -->
                                   </div><!-- /.container-fluid -->
@@ -73,6 +98,7 @@
                 </div>
             </div>
         </header>
+
     <!-- End Header -->
   <div data-ng-app="80consult" data-ng-controller="contactcontroller">
 
