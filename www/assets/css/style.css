@@ -860,6 +860,10 @@ section#footer {
 .navbar-nav>li>.dropdown-menu{
   padding: 0;
 }
+.dropdown-menu>li>a:hover{
+  background-color: #290e0a;
+  color: #ffffff;
+}
 
 
 
