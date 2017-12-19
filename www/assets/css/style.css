@@ -923,9 +923,30 @@ section#footer {
 .visa-popup .modal-body{
   padding: 35px 15px;
 }
-
-
-
+.contact-right-block h5{
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 30px;
+  margin-bottom: 5px;
+}
+.contact-right-block p{
+  display: table;
+  font-family: 'Lato', sans-serif;
+  color: #000000;
+  font-size: 14px;
+}
+.contact-right-block p span{
+  display: table-cell;
+}
+.contact-right-block p span:first-child{
+  width: 260px;
+  font-weight: 600;
+}
+#contact-wrap h3{
+  font-size: 25px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
 
 
 
@@ -939,3 +960,6 @@ section#footer {
 .mr-t20{
   margin-top: 20px;
 }
+.mr-t30{
+  margin-top: 30px;
+} 
