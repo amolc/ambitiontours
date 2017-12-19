@@ -266,6 +266,56 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
 
    }
 
+      $scope.getCountryAttractions = function() {
+
+
+     var url = window.location.href;
+        var parts = url.split("?");
+        if(parts.length>1){
+
+           var urlparams = parts[1];
+           var params = urlparams.split("&");
+           var id = urlparams.split("=")
+           if (id[0]=='attraction') 
+           {
+
+              $http.get(baseurl + 'getCountryAttractions/'+id[1]).success(function (res) {
+
+                  if (res.status == 'false') {
+
+                  }
+                  else {
+
+                     $http.get(baseurl + 'getCountryDetails/'+id[1]).success(function (data) {
+
+                          if (data.status == 'false') {
+
+                          }
+                          else {
+
+                              $scope.CountryId = id[1];
+                              $scope.CountryTitle = data.CountryTitle;
+                              $scope.tourlist = res;
+                          }
+
+                      }).error(function () {
+
+                      });
+                  }
+
+              }).error(function () {
+
+              });
+
+           }
+           else
+          {
+              window.location.href = 'tours.html';
+          }
+        }
+
+   }
+
     $scope.getAllBookings = function() {
 
     $http.get(baseurl + 'getAllBookings').success(function (res) {
