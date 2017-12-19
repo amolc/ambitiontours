@@ -151,7 +151,7 @@ exports.customTour = function (req, res) {
                             </tr>\
                           </table>';
 
-        console.log(mailbody);
+  
 
             send_mail(recipientEmail, subject, mailbody);
 
@@ -251,23 +251,20 @@ exports.airTicket = function (req, res) {
 
 exports.visaEnquiry = function (req, res) {
 
-
-
-  ticketCRUD.create({
-      'Name': req.body.fullname,
-      'Contact': req.body.phonenumber,
+  venquiryCRUD.create({
+      'Name': req.body.name,
+      'Contact': req.body.phone,
       'Email': req.body.email,
-      'Destination': req.body.destination,
-      'Airline': req.body.airline,
-      'Type': req.body.type,
+      'Message': req.body.message,
+      'VisaDetailId': req.body.Id,
     },function (err,val){
 
       if (!err) 
         {
 
              var recipientEmail = 'sadiarahman1@yahoo.com,nadyshaikh@gmail.com,ceo@80startups.com,shital.talole@fountaintechies.com,office@80startups.com,komal.gaikwad@fountaintechies.com';
-             // var recipientEmail = 'komal.gaikwad@fountaintechies.com'; //,ceo@80startups.com,shital.talole@fountaintechies.com'; //,ceo@80startups.com,shital.talole@80startups.com
-              var subject = "[ambitiontours.COM] Ambition Tours Air Ticket Enquiry";
+            // var recipientEmail = 'komal.gaikwad@fountaintechies.com'; //,ceo@80startups.com,shital.talole@fountaintechies.com'; //,ceo@80startups.com,shital.talole@80startups.com
+              var subject = "[ambitiontours.COM] Ambition Tours Visa Enquiry";
               var mailbody = '<table>\
                                   <tr>\
                                   <td><img src="https://ambitiontours.80startups.com/assets/img/logo.png"></td><br>\
@@ -281,7 +278,7 @@ exports.visaEnquiry = function (req, res) {
                                   <td>You have one enquiry from the following client:</td>\
                                 </tr>\
                                 <tr>\
-                                  <td>The details are as follow :  <br><br><strong> Name:   ' + req.body.fullname + '</strong><br><br><strong> Email:   ' + req.body.email + '</strong><br><br><strong> Contact Number:   ' + req.body.phonenumber + '</strong><br><br><strong> Choice Of Destination:   ' + req.body.destination + '</strong><br><br><strong>Choice Of Airline:   ' + req.body.airline + '</strong><br><br><strong>Trip Type :   ' + req.body.type + '</strong><br><br></td>\
+                                  <td>The details are as follow :  <br><br><strong> Name:   ' + req.body.name + '</strong><br><br><strong> Email:   ' + req.body.email + '</strong><br><br><strong> Contact Number:   ' + req.body.phone + '</strong><br><br><strong> Country:   ' + req.body.Country + '</strong><br><br><strong>Visa Charge:   ' + req.body.VisaCharge + '</strong><br><br><strong>Working Days :   ' + req.body.WorkingDays + '</strong><br><br><strong>Message :   ' + req.body.message + '</strong><br><br></td>\
                                 </tr>\
                                 <tr>\
                                   <td>Best wishes,</td>\
