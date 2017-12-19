@@ -276,7 +276,7 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
            var urlparams = parts[1];
            var params = urlparams.split("&");
            var id = urlparams.split("=")
-           if (id[0]=='attraction') 
+           if (id[0]=='country') 
            {
 
               $http.get(baseurl + 'getCountryAttractions/'+id[1]).success(function (res) {

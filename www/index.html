@@ -64,15 +64,17 @@
                                     <div class="collapse navbar-collapse pd0" id="bs-example-navbar-collapse-1">
                                       <ul class="nav navbar-nav">
                                         <!-- <li><a href="index.html" class="hvr-underline-reveal">Destinations</a></li> -->
-                                        <li class="dropdown">
+                                        <li class="dropdown" ng-init="getCountries()">
                                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Destinations <span class="caret"></span></a>
                                           <ul class="dropdown-menu">
-                                            <li><a href="#">India</a></li>
+                                            <!-- <li><a href="#">India</a></li>
                                             <li><a href="#">Malaysia</a></li>
                                             <li><a href="#">Thailand</a></li>
                                             <li><a href="#">Combodia</a></li>
-                                            <li><a href="#">Hong Kong</a></li>
-
+                                            <li><a href="#">Hong Kong</a></li> -->
+                                            <li ng-repeat="c in countrylist">
+                                             <a href="country-attractions.html?country={{c.CountryId}}">{{c.CountryTitle}}</a>
+                                            </li>
                                           </ul>
                                         </li>
                                        <!--  <li><a href="asia.html" class="hvr-underline-reveal">Our Services</a></li> -->
@@ -82,7 +84,7 @@
                                             <li><a href="#">Package Tours</a></li>
                                             <li><a href="custom-tour.html">Custom Tours</a></li>
                                             <li><a href="air-ticket.html">Air Ticketing</a></li>
-                                            <li><a href="#">Visa Services</a></li>
+                                            <li><a href="visa-services.html">Visa Services</a></li>
                                             <li><a href="#">Travel Gift Vouchers</a></li>
                                             <li><a href="#">Travel Insurance</a></li>
                                           </ul>
@@ -101,7 +103,7 @@
             </div>
         </header>
 
-        <section id="pakeges-wrap">
+        <section id="pakeges-wrap" ng-init="getSingaporeAttractions()">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
@@ -109,20 +111,20 @@
                             Singapore Attractions
                         </h2>
                     </div>
-                    <div class="col-sm-6">
+                     <div class="col-sm-6" ng-repeat="a in attractionlist">
                         <div class="packges-block">
                             <div class="col-sm-5 pd0">
                                 <div class="place-img">
-                                    <img src="assets/img/place-img1.jpg" class="img-responsive" alt="" title="">
+                                    <img src="../uploads/attractions/{{a.TourImage}}" class="img-responsive" alt="" title="">
                                 </div>
                             </div>
                             <div class="col-sm-7">
                                 <div class="packeg-details-text">
-                                    <h5><a href="#">Universal Studios Singapore One-Day Pass</a></h5>
-                                    <p> Go beyond the screen and Ride The Movies® at   Universal Studios Singapore®. Only here can you experience cutting-edge rides, shows and attractions.</p>
+                                    <h5><a href="#">{{a.TourTitle}}</a></h5>
+                                    <p>{{a.TourDescription}}</p>
                                     <div class="right-blck">
-                                        <p class="gray-small-text"><span>Location: Singapore, Singapore <br>
-                                            Duration: 1 day</span>
+                                        <p class="gray-small-text"><span>Location: {{a.TourLocation}} <br>
+                                            Duration: {{a.TourDuration}}</span>
                                         </p>
                                         <div class="star-rating-wrap">
                                              <!-- <div class="row lead"></div> -->
@@ -137,267 +139,8 @@
                                     </div>
                                     <div class="price-right-block">
                                         <span>From SGD</span>
-                                        <h4>$76</h4>
+                                        <h4>${{a.TourCost}}</h4>
                                         <a href="#" ng-click="enquiryButton('Universal Studios Singapore One-Day Pass','76');" class="pakege-btn">Book Now</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="packges-block">
-                            <div class="col-sm-5 pd0">
-                                <div class="place-img">
-                                    <img src="assets/img/sentosa-sea.jpg" class="img-responsive" alt="" title="">
-                                </div>
-                            </div>
-                            <div class="col-sm-7">
-                                <div class="packeg-details-text">
-                                    <h5><a href="#">Sentosa Sea Aquarium Day Pass</a></h5>
-                                    <p class="packege-para">Explore S.E.A. Aquarium at Resorts World Sentosa with a 1-day pass,  including skip-the-line admission. This non-guided ticket allows you to  enjoy the aquarium.</p>
-                                    <div class="right-blck">
-                                        <p class="gray-small-text"><span>Location: Singapore, Singapore <br>
-                                            Duration: 1 To 6 hrs</span>
-                                        </p>
-                                        <div class="star-rating-wrap">
-                                             <!-- <div class="row lead"></div> -->
-                                            <div id="stars-existing" class="starrr" data-rating='3'></div>
-                                        </div>
-                                        <!-- <div class="social-links">
-                                            <ul>
-                                                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                            </ul>
-                                        </div> -->
-                                    </div>
-                                    <div class="price-right-block">
-                                        <span>From SGD</span>
-                                        <h4>$38</h4>
-                                        <a href="#" ng-click="enquiryButton('Sentosa Sea Aquarium Day Pass','38');"  class="pakege-btn">Book Now</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-6">
-                        <div class="packges-block">
-                            <div class="col-sm-5 pd0">
-                                <div class="place-img">
-                                    <img src="assets/img/garden-by.jpg" class="img-responsive" alt="" title="">
-                                </div>
-                            </div>
-                            <div class="col-sm-7">
-                                <div class="packeg-details-text">
-                                    <h5><a href="#">Garden By The Bay   </a></h5>
-                                    <p class="packege-para">  Visit Gardens By The Bay - Marina Bay's Famed Gardens! This sprawling  garden in the city provides mesmerising waterfront views across three  gardens, spanning over 101 hectares..</p>
-                                    <div class="right-blck">
-                                        <p class="gray-small-text"><span>Location: Singapore, Singapore <br>
-                                            Duration: Flexible</span>
-                                        </p>
-                                        <div class="star-rating-wrap">
-                                             <!-- <div class="row lead"></div> -->
-                                            <div id="stars-existing" class="starrr" data-rating='3'></div>
-                                        </div>
-                                        <!-- <div class="social-links">
-                                            <ul>
-                                                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                            </ul>
-                                        </div> -->
-                                    </div>
-                                    <div class="price-right-block">
-                                        <span>From SGD</span>
-                                        <h4>$28</h4>
-                                        <a href="#" ng-click="enquiryButton('Garden By The Bay','28');"  class="pakege-btn">Book Now</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-6">
-                        <div class="packges-block">
-                            <div class="col-sm-5 pd0">
-                                <div class="place-img">
-                                    <img src="assets/img/night-safari.jpg" class="img-responsive" alt="" title="">
-                                </div>
-                            </div>
-                            <div class="col-sm-7">
-                                <div class="packeg-details-text">
-                                    <h5><a href="#">Singapore Night Safari</a></h5>
-                                    <p class="packege-para">Get a window into the nightlife of  nocturnal animals on the Singapore Night Safari. During this evening  excursion, hop on board a Safari Tram that travels through seven  geographical...</p>
-                                    <div class="right-blck">
-                                        <p class="gray-small-text"><span>Location: Singapore, Singapore <br>
-                                            Duration: Flexible</span>
-                                        </p>
-                                        <div class="star-rating-wrap">
-                                             <!-- <div class="row lead"></div> -->
-                                            <div id="stars-existing" class="starrr" data-rating='3'></div>
-                                        </div>
-                                        <!-- <div class="social-links">
-                                            <ul>
-                                                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                            </ul>
-                                        </div> -->
-                                    </div>
-                                    <div class="price-right-block">
-                                        <span>From SGD</span>
-                                        <h4>$43</h4>
-                                        <a href="#" ng-click="enquiryButton('Singapore Night Safari','43');" class="pakege-btn">Book Now</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-6">
-                        <div class="packges-block">
-                            <div class="col-sm-5 pd0">
-                                <div class="place-img">
-                                    <img src="assets/img/river-safari.jpg" class="img-responsive" alt="" title="">
-                                </div>
-                            </div>
-                            <div class="col-sm-7">
-                                <div class="packeg-details-text">
-                                    <h5><a href="#">Singapore River Safari</a></h5>
-                                    <p class="packege-para"> Learn about the world's mightiest rivers during a visit to the Singapore River Safari. Cruise downstream on one of the park's boat rides, included in your ticket, and meet the park's...</p>
-                                    <div class="right-blck">
-                                        <p class="gray-small-text"><span>Location: Singapore, Singapore <br>
-                                            Duration: Flexible</span>
-                                        </p>
-                                        <div class="star-rating-wrap">
-                                             <!-- <div class="row lead"></div> -->
-                                            <div id="stars-existing" class="starrr" data-rating='3'></div>
-                                        </div>
-                                        <!-- <div class="social-links">
-                                            <ul>
-                                                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                            </ul>
-                                        </div> -->
-                                    </div>
-                                    <div class="price-right-block">
-                                        <span>From SGD</span>
-                                        <h4>$28</h4>
-                                        <a href="#" ng-click="enquiryButton('Singapore River Safari','28');" class="pakege-btn">Book Now</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-6">
-                        <div class="packges-block">
-                            <div class="col-sm-5 pd0">
-                                <div class="place-img">
-                                    <img src="assets/img/singapore-zoo.jpg" class="img-responsive" alt="" title="">
-                                </div>
-                            </div>
-                            <div class="col-sm-7">
-                                <div class="packeg-details-text">
-                                    <h5><a href="#">Singapore Zoo</a></h5>
-                                    <p class="packege-para">   The Singapore Zoo, formerly known as the Singapore Zoological Gardens  and commonly known locally as the Mandai Zoo, occupies 28 hectares (69  acres) on the margins of Upper...</p>
-                                    <div class="right-blck">
-                                        <p class="gray-small-text"><span>Location: Singapore, Singapore <br>
-                                            Duration: Flexible</span>
-                                        </p>
-                                        <div class="star-rating-wrap">
-                                             <!-- <div class="row lead"></div> -->
-                                            <div id="stars-existing" class="starrr" data-rating='3'></div>
-                                        </div>
-                                        <!-- <div class="social-links">
-                                            <ul>
-                                                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                            </ul>
-                                        </div> -->
-                                    </div>
-                                    <div class="price-right-block">
-                                        <span>From SGD</span>
-                                        <h4>$32</h4>
-                                        <a href="#" ng-click="enquiryButton('Singapore Zoo','32');" class="pakege-btn">Book Now</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-6">
-                        <div class="packges-block">
-                            <div class="col-sm-5 pd0">
-                                <div class="place-img">
-                                    <img src="assets/img/madame-tussauds.jpg" class="img-responsive" alt="" title="">
-                                </div>
-                            </div>
-                            <div class="col-sm-7">
-                                <div class="packeg-details-text">
-                                    <h5><a href="#">Madame Tussauds & Image Of Singapore Live Admission</a></h5>
-                                    <p class="packege-para">Combine three top Singapore attractions  with one admission ticket! Experience 200 years of Singapore history via  live actors and special effects at Images of Singapore LIVE...</p>
-                                    <div class="right-blck">
-                                        <p class="gray-small-text"><span>Location: Singapore, Singapore <br>
-                                            Duration: Flexible</span>
-                                        </p>
-                                        <div class="star-rating-wrap">
-                                             <!-- <div class="row lead"></div> -->
-                                            <div id="stars-existing" class="starrr" data-rating='3'></div>
-                                        </div>
-                                        <!-- <div class="social-links">
-                                            <ul>
-                                                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                            </ul>
-                                        </div> -->
-                                    </div>
-                                    <div class="price-right-block">
-                                        <span>From SGD</span>
-                                        <h4>$29</h4>
-                                        <a href="#" ng-click="enquiryButton('Madame Tussauds & Image Of Singapore Live Admission','29'); "class="pakege-btn">Book Now</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-
-
-                    <div class="col-sm-6">
-                        <div class="packges-block">
-                            <div class="col-sm-5 pd0">
-                                <div class="place-img">
-                                    <img src="assets/img/marina-bay.jpg" class="img-responsive" alt="" title="">
-                                </div>
-                            </div>
-                            <div class="col-sm-7">
-                                <div class="packeg-details-text">
-                                    <h5><a href="#">Marina Bay Segway Hire In Singapore</a></h5>
-                                    <p class="packege-para">Explore Marina Bay in Singapore by Segway  with this 1-hour rental. On your own personal transport device, you'll  glide easily along the Waterfront Promenade, passing...</p>
-                                    <div class="right-blck">
-                                        <p class="gray-small-text"><span>Location: Singapore, Singapore <br>
-                                            Duration: Flexible</span>
-                                        </p>
-                                        <div class="star-rating-wrap">
-                                             <!-- <div class="row lead"></div> -->
-                                            <div id="stars-existing" class="starrr" data-rating='3'></div>
-                                        </div>
-                                        <!-- <div class="social-links">
-                                            <ul>
-                                                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                            </ul>
-                                        </div> -->
-                                    </div>
-                                    <div class="price-right-block">
-                                        <span>From SGD</span>
-                                        <h4>$39</h4>
-                                        <a href="#" ng-click="enquiryButton('Marina Bay Segway Hire In Singapore','39');" class="pakege-btn">Book Now</a>
                                     </div>
                                 </div>
                             </div>
