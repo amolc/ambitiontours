@@ -375,12 +375,12 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
                     }
                     else {
                         $scope.CountryId = res.CountryId
-                        if (filename === 'attractions-form.html') 
-                        { 
-                            $scope.Tour.CountryId = $scope.CountryId;
-                        }
-                        else if (filename === 'tours-form.html') 
-                          {
+                        // if (filename === 'attractions-form.html') 
+                        // { 
+                        //     $scope.Tour.CountryId = $scope.CountryId;
+                        // }
+                        // else if (filename === 'tours-form.html') 
+                        //   {
 
                               if(parts.length>1){
 
@@ -400,7 +400,7 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
                                    
                               }
 
-                          }
+                         // }
                     }
 
                 }).error(function () {
