@@ -71,12 +71,134 @@ app.controller('contactcontroller', function ($scope, $location, $http, $window)
       console.log("error");
     })
     window.localStorage.removeItem("packagename");
-     window.localStorage.removeItem("packagePrice");
+    window.localStorage.removeItem("packagePrice");
     document.contactform.reset();
     $("#thankyou").show();
     $("#thankyou").delay(3200).hide(300);
 
     location.href='/index.html';
+  }
+
+  $scope.getCountries = function() {
+
+    $http.get(baseurl + 'allcountries').success(function (res) {
+
+            if (res.status == 'false') {
+
+            }
+            else {
+               // console.log(res);
+                $scope.countrylist = res;
+               // $scope.registration.CountryId = $scope.countrylist[0].CountryId;
+               //console.log($scope.countrylist);
+            }
+
+        }).error(function () {
+
+        });
+
+   }
+
+  $scope.getCountryAttractions = function() {
+
+
+        var url = window.location.href;
+        var parts = url.split("?");
+        if(parts.length>1){
+
+           var urlparams = parts[1];
+           var params = urlparams.split("&");
+           var id = urlparams.split("=")
+           if (id[0]=='country') 
+           {
+
+              $http.get(baseurl + 'getCountryAttractions/'+id[1]).success(function (res) {
+
+                  if (res.status == 'false') {
+
+                  }
+                  else {
+
+                     $http.get(baseurl + 'getCountryDetails/'+id[1]).success(function (data) {
+
+                          if (data.status == 'false') {
+
+                          }
+                          else {
+
+                              $scope.CountryId = id[1];
+                              $scope.CountryTitle = data.CountryTitle;
+                              $scope.attractionlist = res;
+                          }
+
+                      }).error(function () {
+
+                      });
+                  }
+
+              }).error(function () {
+
+              });
+
+           }
+           else
+          {
+              window.location.href = 'index.html';
+          }
+        }
+        else
+        {
+            window.location.href = 'index.html';
+        }
+
+   }
+
+
+  $scope.getSingaporeAttractions = function (req, res) {
+
+     var country = 'Singapore';
+           $http.get(baseurl + 'getCountryId/'+country).success(function (res) {
+
+                    if (res.status == 'false') {
+
+                    }
+                    else {
+
+                      var countryId = res.CountryId;
+                      $http.get(baseurl + 'getCountryAttractions/'+countryId).success(function (res) {
+
+                        if (res.status == 'false') {
+
+                        }
+                        else {
+
+                           $http.get(baseurl + 'getCountryDetails/'+countryId).success(function (data) {
+
+                                if (data.status == 'false') {
+
+                                }
+                                else {
+
+                                    $scope.CountryId = countryId;
+                                    $scope.CountryTitle = data.CountryTitle;
+                                    $scope.attractionlist = res;
+                                }
+
+                            }).error(function () {
+
+                            });
+                        }
+
+                    }).error(function () {
+
+                    });
+
+
+                    }
+
+            });
+
+
   }
 
   $scope.customTour = function (req, res) {
