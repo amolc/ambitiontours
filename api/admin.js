@@ -235,6 +235,35 @@ exports.getAdminDetails = function(req, res){
     
 };
 
+exports.getAllVisaDetails = function(req, res){
+
+  var sql = "SELECT `Id`,`Country`,`VisaCharge`,`WorkingDays` FROM `tbl_VisaDetails`";    
+  db.query(sql, function (err, data) {
+        res.json(data);
+    });
+    
+};
+
+exports.getVisa = function(req, res){
+    
+  var sql = "SELECT `Id`,`Country`,`VisaCharge`,`WorkingDays` FROM `tbl_VisaDetails` LIMIT 1";    
+  db.query(sql, function (err, data) {
+        res.json(data[0]);
+    });
+    
+};
+
+exports.getVisaDetails = function(req, res){
+
+  var id = req.params.id;
+  var sql = "SELECT `Id`,`Country`,`VisaCharge`,`WorkingDays` FROM `tbl_VisaDetails` WHERE Id = '"+id+"'";    
+  db.query(sql, function (err, data) {
+        res.json(data[0]);
+    });
+    
+};
+
+
 
 exports.addCountry = function (req, res) {
 

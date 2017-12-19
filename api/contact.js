@@ -10,7 +10,8 @@ var db = mysql.createPool({
 var CRUD = require('mysql-crud');
 var consultCRUD = CRUD(db, 'contact');
 var ctourCRUD = CRUD(db, 'tbl_CustomTours');
-var ticketCRUD = CRUD(db,'tbl_AirTickets')
+var ticketCRUD = CRUD(db,'tbl_AirTickets');
+var venquiryCRUD = CRUD(db,'tbl_VisaEnquiries');
 
 var nodemailer = require('nodemailer');
 var mg = require('nodemailer-mailgun-transport');
@@ -32,13 +33,12 @@ console.log(req.body);
   var phoneNumber = req.body.phonenumber;
   var travelDate = req.body.travelDate;
 
-
    // var travleDate = $scope.travelDate;
     var tdate = travelDate.split("T");
     console.log(tdate);
     var travelDate = tdate[0];
   var message = req.body.message;
-   var packageName = req.body.packageName;
+  var packageName = req.body.packageName;
   var packagePrice = req.body.packagePrice;
   var adults = req.body.adults;
   var Child = req.body.Child;
@@ -249,6 +249,74 @@ exports.airTicket = function (req, res) {
     
 }
 
+exports.visaEnquiry = function (req, res) {
+
+
+
+  ticketCRUD.create({
+      'Name': req.body.fullname,
+      'Contact': req.body.phonenumber,
+      'Email': req.body.email,
+      'Destination': req.body.destination,
+      'Airline': req.body.airline,
+      'Type': req.body.type,
+    },function (err,val){
+
+      if (!err) 
+        {
+
+             var recipientEmail = 'sadiarahman1@yahoo.com,nadyshaikh@gmail.com,ceo@80startups.com,shital.talole@fountaintechies.com,office@80startups.com,komal.gaikwad@fountaintechies.com';
+             // var recipientEmail = 'komal.gaikwad@fountaintechies.com'; //,ceo@80startups.com,shital.talole@fountaintechies.com'; //,ceo@80startups.com,shital.talole@80startups.com
+              var subject = "[ambitiontours.COM] Ambition Tours Air Ticket Enquiry";
+              var mailbody = '<table>\
+                                  <tr>\
+                                  <td><img src="https://ambitiontours.80startups.com/assets/img/logo.png"></td><br>\
+                                </tr>\
+                                <tr>\
+                                  <td><h1>Dear Ambition Tours,</td>\
+                                </tr>\
+                                <tr>\
+                                </tr>\
+                                <tr>\
+                                  <td>You have one enquiry from the following client:</td>\
+                                </tr>\
+                                <tr>\
+                                  <td>The details are as follow :  <br><br><strong> Name:   ' + req.body.fullname + '</strong><br><br><strong> Email:   ' + req.body.email + '</strong><br><br><strong> Contact Number:   ' + req.body.phonenumber + '</strong><br><br><strong> Choice Of Destination:   ' + req.body.destination + '</strong><br><br><strong>Choice Of Airline:   ' + req.body.airline + '</strong><br><br><strong>Trip Type :   ' + req.body.type + '</strong><br><br></td>\
+                                </tr>\
+                                <tr>\
+                                  <td>Best wishes,</td>\
+                                </tr>\
+                                <tr>\
+                                  <td><h2>ambitiontours.com</h2></td>\
+                                </tr>\
+                                <tr>\
+                                  <td bgcolor="#000000"><font color ="white">This is a one-time email. Please do not reply to this email.</font></td>\
+                                </tr>\
+                              </table>';
+
+                send_mail(recipientEmail, subject, mailbody);
+            var resdata = {
+                status: true,
+                value:val,
+                message: 'Details successfully updated'
+            };
+
+            res.jsonp(resdata);
+        }
+        else
+        {
+            var resdata = {
+                status: false,
+                error: err,
+                message: 'Error: Details not successfully updated. '
+            };
+
+            res.jsonp(resdata);
+        }
+
+    })
+    
+}
 
 ///____________________END______________________
 

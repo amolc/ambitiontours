@@ -99,6 +99,67 @@ app.controller('contactcontroller', function ($scope, $location, $http, $window)
 
    }
 
+   $scope.getAllVisaDetails = function() {
+
+    $http.get(baseurl + 'getAllVisaDetails').success(function (res) {
+
+            if (res.status == 'false') {
+
+            }
+            else {
+               // console.log(res);
+                $scope.visalist = res;
+               // $scope.registration.CountryId = $scope.countrylist[0].CountryId;
+               //console.log($scope.countrylist);
+            }
+
+        }).error(function () {
+
+        });
+
+   }
+
+   $scope.getVisa = function() {
+
+    $http.get(baseurl + 'getVisa').success(function (res) {
+
+            if (res.status == 'false') {
+
+            }
+            else {
+               // console.log(res);
+                $scope.visa = res;
+               // $scope.registration.CountryId = $scope.countrylist[0].CountryId;
+               //console.log($scope.countrylist);
+            }
+
+        }).error(function () {
+
+        });
+
+   }
+
+   $scope.getVisaDetails = function() {
+
+
+    $http.get(baseurl + 'getVisaDetails/'+$scope.visa.Id).success(function (res) {
+
+            if (res.status == 'false') {
+
+            }
+            else {
+               // console.log(res);
+                $scope.visa = res;
+               // $scope.registration.CountryId = $scope.countrylist[0].CountryId;
+               //console.log($scope.countrylist);
+            }
+
+        }).error(function () {
+
+        });
+
+   }
+
   $scope.getCountryAttractions = function() {
 
 
@@ -261,6 +322,32 @@ app.controller('contactcontroller', function ($scope, $location, $http, $window)
    // $("#thankyou").delay(3200).hide(300);
 
     //location.href='/index.html';
+  }
+
+    $scope.visaEnquiry = function (req, res) {
+
+    //console.log($scope.visa);
+
+
+    $http.post(baseurl + 'visaEnquiry/', $scope.visa).success(function (res) {
+      if (res.status == 'false') {
+
+
+      }
+      else
+      {
+          document.visaform.reset();
+          $("#modalclose").click();
+          $("#thankyou").show();
+          $("#thankyou").delay(3200).hide(300);
+
+        //location.href='/index.html';
+
+      }
+    }).error(function () {
+      console.log("error");
+    })
+   
   }
 
 $scope.initfunc = function () {
