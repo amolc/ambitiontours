@@ -875,11 +875,11 @@ section#footer {
   line-height: 50px;
   color: #ffffff;
   font-size: 22px;
-  text-align: left;
+  text-align: center;
   padding: 0px 15px;
   position: relative;
 }
-.visa-form-wrap h4:after{
+/*.visa-form-wrap h4:after{
   position: absolute;
   content: "";
   background: url("../img/visa-icon.png") no-repeat center;
@@ -888,7 +888,7 @@ section#footer {
   height: 46px;
   right: 10px;
   top: 0px;
-}
+}*/
 .cuntry-box{
   padding: 20px;
 }
