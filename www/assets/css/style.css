@@ -462,11 +462,12 @@ section#footer {
   -webkit-transform: translateY(0);
   transform: translateY(0);
 }
+
 .packges-block{
     border: 1px solid #cfcfcf;
     background-color: #FFF;
     margin-bottom: 30px;
-    min-height: 250px;
+    min-height: 241px;
 }
 .packeg-details-text{
     padding: 9px 5px 11px 0px;
