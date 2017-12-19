@@ -196,6 +196,16 @@ exports.getAllAttractions = function(req, res){
     
 };
 
+exports.getCountryAttractions = function(req, res){
+
+  var CountryId = req.params.id;
+  var sql = "SELECT t.*,c.`CountryId`,c.`CountryTitle` FROM `tbl_Tours` as t LEFT JOIN `tbl_Countries` as c ON c.`CountryId` = t.`CountryId` WHERE t.`TourType` = 'Attraction' AND t.`IsDeleted` = '0' AND t.`CountryId` = "+CountryId+" ORDER BY t.`TourId` DESC";
+    db.query(sql, function (err, data) {
+        res.json(data);
+    });
+    
+};
+
 exports.getAllBookings = function(req, res){
 
   var sql = "SELECT b.* FROM `tbl_Bookings` as b ORDER BY b.`BookingId` DESC";

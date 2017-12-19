@@ -54,6 +54,7 @@ app.get('/api/getAllAttractions', admin.getAllAttractions);
 app.get('/api/getAllTours', admin.getAllTours);
 app.get('/api/getAllBookings', admin.getAllBookings);
 app.get('/api/getCountryTours/:id', admin.getCountryTours);
+app.get('/api/getCountryAttractions/:id', admin.getCountryAttractions);
 app.get('/api/getCountryId/:id', admin.getCountryId);
 
 app.get('/api/getTourDetails/:id', admin.getTourDetails);
