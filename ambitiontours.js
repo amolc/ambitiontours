@@ -43,6 +43,7 @@ app.use('/', www);
 app.post('/api/consult', contact.consult);
 app.post('/api/customTour', contact.customTour);
 app.post('/api/airTicket', contact.airTicket);
+app.post('/api/visaEnquiry', contact.visaEnquiry);
 
 app.post('/api/apply', startup.apply);
 app.post('/api/invest', investor.invest);
@@ -68,6 +69,10 @@ app.get('/api/getCountryDetails/:id', admin.getCountryDetails);
 app.post('/api/addCountry', admin.addCountry);
 app.post('/api/updateCountry', admin.updateCountry);
 app.get('/api/deleteCountry/:id', admin.deleteCountry);
+
+app.get('/api/getAllVisaDetails', admin.getAllVisaDetails);
+app.get('/api/getVisa',admin.getVisa);
+app.get('/api/getVisaDetails/:id',admin.getVisaDetails);
 
 app.get('/api/getAdminDetails/:id', admin.getAdminDetails);
 
