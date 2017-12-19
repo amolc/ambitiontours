@@ -865,12 +865,64 @@ section#footer {
   background-color: #290e0a;
   color: #ffffff;
 }
+.visa-form-wrap{
+  background-color: #ffffff; 
+  border: 1px solid #f76625;
+}
+.visa-form-wrap h4{
+  background-color: #f76625;
+  margin: 0px;
+  line-height: 50px;
+  color: #ffffff;
+  font-size: 22px;
+  text-align: left;
+  padding: 0px 15px;
+  position: relative;
+}
+.visa-form-wrap h4:after{
+  position: absolute;
+  content: "";
+  background: url("../img/visa-icon.png") no-repeat center;
+  background-size: 100%;
+  width: 50px;
+  height: 46px;
+  right: 10px;
+  top: 0px;
+}
+.cuntry-box{
+  padding: 20px;
+}
+.cuntry-box label{
 
-
-
-
-
-
+}
+.cuntry-box p, .cuntry-box label{
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+  color: #8c8c8c;
+  font-weight: 600; 
+}
+.cuntry-box p{
+  margin-bottom: 20px;
+}
+.cuntry-box p span{
+  font-size: 20px;
+  color: #000000;
+}
+.box-max-widht.col-sm-offset-3{
+  margin-left: 29%;
+}
+.visa-popup .modal-header{
+  padding: 0px;
+}
+.visa-popup .modal-footer .orenge-btn{
+  margin-top: 0px;
+}
+.visa-popup .form-group{
+  margin-bottom: 25px;
+}
+.visa-popup .modal-body{
+  padding: 35px 15px;
+}
 
 
 

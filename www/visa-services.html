@@ -170,52 +170,95 @@
 <div class="clearfix"></div>
   <section id="book-now">
     <div class="container">
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-md-12 text-center">
-           <h2 class="section-title">Custom Tour</h2>
+           <h2 class="section-title">Visa Services</h2>
         </div>
-      </div>
+      </div> -->
       <div class="row">
-        <div class="col-md-12">
-          <form name="contactform" id="contactform"  ng-controller="contactcontroller" ng-submit="customTour()">
-             <div class="col-md-6"><div class="form-group">
-              <label for="">Name :</label>
-              <input type="name" class="form-control" ng-model="fullname" name="fullname" id="fullname" required>
-            </div>
-            <div class="form-group">
-              <label for="phoneno">Phone Number:</label>
-              <input type="phoneno" class="form-control" ng-model="phonenumber" name="phonenumber" id="phonenumber" required>
-            </div>
-            <div class="form-group">
-              <label for="email">Email Address:</label>
-              <input type="email" class="form-control" ng-model="email" name="email" id="email" required>
-            </div>            
-            <div class="form-group">
-              <label for="pwd">Travel Date :</label>
-              <input type="date" class="form-control" ng-model="travelDate" name="travelDate" id="travelDate" required>
-              <!-- <span class="icon-position"><i class="fa fa-calendar" aria-hidden="true"></i></span> -->
-            </div>
-              </div>
-            <div class="col-md-6">
-            <div class="form-group">
-              <label for="pwd">Special Request</label>
-              <textarea class="form-control mb19" name="message" ng-model="message" id="message" cols="30" rows="13"></textarea>
-            </div>
-            </div>
-              <div class="clearfix"></div>
-           <!--  <input type="text" class="form-control" ng-model="packageName" name="packageName" id="packageName"> -->
-<!--              <input type="hidden" class="form-control" ng-model="packagename" value="{{packagename}}" name="packageName" id="packageName">
- -->            <button class="btn btn-success orenge-btn" type="submit" value="Apply" class="wpcf7-form-control wpcf7-submit">SUBMIT</button>
-          </form>
-          <div id="thankyou">
-            <div class="thankyou">
-                <div class="item">
-                    <span><h4><b><font>Submitted Successfully!</font></b></h4></span>
+        <!-- <div class="col-md-12">
+          <form id="visa-form">
+              <div class="col-sm-5 col-md-5">
+                <div class="form-group">
+                  <label for="">Name :</label>
+                  <input type="text" class="form-control" id="fullname" required>
                 </div>
-            </div>
-        </div>
-        </div>
+                  <div class="form-group">
+                  <label for="">Name :</label>
+                  <input type="text" class="form-control" id="fullname" required>
+                </div>
+                <div class="form-group">  
+                  <label for="">Name :</label>
+                  <input type="text" class="form-control" id="fullname" required>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+              <button class="btn btn-success orenge-btn" type="submit" value="Apply" class="wpcf7-form-control wpcf7-submit">INQUIRY FORM</button>
+          </form>
+        
 
+      </div> -->
+      <div class="col-sm-offset-3 box-max-widht col-sm-5">
+        <div class="visa-form-wrap">
+          <h4>Visa Services</h4>
+          <form>
+            <div class="cuntry-box">
+              <div class="form-group">
+                    <label for="">Country</label>
+                    <select class="form-control">
+                      <option>Select</option>
+                      <option>Singapore</option>
+                      <option>Malaysia</option>
+                      <option>Thailand</option>
+                      <option>Vietnam (On arrival)</option>
+                      <option>Vietnam Sticker</option>
+                    </select>
+              </div>
+              <p>Visa Charges<span class="pull-right">$4600</span></p>
+              <p>Working Days<span class="pull-right">7 Days</span></p>
+              <div class="clearfix"></div>
+                <button class="btn btn-success orenge-btn wpcf7-form-control wpcf7-submit" type="submit" value="Apply" data-toggle="modal" data-target="#visaModal">INQUIRY FORM</button>
+            </div>
+             <!-- form Popum modals Start -->
+                <!-- Modal -->
+                <div class="modal fade visa-popup" id="visaModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">INQUIRY FORM</h4>
+                      </div>
+                      <div class="modal-body">
+                        <form>
+                          <div class="col-sm-6 col-md-6">
+                            <div class="form-group">
+                               <input type="text" class="form-control" id="name" placeholder="Name">
+                            </div>
+                            <div class="form-group">
+                               <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                            </div>
+                            <div class="form-group">
+                               <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Phone Number">
+                            </div>
+                          </div>
+                          <div class="col-sm-6 col-md-6">
+                            <div class="form-group">
+                               <textarea class="form-control" id="messege" rows="7" placeholder="Messege"></textarea>
+                            </div>
+                          </div>
+                        </form>
+                        <div class="col-sm-12 col-md-12 mr-b30">
+                           <button type="button" class="btn btn-primary orenge-btn">SUBMIT</button>
+                        </div>
+                        <div class="clearfix"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            <!-- form Popum modals End -->
+
+          </form>
+        </div>
       </div>
     </div>
       <div class="clearfix"></div>
@@ -263,6 +306,8 @@
         <footer  id="bottom-strip">
             <p>Copyright 2017- Ambition Tours - All Rights Reserved</p>
         </footer>
+
+
 
   <script  type="text/javascript"  src="assets/js/jquery.min.js"></script>
   <script   type="text/javascript" src="assets/js/bootstrap.min.js"></script>
