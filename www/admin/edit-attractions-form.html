@@ -67,6 +67,7 @@
                                         <li><a href="dashboard.html" class="hvr-underline-reveal">Dashboard</a></li>
                                         <li><a href="attractions.html" class="hvr-underline-reveal">Attractions</a></li>
                                         <li><a href="tours.html" class="hvr-underline-reveal">Tours</a></li>
+                                        <li><a href="countries.html" class="hvr-underline-reveal">Countries</a></li>
                                         <!-- <li><a href="changepassword.html" class="hvr-underline-reveal">Change Password</a></li>
                                         <li><a href="javascript:void(0)" class="hvr-underline-reveal" ng-click="adminlogout();">Logout</a></li>
  -->
@@ -78,7 +79,7 @@
                                               <span class="pro-img">
                                                 <img src="../assets/img/user-icon.png" alt="" title="">
                                               </span>
-                                              <span>Pravin Shelar</span>
+                                              <span>Sadia Rahman</span>
                                               <span class="caret"></span></a>
                                             <ul class="dropdown-menu">
                                               <li><a href="changepassword.html" class="hvr-underline-reveal">Change Password</a></li>
@@ -101,19 +102,24 @@
               <div class="col-sm-12 col-md-12">
                <form id="addtour" name="addtour" ng-submit="updateTour()" ng-init="getCountries()">
                   <div class="attractions-form profile signin-form">
-                  <h2 class="text-center">Tours and Attractions</h2>
+                  <h2 class="text-center">Singapore Attractions</h2>
+                  <input type="hidden" name="type" ng-model="Tour.TourType">
+                  <input type="hidden" name="type" ng-model="Tour.CountryId">
                   <div class="col-sm-8 col-md-8 pd0">
-                    <div class="col-sm-6 col-md-6">
+                   <!--  <div class="col-sm-6 col-md-6">
                     <select ng-model="Tour.TourType" disabled="">
                       <option value="Attraction">Attraction </option>
                       <option value="Tour">Tour</option>
                     </select>
-                  </div>
+                  </div> 
                   <div class="col-sm-6 col-md-6">
                       <select id="country" name="country" ng-options="cou.CountryId as cou.CountryTitle for cou in countrylist" ng-model="Tour.CountryId" required="">
                       </select>
+                  </div>-->
+                   <div class="col-sm-12 col-md-12">
+                    <input type="text" name="duration" placeholder="Location" required="" ng-model="Tour.TourLocation" id="address">
                   </div>
-                  <div class="col-sm-6 col-md-6">
+                  <div class="col-sm-12 col-md-12">
                     <input type="text" name="title" placeholder="Title" required="" ng-model="Tour.TourTitle">
                   </div>
                   <div class="col-sm-6 col-md-6">
@@ -122,24 +128,23 @@
                   <div class="col-sm-6 col-md-6">
                     <input type="text" name="duration" placeholder="Duration" required="" ng-model="Tour.TourDuration">
                   </div>
-                  <div class="col-sm-6 col-md-6">
-                    <input type="text" name="duration" placeholder="Location" required="" ng-model="Tour.TourLocation" id="address">
-                  </div>
-                  
+                  <div class="col-sm-12 col-md-12">
+                   <textarea rows="9" placeholder="Description" required="" ng-model="Tour.TourDescription"></textarea>
+                  </div>                 
                   </div>
                   <div class="col-sm-4 col-md-4">
-                    <textarea rows="9" placeholder="Description" required="" ng-model="Tour.TourDescription"></textarea>
-                  </div>
-                  <div class="col-sm-6 col-md-6">
+                    <div class="col-sm-12 col-md-12">
                      <input id="file_browse1" class="form-control" type='file' name="productimage" onchange="angular.element(this).scope().updateattachment('file_browse1');   $('#imagepreview').children().remove();" accept="image/*">
                       <input type="hidden" name="imagename" ng-model="Tour.imagename">
                   </div>
-                   <div class="col-sm-6 col-md-6 ">
+                   <div class="col-sm-12 col-md-12 ">
                      <div id="imagepreview">
-                     <img src="../uploads/tours/{{Tour.TourImage}}" ng-if="Tour.TourType=='Tour'">
-                     <img src="../uploads/attractions/{{Tour.TourImage}}" ng-if="Tour.TourType=='Attraction'">  
+                        <img src="../uploads/tours/{{Tour.TourImage}}" ng-if="Tour.TourType=='Tour'">
+                        <img src="../uploads/attractions/{{Tour.TourImage}}" ng-if="Tour.TourType=='Attraction'">
                      </div>
                    </div>
+                  </div>
+                  
                   <div class="col-sm-12 col-md-12">
                       <label id="alertmessage" hidden>{{alertmessage}}</label>
                   </div>
@@ -201,7 +206,7 @@
         <footer  id="bottom-strip">
             <p>Copyright 2017- Ambition Tours - All Rights Reserved</p>
         </footer>
-
+  <script   type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQD-LT4-VzlsdNpf33yNDeT38EaF3Kz-g&libraries=places"></script>
 <script>
  

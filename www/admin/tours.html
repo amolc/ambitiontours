@@ -27,7 +27,7 @@
   <script type="text/javascript" src="../assets/js/adminCtrl.js"></script>
 </head>
 
-<body data-ng-app="80consult" data-ng-controller="admincontroller" ng-init="getAllTours();">
+<body data-ng-app="80consult" data-ng-controller="admincontroller" ng-init="getallcountries()">
 <!-- Start Header -->
        <header id="top-header">
             <div class="orenge-logo-strip">
@@ -67,6 +67,7 @@
                                         <li><a href="dashboard.html" class="hvr-underline-reveal">Dashboard</a></li>
                                         <li><a href="attractions.html" class="hvr-underline-reveal">Attractions</a></li>
                                         <li><a href="tours.html" class="hvr-underline-reveal">Tours</a></li>
+                                        <li><a href="countries.html" class="hvr-underline-reveal">Countries</a></li>
                                         <!-- <li><a href="changepassword.html" class="hvr-underline-reveal">Change Password</a></li>
                                         <li><a href="javascript:void(0)" class="hvr-underline-reveal" ng-click="adminlogout();">Logout</a></li> -->
 
@@ -78,7 +79,7 @@
                                               <span class="pro-img">
                                                 <img src="../assets/img/user-icon.png" alt="" title="">
                                               </span>
-                                              <span>Pravin Shelar</span>
+                                              <span>Sadia Rahman</span>
                                               <span class="caret"></span></a>
                                             <ul class="dropdown-menu">
                                               <li><a href="changepassword.html" class="hvr-underline-reveal">Change Password</a></li>
@@ -95,47 +96,33 @@
                 </div>
             </div>
         </header>
-        <section id="andttr-form-wrap">
+        <section id="country-box">
           <div class="container">
             <div class="row">
               <div class="col-sm-12">
                         <h2 class="section-title">
-                            All Tours
+                            Countries
                         </h2>
                     </div>
                     <div class="col-sm-12">
                       <div class="add-btn mr-b20 text-right">
-                        <a href="attractions-form.html?Type=Tour" class="pakege-btn yellow-btn">Add</a>
+                       <!--  <a href="tours-form.html" class="pakege-btn yellow-btn">Add Tour</a> -->
+                       <a href="add-country.html" class="pakege-btn yellow-btn" style="width: auto">Add Country</a>
                       </div>
                     </div>
-                    <div class="col-sm-6" ng-repeat="Tour in tourlist">
-                        <div class="packges-block">
-                            <div class="col-sm-5 pd0">
-                                <div class="place-img">
-                                    <img src="../uploads/tours/{{Tour.TourImage}}" class="img-responsive" alt="" title="">
-                                </div>
-                            </div>
-                            <div class="col-sm-7">
-                                <div class="packeg-details-text">
-                                    <h5><a href="#">{{Tour.TourImage}}</a></h5>
-                                    <p> {{Tour.TourDescription}}</p>
-                                    <div class="right-blck">
-                                        <p class="gray-small-text"><span>Location: {{Tour.TourLocation}}<br>
-                                            Duration: {{Tour.TourDuration}}</span>
-                                        </p>
-                                        
-                                    </div>
-                                    <div class="price-right-block">
-                                        <span>From SGD</span>
-                                        <h4>${{Tour.TourCost}}</h4>
-                                        <a href="edit-attractions-form.html?TourId={{Tour.TourId}}">Edit</a>
-                                         <a href="javascript:void(0)" ng-click="deleteTour(Tour.TourId,Tour.TourType)" class="pakege-btn">Delete</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="clearfix"></div>
+                        <div class="singme">
+                         <div class="col-sm-4" ng-repeat="c in countrylist">
+                            <figure class="hero-grid effect-move">
+                                <img class="hero-grid-image effect-image" src="../uploads/countries/{{c.CountryImage}}" alt="" />
+                                <figcaption class="hero-grid-content">
+                                  <span class="hero-tag effect-target">Ambition Tours</span>
+                                  <h2 class="hero-grid-title effect-target">{{c.CountryTitle}}</h2>
+                                  <!-- <p class="hero-grid-text effect-target effect-text">Falls mainly on the plain.</p> -->
+                                  <a class="hero-grid-link" href="country-tour.html?country={{c.CountryId}}">View more</a>
+                                </figcaption>
+                            </figure>
                         </div>
-                    </div>
+                        </div>
             </div>
           </div>
         </section>

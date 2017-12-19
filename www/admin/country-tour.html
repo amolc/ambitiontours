@@ -27,7 +27,7 @@
   <script type="text/javascript" src="../assets/js/adminCtrl.js"></script>
 </head>
 
-<body data-ng-app="80consult" data-ng-controller="admincontroller" ng-init="getAllAttractions();">
+<body data-ng-app="80consult" data-ng-controller="admincontroller" ng-init="getCountryTours();">
 <!-- Start Header -->
        <header id="top-header">
             <div class="orenge-logo-strip">
@@ -72,7 +72,7 @@
                                         <li><a href="javascript:void(0)" class="hvr-underline-reveal" ng-click="adminlogout();">Logout</a></li> -->
 
                                       </ul>
-                                       <ul class="nav navbar-nav navbar-right">
+                                      <ul class="nav navbar-nav navbar-right">
                                         <li class="dropdown">
                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                               <span>Welcome</span> 
@@ -101,19 +101,19 @@
             <div class="row">
               <div class="col-sm-12">
                         <h2 class="section-title">
-                            All Attractions
+                           {{CountryTitle}} Tours
                         </h2>
                     </div>
                     <div class="col-sm-12">
                       <div class="add-btn mr-b20 text-right">
-                        <a href="attractions-form.html" class="pakege-btn yellow-btn">Add</a>
+                        <a href="tours-form.html?country={{CountryId}}" class="pakege-btn yellow-btn" style="width: auto">Add {{CountryTitle}} Tour</a>
                       </div>
                     </div>
-                    <div class="col-sm-6" ng-repeat="Tour in attractionlist">
+                    <div class="col-sm-6" ng-repeat="Tour in tourlist">
                         <div class="packges-block">
                             <div class="col-sm-5 pd0">
                                 <div class="place-img">
-                                    <img src="../uploads/attractions/{{Tour.TourImage}}" class="img-responsive" alt="" title="">
+                                    <img src="../uploads/tours/{{Tour.TourImage}}" class="img-responsive" alt="" title="">
                                 </div>
                             </div>
                             <div class="col-sm-7">
@@ -129,8 +129,8 @@
                                     <div class="price-right-block">
                                         <span>From SGD</span>
                                         <h4>${{Tour.TourCost}}</h4>
-                                        <a href="edit-attractions-form.html?TourId={{Tour.TourId}}">Edit</a>
-                                        <a href="javascript:void(0)" ng-click="deleteTour(Tour.TourId,Tour.TourType)" class="pakege-btn">Delete</a>
+                                        <a href="edit-tours-form.html?TourId={{Tour.TourId}}">Edit</a>
+                                         <a href="javascript:void(0)" ng-click="deleteTour(Tour.TourId,Tour.TourType)" class="pakege-btn">Delete</a>
                                     </div>
                                 </div>
                             </div>
@@ -140,16 +140,6 @@
             </div>
           </div>
         </section>
-
-
-
- 
- 
-
-
-
-
-
 
  <section id="footer">
             <div class="container">

@@ -14,6 +14,7 @@ var db = mysql.createPool({
 var CRUD = require('mysql-crud');
 var userCRUD = CRUD(db, 'tbl_Users');
 var tourCRUD = CRUD(db, 'tbl_Tours');
+var countriesCRUD = CRUD(db, 'tbl_Countries');
 
 var nodemailer = require('nodemailer');
 var mg = require('nodemailer-mailgun-transport');
@@ -140,6 +141,33 @@ exports.allcountries = function (req, res) {
     });
 };
 
+exports.getallcountries = function (req, res) {
+    var sql = "SELECT `CountryId`,`CountryTitle`,`CountryImage` FROM `tbl_Countries` WHERE `IsDeleted` = '0' AND `CountryTitle`!='Singapore'";
+    db.query(sql, function (err, data) {
+        res.json(data);
+    });
+};
+
+exports.getCountryId = function(req, res){
+
+  var country = req.params.id;
+  var sql = "SELECT `CountryId`,`CountryImage` FROM `tbl_Countries` WHERE CountryTitle = '"+country+"'";
+    db.query(sql, function (err, data) {
+        res.json(data[0]);
+    });
+    
+};
+
+exports.getCountryDetails = function(req, res){
+
+  var id = req.params.id;
+  var sql = "SELECT `CountryTitle`,`CountryImage` FROM `tbl_Countries` WHERE CountryId = '"+id+"'";    
+  db.query(sql, function (err, data) {
+        res.json(data[0]);
+    });
+    
+};
+
 exports.getAllTours = function(req, res){
 
   var sql = "SELECT t.*,c.`CountryId`,c.`CountryTitle` FROM `tbl_Tours` as t LEFT JOIN `tbl_Countries` as c ON c.`CountryId` = t.`CountryId` WHERE t.`TourType` = 'Tour' AND t.`IsDeleted` = '0' ORDER BY t.`TourId` DESC";
@@ -149,9 +177,29 @@ exports.getAllTours = function(req, res){
     
 };
 
+exports.getCountryTours = function(req, res){
+
+  var CountryId = req.params.id;
+  var sql = "SELECT t.*,c.`CountryId`,c.`CountryTitle` FROM `tbl_Tours` as t LEFT JOIN `tbl_Countries` as c ON c.`CountryId` = t.`CountryId` WHERE t.`TourType` = 'Tour' AND t.`IsDeleted` = '0' AND t.`CountryId` = "+CountryId+" ORDER BY t.`TourId` DESC";
+    db.query(sql, function (err, data) {
+        res.json(data);
+    });
+    
+};
+
 exports.getAllAttractions = function(req, res){
 
   var sql = "SELECT t.*,c.`CountryId`,c.`CountryTitle` FROM `tbl_Tours` as t LEFT JOIN `tbl_Countries` as c ON c.`CountryId` = t.`CountryId` WHERE t.`TourType` = 'Attraction' AND t.`IsDeleted` = '0' ORDER BY t.`TourId` DESC";
+    db.query(sql, function (err, data) {
+        res.json(data);
+    });
+    
+};
+
+exports.getCountryAttractions = function(req, res){
+
+  var CountryId = req.params.id;
+  var sql = "SELECT t.*,c.`CountryId`,c.`CountryTitle` FROM `tbl_Tours` as t LEFT JOIN `tbl_Countries` as c ON c.`CountryId` = t.`CountryId` WHERE t.`TourType` = 'Attraction' AND t.`IsDeleted` = '0' AND t.`CountryId` = "+CountryId+" ORDER BY t.`TourId` DESC";
     db.query(sql, function (err, data) {
         res.json(data);
     });
@@ -186,6 +234,174 @@ exports.getAdminDetails = function(req, res){
     });
     
 };
+
+
+exports.addCountry = function (req, res) {
+
+    dateToday = now.format("DD/MM/YYYY hh:mm a");
+    date = now.format("DD/MM/YYYY");
+
+     verifycode = randomString();
+     if (req.body.image) {
+         var imagedata = req.body.image;
+         var matches = "";
+
+         function decodeBase64Image(dataString) {
+             var matches = dataString.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/),
+                 response = {};
+             if (matches.length !== 3) {
+                 return new Error('Invalid input string');
+             }
+             response.type = matches[1];
+             response.data = new Buffer(matches[2], 'base64');
+             return response;
+         }
+         var decodedImg = decodeBase64Image(imagedata);
+         var imageBuffer = decodedImg.data;
+         var type = decodedImg.type;
+         fileName = verifycode+'_'+req.body.TourImage;
+         fs.writeFileSync('www/uploads/countries/' + fileName, imageBuffer, 'utf8');
+
+     }else {
+         fileName = '';
+         console.log("image not present");
+     }
+        
+    var createObj = {
+                                "CountryTitle" : req.body.CountryTitle,
+                                "CountryImage": fileName || "", 
+                                "CreatedOn": dateToday || "",        
+                            };
+                            // console.log("after", createObj);
+
+                            countriesCRUD.create(createObj, function (err, data) {
+
+                                if (!err) 
+                                {
+                                    var resdata = {
+                                        status: true,
+                                        value:data.insertId,
+                                        message: 'Details successfully added',
+                                        date : dateToday
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                                else
+                                {
+                                    var resdata = {
+                                        status: false,
+                                        error: err,
+                                        message: 'Error: Details not successfully added. '
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                            });
+};
+
+exports.updateCountry = function (req, res) {
+
+    dateToday = now.format("DD/MM/YYYY hh:mm a");
+    date = now.format("DD/MM/YYYY");
+    // console.log(req.body.TourImage);
+
+     verifycode = randomString();
+     if (req.body.image) {
+         var imagedata = req.body.image;
+         var matches = "";
+
+         function decodeBase64Image(dataString) {
+             var matches = dataString.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/),
+                 response = {};
+             if (matches.length !== 3) {
+                 return new Error('Invalid input string');
+             }
+             response.type = matches[1];
+             response.data = new Buffer(matches[2], 'base64');
+             return response;
+         }
+         var decodedImg = decodeBase64Image(imagedata);
+         var imageBuffer = decodedImg.data;
+         var type = decodedImg.type;
+         fileName = verifycode+'_'+req.body.TourImage;
+         fs.writeFileSync('www/uploads/countries/' + fileName, imageBuffer, 'utf8');
+     }else {
+         fileName = req.body.CountryImage;
+         console.log("image not present");
+     }
+        
+    var updateObj = {
+                                "CountryTitle" : req.body.CountryTitle,
+                                "CountryImage": fileName || "", 
+                                "ModifiedOn": dateToday || "",        
+                            };
+                            // console.log("after", createObj);
+
+                            countriesCRUD.update({CountryId: req.body.CountryId}, updateObj,function (err, data) {
+
+                                if (!err) 
+                                {
+                                    var resdata = {
+                                        status: true,
+                                        value:data.insertId,
+                                        message: 'Details successfully updated',
+                                        date : dateToday
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                                else
+                                {
+                                    var resdata = {
+                                        status: false,
+                                        error: err,
+                                        message: 'Error: Details not successfully updated. '
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                            });
+};
+
+
+
+exports.deleteCountry = function (req, res) {
+
+    dateToday = now.format("DD/MM/YYYY hh:mm a");
+    var id = req.params.id;
+    var updateObj = {
+                         "IsDeleted" :  '1',
+      
+                    };
+                            // console.log("after", createObj);
+
+                            countriesCRUD.update({CountryId: id}, updateObj,function (err, data) {
+
+                                if (!err) 
+                                {
+                                    var resdata = {
+                                        status: true,
+                                        value:data.insertId,
+                                        message: 'Details successfully deleted',
+                                        date : dateToday
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                                else
+                                {
+                                    var resdata = {
+                                        status: false,
+                                        error: err,
+                                        message: 'Error: Details not successfully deleted. '
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                            });
+};
+
 
 exports.addTour = function (req, res) {
 
@@ -259,6 +475,7 @@ exports.addTour = function (req, res) {
                                 }
                             });
 };
+
 
 
 exports.updateTour = function (req, res) {
