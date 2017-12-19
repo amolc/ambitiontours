@@ -99,19 +99,46 @@ app.controller('contactcontroller', function ($scope, $location, $http, $window)
     $scope.data.Child = $scope.Child;
     $scope.data.promoCode = $scope.promoCode;*/
 
-
+    console.log($scope.data);
     $http.post(baseurl + 'customTour/', $scope.data).success(function (res) {
       if (res.status == 'false') {
       }
     }).error(function () {
       console.log("error");
     })
-    window.localStorage.removeItem();
+    //window.localStorage.removeItem();
     document.contactform.reset();
+    $("#contactform").hide();
     $("#thankyou").show();
-    $("#thankyou").delay(3200).hide(300);
+   // $("#thankyou").delay(3200).hide(300);
 
-    location.href='/index.html';
+    //location.href='/index.html';
+  }
+
+    $scope.airTicket = function (req, res) {
+
+
+    $scope.data = {};
+
+    $scope.data.fullname = $scope.fullname;
+    $scope.data.phonenumber = $scope.phonenumber;
+    $scope.data.email = $scope.email;
+    $scope.data.destination = $scope.destination;
+    $scope.data.airline = $scope.airline;
+    $scope.data.type = $scope.type;
+
+    $http.post(baseurl + 'airTicket/', $scope.data).success(function (res) {
+      if (res.status == 'false') {
+      }
+    }).error(function () {
+      console.log("error");
+    })
+    document.ticketform.reset();
+    $("#ticketform").hide();
+    $("#thankyou").show();
+   // $("#thankyou").delay(3200).hide(300);
+
+    //location.href='/index.html';
   }
 
 $scope.initfunc = function () {

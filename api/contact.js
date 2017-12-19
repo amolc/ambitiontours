@@ -1,7 +1,7 @@
 var http = require('http');
 var mysql = require('mysql');
 var db = mysql.createPool({
-  database: '80consult',
+  database: 'ambitiontours',
   user: 'root',
   password: '10gXWOqeaf',
   host: 'db.80startups.com',
@@ -9,6 +9,8 @@ var db = mysql.createPool({
 
 var CRUD = require('mysql-crud');
 var consultCRUD = CRUD(db, 'contact');
+var ctourCRUD = CRUD(db, 'tbl_CustomTours');
+var ticketCRUD = CRUD(db,'tbl_AirTickets')
 
 var nodemailer = require('nodemailer');
 var mg = require('nodemailer-mailgun-transport');
@@ -90,7 +92,7 @@ console.log(req.body);
 
 
 exports.customTour = function (req, res) {
-console.log(req.body);
+//console.log(req.body);
   var fullName = req.body.fullname;
   var email = req.body.email;
   var phoneNumber = req.body.phonenumber;
@@ -99,7 +101,7 @@ console.log(req.body);
 
    // var travleDate = $scope.travelDate;
     var tdate = travelDate.split("T");
-    console.log(tdate);
+    //console.log(tdate);
     var travelDate = tdate[0];
   var message = req.body.message;
   /* var packageName = req.body.packageName;
@@ -109,49 +111,142 @@ console.log(req.body);
   var promoCode = req.body.promoCode;*/
 
 
-  consultCRUD.create({
-      'fullName': fullName,
-      'email': email,
-      'phonenumber': phoneNumber,
-      'travelDate': travelDate,
-      'packageName': "",
-      'adults': "",
-      'Child': "",
-      'promoCode': "",
-      'message': message,
-    },function (err,vals){
+  ctourCRUD.create({
+      'FullName': fullName,
+      'EmailId': email,
+      'PhoneNumber': phoneNumber,
+      'TravelDate': travelDate,
+      'Message': message,
+    },function (err,val){
+
+      if (!err) 
+        {
+
+            var recipientEmail = 'sadiarahman1@yahoo.com,nadyshaikh@gmail.com,ceo@80startups.com,shital.talole@fountaintechies.com,office@80startups.com,komal.gaikwad@fountaintechies.com';
+          //var recipientEmail = 'komal.gaikwad@fountaintechies.com'; //,ceo@80startups.com,shital.talole@fountaintechies.com'; //,ceo@80startups.com,shital.talole@80startups.com
+          var subject = "[ambitiontours.COM] Ambition Tours Custom Tour Enquiry";
+          var mailbody = '<table>\
+                              <tr>\
+                              <td><img src="https://ambitiontours.80startups.com/assets/img/logo.png"></td><br>\
+                            </tr>\
+                            <tr>\
+                              <td><h1>Dear Ambition Tours,</td>\
+                            </tr>\
+                            <tr>\
+                            </tr>\
+                            <tr>\
+                              <td>You have one enquiry from the following client:</td>\
+                            </tr>\
+                            <tr>\
+                              <td>The details are as follow :  <br><br><strong> Name:   ' + fullName + '</strong><br><br><strong> Email:   ' + email + '</strong><br><br><strong> Contact Number:   ' + phoneNumber + '</strong><br><br><strong> Travel Date:   ' + travelDate + '</strong><br><br><strong>Message:   ' + message + '</strong><br><br></td>\
+                            </tr>\
+                            <tr>\
+                              <td>Best wishes,</td>\
+                            </tr>\
+                            <tr>\
+                              <td><h2>ambitiontours.com</h2></td>\
+                            </tr>\
+                            <tr>\
+                              <td bgcolor="#000000"><font color ="white">This is a one-time email. Please do not reply to this email.</font></td>\
+                            </tr>\
+                          </table>';
+
+        console.log(mailbody);
+
+            send_mail(recipientEmail, subject, mailbody);
+
+
+            var resdata = {
+                status: true,
+                value:val,
+                message: 'Details successfully updated'
+            };
+
+            res.jsonp(resdata);
+        }
+        else
+        {
+            var resdata = {
+                status: false,
+                error: err,
+                message: 'Error: Details not successfully updated. '
+            };
+
+            res.jsonp(resdata);
+        }
 
     })
-     var recipientEmail = 'sadiarahman1@yahoo.com,nadyshaikh@gmail.com,ceo@80startups.com,shital.talole@fountaintechies.com,office@80startups.com';
-    //var recipientEmail = 'pravinshelar999@gmail.com'; //,ceo@80startups.com,shital.talole@fountaintechies.com'; //,ceo@80startups.com,shital.talole@80startups.com
-    var subject = "[ambitiontours.COM] Ambition Tours Custom Tour Enquiry";
-    var mailbody = '<table>\
-                        <tr>\
-                        <td><img src="https://ambitiontours.80startups.com/assets/img/logo.jpg"></td><br>\
-                      </tr>\
-                      <tr>\
-                        <td><h1>Dear Ambition Tours,</td>\
-                      </tr>\
-                      <tr>\
-                      </tr>\
-                      <tr>\
-                        <td>You have one enquiry from the following client:</td>\
-                      </tr>\
-                      <tr>\
-                        <td>The details are as follow :  <br><br><strong> Name:   ' + fullName + '</strong><br><br><strong> Email:   ' + email + '</strong><br><br><strong> Contact Number:   ' + phoneNumber + '</strong><br><br><strong> Travel Date:   ' + travelDate + '</strong><br><br><strong>Message:   ' + message + '</strong><br><br></td>\
-                      </tr>\
-                      <tr>\
-                        <td>Best wishes,</td>\
-                      </tr>\
-                      <tr>\
-                        <td><h2>ambitiontours.com</h2></td>\
-                      </tr>\
-                      <tr>\
-                        <td bgcolor="#000000"><font color ="white">This is a one-time email. Please do not reply to this email.</font></td>\
-                      </tr>\
-                    </table>';
+    
+}
 
-      send_mail(recipientEmail, subject, mailbody);
+
+exports.airTicket = function (req, res) {
+
+
+
+  ticketCRUD.create({
+      'Name': req.body.fullname,
+      'Contact': req.body.phonenumber,
+      'Email': req.body.email,
+      'Destination': req.body.destination,
+      'Airline': req.body.airline,
+      'Type': req.body.type,
+    },function (err,val){
+
+      if (!err) 
+        {
+
+             var recipientEmail = 'sadiarahman1@yahoo.com,nadyshaikh@gmail.com,ceo@80startups.com,shital.talole@fountaintechies.com,office@80startups.com,komal.gaikwad@fountaintechies.com';
+             // var recipientEmail = 'komal.gaikwad@fountaintechies.com'; //,ceo@80startups.com,shital.talole@fountaintechies.com'; //,ceo@80startups.com,shital.talole@80startups.com
+              var subject = "[ambitiontours.COM] Ambition Tours Air Ticket Enquiry";
+              var mailbody = '<table>\
+                                  <tr>\
+                                  <td><img src="https://ambitiontours.80startups.com/assets/img/logo.png"></td><br>\
+                                </tr>\
+                                <tr>\
+                                  <td><h1>Dear Ambition Tours,</td>\
+                                </tr>\
+                                <tr>\
+                                </tr>\
+                                <tr>\
+                                  <td>You have one enquiry from the following client:</td>\
+                                </tr>\
+                                <tr>\
+                                  <td>The details are as follow :  <br><br><strong> Name:   ' + req.body.fullname + '</strong><br><br><strong> Email:   ' + req.body.email + '</strong><br><br><strong> Contact Number:   ' + req.body.phonenumber + '</strong><br><br><strong> Choice Of Destination:   ' + req.body.destination + '</strong><br><br><strong>Choice Of Airline:   ' + req.body.airline + '</strong><br><br><strong>Trip Type :   ' + req.body.type + '</strong><br><br></td>\
+                                </tr>\
+                                <tr>\
+                                  <td>Best wishes,</td>\
+                                </tr>\
+                                <tr>\
+                                  <td><h2>ambitiontours.com</h2></td>\
+                                </tr>\
+                                <tr>\
+                                  <td bgcolor="#000000"><font color ="white">This is a one-time email. Please do not reply to this email.</font></td>\
+                                </tr>\
+                              </table>';
+
+                send_mail(recipientEmail, subject, mailbody);
+            var resdata = {
+                status: true,
+                value:val,
+                message: 'Details successfully updated'
+            };
+
+            res.jsonp(resdata);
+        }
+        else
+        {
+            var resdata = {
+                status: false,
+                error: err,
+                message: 'Error: Details not successfully updated. '
+            };
+
+            res.jsonp(resdata);
+        }
+
+    })
+    
 }
 
 
@@ -169,7 +264,8 @@ function send_mail(usermail, subject, mailbody) {
   var nodemailerMailgun = nodemailer.createTransport(mg(auth));
 
   nodemailerMailgun.sendMail({
-    from: 'operations@80startups.com',
+    //from: 'operations@80startups.com',
+    from: 'sadia@ambitiontours.com',
     to: usermail, // An array if you have multiple recipients.
     subject: subject,
     'h:Reply-To': 'operations@80startups.com',
