@@ -1048,6 +1048,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6658c8', end
   line-height: 36px;
   margin: 0px;
 }
+.small-text{
+  font-size: 12px;
+}
 
 
 
