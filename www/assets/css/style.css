@@ -402,7 +402,7 @@ section#footer {
     background: #656057;
 }
 .orenge-logo-strip{
-    background-color: #ff6624;
+    background-color: #ffffff;
     padding: 20px 0px;
 }
 .logo-img img{
@@ -617,7 +617,9 @@ section#footer {
 #country-box .hero-grid-content::after {
   pointer-events: none;
 }
-
+iframe #mastHead{
+  display: none !important;
+}
 #country-box .hero-grid-link {
   position: absolute;
   top: 0;
@@ -975,9 +977,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6658c8', end
 .foot-social-icon .foot-text ul li a:hover{
   background-color: #ffffff;
   color: #000000;
-}
-iframe #mastHead{
-  display: none !important;
 }
 
 
