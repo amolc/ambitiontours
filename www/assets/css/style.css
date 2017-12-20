@@ -1051,7 +1051,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6658c8', end
 .small-text{
   font-size: 12px;
 }
-
+.Voucher-para{
+  font-size: 15px;
+  color: #000000;
+  width: 75%;
+  margin: 20px auto 50px;
+  text-align: center;
+}
 
 
 
