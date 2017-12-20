@@ -607,9 +607,10 @@ section#footer {
   background: rgba(0, 0, 0, 0.8);
   cursor: pointer;
   width: 100%;
-  height: auto;
+  height: 313px;
   display: inline-block;
   margin-bottom: 30px;
+  overflow: hidden;
 }
 #country-box .hero-grid-image {
   position: relative;
