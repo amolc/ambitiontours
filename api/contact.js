@@ -188,6 +188,7 @@ exports.airTicket = function (req, res) {
       'Name': req.body.fullname,
       'Contact': req.body.phonenumber,
       'Email': req.body.email,
+      'ticketFrom' : req.body.from,
       'Destination': req.body.destination,
       'Airline': req.body.airline,
       'Type': req.body.type,
@@ -197,7 +198,7 @@ exports.airTicket = function (req, res) {
         {
 
              var recipientEmail = 'sadiarahman1@yahoo.com,nadyshaikh@gmail.com,ceo@80startups.com,shital.talole@fountaintechies.com,office@80startups.com,komal.gaikwad@fountaintechies.com';
-             // var recipientEmail = 'komal.gaikwad@fountaintechies.com'; //,ceo@80startups.com,shital.talole@fountaintechies.com'; //,ceo@80startups.com,shital.talole@80startups.com
+             //var recipientEmail = 'komal.gaikwad@fountaintechies.com'; //,ceo@80startups.com,shital.talole@fountaintechies.com'; //,ceo@80startups.com,shital.talole@80startups.com
               var subject = "[ambitiontours.COM] Ambition Tours Air Ticket Enquiry";
               var mailbody = '<table>\
                                   <tr>\
@@ -212,7 +213,7 @@ exports.airTicket = function (req, res) {
                                   <td>You have one enquiry from the following client:</td>\
                                 </tr>\
                                 <tr>\
-                                  <td>The details are as follow :  <br><br><strong> Name:   ' + req.body.fullname + '</strong><br><br><strong> Email:   ' + req.body.email + '</strong><br><br><strong> Contact Number:   ' + req.body.phonenumber + '</strong><br><br><strong> Choice Of Destination:   ' + req.body.destination + '</strong><br><br><strong>Choice Of Airline:   ' + req.body.airline + '</strong><br><br><strong>Trip Type :   ' + req.body.type + '</strong><br><br></td>\
+                                  <td>The details are as follow :  <br><br><strong> Name:   ' + req.body.fullname + '</strong><br><br><strong> Email:   ' + req.body.email + '</strong><br><br><strong> Contact Number:   ' + req.body.phonenumber + '</strong><br><br><strong> From:   ' + req.body.from + '</strong><br><br><strong> To:   ' + req.body.destination + '</strong><br><br><strong>Choice Of Airline:   ' + req.body.airline + '</strong><br><br><strong>Trip Type :   ' + req.body.type + '</strong><br><br></td>\
                                 </tr>\
                                 <tr>\
                                   <td>Best wishes,</td>\

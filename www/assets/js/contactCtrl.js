@@ -357,6 +357,7 @@ app.controller('contactcontroller', function ($scope, $location, $http, $window)
     $scope.data.fullname = $scope.fullname;
     $scope.data.phonenumber = $scope.phonenumber;
     $scope.data.email = $scope.email;
+    $scope.data.from = $scope.from;
     $scope.data.destination = $scope.destination;
     $scope.data.airline = $scope.airline;
     $scope.data.type = $scope.type;
