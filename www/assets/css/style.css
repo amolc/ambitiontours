@@ -981,6 +981,13 @@ background: -webkit-linear-gradient(-45deg, rgb(102,88,200) 3%,rgb(212,54,143) 2
 background: linear-gradient(135deg, rgb(102,88,200) 3%,rgb(212,54,143) 26%,rgb(251,195,96) 79%);
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6658c8', endColorstr='#fbc360',GradientType=1 );
 }
+.foot-social-icon .foot-text ul li:nth-child(3) a:hover{
+  background: rgb(255,255,255);
+background: -moz-linear-gradient(top, rgb(255,255,255) 1%, rgb(255,255,255) 100%);
+background: -webkit-linear-gradient(top, rgb(255,255,255) 1%,rgb(255,255,255) 100%);
+background: linear-gradient(to bottom, rgb(255,255,255) 1%,rgb(255,255,255) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=0 );
+}
 .foot-social-icon .foot-text ul li:nth-child(4) a{
   background-color: #f60002;
 }
