@@ -200,7 +200,8 @@ section#footer {
     margin: 30px 0px 0px;   
 }
 #footer{
-    background: #171717; 
+    /*background: #171717; */
+    background-color: #9ea5af;
     border-top: 5px solid #fe6828;
 }
 #footer .jumbotron{
