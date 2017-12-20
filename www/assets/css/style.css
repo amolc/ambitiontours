@@ -412,7 +412,8 @@ section#footer {
 }
 .navigation-strip{
     /*background-color: #280f0a;*/
-    background-color: #ff6624;
+    /*background-color: #ff6624;*/
+    background-color: #134da2;
 }
 .navigation-strip .navbar{
     margin: 0px;
