@@ -51,6 +51,15 @@ app.post('/api/invest', investor.invest);
 app.post('/api/adminlogin', admin.adminlogin);
 app.get('/api/getAdminDetails/:id', admin.getAdminDetails);
 app.post('/api/updatepassword', admin.updatepassword);
+app.post('/api/updateContact', admin.updateContact);
+
+app.post('/api/updateOpHours', admin.updateOpHours);
+app.get('/api/getOpHoursDetails/:id', admin.getOpHoursDetails);
+
+app.post('/api/addHoliday', admin.addHoliday);
+app.get('/api/getHolidayDetails/:id', admin.getHolidayDetails);
+app.post('/api/updateHoliday', admin.updateHoliday);
+app.get('/api/deleteHoliday/:id', admin.deleteHoliday);
 
 app.get('/api/getAdminContactDetails', admin.getAdminContactDetails);
 app.get('/api/getOperatingHours', admin.getOperatingHours);

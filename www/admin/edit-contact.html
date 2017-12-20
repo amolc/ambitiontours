@@ -97,22 +97,48 @@
                 </div>
             </div>
         </header>
-        <section id="andttr-form-wrap">
+        <section id="andttr-form-wrap" ng-init="getAdminContactDetails()">
           <div class="container">
             <div class="row">
               <div class="col-sm-12 col-md-12">
-               <form id="addtour" name="addtour" ng-submit="addCountry()">
-                  <div class="attractions-form profile signin-form">
+               <form id="addtour" name="addtour" ng-submit="updateContact()">
+                  <div class="attractions-form profile signin-form info-form">
                   <h2 class="text-center">Edit Contact Info</h2>
+        
 
+                    <div class="col-sm-2">
+                      <label><strong>Address : </strong></label>
+                    </div>
+                    <div class="col-sm-10">
+                      <input type="text" name="address" ng-model="contact.Address" required="">
+                    </div>
 
-                 
-                 
+                    <div class="col-sm-2">
+                      <label><strong>Contact No : </strong></label>
+                    </div>
+                    <div class="col-sm-10">
+                      <input type="text" name="contact" ng-model="contact.ContactNo" required="">
+                    </div>
+
+                    <div class="col-sm-2">
+                      <label><strong>Fax : </strong></label>
+                    </div>
+                    <div class="col-sm-10">
+                      <input type="text" name="fax" ng-model="contact.Fax" required="">
+                    </div>
+
+                    <div class="col-sm-2">
+                      <label><strong>Email : </strong></label>
+                    </div>
+                    <div class="col-sm-10">
+                      <input type="text" name="email" ng-model="contact.Email" required="">
+                    </div>
+             
                   <div class="col-sm-12 col-md-12">
                       <label id="alertmessage" hidden>{{alertmessage}}</label>
                   </div>
-                  <div class="col-sm-6 col-md-6 ">
-                    <input type="submit" value="Save" class="small-btn brawon-btn pull-right">
+                  <div class="col-sm-12 col-md-12">
+                    <input type="submit" value="Save" class="small-btn brawon-btn">
                   </div>
                   
                   <div class="clearfix"></div>

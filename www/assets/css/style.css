@@ -839,6 +839,10 @@ iframe #mastHead{
 .attractions-form input{
   margin: 1.4em 0;
 }
+.info-form label{
+  margin: 1.4em 0;
+  font-size: 18px
+}
 .small-btn{
   padding: 0.8em 3em !important;
   width: 200px !important;

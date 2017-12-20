@@ -1019,6 +1019,28 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
 
    }
 
+     $scope.updateContact = function() {      
+
+
+                   $http.post(baseurl + 'updateContact', $scope.contact).success(function(data, status) {
+
+                  //      console.log('data',data)
+
+                        if (data.status == false) 
+                        {
+                            // $scope.alertmessage=data.message;
+                            // $("#alertmessage").show('slow');
+                        }
+                        else
+                        {
+                            window.location.href = "settings.html";
+                        }
+
+                    });  
+          
+          
+    } 
+
 
 
 
