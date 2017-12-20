@@ -99,6 +99,26 @@ app.controller('contactcontroller', function ($scope, $location, $http, $window)
 
    }
 
+    $scope.getallcountries = function() {
+
+    $http.get(baseurl + 'getallcountries').success(function (res) {
+
+            if (res.status == 'false') {
+
+            }
+            else {
+                console.log(res);
+                $scope.clist = res;
+               // $scope.registration.CountryId = $scope.countrylist[0].CountryId;
+               //console.log($scope.countrylist);
+            }
+
+        }).error(function () {
+
+        });
+
+   }
+
    $scope.getAllVisaDetails = function() {
 
     $http.get(baseurl + 'getAllVisaDetails').success(function (res) {
