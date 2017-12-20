@@ -27,7 +27,7 @@
   <script type="text/javascript" src="../assets/js/adminCtrl.js"></script>
 </head>
 
-<body data-ng-app="80consult" data-ng-controller="admincontroller" ng-init="getallcountries()">
+<body data-ng-app="80consult" data-ng-controller="admincontroller">
 <!-- Start Header -->
        <header id="top-header">
             <div class="orenge-logo-strip">
@@ -71,10 +71,10 @@
                                         <li><a href="visa.html" class="hvr-underline-reveal">Visa Details</a></li>
                                         <li><a href="gift-vouchers.html" class="hvr-underline-reveal">Gift Vouchers</a></li>
                                         <!-- <li><a href="changepassword.html" class="hvr-underline-reveal">Change Password</a></li>
-                                        <li><a href="javascript:void(0)" class="hvr-underline-reveal" ng-click="adminlogout();">Logout</a></li> -->
-
+                                        <li><a href="javascript:void(0)" class="hvr-underline-reveal" ng-click="adminlogout();">Logout</a></li>
+ -->
                                       </ul>
-                                      <ul class="nav navbar-nav navbar-right">
+                                       <ul class="nav navbar-nav navbar-right">
                                         <li class="dropdown">
                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                               <span>Welcome</span> 
@@ -98,34 +98,30 @@
                 </div>
             </div>
         </header>
-        <section id="country-box" ng-init="getCountries()">
+        <section id="andttr-form-wrap">
           <div class="container">
-            <div class="row">
-              <div class="col-sm-12">
-                        <h2 class="section-title">
-                            Countries
-                        </h2>
-                    </div>
-                    <div class="col-sm-12">
-                      <div class="add-btn mr-b20 text-right">
-                       <!--  <a href="tours-form.html" class="pakege-btn yellow-btn">Add Tour</a> -->
-                       <a href="add-country.html" class="pakege-btn yellow-btn" style="width: auto">Add Country</a>
-                      </div>
-                    </div>
-                          <div class="col-sm-3" ng-repeat="c in countrylist">
-                                <div class="packeg-details-text">
-                                    <h5><a href="#">{{c.CountryTitle}}</a></h5>
-                                    <img src="../uploads/countries/{{c.CountryImage}}">
-                                    <p style="margin-top: 10px">
-                                       <a href="edit-country.html?CountryId={{c.CountryId}}" class="pakege-btn yellow-btn">Edit</a>
-                                       <a href="javascript:void(0)" ng-click="deleteCountry(c.CountryId)" class="pakege-btn yellow-btn">Delete</a>
-                                    </p>
-                                </div>
-                                 <div class="clearfix"></div>
-                            </div>
-                           
- 
+             <div class="row">
+        <div class="col-sm-12 col-md-12">
+          <div class="form-block">
+            <div class="signin-form profile">
+                          <h2>Add Gift Voucher</h2>
+                          <div class="login-form">
+                            <form method="post" ng-submit="addVoucher()">
+                              <input type="text" ng-model="voucher.Code" placeholder="Code" required="">
+                              <input type="text" ng-model="voucher.Price" placeholder="Price" required="">
+                               <div class="form-group" id="alertmessage" hidden="">
+                                  <label>{{alertmessage}}</label>
+                                </div> 
+                              <div class="tp">
+                                <input type="submit" value="Save">
+                              </div>
+                            </form>
+                          </div>  
+                                                 
             </div>
+          </div>
+        </div>
+      </div>
           </div>
         </section>
 
@@ -176,33 +172,8 @@
             <p>Copyright 2017- Ambition Tours - All Rights Reserved</p>
         </footer>
 
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQD-LT4-VzlsdNpf33yNDeT38EaF3Kz-g&libraries=places"></script>
-<script  type="text/javascript"  src="../assets/js/jquery.min.js"></script>
-  <script   type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
-  <script  type="text/javascript"  src="../assets/js/main.js"></script>
- <script src="assets/js/custom.js"></script>
-<script>
- 
-// google.maps.event.addDomListener(window, 'load', function () 
-// {
-
-//  var options = { types: ['(cities)']};
-//             var places = new google.maps.places.Autocomplete(document.getElementById('address'),options);
-//             google.maps.event.addListener(places, 'place_changed', function () { 
-
-//               var geocoder = new google.maps.Geocoder();
-//             var address = $("#address").val();
-
-//             geocoder.geocode( { 'address': address}, function(results, status) {
- 
-//             });             
-
-//       });
-                
-// });
-</script>
 
 </div>
 </body>
-
+  <script   type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
 </html>
