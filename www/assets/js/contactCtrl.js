@@ -214,6 +214,57 @@ app.controller('contactcontroller', function ($scope, $location, $http, $window)
 
    }
 
+      $scope.getCountryTours = function() {
+
+
+     var url = window.location.href;
+        var parts = url.split("?");
+        if(parts.length>1){
+
+           var urlparams = parts[1];
+           var params = urlparams.split("&");
+           var id = urlparams.split("=")
+           if (id[0]=='country') 
+           {
+
+              $http.get(baseurl + 'getCountryTours/'+id[1]).success(function (res) {
+
+                  if (res.status == 'false') {
+
+                  }
+                  else {
+
+                     $http.get(baseurl + 'getCountryDetails/'+id[1]).success(function (data) {
+
+                          if (data.status == 'false') {
+
+                          }
+                          else {
+
+                              $scope.CountryId = id[1];
+                              $scope.CountryTitle = data.CountryTitle;
+                              $scope.tourlist = res;
+                          }
+
+                      }).error(function () {
+
+                      });
+                  }
+
+              }).error(function () {
+
+              });
+
+           }
+           else
+          {
+              window.location.href = 'asia.html';
+          }
+        }
+
+   }
+
+
 
   $scope.getSingaporeAttractions = function (req, res) {
 
