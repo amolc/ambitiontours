@@ -604,7 +604,7 @@ section#footer {
   display: block;
   min-height: 100%;
   max-width: 100%;
-  opacity: 0.2;
+  /*opacity: 0.2;*/
 }
 
 #country-box .hero-grid-content {
@@ -681,7 +681,7 @@ iframe #mastHead{
   max-width: none;
   width: -webkit-calc(100% + 50px);
   width: calc(100% + 50px);
-  opacity: 0.2;
+  /*opacity: 0.2;*/
   -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
   transition: opacity 0.35s, transform 0.35s;
   -webkit-transform: translate3d(-40px, 0, 0);
