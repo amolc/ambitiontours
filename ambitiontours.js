@@ -73,6 +73,9 @@ app.get('/api/deleteCountry/:id', admin.deleteCountry);
 app.get('/api/getAllVisaDetails', admin.getAllVisaDetails);
 app.get('/api/getVisa',admin.getVisa);
 app.get('/api/getVisaDetails/:id',admin.getVisaDetails);
+app.post('/api/addVisa', admin.addVisa);
+app.post('/api/updateVisa',admin.updateVisa);
+app.get('/api/deleteVisa/:id',admin.deleteVisa);
 
 app.get('/api/getAdminDetails/:id', admin.getAdminDetails);
 

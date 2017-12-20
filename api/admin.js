@@ -15,6 +15,7 @@ var CRUD = require('mysql-crud');
 var userCRUD = CRUD(db, 'tbl_Users');
 var tourCRUD = CRUD(db, 'tbl_Tours');
 var countriesCRUD = CRUD(db, 'tbl_Countries');
+var visaCRUD = CRUD(db, 'tbl_VisaDetails');
 
 var nodemailer = require('nodemailer');
 var mg = require('nodemailer-mailgun-transport');
@@ -237,7 +238,7 @@ exports.getAdminDetails = function(req, res){
 
 exports.getAllVisaDetails = function(req, res){
 
-  var sql = "SELECT `Id`,`Country`,`VisaCharge`,`WorkingDays` FROM `tbl_VisaDetails`";    
+  var sql = "SELECT `Id`,`Country`,`VisaCharge`,`WorkingDays` FROM `tbl_VisaDetails` WHERE `IsDeleted`='0'";    
   db.query(sql, function (err, data) {
         res.json(data);
     });
@@ -246,7 +247,7 @@ exports.getAllVisaDetails = function(req, res){
 
 exports.getVisa = function(req, res){
     
-  var sql = "SELECT `Id`,`Country`,`VisaCharge`,`WorkingDays` FROM `tbl_VisaDetails` LIMIT 1";    
+  var sql = "SELECT `Id`,`Country`,`VisaCharge`,`WorkingDays` FROM `tbl_VisaDetails` WHERE `IsDeleted`='0' LIMIT 1";    
   db.query(sql, function (err, data) {
         res.json(data[0]);
     });
@@ -616,6 +617,120 @@ exports.deleteTour = function (req, res) {
                                 }
                             });
 };
+
+exports.addVisa= function (req, res) {
+
+    dateToday = now.format("DD/MM/YYYY hh:mm a");
+        
+    var createObj = {
+                                "Country" : req.body.Country,
+                                "VisaCharge": req.body.VisaCharge,
+                                "WorkingDays": req.body.WorkingDays,
+                                "CreatedOn": dateToday || "",        
+                            };
+                            // console.log("after", createObj);
+
+                            visaCRUD.create(createObj, function (err, data) {
+
+                                if (!err) 
+                                {
+                                    var resdata = {
+                                        status: true,
+                                        value:data.insertId,
+                                        message: 'Details successfully added',
+                                        date : dateToday
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                                else
+                                {
+                                    var resdata = {
+                                        status: false,
+                                        error: err,
+                                        message: 'Error: Details not successfully added. '
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                            });
+};
+
+exports.updateVisa = function (req, res) {
+
+    dateToday = now.format("DD/MM/YYYY hh:mm a");
+    var updateObj = {
+                                "Country" : req.body.Country,
+                                "VisaCharge": req.body.VisaCharge,
+                                "WorkingDays": req.body.WorkingDays,
+                                "ModifiedOn": dateToday || "",        
+                            };
+                            // console.log("after", createObj);
+
+                            visaCRUD.update({Id: req.body.Id}, updateObj,function (err, data) {
+
+                                if (!err) 
+                                {
+                                    var resdata = {
+                                        status: true,
+                                        value:data.insertId,
+                                        message: 'Details successfully updated',
+                                        date : dateToday
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                                else
+                                {
+                                    var resdata = {
+                                        status: false,
+                                        error: err,
+                                        message: 'Error: Details not successfully updated. '
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                            });
+};
+
+
+
+exports.deleteVisa = function (req, res) {
+
+    dateToday = now.format("DD/MM/YYYY hh:mm a");
+    var id = req.params.id;
+    var updateObj = {
+                         "IsDeleted" :  '1',
+      
+                    };
+                            // console.log("after", createObj);
+
+                            visaCRUD.update({Id: id}, updateObj,function (err, data) {
+
+                                if (!err) 
+                                {
+                                    var resdata = {
+                                        status: true,
+                                        value:data.insertId,
+                                        message: 'Details successfully deleted',
+                                        date : dateToday
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                                else
+                                {
+                                    var resdata = {
+                                        status: false,
+                                        error: err,
+                                        message: 'Error: Details not successfully deleted. '
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                            });
+};
+
 
 ///____________________END______________________
 
