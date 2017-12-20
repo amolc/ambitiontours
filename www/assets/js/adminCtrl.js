@@ -744,6 +744,116 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
          
     }
 
+    $scope.getAllVisaDetails = function() {
+
+    $http.get(baseurl + 'getAllVisaDetails').success(function (res) {
+
+            if (res.status == 'false') {
+
+            }
+            else {
+               // console.log(res);
+                $scope.visalist = res;
+               // $scope.registration.CountryId = $scope.countrylist[0].CountryId;
+               //console.log($scope.countrylist);
+            }
+
+        }).error(function () {
+
+        });
+
+   }
+
+     $scope.getVisaDetails = function() {
+
+       var url = window.location.href;
+       var parts = url.split("?");
+      if(parts.length>1){
+           $scope.visa = {};
+           var urlparams = parts[1];
+           var params = urlparams.split("&");
+           var id = urlparams.split("=");
+           $scope.visa.Id = id[1];
+          // console.log( $scope.visa.Id);
+      }
+      $http.get(baseurl + 'getVisaDetails/'+$scope.visa.Id).success(function (res) {
+
+              if (res.status == 'false') {
+
+              }
+              else {
+                 // console.log(res);
+                  $scope.visa = res;
+                 // $scope.registration.CountryId = $scope.countrylist[0].CountryId;
+                 //console.log($scope.countrylist);
+              }
+
+          }).error(function () {
+
+          });
+
+     }
+
+      $scope.addVisa = function() {   
+
+
+
+            $http.post(baseurl + 'addVisa/',$scope.visa).success(function(res) {
+                  
+                //console.log(res);
+                if (res.status == true) 
+                {
+                  
+                    window.location.href = 'visa.html';
+                }
+
+                }).error(function() {
+                    
+                });
+     }
+
+         $scope.updateVisa = function() {   
+
+
+
+            $http.post(baseurl + 'updateVisa/',$scope.visa).success(function(res) {
+                  
+                //console.log(res);
+                if (res.status == true) 
+                {
+                  
+                    window.location.href = 'visa.html';
+                }
+
+                }).error(function() {
+                    
+                });
+     }
+
+           $scope.deleteVisa = function(id) {   
+
+
+              var r = confirm("Are You Sure You want to Delete It?");
+              if (r == true) 
+              { 
+            $http.get(baseurl + 'deleteVisa/'+id).success(function(res) {
+                  
+                //console.log(res);
+                if (res.status == true) 
+                {
+                  
+                    window.location.href = 'visa.html';
+                }
+
+                }).error(function() {
+                    
+                });
+
+              }
+     }
+
+
+
 
 
 

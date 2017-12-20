@@ -63,7 +63,6 @@ app.controller('contactcontroller', function ($scope, $location, $http, $window)
     $scope.data.Child = $scope.Child;
     $scope.data.promoCode = $scope.promoCode;
 
-
     $http.post(baseurl + 'consult/', $scope.data).success(function (res) {
       if (res.status == 'false') {
       }
