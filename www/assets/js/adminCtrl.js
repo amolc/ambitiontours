@@ -266,7 +266,7 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
 
    }
 
-      $scope.getCountryAttractions = function() {
+  $scope.getCountryAttractions = function() {
 
 
      var url = window.location.href;
@@ -310,7 +310,7 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
            }
            else
           {
-              window.location.href = 'tours.html';
+              window.location.href = 'attractions.html';
           }
         }
 
