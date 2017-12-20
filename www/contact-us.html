@@ -188,25 +188,20 @@
             </iframe>
           </div>
         </div>
-        <div class="col-sm-6 col-md-6">
+        <div class="col-sm-6 col-md-6" ng-init="getAdminContactDetails()">
           <div class="contact-right-block">
-            <h5>#06-67, 1 Rochor Canal Rd, Sim Lim Square, Singapore 188504</h5>
-            <p><span>Main Line : </span><span>+65 6438 8880  </span></p>
-            <p><span>Fax : </span><span>+65 6534 3092</span></p>
-            <p><span>Email : </span><span><a href="mailto:sadia@ambitiontours.com">sadia@ambitiontours.com</a></span></p>
+            <h5>{{contact.Address}}</h5>
+            <p><span>Main Line : </span><span>{{contact.ContactNo}}</span></p>
+            <p><span>Fax : </span><span>{{contact.Fax}}</span></p>
+            <p><span>Email : </span><span><a href="mailto:{{contact.Email}}">{{contact.Email}}</a></span></p>
           </div>
-          <div class="contact-right-block mr-t20">
+          <div class="contact-right-block mr-t20" ng-init="getOperatingHours()">
             <h5>Operating Hours</h5>
-            <p><span>Monday to Friday : </span><span>10:00am - 7:00pm</span></p>
-            <p><span>Saturday  : </span><span>10:00am - 6:00pm</span></p>
-            <p><span>Sunday & Public Holidays : </span><span>12:00am - 6:00px<span></p>
+            <p ng-repeat="h in hours"><span>{{h.Days}}: </span><span>{{h.FromTime}} - {{h.ToTime}}</span></p>
           </div> 
-          <div class="contact-right-block mr-t20">
+          <div class="contact-right-block mr-t20" ng-init="getPublicHolidays()" ng-init="getPublicHolidays()">
             <h5>Public Holiday</h5>
-            <p><span>24 December 2017, Sunday : </span><span>Closed(Christmas Eve)</span></p>
-            <p><span>25 December 2017, Monday : </span><span>Closed(Christmas Eve)</span></p>
-            <p><span>31 December 2017, Sunday : </span><span>Closed(Christmas Eve)</span></p>
-            <p><span>01 January 2017, Sunday : </span><span>Closed(Christmas Eve)</span></p>
+            <p ng-repeat="ph in holidays"><span>{{ph.Title}} : </span><span>{{ph.Description}}</span></p>
           </div>   
         </div>
       </div>

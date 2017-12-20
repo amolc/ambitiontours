@@ -237,6 +237,33 @@ exports.getAdminDetails = function(req, res){
     
 };
 
+exports.getAdminContactDetails = function(req, res){ 
+
+  var sql = "SELECT `Email`,`Address`,`ContactNo`,`Fax` FROM `tbl_Users` WHERE `UserType`='Admin' AND `IsDeleted` = '0'";
+    db.query(sql, function (err, data) {
+        res.json(data[0]);
+    });
+    
+};
+
+exports.getOperatingHours= function(req, res){ 
+
+  var sql = "SELECT `Id`,`Days`,`FromTime`,`ToTime` FROM `tbl_OperatingHours` WHERE `IsDeleted` = '0'";
+    db.query(sql, function (err, data) {
+        res.json(data);
+    });
+    
+};
+
+exports.getPublicHolidays = function(req, res){ 
+
+  var sql = "SELECT `Id`,`Title`,`Description` FROM `tbl_PublicHolidays` WHERE `IsDeleted` = '0'";
+    db.query(sql, function (err, data) {
+        res.json(data);
+    });
+    
+};
+
 exports.getAllVisaDetails = function(req, res){
 
   var sql = "SELECT `Id`,`Country`,`VisaCharge`,`WorkingDays` FROM `tbl_VisaDetails` WHERE `IsDeleted`='0'";    
