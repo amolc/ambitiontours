@@ -7,6 +7,28 @@ app.controller('contactcontroller', function ($scope, $location, $http, $window)
  // $scope.urlParams = $location.search();
  // console.log($location.search());
  // $scope.data = {};
+  $scope.hide = window.sessionStorage.getItem('hide');
+
+  $scope.checkPassword = function(password){
+ 
+      //console.log(password);
+      $('#alert').hide();
+      // if ($scope.password == 'ambitiontours')
+      //   $('#form-wrap').hide();
+      // else
+      //   $('#alert').show();
+       if (password == 'ambitiontours')
+       {
+         $('#form-wrap').hide();
+         window.sessionStorage.setItem('hide','hidden');
+         $scope.hide = 'hidden';
+       }
+       else
+        $('#alert').show();
+
+
+ }
+
  $scope.enquiryButton = function(packagename,price){
  // alert(+"--"+price);
      window.localStorage.removeItem("packagename");
@@ -49,12 +71,195 @@ app.controller('contactcontroller', function ($scope, $location, $http, $window)
       console.log("error");
     })
     window.localStorage.removeItem("packagename");
-     window.localStorage.removeItem("packagePrice");
+    window.localStorage.removeItem("packagePrice");
     document.contactform.reset();
     $("#thankyou").show();
     $("#thankyou").delay(3200).hide(300);
 
     location.href='/index.html';
+  }
+
+  $scope.getCountries = function() {
+
+    $http.get(baseurl + 'allcountries').success(function (res) {
+
+            if (res.status == 'false') {
+
+            }
+            else {
+               // console.log(res);
+                $scope.countrylist = res;
+               // $scope.registration.CountryId = $scope.countrylist[0].CountryId;
+               //console.log($scope.countrylist);
+            }
+
+        }).error(function () {
+
+        });
+
+   }
+
+   $scope.getAllVisaDetails = function() {
+
+    $http.get(baseurl + 'getAllVisaDetails').success(function (res) {
+
+            if (res.status == 'false') {
+
+            }
+            else {
+               // console.log(res);
+                $scope.visalist = res;
+               // $scope.registration.CountryId = $scope.countrylist[0].CountryId;
+               //console.log($scope.countrylist);
+            }
+
+        }).error(function () {
+
+        });
+
+   }
+
+   $scope.getVisa = function() {
+
+    $http.get(baseurl + 'getVisa').success(function (res) {
+
+            if (res.status == 'false') {
+
+            }
+            else {
+               // console.log(res);
+                $scope.visa = res;
+               // $scope.registration.CountryId = $scope.countrylist[0].CountryId;
+               //console.log($scope.countrylist);
+            }
+
+        }).error(function () {
+
+        });
+
+   }
+
+   $scope.getVisaDetails = function() {
+
+
+    $http.get(baseurl + 'getVisaDetails/'+$scope.visa.Id).success(function (res) {
+
+            if (res.status == 'false') {
+
+            }
+            else {
+               // console.log(res);
+                $scope.visa = res;
+               // $scope.registration.CountryId = $scope.countrylist[0].CountryId;
+               //console.log($scope.countrylist);
+            }
+
+        }).error(function () {
+
+        });
+
+   }
+
+  $scope.getCountryAttractions = function() {
+
+
+        var url = window.location.href;
+        var parts = url.split("?");
+        if(parts.length>1){
+
+           var urlparams = parts[1];
+           var params = urlparams.split("&");
+           var id = urlparams.split("=")
+           if (id[0]=='country') 
+           {
+
+              $http.get(baseurl + 'getCountryAttractions/'+id[1]).success(function (res) {
+
+                  if (res.status == 'false') {
+
+                  }
+                  else {
+
+                     $http.get(baseurl + 'getCountryDetails/'+id[1]).success(function (data) {
+
+                          if (data.status == 'false') {
+
+                          }
+                          else {
+
+                              $scope.CountryId = id[1];
+                              $scope.CountryTitle = data.CountryTitle;
+                              $scope.attractionlist = res;
+                          }
+
+                      }).error(function () {
+
+                      });
+                  }
+
+              }).error(function () {
+
+              });
+
+           }
+           else
+          {
+              window.location.href = 'index.html';
+          }
+        }
+        else
+        {
+            window.location.href = 'index.html';
+        }
+
+   }
+
+
+  $scope.getSingaporeAttractions = function (req, res) {
+
+     var country = 'Singapore';
+           $http.get(baseurl + 'getCountryId/'+country).success(function (res) {
+
+                    if (res.status == 'false') {
+
+                    }
+                    else {
+
+                      var countryId = res.CountryId;
+                      $http.get(baseurl + 'getCountryAttractions/'+countryId).success(function (res) {
+
+                        if (res.status == 'false') {
+
+                        }
+                        else {
+
+                           $http.get(baseurl + 'getCountryDetails/'+countryId).success(function (data) {
+
+                                if (data.status == 'false') {
+
+                                }
+                                else {
+
+                                    $scope.CountryId = countryId;
+                                    $scope.CountryTitle = data.CountryTitle;
+                                    $scope.attractionlist = res;
+                                }
+
+                            }).error(function () {
+
+                            });
+                        }
+
+                    }).error(function () {
+
+                    });
+
+
+                    }
+
+            });
+
+
   }
 
   $scope.customTour = function (req, res) {
@@ -77,19 +282,72 @@ app.controller('contactcontroller', function ($scope, $location, $http, $window)
     $scope.data.Child = $scope.Child;
     $scope.data.promoCode = $scope.promoCode;*/
 
-
+    console.log($scope.data);
     $http.post(baseurl + 'customTour/', $scope.data).success(function (res) {
       if (res.status == 'false') {
       }
     }).error(function () {
       console.log("error");
     })
-    window.localStorage.removeItem();
+    //window.localStorage.removeItem();
     document.contactform.reset();
+    $("#contactform").hide();
     $("#thankyou").show();
-    $("#thankyou").delay(3200).hide(300);
+   // $("#thankyou").delay(3200).hide(300);
 
-    location.href='/index.html';
+    //location.href='/index.html';
+  }
+
+    $scope.airTicket = function (req, res) {
+
+
+    $scope.data = {};
+
+    $scope.data.fullname = $scope.fullname;
+    $scope.data.phonenumber = $scope.phonenumber;
+    $scope.data.email = $scope.email;
+    $scope.data.destination = $scope.destination;
+    $scope.data.airline = $scope.airline;
+    $scope.data.type = $scope.type;
+
+    $http.post(baseurl + 'airTicket/', $scope.data).success(function (res) {
+      if (res.status == 'false') {
+      }
+    }).error(function () {
+      console.log("error");
+    })
+    document.ticketform.reset();
+    $("#ticketform").hide();
+    $("#thankyou").show();
+   // $("#thankyou").delay(3200).hide(300);
+
+    //location.href='/index.html';
+  }
+
+    $scope.visaEnquiry = function (req, res) {
+
+    //console.log($scope.visa);
+
+
+    $http.post(baseurl + 'visaEnquiry/', $scope.visa).success(function (res) {
+      if (res.status == 'false') {
+
+
+      }
+      else
+      {
+          document.visaform.reset();
+          $("#modalclose").click();
+          $("#thankyou").show();
+          $("#thankyou").delay(3200).hide(300);
+
+        //location.href='/index.html';
+
+      }
+    }).error(function () {
+      console.log("error");
+    })
+   
   }
 
 $scope.initfunc = function () {

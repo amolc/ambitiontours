@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Ambition Tours</title>
+
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/responsive.css" rel="stylesheet">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+
+  <script type="text/javascript" src="assets/js/angular.min.js"></script>
+  <script type="text/javascript" src="assets/js/angular-storage.min.js"></script>
+  <script type="text/javascript" src="assets/js/app.js"></script>
+  <script type="text/javascript" src="assets/js/contactCtrl.js"></script>
+</head>
+<body data-ng-app="80consult" data-ng-controller="contactcontroller" data-ng-init="getAllVisaDetails()">
+<!-- Start Header -->
+        
+        <header id="top-header">
+            <div class="orenge-logo-strip">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="logo-img">
+                                <a href="index.html">
+                                    <img src="assets/img/logo.png" alt="" title="">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="navigation-strip">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="top-nav">
+                                <nav class="navbar navbar-default">
+                                  <div class="container-fluid pd0">
+                                    <!-- Brand and toggle get grouped for better mobile display -->
+                                    <div class="navbar-header">
+                                      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                      </button>
+                                      <!-- <a class="navbar-brand" href="#">Brand</a> -->
+                                    </div>
+
+
+                                    <!-- Collect the nav links, forms, and other content for toggling -->
+                                    <div class="collapse navbar-collapse pd0" id="bs-example-navbar-collapse-1">
+                                      <ul class="nav navbar-nav">
+                                        <!-- <li><a href="index.html" class="hvr-underline-reveal">Destinations</a></li> -->
+                                        <li class="dropdown" ng-init="getCountries()">
+                                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Destinations <span class="caret"></span></a>
+                                          <ul class="dropdown-menu">
+                                            <!-- <li><a href="#">India</a></li>
+                                            <li><a href="#">Malaysia</a></li>
+                                            <li><a href="#">Thailand</a></li>
+                                            <li><a href="#">Combodia</a></li>
+                                            <li><a href="#">Hong Kong</a></li> -->
+                                            <li ng-repeat="c in countrylist">
+                                             <a href="country-attractions.html?country={{c.CountryId}}">{{c.CountryTitle}}</a>
+                                            </li>
+                                          </ul>
+                                        </li>
+                                       <!--  <li><a href="asia.html" class="hvr-underline-reveal">Our Services</a></li> -->
+                                         <li class="dropdown">
+                                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Our Services<span class="caret"></span></a>
+                                          <ul class="dropdown-menu">
+                                            <li><a href="#">Package Tours</a></li>
+                                            <li><a href="custom-tour.html">Custom Tours</a></li>
+                                            <li><a href="air-ticket.html">Air Ticketing</a></li>
+                                            <li><a href="visa-services.html">Visa Services</a></li>
+                                            <li><a href="asia.html">Travel Gift Vouchers</a></li>
+                                            <li><a href="travel-insurance.html">Travel Insurance</a></li>
+                                          </ul>
+                                        </li>
+                                       <!--  <li><a href="europe.html" class="hvr-underline-reveal">Europe</a></li>
+                                        <li><a href="visa.html" class="hvr-underline-reveal">Visa</a></li> -->
+                                        <li><a href="contact-us.html" class="hvr-underline-reveal">Contact Us</a></li>
+                                      </ul>
+                                    </div><!-- /.navbar-collapse -->
+                                  </div><!-- /.container-fluid -->
+                                </nav>
+                            </div>
+                        </div >
+                    </div>
+                </div>
+            </div>
+        </header>
+
+    <!-- End Header -->
+  <div>
+<!--
+  <section id="header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="jumbotron">
+            <h3>Bonne Route Travels</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+-->
+
+
+<!--
+  <section id="context">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 box-context">
+          <div class="context-head text-center">
+            <h3>Book Now</h3>
+          </div>
+
+          <form class="" name="contactform"  ng-controller="contactcontroller" ng-submit="booknow()">
+            <div class="form-group">
+              <label for="name">Name:</label>
+              <input type="name" class="form-control" id="name">
+            </div>
+            <div class="form-group">
+              <label for="phoneno">Phone Number:</label>
+              <input type="phoneno" class="form-control" id="phoneno">
+            </div>
+            <div class="form-group">
+              <label for="email">Email address:</label>
+              <input type="email" class="form-control" id="email">
+            </div>
+            <div class="form-group">
+              <label for="pwd">Travel Date</label>
+              <div class="input-append date">
+              <input type="date" class="span2"><span class="add-on"><i class="icon-th"></i></span>
+            </div>
+            <div class="form-group">
+              <label for="pwd">Special Request</label>
+              <div class="input-append date">
+                <textarea rows="4" cols="50">
+
+                  </textarea>
+            </div>
+            </div>
+
+            <button type="submit" class="btn btn-default">Submit</button>
+            <input type="submit" value="Apply" class="wpcf7-form-control wpcf7-submit"/>
+          </form>
+
+        </div>
+
+        <div class="col-md-6 box-context">
+
+        </div>
+
+
+
+
+
+
+      </div>
+    </div>
+  </section>
+-->
+<div class="clearfix"></div>
+  <section id="book-now">
+    <div class="container">
+      <!-- <div class="row">
+        <div class="col-md-12 text-center">
+           <h2 class="section-title">Visa Services</h2>
+        </div>
+      </div> -->
+      <div class="row">
+        <!-- <div class="col-md-12">
+          <form id="visa-form">
+              <div class="col-sm-5 col-md-5">
+                <div class="form-group">
+                  <label for="">Name :</label>
+                  <input type="text" class="form-control" id="fullname" required>
+                </div>
+                  <div class="form-group">
+                  <label for="">Name :</label>
+                  <input type="text" class="form-control" id="fullname" required>
+                </div>
+                <div class="form-group">  
+                  <label for="">Name :</label>
+                  <input type="text" class="form-control" id="fullname" required>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+              <button class="btn btn-success orenge-btn" type="submit" value="Apply" class="wpcf7-form-control wpcf7-submit">INQUIRY FORM</button>
+          </form>
+        
+
+      </div> -->
+      <div class="col-sm-offset-3 box-max-widht col-sm-5">
+        <div class="visa-form-wrap">
+          <h4>Visa Services</h4>
+          <form id="visaform" name="visaform" ng-init="getVisa()" ng-submit="visaEnquiry()">
+            <div class="cuntry-box">
+              <div class="form-group">
+                    <label for="">Country</label>
+                  <!--   <select class="form-control">
+                      <option>Select</option>
+                      <option>Singapore</option>
+                      <option>Malaysia</option>
+                      <option>Thailand</option>
+                      <option>Vietnam (On arrival)</option>
+                      <option>Vietnam Sticker</option>
+                    </select> -->
+                     <select class="form-control" id="country" name="country" ng-options="visa.Id as visa.Country for visa in visalist" ng-model="visa.Id" ng-change="getVisaDetails()" required="">
+                      </select>
+              </div>
+              <p>Visa Charges<span class="pull-right">${{visa.VisaCharge}}</span></p>
+              <p>Working Days<span class="pull-right">{{visa.WorkingDays}}</span></p>
+              <div class="clearfix"></div>
+                <button class="btn btn-success orenge-btn wpcf7-form-control wpcf7-submit" type="submit" value="Apply" data-toggle="modal" data-target="#visaModal">INQUIRY</button>
+            </div>
+             <!-- form Popum modals Start -->
+                <!-- Modal -->
+                <div class="modal fade visa-popup" id="visaModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" id="modalclose" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Inquiry</h4>
+                      </div>
+                      <div class="modal-body">
+                          <div class="col-sm-6 col-md-6">
+                            <div class="form-group">
+                               <input type="text" class="form-control" ng-model="visa.name" id="name" placeholder="Name" required="">
+                            </div>
+                            <div class="form-group">
+                               <input type="email" class="form-control" ng-model="visa.email" id="exampleInputEmail1" placeholder="Email" required="">
+                            </div>
+                            <div class="form-group">
+                               <input type="text" class="form-control" ng-model="visa.phone" id="exampleInputEmail1" placeholder="Phone Number" required="">
+                            </div>
+                          </div>
+                          <div class="col-sm-6 col-md-6">
+                            <div class="form-group">
+                               <textarea class="form-control" ng-model="visa.message" id="messege" rows="7" placeholder="Messege" required=""></textarea>
+                            </div>
+                          </div>
+                        <div class="col-sm-12 col-md-12 mr-b30">
+                           <button type="submit" class="btn btn-primary orenge-btn">SUBMIT</button>
+                        </div>
+                        <div class="clearfix"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            <!-- form Popum modals End -->
+
+          </form>
+           <div id="thankyou" hidden="">
+            <div class="thankyou">
+                <div class="item">
+                    <span><h4><b><font>Submitted Successfully!</font></b></h4></span>
+                </div>
+            </div>
+        </div>
+        </div>
+      </div>
+    </div>
+      <div class="clearfix"></div>
+  </section>
+
+
+
+
+
+
+
+ <section id="footer">
+            <div class="container">
+                <div class="row">
+                   <!--  <div class="col-sm-4 col-md-4">
+                        <div class="foot-text">
+                            <h4>About us</h4>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                        </div>
+                    </div> -->
+                    <div class="col-sm-4 col-md-4 pd-l80">
+                        <div class="foot-text">
+                              <h4>Contact Us</h4>
+                              <h5>Ambition Tours & Travel Pte. Ltd</h5>
+                              <p>#06-67, 1 Rochor Canal Rd,</p>
+                              <p>Sim Lim Square, </p>
+                              <p>Singapore 188504</p>
+
+                       </div>
+                    </div>
+                    <div class="col-sm-4 col-md-4"></div>
+                    <div class="col-sm-4 col-md-4">
+                        <div class="foot-social-icon">
+                            <div class="foot-text">
+                                <h4>Contact With Us</h4>
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-facebook" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-twitter" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-instagram" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-linkedin" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer  id="bottom-strip">
+            <p>Copyright 2017- Ambition Tours - All Rights Reserved</p>
+        </footer>
+
+
+
+  <script  type="text/javascript"  src="assets/js/jquery.min.js"></script>
+  <script   type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+  <script  type="text/javascript"  src="assets/js/main.js"></script>
+ <script src="assets/js/custom.js"></script>
+
+<!-- <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script> -->
+<script>
+   /* $(function(){
+         // Find any date inputs and override their functionality
+         $('input[type="date"]').datepicker();
+    });*/
+</script>
+
+</div>
+</body>
+
+</html>

@@ -20,17 +20,17 @@
   <script type="text/javascript" src="assets/js/app.js"></script>
   <script type="text/javascript" src="assets/js/contactCtrl.js"></script>
 </head>
-
-<body>
+<body data-ng-app="80consult" data-ng-controller="contactcontroller">
 <!-- Start Header -->
-       <header id="top-header">
+       
+        <header id="top-header">
             <div class="orenge-logo-strip">
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="logo-img">
                                 <a href="index.html">
-                                  <img src="assets/img/logo.jpg" class="img-responsive" alt="" title="">
+                                    <img src="assets/img/logo.png" alt="" title="">
                                 </a>
                             </div>
                         </div>
@@ -55,14 +55,39 @@
                                       <!-- <a class="navbar-brand" href="#">Brand</a> -->
                                     </div>
 
+
                                     <!-- Collect the nav links, forms, and other content for toggling -->
                                     <div class="collapse navbar-collapse pd0" id="bs-example-navbar-collapse-1">
                                       <ul class="nav navbar-nav">
-                                        <li><a href="index.html" class="hvr-underline-reveal">Singapore</a></li>
-                                        <li><a href="asia.html" class="hvr-underline-reveal">Asia</a></li>
-                                        <!-- <li><a href="europe.html" class="hvr-underline-reveal">Europe</a></li>
+                                        <!-- <li><a href="index.html" class="hvr-underline-reveal">Destinations</a></li> -->
+                                        <li class="dropdown" ng-init="getCountries()">
+                                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Destinations <span class="caret"></span></a>
+                                          <ul class="dropdown-menu">
+                                            <!-- <li><a href="#">India</a></li>
+                                            <li><a href="#">Malaysia</a></li>
+                                            <li><a href="#">Thailand</a></li>
+                                            <li><a href="#">Combodia</a></li>
+                                            <li><a href="#">Hong Kong</a></li> -->
+                                            <li ng-repeat="c in countrylist">
+                                             <a href="country-attractions.html?country={{c.CountryId}}">{{c.CountryTitle}}</a>
+                                            </li>
+                                          </ul>
+                                        </li>
+                                       <!--  <li><a href="asia.html" class="hvr-underline-reveal">Our Services</a></li> -->
+                                         <li class="dropdown">
+                                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Our Services<span class="caret"></span></a>
+                                          <ul class="dropdown-menu">
+                                            <li><a href="asia.html">Package Tours</a></li>
+                                            <li><a href="custom-tour.html">Custom Tours</a></li>
+                                            <li><a href="air-ticket.html">Air Ticketing</a></li>
+                                            <li><a href="visa-services.html">Visa Services</a></li>
+                                            <li><a href="#">Travel Gift Vouchers</a></li>
+                                            <li><a href="travel-insurance.html">Travel Insurance</a></li>
+                                          </ul>
+                                        </li>
+                                       <!--  <li><a href="europe.html" class="hvr-underline-reveal">Europe</a></li>
                                         <li><a href="visa.html" class="hvr-underline-reveal">Visa</a></li> -->
-                                        <li><a href="custom-tour.html" class="hvr-underline-reveal">Custom Tour</a></li>
+                                        <li><a href="contact-us.html" class="hvr-underline-reveal">Contact Us</a></li>
                                       </ul>
                                     </div><!-- /.navbar-collapse -->
                                   </div><!-- /.container-fluid -->
@@ -74,7 +99,7 @@
             </div>
         </header>
     <!-- End Header -->
-  <div data-ng-app="80consult" data-ng-controller="contactcontroller" data-ng-init="initfunc()">
+  <div data-ng-init="initfunc()">
 <!--
   <section id="header">
     <div class="container">
@@ -155,7 +180,7 @@
       </div>
       <div class="row">
         <div class="col-md-12">
-          <form name="contactform"  ng-controller="contactcontroller" ng-submit="customTour()">
+          <form name="contactform" id="contactform"  ng-controller="contactcontroller" ng-submit="customTour()">
              <div class="col-md-6"><div class="form-group">
               <label for="">Name :</label>
               <input type="name" class="form-control" ng-model="fullname" name="fullname" id="fullname" required>
@@ -208,7 +233,7 @@
  <section id="footer">
             <div class="container">
                 <div class="row">
-                    <!-- <div class="col-sm-4 col-md-4">
+                   <!--  <div class="col-sm-4 col-md-4">
                         <div class="foot-text">
                             <h4>About us</h4>
                             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
@@ -224,15 +249,39 @@
 
                        </div>
                     </div>
-                    <div class="col-sm-4 col-md-4 pd-l80">
-                        <div class="foot-text">
-                            <!-- <h4>select Hotels</h4>
-                            <ul>
-                                <li><a href="#" class="hvr-radial-out"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                <li><a href="#" class="hvr-radial-out"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                <li><a href="#" class="hvr-radial-out"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                                <li><a href="#" class="hvr-radial-out"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                            </ul> -->
+                    <div class="col-sm-4 col-md-4"></div>
+                    <div class="col-sm-4 col-md-4">
+                        <div class="foot-social-icon">
+                            <div class="foot-text">
+                                <h4>Contact With Us</h4>
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-facebook" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-twitter" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-instagram" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-linkedin" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>

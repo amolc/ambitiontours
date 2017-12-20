@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <script type="text/javascript">
+         if (window.localStorage.getItem('Admin_Id')<=0) 
+                {
+                   window.location.href="index.html";
+                }
+    </script>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Ambition Tours</title>
+
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/css/font-awesome.min.css" rel="stylesheet">
+  <link href="../assets/css/style.css" rel="stylesheet">
+  <link href="../assets/css/responsive.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+
+  <script type="text/javascript" src="../assets/js/angular.min.js"></script>
+  <script type="text/javascript" src="../assets/js/angular-storage.min.js"></script>
+  <script type="text/javascript" src="../assets/js/app.js"></script>
+  <script type="text/javascript" src="../assets/js/adminCtrl.js"></script>
+</head>
+
+<body data-ng-app="80consult" data-ng-controller="admincontroller" ng-init="forminit();">
+<!-- Start Header -->
+       <header id="top-header">
+            <div class="orenge-logo-strip">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="logo-img">
+                                <a href="index.html">
+                                  <img src="../assets/img/logo.png" class="img-responsive" alt="" title="">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="navigation-strip">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="top-nav">
+                                <nav class="navbar navbar-default">
+                                  <div class="container-fluid pd0">
+                                    <!-- Brand and toggle get grouped for better mobile display -->
+                                    <div class="navbar-header">
+                                      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                      </button>
+                                      <!-- <a class="navbar-brand" href="#">Brand</a> -->
+                                    </div>
+
+                                    <!-- Collect the nav links, forms, and other content for toggling -->
+                                    <div class="collapse navbar-collapse pd0" id="bs-example-navbar-collapse-1">
+                                      <ul class="nav navbar-nav">
+                                        <li><a href="dashboard.html" class="hvr-underline-reveal">Dashboard</a></li>
+                                        <li><a href="attractions.html" class="hvr-underline-reveal">Attractions</a></li>
+                                        <li><a href="tours.html" class="hvr-underline-reveal">Tours</a></li>
+                                        <li><a href="countries.html" class="hvr-underline-reveal">Countries</a></li>
+                                        <!-- <li><a href="changepassword.html" class="hvr-underline-reveal">Change Password</a></li>
+                                        <li><a href="javascript:void(0)" class="hvr-underline-reveal" ng-click="adminlogout();">Logout</a></li> -->
+                                      </ul>
+                                       <ul class="nav navbar-nav navbar-right">
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                              <span>Welcome</span> 
+                                              <span class="pro-img">
+                                                <img src="../assets/img/user-icon.png" alt="" title="">
+                                              </span>
+                                              <span>Sadia Rahman</span>
+                                              <span class="caret"></span></a>
+                                            <ul class="dropdown-menu">
+                                              <li><a href="changepassword.html" class="hvr-underline-reveal">Change Password</a></li>
+                                              <li><a href="javascript:void(0)" class="hvr-underline-reveal" ng-click="adminlogout();">Logout</a></li>
+                                            </ul>
+                                          </li>
+                                      </ul>
+                                    </div><!-- /.navbar-collapse -->
+                                  </div><!-- /.container-fluid -->
+                                </nav>
+                            </div>
+                        </div >
+                    </div>
+                </div>
+            </div>
+        </header>
+        <section id="andttr-form-wrap">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-12 col-md-12">
+               <form id="addtour" name="addtour" ng-submit="addTour()" ng-init="getCountries()">
+                  <div class="attractions-form profile signin-form">
+                  <h2 class="text-center">Asia Tours</h2>
+                  <input type="hidden" name="type" ng-model="Tour.TourType" ng-init = "Tour.TourType='Tour'">
+                  <div class="col-sm-8 col-md-8 pd0">
+                   <!--  <div class="col-sm-6 col-md-6">
+                    <select ng-model="Tour.TourType" disabled="">
+                      <option value="Attraction">Attraction </option>
+                      <option value="Tour">Tour</option>
+                    </select>
+                  </div> -->
+                  <div class="col-sm-6 col-md-6">
+                      <select id="country" name="country" ng-options="cou.CountryId as cou.CountryTitle for cou in countrylist" ng-model="Tour.CountryId" required="">
+                      </select>
+                  </div>
+                  <div class="col-sm-6 col-md-6">
+                    <input type="text" name="duration" placeholder="Location" required="" ng-model="Tour.TourLocation" id="address">
+                  </div>
+                  <div class="col-sm-12 col-md-12">
+                    <input type="text" name="title" placeholder="Title" required="" ng-model="Tour.TourTitle">
+                  </div>
+                  <div class="col-sm-6 col-md-6">
+                    <input type="text" name="price" placeholder="Price" pattern="[0-9]{1,5}[.]{0,1}[0-9]{0,2}" oninvalid="setCustomValidity('Enter Valid Price')" onchange="try{setCustomValidity('')}catch(e){}" required="" ng-model="Tour.TourCost">
+                  </div>
+                  <div class="col-sm-6 col-md-6">
+                    <input type="text" name="duration" placeholder="Duration" required="" ng-model="Tour.TourDuration">
+                  </div>
+                  <div class="col-sm-12 col-md-12">
+                   <textarea rows="9" placeholder="Description" required="" ng-model="Tour.TourDescription"></textarea>
+                  </div>
+                  
+                  </div>
+                  <div class="col-sm-4 col-md-4">
+                   <div class="col-sm-12 col-md-12">
+                     <input id="file_browse1" class="form-control" type='file' name="productimage" onchange="angular.element(this).scope().updateattachment('file_browse1');   $('#imagepreview').children().remove();" accept="image/*">
+                      <input type="hidden" name="imagename" ng-model="Tour.imagename">
+                  </div>
+                   <div class="col-sm-12 col-md-12 ">
+                     <div id="imagepreview">
+                       
+                     </div>
+                   </div>
+                    
+                  </div>
+                 
+                  <div class="col-sm-12 col-md-12">
+                      <label id="alertmessage" hidden>{{alertmessage}}</label>
+                  </div>
+                  <div class="col-sm-6 col-md-6 ">
+                    <input type="submit" value="Save" class="small-btn brawon-btn pull-right">
+                  </div>
+                  
+                  <div class="clearfix"></div>
+                </div>
+               </form>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+
+ 
+ 
+
+
+
+
+
+
+ <section id="footer">
+            <div class="container">
+                <div class="row">
+                    <!-- <div class="col-sm-4 col-md-4">
+                        <div class="foot-text">
+                            <h4>About us</h4>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                        </div>
+                    </div> -->
+                    <div class="col-sm-4 col-md-4 pd-l80">
+                        <div class="foot-text">
+                              <h4>Contact Us</h4>
+                              <h5>Ambition Tours & Travel Pte. Ltd</h5>
+                              <p>#06-67, 1 Rochor Canal Rd,</p>
+                              <p>Sim Lim Square, </p>
+                              <p>Singapore 188504</p>
+
+                       </div>
+                    </div>
+                    <div class="col-sm-4 col-md-4 pd-l80">
+                        <div class="foot-text">
+                            <!-- <h4>select Hotels</h4>
+                            <ul>
+                                <li><a href="#" class="hvr-radial-out"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                <li><a href="#" class="hvr-radial-out"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                <li><a href="#" class="hvr-radial-out"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                                <li><a href="#" class="hvr-radial-out"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                            </ul> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer  id="bottom-strip">
+            <p>Copyright 2017- Ambition Tours - All Rights Reserved</p>
+        </footer>
+  <script   type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQD-LT4-VzlsdNpf33yNDeT38EaF3Kz-g&libraries=places"></script>
+<script>
+ 
+// google.maps.event.addDomListener(window, 'load', function () 
+// {
+
+//  var options = { types: ['(cities)']};
+//             var places = new google.maps.places.Autocomplete(document.getElementById('address'),options);
+//             google.maps.event.addListener(places, 'place_changed', function () { 
+
+//               var geocoder = new google.maps.Geocoder();
+//             var address = $("#address").val();
+
+//             geocoder.geocode( { 'address': address}, function(results, status) {
+ 
+//             });             
+
+//       });
+                
+// });
+</script>
+
+</div>
+</body>
+
+</html>
