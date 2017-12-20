@@ -523,7 +523,8 @@ section#footer {
 }
 .price-right-block a{
     color: #ffffff; 
-    background: #ff6624;
+    /*background: #ff6624;*/
+    background-color: #134da2;
     padding: 5px 14px 7px;
     display: inline-block;
     margin-top: 13px;
