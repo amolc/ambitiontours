@@ -77,6 +77,12 @@ app.post('/api/addVisa', admin.addVisa);
 app.post('/api/updateVisa',admin.updateVisa);
 app.get('/api/deleteVisa/:id',admin.deleteVisa);
 
+app.get('/api/getAllGiftVouchers', admin.getAllGiftVouchers);
+app.get('/api/getVoucherDetails/:id',admin.getVoucherDetails);
+app.post('/api/addVoucher', admin.addVoucher);
+app.post('/api/updateVoucher',admin.updateVoucher);
+app.get('/api/deleteVoucher/:id',admin.deleteVoucher);
+
 app.get('/api/getAdminDetails/:id', admin.getAdminDetails);
 
 app.listen(6008, function () {

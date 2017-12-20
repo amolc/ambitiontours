@@ -851,7 +851,113 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
 
               }
      }
+    $scope.getAllGiftVouchers = function() {
 
+    $http.get(baseurl + 'getAllGiftVouchers').success(function (res) {
+
+            if (res.status == 'false') {
+
+            }
+            else {
+               // console.log(res);
+                $scope.voucherlist = res;
+               // $scope.registration.CountryId = $scope.countrylist[0].CountryId;
+               //console.log($scope.countrylist);
+            }
+
+        }).error(function () {
+
+        });
+
+   }
+
+     $scope.getVoucherDetails = function() {
+
+       var url = window.location.href;
+       var parts = url.split("?");
+      if(parts.length>1){
+           $scope.voucher = {};
+           var urlparams = parts[1];
+           var params = urlparams.split("&");
+           var id = urlparams.split("=");
+           $scope.voucher.Id = id[1];
+          // console.log( $scope.visa.Id);
+      }
+      $http.get(baseurl + 'getVoucherDetails/'+$scope.voucher.Id).success(function (res) {
+
+              if (res.status == 'false') {
+
+              }
+              else {
+                 // console.log(res);
+                  $scope.voucher = res;
+                 // $scope.registration.CountryId = $scope.countrylist[0].CountryId;
+                 //console.log($scope.countrylist);
+              }
+
+          }).error(function () {
+
+          });
+
+     }
+
+      $scope.addVoucher = function() {   
+
+
+
+            $http.post(baseurl + 'addVoucher/',$scope.voucher).success(function(res) {
+                  
+                //console.log(res);
+                if (res.status == true) 
+                {
+                  
+                    window.location.href = 'gift-vouchers.html';
+                }
+
+                }).error(function() {
+                    
+                });
+     }
+
+         $scope.updateVoucher = function() {   
+
+
+
+            $http.post(baseurl + 'updateVoucher/',$scope.voucher).success(function(res) {
+                  
+                //console.log(res);
+                if (res.status == true) 
+                {
+                  
+                    window.location.href = 'gift-vouchers.html';
+                }
+
+                }).error(function() {
+                    
+                });
+     }
+
+           $scope.deleteVoucher = function(id) {   
+
+
+              var r = confirm("Are You Sure You want to Delete It?");
+              if (r == true) 
+              { 
+            $http.get(baseurl + 'deleteVoucher/'+id).success(function(res) {
+                  
+                //console.log(res);
+                if (res.status == true) 
+                {
+                  
+                    window.location.href = 'gift-vouchers.html';
+                }
+
+                }).error(function() {
+                    
+                });
+
+              }
+     }
 
 
 

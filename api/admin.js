@@ -16,6 +16,7 @@ var userCRUD = CRUD(db, 'tbl_Users');
 var tourCRUD = CRUD(db, 'tbl_Tours');
 var countriesCRUD = CRUD(db, 'tbl_Countries');
 var visaCRUD = CRUD(db, 'tbl_VisaDetails');
+var voucherCRUD = CRUD(db, 'tbl_GiftVoucher');
 
 var nodemailer = require('nodemailer');
 var mg = require('nodemailer-mailgun-transport');
@@ -258,6 +259,26 @@ exports.getVisaDetails = function(req, res){
 
   var id = req.params.id;
   var sql = "SELECT `Id`,`Country`,`VisaCharge`,`WorkingDays` FROM `tbl_VisaDetails` WHERE Id = '"+id+"'";    
+  db.query(sql, function (err, data) {
+        res.json(data[0]);
+    });
+    
+};
+
+
+exports.getAllGiftVouchers = function(req, res){
+
+  var sql = "SELECT `Id`,`Code`,`Price` FROM `tbl_GiftVoucher` WHERE `IsDeleted`='0'";    
+  db.query(sql, function (err, data) {
+        res.json(data);
+    });
+    
+};
+
+exports.getVoucherDetails = function(req, res){
+
+  var id = req.params.id;
+  var sql = "SELECT `Id`,`Code`,`Price` FROM `tbl_GiftVoucher` WHERE Id = '"+id+"'";    
   db.query(sql, function (err, data) {
         res.json(data[0]);
     });
@@ -731,7 +752,116 @@ exports.deleteVisa = function (req, res) {
                             });
 };
 
+exports.addVoucher= function (req, res) {
 
+    dateToday = now.format("DD/MM/YYYY hh:mm a");
+        
+    var createObj = {
+                                "Code" : req.body.Code,
+                                "Price": req.body.Price,
+                                "CreatedOn": dateToday || "",        
+                            };
+                            // console.log("after", createObj);
+
+                            voucherCRUD.create(createObj, function (err, data) {
+
+                                if (!err) 
+                                {
+                                    var resdata = {
+                                        status: true,
+                                        value:data.insertId,
+                                        message: 'Details successfully added',
+                                        date : dateToday
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                                else
+                                {
+                                    var resdata = {
+                                        status: false,
+                                        error: err,
+                                        message: 'Error: Details not successfully added. '
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                            });
+};
+
+exports.updateVoucher = function (req, res) {
+
+    dateToday = now.format("DD/MM/YYYY hh:mm a");
+    var updateObj = {
+                                "Code" : req.body.Code,
+                                "Price": req.body.Price,
+                                "ModifiedOn": dateToday || "",        
+                            };
+                            // console.log("after", createObj);
+
+                            voucherCRUD.update({Id: req.body.Id}, updateObj,function (err, data) {
+
+                                if (!err) 
+                                {
+                                    var resdata = {
+                                        status: true,
+                                        value:data.insertId,
+                                        message: 'Details successfully updated',
+                                        date : dateToday
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                                else
+                                {
+                                    var resdata = {
+                                        status: false,
+                                        error: err,
+                                        message: 'Error: Details not successfully updated. '
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                            });
+};
+
+
+
+exports.deleteVoucher = function (req, res) {
+
+    dateToday = now.format("DD/MM/YYYY hh:mm a");
+    var id = req.params.id;
+    var updateObj = {
+                         "IsDeleted" :  '1',
+      
+                    };
+                            // console.log("after", createObj);
+
+                            voucherCRUD.update({Id: id}, updateObj,function (err, data) {
+
+                                if (!err) 
+                                {
+                                    var resdata = {
+                                        status: true,
+                                        value:data.insertId,
+                                        message: 'Details successfully deleted',
+                                        date : dateToday
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                                else
+                                {
+                                    var resdata = {
+                                        status: false,
+                                        error: err,
+                                        message: 'Error: Details not successfully deleted. '
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                            });
+};
 ///____________________END______________________
 
 function send_mail(usermail, subject, mailbody) {
