@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Ambition Tours</title>
+
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+        <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+        <link href="assets/css/style.css" rel="stylesheet">
+        <link href="assets/css/responsive.css" rel="stylesheet">
+        
+        <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+
+
+  <script type="text/javascript" src="assets/js/angular.min.js"></script>
+  <script type="text/javascript" src="assets/js/angular-storage.min.js"></script>
+  <script type="text/javascript" src="assets/js/app.js"></script>
+  <script type="text/javascript" src="assets/js/contactCtrl.js"></script>
+
+        <link id="bsdp-css" href="bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+    </head>
+    <body data-ng-app="80consult" data-ng-controller="contactcontroller" ng-init="getCountryTours()">
+        <!-- Start Header -->
+
+
+     
+       
+        <header id="top-header">
+            <div class="orenge-logo-strip">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="logo-img">
+                                <a href="index.html">
+                                    <img src="assets/img/logo.png" alt="" title="">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="navigation-strip">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="top-nav">
+                                <nav class="navbar navbar-default">
+                                  <div class="container-fluid pd0">
+                                    <!-- Brand and toggle get grouped for better mobile display -->
+                                    <div class="navbar-header">
+                                      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                      </button>
+                                      <!-- <a class="navbar-brand" href="#">Brand</a> -->
+                                    </div>
+
+
+                                    <!-- Collect the nav links, forms, and other content for toggling -->
+                                    <div class="collapse navbar-collapse pd0" id="bs-example-navbar-collapse-1">
+                                      <ul class="nav navbar-nav">
+                                        <!-- <li><a href="index.html" class="hvr-underline-reveal">Destinations</a></li> -->
+                                        <li class="dropdown" ng-init="getCountries()">
+                                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Destinations <span class="caret"></span></a>
+                                          <ul class="dropdown-menu">
+                                            <!-- <li><a href="#">India</a></li>
+                                            <li><a href="#">Malaysia</a></li>
+                                            <li><a href="#">Thailand</a></li>
+                                            <li><a href="#">Combodia</a></li>
+                                            <li><a href="#">Hong Kong</a></li> -->
+                                            <li ng-repeat="c in countrylist">
+                                             <a href="country-attractions.html?country={{c.CountryId}}">{{c.CountryTitle}}</a>
+                                            </li>
+                                          </ul>
+                                        </li>
+                                       <!--  <li><a href="asia.html" class="hvr-underline-reveal">Our Services</a></li> -->
+                                         <li class="dropdown">
+                                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Our Services<span class="caret"></span></a>
+                                          <ul class="dropdown-menu">
+                                            <li><a href="asia.html">Package Tours</a></li>
+                                            <li><a href="custom-tour.html">Custom Tours</a></li>
+                                            <li><a href="air-ticket.html">Air Ticketing</a></li>
+                                            <li><a href="visa-services.html">Visa Services</a></li>
+                                            <li><a href="#">Travel Gift Vouchers</a></li>
+                                            <li><a href="travel-insurance.html">Travel Insurance</a></li>
+                                          </ul>
+                                        </li>
+                                       <!--  <li><a href="europe.html" class="hvr-underline-reveal">Europe</a></li>
+                                        <li><a href="visa.html" class="hvr-underline-reveal">Visa</a></li> -->
+                                        <li><a href="contact-us.html" class="hvr-underline-reveal">Contact Us</a></li>
+                                      </ul>
+                                    </div><!-- /.navbar-collapse -->
+                                  </div><!-- /.container-fluid -->
+                                </nav>
+                            </div>
+                        </div >
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section id="pakeges-wrap">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h2 class="section-title">
+                            {{CountryTitle}} Tours
+                        </h2>
+                    </div>
+                    <div class="col-sm-6" ng-repeat="a in tourlist">
+                        <div class="packges-block">
+                            <div class="col-sm-5 pd0">
+                                <div class="place-img">
+                                    <img src="../uploads/attractions/{{a.TourImage}}" class="img-responsive" alt="" title="">
+                                </div>
+                            </div>
+                            <div class="col-sm-7">
+                                <div class="packeg-details-text">
+                                    <h5><a href="#">{{a.TourTitle}}</a></h5>
+                                    <p>{{a.TourDescription}}</p>
+                                    <div class="right-blck">
+                                        <p class="gray-small-text"><span>Location: {{a.TourLocation}} <br>
+                                            Duration: {{a.TourDuration}}</span>
+                                        </p>
+                                        <div class="star-rating-wrap">
+                                             <!-- <div class="row lead"></div> -->
+                                            <div id="stars-existing" class="starrr" data-rating='3'></div>
+                                        </div>
+                                        <!-- <div class="social-links">
+                                            <ul>
+                                                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                            </ul>
+                                        </div> -->
+                                    </div>
+                                    <div class="price-right-block">
+                                        <span>From SGD</span>
+                                        <h4>${{a.TourCost}}</h4>
+                                        <a href="#" ng-click="enquiryButton('Universal Studios Singapore One-Day Pass','76');" class="pakege-btn">Book Now</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </section>
+
+
+    <!-- End Header -->
+
+<!--
+        <section id="header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="jumbotron">
+                          <h3>Ambition Tours</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+-->
+
+        <div class="clearfix"></div>
+        <!-- <section id="context" class="tour-Package">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                        <h2 class="section-title">
+                            Travels Package
+                        </h2>
+                    </div>
+                    <div class="col-sm-12 package-masonry">
+
+<div class="container">
+<div class="row">
+    <div class="item">
+      <div class="well"> 
+        <div class="box-context">
+                        <div class="Package-box">
+                        <div class="context-img text-center">
+                            <img src="assets/img/img-1.png" alt="img">
+                        </div>
+                        <div class="content-info">
+                            <h3>3D2N Wildlife From SGD 245</h3>
+                            <p>Package Includes :</p>
+                            <ul>
+                                <li><span>Return Airport Transfers</span></li>
+                                <li><span>2 Nights Accommodation</span></li>
+                                <li><span>Daily Breakfast</span></li>
+                                <li><span>Half-day Guided City Tour</span></li>
+                                <li><span>Sentosa Tour <small>(Cable Car, 4D Show & Wings of Time)</small></span></li>
+                                <li><span>Night Safari</span></li>
+                            </ul>
+
+                        
+                          <a href="enquiry.html?pck=3D2N WLIDLIFE From SGD 245" class="btn btn-info orenge-btn" role="button">Book Now</a>
+                        </div>
+                            </div>
+                    </div>
+      </div>
+    </div>
+     <div class="item">
+        <div class="well"> 
+            <div class="box-context">
+                        <div class="Package-box">
+                        <div class="context-img text-center">
+                            <img src="assets/img/img-2.png" alt="img">
+                        </div>
+                        <div class="content-info">
+                            <h3>4D3N Package From SGD 350</h3>
+                            <p>Package Includes :</p>
+                            <ul>
+                                <li><span>Return Airport Transfers</span></li>
+                                <li><span>3 Nights Accommodation</span></li>
+                                <li><span>Daily Breakfast</span></li>
+                                <li><span>Gardens by The Bay </span></li>
+                                <li><span>Half-day Guided City Tour</span></li>
+                                <li><span>Sentosa Tour <small>(Cable Car, 4D Show & Wings of Time)</small></span></li>
+                                <li><span>Universal Studios </span></li>
+                            </ul>
+                        
+                        <a href="enquiry.html?pck=4D3 Package From SGD 350" class="btn btn-info orenge-btn" role="button">Book Now</a>
+                         </div>
+                            </div>
+                    </div>
+        </div>
+    </div>
+    <div class="item">
+        <div class="well"> 
+         <div class="box-context">
+                         <div class="Package-box">
+                        <div class="context-img text-center">
+                            <img src="assets/img/img-3.png" alt="img">
+                        </div>
+                        <div class="content-info">
+                             <h3>3D2N Wildlife From SGD 245</h3>
+                            <p>Package Includes :</p>
+                            <ul>
+                                <li><span>Return Airport Transfers</span></li>
+                                <li><span>4 Nights Accommodation</span></li>
+                                <li><span>Daily Breakfast</span></li>
+                                <li><span>Full Day River Safari, Zoo & Night Safari Tour</span></li>
+                                <li><span>Half-day Guided City Tour</span></li>
+                                <li><span>Sentosa Tour <small>(Cable Car, 4D Show & Wings of Time)</small></span></li>
+                                <li><span>Universal Studios</span></li>
+                            </ul>
+                       
+                        <a href="enquiry.html?pck=3D2N WLIDLIFE From SGD 245" class="btn btn-info orenge-btn" role="button">Book Now</a>
+                         </div>
+                              </div>
+                    </div>
+        </div>
+    </div>
+    <div class="item">
+        <div class="well"> 
+                     <div class="box-context">
+                         <div class="Package-box">
+                            <div class="context-img text-center">
+                                <img src="assets/img/img-6.png" alt="img">
+                            </div>
+                            <div class="content-info">
+                                <h3>5D4N Package From SGD 495</h3>
+                                <p>Package Includes :</p>
+                                <ul>
+                                    <li><span>Return Airport Transfers</span></li>
+                                    <li><span>3 Nights Accommodation</span></li>
+                                    <li><span>Daily Breakfast</span></li>
+                                    <li><span>Full Day River Safari, Zoo & Night Sahari Tour</span></li>
+                                    <li><span>Half-day Guided City Tour</span></li>
+                                    <li><span>Sentosa Tour <small>(Cable Car, 4D Show & Wings of Time)</small></span></li>
+                                    <li><span>Universal Studios</span></li>
+                                    <li><span>Marina Bay Sands & Gardens By The Bay Tour</span></li>
+                                </ul>
+                            
+                            <a href="enquiry.html?pck=5D4N Package From SGD 495" class="btn btn-info orenge-btn" role="button">Book Now</a>
+                         </div>
+                             </div>
+                         
+                    </div>
+        </div>
+    </div>
+    <div class="item">
+        <div class="well">
+         <div class="box-context">
+                        <div class="Package-box">
+                        <div class="context-img text-center">
+                            <img src="assets/img/img-4.png" alt="img">
+                        </div>
+                        <div class="content-info">
+                             <h3>3D2N RWS From SGD 260</h3>
+                            <p>Package Includes :</p>
+                            <ul>
+                                <li><span>Return Airport Transfers</span></li>
+                                <li><span><span>2 Nights Accommodation</span></li>
+                                <li><span>Daily Breakfast</span></li>
+                                <li><span>Night Safari</span></li>
+                                <li><span>Universal Studios</span></li>
+                            </ul>
+                        
+                        <a href="enquiry.html?pck=3D2N RWS From SGD 260" class="btn btn-info orenge-btn" role="button">Book Now</a>
+                         </div>
+                            </div>
+                    </div>
+        </div>
+    </div>
+    <div class="item">
+        <div class="well"> 
+           <div class="box-context">
+                         <div class="Package-box">
+                        <div class="context-img text-center">
+                            <img src="assets/img/img-5.png" alt="img">
+                        </div>
+                        <div class="content-info">
+                            <h3>4D3N Package From SGD 365 </h3>
+                            <p>Package Includes :</p>
+                            <ul>
+                                <li><span>Return Airport Transfers</span></li>
+                                <li><span>3 Nights Accommodation</span></li>
+                                <li><span>Daily Breakfast</span></li>
+                                <li><span>Night Safari</span></li>
+                                <li><span>Half-day Guided City Tour</span></li>
+                                <li><span>Sentosa Tour <small>(Cable Car, 4D Show & Wings of Time)</small></span></li>
+                                <li><span>Universal Studios</span></li>
+                            </ul>
+                       
+                        <a href="enquiry.html?pck=4D3N Package From SGD 365" class="btn btn-info orenge-btn" role="button">Book Now</a>
+                         </div>
+                              </div>
+                    </div>
+        </div>
+    </div>
+</div>
+</div>
+
+                    </div>
+                    <!-- <div class="col-sm-12 col-md-12">
+                        <h2 class="section-title">
+                            Travels Package
+                        </h2>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </section> -->
+
+
+        <section id="footer">
+            <div class="container">
+                <div class="row">
+                   <!--  <div class="col-sm-4 col-md-4">
+                        <div class="foot-text">
+                            <h4>About us</h4>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                        </div>
+                    </div> -->
+                    <div class="col-sm-4 col-md-4 pd-l80">
+                        <div class="foot-text">
+                              <h4>Contact Us</h4>
+                              <h5>Ambition Tours & Travel Pte. Ltd</h5>
+                              <p>#06-67, 1 Rochor Canal Rd,</p>
+                              <p>Sim Lim Square, </p>
+                              <p>Singapore 188504</p>
+
+                       </div>
+                    </div>
+                    <div class="col-sm-4 col-md-4"></div>
+                    <div class="col-sm-4 col-md-4">
+                        <div class="foot-social-icon">
+                            <div class="foot-text">
+                                <h4>Contact With Us</h4>
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-facebook" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-twitter" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-instagram" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-linkedin" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer  id="bottom-strip">
+            <p>Copyright 2017- Ambition Tours - All Rights Reserved.</p>
+        </footer>
+
+
+
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/main.js"></script>
+        <script src="assets/js/star-rating.js"></script>
+        <script src="assets/js/custom.js"></script>
+    </body>
+</html>
