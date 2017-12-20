@@ -1,7 +1,9 @@
 /*google font*/
 @import url('https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i');
 /*font-family: 'Lato', sans-serif;*/
-
+body{
+  font-family: 'Lato', sans-serif;
+}
 
 /* Base CSS */
 .alignleft {
@@ -52,7 +54,12 @@ section#header {
     padding-top: 30px;
     padding-bottom: 50px;
 }
-
+.bg-creem{
+  background-color: #f1eada;
+}
+.color-white{
+  color: #ffffff;
+}
 .brawon-btn{
   outline: none;
   padding: 0.8em 0;
@@ -76,7 +83,6 @@ section#header {
     padding: 0px;
     margin: 0 0px 11px;
 }
-
 .content-info ul {
     padding: 0px;
     margin: 0;
@@ -393,12 +399,12 @@ section#footer {
 .orenge-btn{
     background: #fe6828;
     border: 0px;
-    display: block;
-    margin: 0 auto;
+    display: inline-block;
     margin-top: 0px;
     max-width: 130px;
     padding: 10px 15px;
     margin-top: 23px;
+    font-family: 'Lato', sans-serif;
 }
 .orenge-btn:hover{
     background: #656057;
@@ -985,6 +991,83 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6658c8', end
   background-color: #ffffff;
   color: #000000;
 }
+.voucher-box{
+  background-color: #ffffff;
+  padding: 10px 10px 20px;
+  box-shadow: 0 1px 3px 0 #b9b7b7;
+  margin-bottom: 30px;
+}
+.voucher-img{
+  width: 100%;
+  height: 120px;
+  overflow: hidden;
+}
+.voucher-info h5{
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  width : 100%;
+  overflow:hidden;
+  display:inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin: 0px;
+}
+.voucher-info p{
+  margin: 0px;
+}
+.voucher-info p em{
+  font-size: 14px;
+  font-weight: 600;
+  font-family: 'Lato', sans-serif;
+  color: #b1b1b1;
+  font-style: normal;
+  display: block;
+  margin: 9px auto 20px;
+  text-align: center;
+}
+.voucher-info .orenge-btn{
+  padding: 5px 10px;
+  margin-top: 0px;
+}
+.voucher-info .pull-right{
+  font-size: 27px;
+  font-weight: 600;
+  line-height: 26px;
+}
+#vouchers-modal .modal-header{
+  background-color: #f76829;
+  color: #ffffff;
+}
+.foot-totle-amt h5{
+  line-height: 30px;
+  font-size: 22px;
+  text-align: left;
+  color: #f76829;
+  line-height: 36px;
+  margin: 0px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -997,3 +1080,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6658c8', end
 .mr-t30{
   margin-top: 30px;
 } 
+.mr0{
+  margin: 0px;
+}
