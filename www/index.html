@@ -158,50 +158,18 @@
                             <h3>Destinations</h3>
                         </div>
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-sm-3" ng-repeat="c in countrylist | limitTo:4">
                         <figure class="hero-grid effect-move">
-                                <img class="hero-grid-image effect-image" src="../uploads/countries/india-tour.jpg" alt="">
+                                <img class="hero-grid-image effect-image" src="../uploads/countries/{{c.CountryImage}}" alt="" />
                                 <figcaption class="hero-grid-content">
                                   <span class="hero-tag effect-target">Ambition Tours</span>
-                                  <h2 class="hero-grid-title effect-target ng-binding">India</h2>
+                                  <h2 class="hero-grid-title effect-target">{{c.CountryTitle}}</h2>
                                   <!-- <p class="hero-grid-text effect-target effect-text">Falls mainly on the plain.</p> -->
-                                  <a class="hero-grid-link" href="country-tours.html?country=2">View more</a>
+                                  <a class="hero-grid-link" href="country-tours.html?country={{c.CountryId}}">View more</a>
                                 </figcaption>
                             </figure>
                     </div> 
-                    <div class="col-sm-3">
-                        <figure class="hero-grid effect-move">
-                                <img class="hero-grid-image effect-image" src="../uploads/countries/malayisa.jpg" alt="">
-                                <figcaption class="hero-grid-content">
-                                  <span class="hero-tag effect-target">Ambition Tours</span>
-                                  <h2 class="hero-grid-title effect-target ng-binding">Malaysia</h2>
-                                  <!-- <p class="hero-grid-text effect-target effect-text">Falls mainly on the plain.</p> -->
-                                  <a class="hero-grid-link" href="country-tours.html?country=3">View more</a>
-                                </figcaption>
-                            </figure>
-                    </div>
-                    <div class="col-sm-3">
-                        <figure class="hero-grid effect-move">
-                                <img class="hero-grid-image effect-image" src="../uploads/countries/thiland.jpg" alt="">
-                                <figcaption class="hero-grid-content">
-                                  <span class="hero-tag effect-target">Ambition Tours</span>
-                                  <h2 class="hero-grid-title effect-target ng-binding">Thailand</h2>
-                                  <!-- <p class="hero-grid-text effect-target effect-text">Falls mainly on the plain.</p> -->
-                                  <a class="hero-grid-link" href="country-tours.html?country=4">View more</a>
-                                </figcaption>
-                            </figure>  
-                    </div>
-                    <div class="col-sm-3">
-                        <figure class="hero-grid effect-move">
-                                <img class="hero-grid-image effect-image" src="../uploads/countries/combodia.jpg" alt="">
-                                <figcaption class="hero-grid-content">
-                                  <span class="hero-tag effect-target">Ambition Tours</span>
-                                  <h2 class="hero-grid-title effect-target ng-binding">Cambodia</h2>
-                                  <!-- <p class="hero-grid-text effect-target effect-text">Falls mainly on the plain.</p> -->
-                                  <a class="hero-grid-link" href="country-tours.html?country=5">View more</a>
-                                </figcaption>
-                            </figure>  
-                    </div>
+
                     <div class="col-sm-12 col-md-12 text-center">
                         <a href="asia.html" class="orenge-btn color-white">View More</a>
                     </div>
