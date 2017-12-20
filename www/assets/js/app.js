@@ -11,11 +11,11 @@ else if (document.location.hostname == "www.ambitiontours.80startups.com")
 
 }else if (document.location.hostname == "www.ambitiontours.com")
 {
-  var baseurl = "https://www.ambitiontours.com/api/";
+  var baseurl = "https://www.ambitiontours.com/api/"; 
 
 }else if (document.location.hostname == "ambitiontours.com")
 {
-  var baseurl = "https://ambitiontours.com/api/";
+  var baseurl = "https://ambitiontours.com/api/"; 
 
 }else{
 
