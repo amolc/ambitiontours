@@ -402,7 +402,8 @@ section#footer {
     background: #656057;
 }
 .orenge-logo-strip{
-    background-color: #ffffff;
+    /*background-color: #ffffff;*/
+    background-color: #f1eada;
     padding: 20px 0px;
 }
 .logo-img img{
