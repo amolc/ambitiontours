@@ -976,8 +976,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6658c8', end
   background-color: #ffffff;
   color: #000000;
 }
-
-
+iframe #mastHead{
+  display: none !important;
+}
 
 
 
