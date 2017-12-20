@@ -595,7 +595,7 @@ section#footer {
 }
  
 
-#country-box .singme {
+#country-box .singme {  
   background: red;
   height: auto;
   display: block;
@@ -607,9 +607,10 @@ section#footer {
   background: rgba(0, 0, 0, 0.8);
   cursor: pointer;
   width: 100%;
-  height: auto;
+  height: 313px;
   display: inline-block;
   margin-bottom: 30px;
+  overflow: hidden;
 }
 #country-box .hero-grid-image {
   position: relative;
@@ -1129,8 +1130,16 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
   font-weight: 600;
   text-transform: uppercase;
 }
-
-
+.policy-content p{
+  text-align: justify;
+}
+.policy-content h5{
+  font-size: 21px;
+  margin: 23px 0 8px;
+}
+.foot-text a{
+  color: #f76829;
+}
  
 .mr-t20{
   margin-top: 20px;
@@ -1143,4 +1152,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 }
 .mr-b50{
   margin-bottom: 50px;
+}
+.pd-l70{
+  padding-left: 70px;
+}
+.pd-l80{
+  padding-left: 80px;
 }

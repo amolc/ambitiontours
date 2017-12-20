@@ -1,28 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Ambition Tours</title>
 
-  <title>Ambition Tours</title>
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+        <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+        <link href="assets/css/style.css" rel="stylesheet">
+        <link href="assets/css/responsive.css" rel="stylesheet">
+        
+        <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 
-  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/css/font-awesome.min.css" rel="stylesheet">
-  <link href="assets/css/style.css" rel="stylesheet">
-  <link href="assets/css/responsive.css" rel="stylesheet">
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-  <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 
   <script type="text/javascript" src="assets/js/angular.min.js"></script>
   <script type="text/javascript" src="assets/js/angular-storage.min.js"></script>
   <script type="text/javascript" src="assets/js/app.js"></script>
   <script type="text/javascript" src="assets/js/contactCtrl.js"></script>
-</head>
-<body data-ng-app="80consult" data-ng-controller="contactcontroller">
-<!-- Start Header -->
-       
+
+        <link id="bsdp-css" href="bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+    </head>
+    <body data-ng-app="80consult" data-ng-controller="contactcontroller">
+        <!-- Start Header -->
+
+
+
+     
         <header id="top-header">
             <div class="orenge-logo-strip">
                 <div class="container">
@@ -98,141 +103,36 @@
                 </div>
             </div>
         </header>
-    <!-- End Header -->
-  <div data-ng-init="initfunc()">
-<!--
-  <section id="header">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="jumbotron">
-            <h3>Bonne Route Travels</h3>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
--->
-
-
-<!--
-  <section id="context">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 box-context">
-          <div class="context-head text-center">
-            <h3>Book Now</h3>
-          </div>
-
-          <form class="" name="contactform"  ng-controller="contactcontroller" ng-submit="booknow()">
-            <div class="form-group">
-              <label for="name">Name:</label>
-              <input type="name" class="form-control" id="name">
-            </div>
-            <div class="form-group">
-              <label for="phoneno">Phone Number:</label>
-              <input type="phoneno" class="form-control" id="phoneno">
-            </div>
-            <div class="form-group">
-              <label for="email">Email address:</label>
-              <input type="email" class="form-control" id="email">
-            </div>
-            <div class="form-group">
-              <label for="pwd">Travel Date</label>
-              <div class="input-append date">
-              <input type="date" class="span2"><span class="add-on"><i class="icon-th"></i></span>
-            </div>
-            <div class="form-group">
-              <label for="pwd">Special Request</label>
-              <div class="input-append date">
-                <textarea rows="4" cols="50">
-
-                  </textarea>
-            </div>
-            </div>
-
-            <button type="submit" class="btn btn-default">Submit</button>
-            <input type="submit" value="Apply" class="wpcf7-form-control wpcf7-submit"/>
-          </form>
-
-        </div>
-
-        <div class="col-md-6 box-context">
-
-        </div>
-
-
-
-
-
-
-      </div>
-    </div>
-  </section>
--->
-<div class="clearfix"></div>
-  <section id="book-now">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 text-center">
-           <h2 class="section-title">Custom Tour</h2>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <form name="contactform" id="contactform"  ng-controller="contactcontroller" ng-submit="customTour()">
-             <div class="col-md-6"><div class="form-group">
-              <label for="">Name :</label>
-              <input type="name" class="form-control" ng-model="fullname" name="fullname" id="fullname" required>
-            </div>
-            <div class="form-group">
-              <label for="phoneno">Phone Number:</label>
-              <input type="phoneno" class="form-control" ng-model="phonenumber" name="phonenumber" id="phonenumber" required>
-            </div>
-            <div class="form-group">
-              <label for="email">Email Address:</label>
-              <input type="email" class="form-control" ng-model="email" name="email" id="email" required>
-            </div>            
-            <div class="form-group">
-              <label for="pwd">Travel Date :</label>
-              <input type="date" class="form-control" ng-model="travelDate" name="travelDate" id="travelDate" required>
-              <!-- <span class="icon-position"><i class="fa fa-calendar" aria-hidden="true"></i></span> -->
-            </div>
+         
+        <section id="policy-wrap">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-offset-1 col-sm-10 col-md-offset-1 col-md-10">
+                <h2 class="section-title">Privacy Policy</h2>
               </div>
-            <div class="col-md-6">
-            <div class="form-group">
-              <label for="pwd">Special Request</label>
-              <textarea class="form-control mb19" name="message" ng-model="message" id="message" cols="30" rows="13"></textarea>
-            </div>
-            </div>
-              <div class="clearfix"></div>
-           <!--  <input type="text" class="form-control" ng-model="packageName" name="packageName" id="packageName"> -->
-<!--              <input type="hidden" class="form-control" ng-model="packagename" value="{{packagename}}" name="packageName" id="packageName">
- -->            <div class="col-sm-12 col-md-12 text-center">
-                  <button class="btn btn-success orenge-btn" type="submit" value="Apply" class="wpcf7-form-control wpcf7-submit">SUBMIT</button>
+              <div class="col-sm-offset-1 col-sm-10 col-md-offset-1 col-md-10">
+                <div class="policy-content">
+                  <p class="para-text">Ambition Tours values your privacy. It is important that you have a clear understanding of our practices with regards to information collection and information usage, that you have full control of which personal information you provide to Ambition Tours.</p>
+                  <h5>Information Collected</h5>
+                  <p class="para-text">When making a booking through Ambition Tours, we need to collect certain details in relation to processing the transaction and fulfilling your order, including (but not limited to) the following: your name, credit card details, and contact information (email and phone).</p>
+                  <p class="para-text">We also collect your name and email information from submission of your queries via our Inquiry forms.</p>
+                  <p class="para-text">You agree that by disclosing your personal information to us, we may include your record in our database.</p>
+                  <h5>Use and Care of Information</h5>
+                  <p>Ambition Tours remains the owner of any information collected on the web site and has no intention to change this policy in the future. Use of contact information (e.g. email) is for us to send to you confirmation / related information for your booking/s such as vouchers, etc. You may also receive promotional communications from time to time.</p>
+                  <p>Ambition Tours also reserves the right to disclose personal information only if required to do so by law, or by court order, or by law enforcement or governmental authorities, or in good faith belief that such disclosure is necessary to protect the rights or properties of Ambition Tours, our guests/users, or the public.</p>
+                  <p>Where links are present that will result in you leaving the Ambition Tours website and being taken to third-party websites, please do note that any information that you may provide to these third-party websites are not covered by Ambition Tours privacy policy and as such we do recommend that you review their privacy and security policies.</p>
+                  <h5>Data Security</h5>
+                  <p>We, at Ambition Tours give the most importance to keeping your data secure at all times. Strong encryption technology to ensure the safe transmission of all credit card transactions and personal information, is implemented.</p>
+                  <h5>Changes To The Policy</h5>
+                  <p>Kindly note that this privacy policy may be updated every now and then. For any significant changes, a more prominent notice will be provided.</p>
                 </div>
-          </form>
-          <div id="thankyou">
-            <div class="thankyou">
-                <div class="item">
-                    <span><h4><b><font>Submitted Successfully!</font></b></h4></span>
-                </div>
+              </div>
             </div>
-        </div>
-        </div>
-
-      </div>
-    </div>
-      <div class="clearfix"></div>
-  </section>
+          </div>
+        </section>
 
 
-
-
-
-
-
- <section id="footer">
+         <section id="footer">
             <div class="container">
                 <div class="row">
                    <!--  <div class="col-sm-4 col-md-4">
@@ -296,24 +196,69 @@
             </div>
         </section>
         <footer  id="bottom-strip">
-            <p>Copyright 2017- Ambition Tours - All Rights Reserved</p>
+            <p>Copyright 2017- Ambition Tours - All Rights Reserved.</p>
         </footer>
 
-  <script  type="text/javascript"  src="assets/js/jquery.min.js"></script>
-  <script   type="text/javascript" src="assets/js/bootstrap.min.js"></script>
-  <script  type="text/javascript"  src="assets/js/main.js"></script>
- <script src="assets/js/custom.js"></script>
+        <section id="form-wrap" ng-style="{'display': hide=='hidden' ? 'none' : 'block'}">
+    <div class="container" ng-if="!hide">
+      <div class="row">
+        <div class="col-sm-12 col-md-12">
+          <div class="form-block">
+            <div class="signin-form profile">
+                          <h2>WelCome</h2>
 
-<!-- <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script> -->
-<script>
-   /* $(function(){
-         // Find any date inputs and override their functionality
-         $('input[type="date"]').datepicker();
-    });*/
-</script>
+                          <div class="login-form">
+                            <form method="post" ng-submit="checkPassword(password)">
+                              <input type="password" name="password" placeholder="Password" required="" ng-model="password">
+                              <label id="alert" hidden="">Password Incorrect</label>
+                              <div class="tp">
+                                <input type="submit" value="ENTER" class="brawon-btn large-btn">
+                              </div>
+                            </form>
+                          </div>   
+                          <div class="login-logo">
+                            <img src="../assets/img/logo.png">
+                          </div>                         
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-</div>
-</body>
 
+
+    <section id="form-wrap" ng-style="{'display': hide=='hidden' ? 'none' : 'block'}">
+    <div class="container" ng-if="!hide">
+      <div class="row">
+        <div class="col-sm-12 col-md-12">
+          <div class="form-block">
+            <div class="signin-form profile">
+                          <h2>WelCome</h2>
+
+                          <div class="login-form">
+                            <form method="post" ng-submit="checkPassword(password)">
+                              <input type="password" name="password" placeholder="Password" required="" ng-model="password">
+                              <label id="alert" hidden="">Password Incorrect</label>
+                              <div class="tp">
+                                <input type="submit" value="ENTER" class="brawon-btn large-btn">
+                              </div>
+                            </form>
+                          </div>   
+                          <div class="login-logo">
+                            <img src="../assets/img/logo.png">
+                          </div>                         
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/main.js"></script>
+        <script src="assets/js/star-rating.js"></script>
+        <script src="assets/js/custom.js"></script>
+    </body>
 </html>
