@@ -103,9 +103,9 @@
                 </div>
             </div>
         </header>
-        <!-- <div id="home-banner">
+        <div id="home-banner">
             <img src="assets/img/banner1.jpg" alt="" title="" / >
-        </div> -->
+        </div>
         <section id="about-wrap">
             <div class="container">
                 <div class="row">
@@ -158,18 +158,50 @@
                             <h3>Destinations</h3>
                         </div>
                     </div>
-                    <div class="col-sm-3" ng-repeat="c in countrylist | limitTo:4">
+                    <div class="col-sm-3">
                         <figure class="hero-grid effect-move">
-                                <img class="hero-grid-image effect-image" src="../uploads/countries/{{c.CountryImage}}" alt="" />
+                                <img class="hero-grid-image effect-image" src="../uploads/countries/india-tour.jpg" alt="">
                                 <figcaption class="hero-grid-content">
                                   <span class="hero-tag effect-target">Ambition Tours</span>
-                                  <h2 class="hero-grid-title effect-target">{{c.CountryTitle}}</h2>
+                                  <h2 class="hero-grid-title effect-target ng-binding">India</h2>
                                   <!-- <p class="hero-grid-text effect-target effect-text">Falls mainly on the plain.</p> -->
-                                  <a class="hero-grid-link" href="country-tours.html?country={{c.CountryId}}">View more</a>
+                                  <a class="hero-grid-link" href="country-tours.html?country=2">View more</a>
                                 </figcaption>
                             </figure>
                     </div> 
-
+                    <div class="col-sm-3">
+                        <figure class="hero-grid effect-move">
+                                <img class="hero-grid-image effect-image" src="../uploads/countries/malayisa.jpg" alt="">
+                                <figcaption class="hero-grid-content">
+                                  <span class="hero-tag effect-target">Ambition Tours</span>
+                                  <h2 class="hero-grid-title effect-target ng-binding">Malaysia</h2>
+                                  <!-- <p class="hero-grid-text effect-target effect-text">Falls mainly on the plain.</p> -->
+                                  <a class="hero-grid-link" href="country-tours.html?country=3">View more</a>
+                                </figcaption>
+                            </figure>
+                    </div>
+                    <div class="col-sm-3">
+                        <figure class="hero-grid effect-move">
+                                <img class="hero-grid-image effect-image" src="../uploads/countries/thiland.jpg" alt="">
+                                <figcaption class="hero-grid-content">
+                                  <span class="hero-tag effect-target">Ambition Tours</span>
+                                  <h2 class="hero-grid-title effect-target ng-binding">Thailand</h2>
+                                  <!-- <p class="hero-grid-text effect-target effect-text">Falls mainly on the plain.</p> -->
+                                  <a class="hero-grid-link" href="country-tours.html?country=4">View more</a>
+                                </figcaption>
+                            </figure>  
+                    </div>
+                    <div class="col-sm-3">
+                        <figure class="hero-grid effect-move">
+                                <img class="hero-grid-image effect-image" src="../uploads/countries/combodia.jpg" alt="">
+                                <figcaption class="hero-grid-content">
+                                  <span class="hero-tag effect-target">Ambition Tours</span>
+                                  <h2 class="hero-grid-title effect-target ng-binding">Cambodia</h2>
+                                  <!-- <p class="hero-grid-text effect-target effect-text">Falls mainly on the plain.</p> -->
+                                  <a class="hero-grid-link" href="country-tours.html?country=5">View more</a>
+                                </figcaption>
+                            </figure>  
+                    </div>
                     <div class="col-sm-12 col-md-12 text-center">
                         <a href="asia.html" class="orenge-btn color-white">View More</a>
                     </div>
@@ -245,35 +277,6 @@
         </footer>
 
         <section id="form-wrap" ng-style="{'display': hide=='hidden' ? 'none' : 'block'}">
-    <div class="container" ng-if="!hide">
-      <div class="row">
-        <div class="col-sm-12 col-md-12">
-          <div class="form-block">
-            <div class="signin-form profile">
-                          <h2>WelCome</h2>
-
-                          <div class="login-form">
-                            <form method="post" ng-submit="checkPassword(password)">
-                              <input type="password" name="password" placeholder="Password" required="" ng-model="password">
-                              <label id="alert" hidden="">Password Incorrect</label>
-                              <div class="tp">
-                                <input type="submit" value="ENTER" class="brawon-btn large-btn">
-                              </div>
-                            </form>
-                          </div>   
-                          <div class="login-logo">
-                            <img src="../assets/img/logo.png">
-                          </div>                         
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-
-    <section id="form-wrap" ng-style="{'display': hide=='hidden' ? 'none' : 'block'}">
     <div class="container" ng-if="!hide">
       <div class="row">
         <div class="col-sm-12 col-md-12">
