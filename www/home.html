@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Ambition Tours</title>
+
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+        <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+        <link href="assets/css/style.css" rel="stylesheet">
+        <link href="assets/css/responsive.css" rel="stylesheet">
+        
+        <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+
+
+  <script type="text/javascript" src="assets/js/angular.min.js"></script>
+  <script type="text/javascript" src="assets/js/angular-storage.min.js"></script>
+  <script type="text/javascript" src="assets/js/app.js"></script>
+  <script type="text/javascript" src="assets/js/contactCtrl.js"></script>
+
+        <link id="bsdp-css" href="bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+    </head>
+    <body data-ng-app="80consult" data-ng-controller="contactcontroller">
+        <!-- Start Header -->
+
+
+
+     
+        <header id="top-header">
+            <div class="orenge-logo-strip">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="logo-img">
+                                <a href="index.html">
+                                    <img src="assets/img/logo.png" alt="" title="">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="navigation-strip">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="top-nav">
+                                <nav class="navbar navbar-default">
+                                  <div class="container-fluid pd0">
+                                    <!-- Brand and toggle get grouped for better mobile display -->
+                                    <div class="navbar-header">
+                                      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                      </button>
+                                      <!-- <a class="navbar-brand" href="#">Brand</a> -->
+                                    </div>
+
+
+                                    <!-- Collect the nav links, forms, and other content for toggling -->
+                                    <div class="collapse navbar-collapse pd0" id="bs-example-navbar-collapse-1">
+                                      <ul class="nav navbar-nav">
+                                        <!-- <li><a href="index.html" class="hvr-underline-reveal">Destinations</a></li> -->
+                                        <li class="dropdown" ng-init="getCountries()">
+                                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Destinations <span class="caret"></span></a>
+                                          <ul class="dropdown-menu">
+                                            <!-- <li><a href="#">India</a></li>
+                                            <li><a href="#">Malaysia</a></li>
+                                            <li><a href="#">Thailand</a></li>
+                                            <li><a href="#">Combodia</a></li>
+                                            <li><a href="#">Hong Kong</a></li> -->
+                                            <li ng-repeat="c in countrylist">
+                                             <a href="country-attractions.html?country={{c.CountryId}}">{{c.CountryTitle}}</a>
+                                            </li>
+                                          </ul>
+                                        </li>
+                                       <!--  <li><a href="asia.html" class="hvr-underline-reveal">Our Services</a></li> -->
+                                         <li class="dropdown">
+                                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Our Services<span class="caret"></span></a>
+                                          <ul class="dropdown-menu">
+                                            <li><a href="asia.html">Package Tours</a></li>
+                                            <li><a href="custom-tour.html">Custom Tours</a></li>
+                                            <li><a href="air-ticket.html">Air Ticketing</a></li>
+                                            <li><a href="visa-services.html">Visa Services</a></li>
+                                            <li><a href="#">Travel Gift Vouchers</a></li>
+                                            <li><a href="travel-insurance.html">Travel Insurance</a></li>
+                                          </ul>
+                                        </li>
+                                       <!--  <li><a href="europe.html" class="hvr-underline-reveal">Europe</a></li>
+                                        <li><a href="visa.html" class="hvr-underline-reveal">Visa</a></li> -->
+                                        <li><a href="contact-us.html" class="hvr-underline-reveal">Contact Us</a></li>
+                                      </ul>
+                                    </div><!-- /.navbar-collapse -->
+                                  </div><!-- /.container-fluid -->
+                                </nav>
+                            </div>
+                        </div >
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div id="home-banner">
+            <img src="assets/img/banner1.jpg" alt="" title="" / >
+        </div>
+        <section id="about-wrap">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 mr-b50">
+                        <div class="about-content">
+                            <h3>About Ambition Tours</h3>
+                            <p class="para-text color-dark-gray">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum eius exercitationem ab aspernatur, ratione officia animi. Rerum necessitatibus, culpa. Tenetur incidunt quasi unde libero molestias dicta doloremque, non aliquam ipsam!</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-md-3">
+                        <div class="services-box">
+                            <img src="assets/img/service1.jpg" alt="" title="">
+                            <h4>Package Tour </h4>
+                            <p class="para-text color-dark-gray">Lorem ipsum dolor sit amet, consect adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed.</p>
+                            <a href="asia.html" class="orenge-btn">View More</a>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-md-3">
+                        <div class="services-box">
+                            <img src="assets/img/service2.jpg" alt="" title="">
+                            <h4>Custom Tour</h4>
+                            <p class="para-text color-dark-gray">Lorem ipsum dolor sit amet, consect adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed.</p>
+                            <a href="custom-tour.html" class="orenge-btn">View More</a>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-md-3">
+                        <div class="services-box">
+                            <img src="assets/img/service3.jpg" alt="" title="">
+                            <h4>Air Ticket </h4>
+                            <p class="para-text color-dark-gray">Lorem ipsum dolor sit amet, consect adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed.</p>
+                            <a href="air-ticket.html" class="orenge-btn">View More</a>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-md-3">
+                        <div class="services-box">
+                            <img src="assets/img/service4.jpg" alt="" title="">
+                            <h4>Visa Services</h4>
+                            <p class="para-text color-dark-gray">Lorem ipsum dolor sit amet, consect adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed.</p>
+                            <a href="visa-services.html" class="orenge-btn">View More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="country-box" class="bg-creem">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                        <div class="about-content mr-b50">
+                            <h3>Destinations</h3>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <figure class="hero-grid effect-move">
+                                <img class="hero-grid-image effect-image" src="../uploads/countries/india-tour.jpg" alt="">
+                                <figcaption class="hero-grid-content">
+                                  <span class="hero-tag effect-target">Ambition Tours</span>
+                                  <h2 class="hero-grid-title effect-target ng-binding">India</h2>
+                                  <!-- <p class="hero-grid-text effect-target effect-text">Falls mainly on the plain.</p> -->
+                                  <a class="hero-grid-link" href="country-tours.html?country=2">View more</a>
+                                </figcaption>
+                            </figure>
+                    </div> 
+                    <div class="col-sm-3">
+                        <figure class="hero-grid effect-move">
+                                <img class="hero-grid-image effect-image" src="../uploads/countries/malayisa.jpg" alt="">
+                                <figcaption class="hero-grid-content">
+                                  <span class="hero-tag effect-target">Ambition Tours</span>
+                                  <h2 class="hero-grid-title effect-target ng-binding">Malaysia</h2>
+                                  <!-- <p class="hero-grid-text effect-target effect-text">Falls mainly on the plain.</p> -->
+                                  <a class="hero-grid-link" href="country-tours.html?country=3">View more</a>
+                                </figcaption>
+                            </figure>
+                    </div>
+                    <div class="col-sm-3">
+                        <figure class="hero-grid effect-move">
+                                <img class="hero-grid-image effect-image" src="../uploads/countries/thiland.jpg" alt="">
+                                <figcaption class="hero-grid-content">
+                                  <span class="hero-tag effect-target">Ambition Tours</span>
+                                  <h2 class="hero-grid-title effect-target ng-binding">Thailand</h2>
+                                  <!-- <p class="hero-grid-text effect-target effect-text">Falls mainly on the plain.</p> -->
+                                  <a class="hero-grid-link" href="country-tours.html?country=4">View more</a>
+                                </figcaption>
+                            </figure>  
+                    </div>
+                    <div class="col-sm-3">
+                        <figure class="hero-grid effect-move">
+                                <img class="hero-grid-image effect-image" src="../uploads/countries/combodia.jpg" alt="">
+                                <figcaption class="hero-grid-content">
+                                  <span class="hero-tag effect-target">Ambition Tours</span>
+                                  <h2 class="hero-grid-title effect-target ng-binding">Cambodia</h2>
+                                  <!-- <p class="hero-grid-text effect-target effect-text">Falls mainly on the plain.</p> -->
+                                  <a class="hero-grid-link" href="country-tours.html?country=5">View more</a>
+                                </figcaption>
+                            </figure>  
+                    </div>
+                    <div class="col-sm-12 col-md-12 text-center">
+                        <a href="asia.html" class="orenge-btn color-white">View More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+
+
+         <section id="footer">
+            <div class="container">
+                <div class="row">
+                   <!--  <div class="col-sm-4 col-md-4">
+                        <div class="foot-text">
+                            <h4>About us</h4>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                        </div>
+                    </div> -->
+                    <div class="col-sm-4 col-md-4 pd-l80">
+                        <div class="foot-text">
+                              <h4>Contact Us</h4>
+                              <h5>Ambition Tours & Travel Pte. Ltd</h5>
+                              <p>#06-67, 1 Rochor Canal Rd,</p>
+                              <p>Sim Lim Square, </p>
+                              <p>Singapore 188504</p>
+
+                       </div>
+                    </div>
+                    <div class="col-sm-4 col-md-4"></div>
+                    <div class="col-sm-4 col-md-4">
+                        <div class="foot-social-icon">
+                            <div class="foot-text">
+                                <h4>Contact With Us</h4>
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-facebook" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-twitter" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-instagram" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-linkedin" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer  id="bottom-strip">
+            <p>Copyright 2017- Ambition Tours - All Rights Reserved.</p>
+        </footer>
+
+        <section id="form-wrap" ng-style="{'display': hide=='hidden' ? 'none' : 'block'}">
+    <div class="container" ng-if="!hide">
+      <div class="row">
+        <div class="col-sm-12 col-md-12">
+          <div class="form-block">
+            <div class="signin-form profile">
+                          <h2>WelCome</h2>
+
+                          <div class="login-form">
+                            <form method="post" ng-submit="checkPassword(password)">
+                              <input type="password" name="password" placeholder="Password" required="" ng-model="password">
+                              <label id="alert" hidden="">Password Incorrect</label>
+                              <div class="tp">
+                                <input type="submit" value="ENTER" class="brawon-btn large-btn">
+                              </div>
+                            </form>
+                          </div>   
+                          <div class="login-logo">
+                            <img src="../assets/img/logo.png">
+                          </div>                         
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/main.js"></script>
+        <script src="assets/js/star-rating.js"></script>
+        <script src="assets/js/custom.js"></script>
+    </body>
+</html>
