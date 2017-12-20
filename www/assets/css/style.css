@@ -201,8 +201,9 @@ section#footer {
 }
 #footer{
     /*background: #171717; */
-    background-color: #444a50;
+    /*background-color: #444a50;*/
     border-top: 5px solid #fe6828;
+    background-color: #134da2;
 }
 #footer .jumbotron{
     background: transparent; 
@@ -222,7 +223,8 @@ section#footer {
     font-size: 16px;
 }
 #bottom-strip{
-    background-color: #444a50;
+    /*background-color: #444a50;*/
+    background-color: #134da2;
     padding: 15px 0px; 
     border-top: 1px solid #545252;
 }
