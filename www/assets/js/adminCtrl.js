@@ -959,6 +959,66 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
               }
      }
 
+       $scope.getAdminContactDetails = function() {
+
+    $http.get(baseurl + 'getAdminContactDetails').success(function (res) {
+
+            if (res.status == 'false') {
+
+            }
+            else {
+                //console.log(res);
+                $scope.contact = res;
+               // $scope.registration.CountryId = $scope.countrylist[0].CountryId;
+               //console.log($scope.countrylist);
+            }
+
+        }).error(function () {
+
+        });
+
+   }
+
+     $scope.getOperatingHours = function() {
+
+    $http.get(baseurl + 'getOperatingHours').success(function (res) {
+
+            if (res.status == 'false') {
+
+            }
+            else {
+               // console.log(res);
+                $scope.hours = res;
+               // $scope.registration.CountryId = $scope.countrylist[0].CountryId;
+               //console.log($scope.countrylist);
+            }
+
+        }).error(function () {
+
+        });
+
+   }
+
+     $scope.getPublicHolidays = function() {
+
+    $http.get(baseurl + 'getPublicHolidays').success(function (res) {
+
+            if (res.status == 'false') {
+
+            }
+            else {
+               // console.log(res);
+                $scope.holidays = res;
+               // $scope.registration.CountryId = $scope.countrylist[0].CountryId;
+               //console.log($scope.countrylist);
+            }
+
+        }).error(function () {
+
+        });
+
+   }
+
 
 
 

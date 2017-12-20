@@ -49,22 +49,27 @@ app.post('/api/apply', startup.apply);
 app.post('/api/invest', investor.invest);
 
 app.post('/api/adminlogin', admin.adminlogin);
+app.get('/api/getAdminDetails/:id', admin.getAdminDetails);
 app.post('/api/updatepassword', admin.updatepassword);
-app.get('/api/allcountries', admin.allcountries);
-app.get('/api/getallcountries', admin.getallcountries);
-app.get('/api/getAllAttractions', admin.getAllAttractions);
-app.get('/api/getAllTours', admin.getAllTours);
-app.get('/api/getAllBookings', admin.getAllBookings);
-app.get('/api/getCountryTours/:id', admin.getCountryTours);
-app.get('/api/getCountryAttractions/:id', admin.getCountryAttractions);
-app.get('/api/getCountryId/:id', admin.getCountryId);
 
+app.get('/api/getAdminContactDetails', admin.getAdminContactDetails);
+app.get('/api/getOperatingHours', admin.getOperatingHours);
+app.get('/api/getPublicHolidays', admin.getPublicHolidays);
+
+app.get('/api/getAllBookings', admin.getAllBookings);
+
+app.get('/api/getAllTours', admin.getAllTours);
+app.get('/api/getCountryTours/:id', admin.getCountryTours);
+app.get('/api/getAllAttractions', admin.getAllAttractions);
+app.get('/api/getCountryAttractions/:id', admin.getCountryAttractions);
 app.get('/api/getTourDetails/:id', admin.getTourDetails);
 app.post('/api/addTour', admin.addTour);
 app.post('/api/updateTour', admin.updateTour);
 app.get('/api/deleteTour/:id', admin.deleteTour);
 
-
+app.get('/api/allcountries', admin.allcountries);
+app.get('/api/getallcountries', admin.getallcountries);
+app.get('/api/getCountryId/:id', admin.getCountryId);
 app.get('/api/getCountryDetails/:id', admin.getCountryDetails);
 app.post('/api/addCountry', admin.addCountry);
 app.post('/api/updateCountry', admin.updateCountry);
@@ -83,7 +88,6 @@ app.post('/api/addVoucher', admin.addVoucher);
 app.post('/api/updateVoucher',admin.updateVoucher);
 app.get('/api/deleteVoucher/:id',admin.deleteVoucher);
 
-app.get('/api/getAdminDetails/:id', admin.getAdminDetails);
 
 app.listen(6008, function () {
   console.log('CORS-enabled web server listening on port 6008')

@@ -63,7 +63,7 @@ console.log(req.body);
     var subject = "[ambitiontours.COM] Ambition Tours Booking";
     var mailbody = '<table>\
                         <tr>\
-                        <td><img src="https://ambitiontours.80startups.com/assets/img/logo.jpg"></td><br>\
+                        <td><img src="https://ambitiontours.80startups.com/assets/img/logo.png"></td><br>\
                       </tr>\
                       <tr>\
                         <td><h1>Dear Ambition Tours,</td>\
