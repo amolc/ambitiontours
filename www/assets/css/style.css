@@ -1173,6 +1173,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 .payment-box .more-less {
   float: right;
   color: #ffffff;
+  font-size: 12px;
 }
 /*According Css End */
 .total-amt{
@@ -1188,7 +1189,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 .total-amt h4{
   font-size: 37px;
   font-family: 'Lato', sans-serif; 
-  font-size: 12px;
 }
 
 
