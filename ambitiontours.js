@@ -15,6 +15,8 @@ var contact = require('./api/contact.js');
 var startup = require('./api/startup.js');
 var investor = require('./api/investor.js');
 var admin = require('./api/admin.js');
+var payment = require('./api/payment.js');
+
 
 /*app.use(function(req, res, next){
 	var url_parts = url.parse(req.url, true);
