@@ -1094,6 +1094,94 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
           
     }
 
+    $scope.getHolidayDetails = function() {
+
+       var url = window.location.href;
+       var parts = url.split("?");
+      if(parts.length>1){
+           $scope.holiday = {};
+           var urlparams = parts[1];
+           var params = urlparams.split("&");
+           var id = urlparams.split("=");
+           $scope.holiday.Id = id[1];
+          // console.log( $scope.visa.Id);
+      }
+      $http.get(baseurl + 'getHolidayDetails/'+$scope.holiday.Id).success(function (res) {
+
+              if (res.status == 'false') {
+
+              }
+              else {
+                 // console.log(res);
+                  $scope.holiday = res;
+                 // $scope.registration.CountryId = $scope.countrylist[0].CountryId;
+                 //console.log($scope.countrylist);
+              }
+
+          }).error(function () {
+
+          });
+
+     }
+
+      $scope.addHoliday = function() {   
+
+
+
+            $http.post(baseurl + 'addHoliday/',$scope.holiday).success(function(res) {
+                  
+                //console.log(res);
+                if (res.status == true) 
+                {
+                  
+                    window.location.href = 'settings.html';
+                }
+
+                }).error(function() {
+                    
+                });
+     }
+
+         $scope.updateHoliday = function() {   
+
+
+
+            $http.post(baseurl + 'updateHoliday/',$scope.holiday).success(function(res) {
+                  
+                //console.log(res);
+                if (res.status == true) 
+                {
+                  
+                    window.location.href = 'settings.html';
+                }
+
+                }).error(function() {
+                    
+                });
+     }
+
+           $scope.deleteHoliday = function(id) {   
+
+
+              var r = confirm("Are You Sure You want to Delete It?");
+              if (r == true) 
+              { 
+            $http.get(baseurl + 'deleteHoliday/'+id).success(function(res) {
+                  
+                //console.log(res);
+                if (res.status == true) 
+                {
+                  
+                    window.location.href = 'settings.html';
+                }
+
+                }).error(function() {
+                    
+                });
+
+              }
+     }
+
 
 
 
