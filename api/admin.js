@@ -17,6 +17,9 @@ var tourCRUD = CRUD(db, 'tbl_Tours');
 var countriesCRUD = CRUD(db, 'tbl_Countries');
 var visaCRUD = CRUD(db, 'tbl_VisaDetails');
 var voucherCRUD = CRUD(db, 'tbl_GiftVoucher');
+var opHourCRUD = CRUD(db, 'tbl_OperatingHours');
+var holidaysCRUD = CRUD(db, 'tbl_PublicHolidays');
+
 
 var nodemailer = require('nodemailer');
 var mg = require('nodemailer-mailgun-transport');
@@ -239,7 +242,7 @@ exports.getAdminDetails = function(req, res){
 
 exports.getAdminContactDetails = function(req, res){ 
 
-  var sql = "SELECT `Email`,`Address`,`ContactNo`,`Fax` FROM `tbl_Users` WHERE `UserType`='Admin' AND `IsDeleted` = '0'";
+  var sql = "SELECT `UserId`,`Email`,`Address`,`ContactNo`,`Fax` FROM `tbl_Users` WHERE `UserType`='Admin' AND `IsDeleted` = '0'";
     db.query(sql, function (err, data) {
         res.json(data[0]);
     });
@@ -255,6 +258,16 @@ exports.getOperatingHours= function(req, res){
     
 };
 
+exports.getOpHoursDetails = function(req, res){
+
+  var id = req.params.id;
+  var sql = "SELECT `Id`,`Days`,`FromTime`,`ToTime` FROM `tbl_OperatingHours` WHERE Id = '"+id+"'";    
+  db.query(sql, function (err, data) {
+        res.json(data[0]);
+    });
+    
+};
+
 exports.getPublicHolidays = function(req, res){ 
 
   var sql = "SELECT `Id`,`Title`,`Description` FROM `tbl_PublicHolidays` WHERE `IsDeleted` = '0'";
@@ -263,6 +276,17 @@ exports.getPublicHolidays = function(req, res){
     });
     
 };
+
+exports.getHolidayDetails = function(req, res){
+
+  var id = req.params.id;
+  var sql = "SELECT `Id`,`Title`,`Description` FROM `tbl_PublicHolidays` WHERE Id = '"+id+"'";    
+  db.query(sql, function (err, data) {
+        res.json(data[0]);
+    });
+    
+};
+
 
 exports.getAllVisaDetails = function(req, res){
 
@@ -889,6 +913,193 @@ exports.deleteVoucher = function (req, res) {
                                 }
                             });
 };
+
+exports.updateContact = function (req, res) {
+
+    dateToday = now.format("DD/MM/YYYY hh:mm a");
+    var updateObj = {
+                                "Email" : req.body.Email,
+                                "Address": req.body.Address,
+                                "ContactNo" : req.body.ContactNo,
+                                "Fax": req.body.Fax,
+                                "ModifiedOn": dateToday || "",        
+                            };
+                            // console.log("after", createObj);
+
+                            userCRUD.update({UserId: req.body.UserId}, updateObj,function (err, data) {
+
+                                if (!err) 
+                                {
+                                    var resdata = {
+                                        status: true,
+                                        value:data.insertId,
+                                        message: 'Details successfully updated',
+                                        date : dateToday
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                                else
+                                {
+                                    var resdata = {
+                                        status: false,
+                                        error: err,
+                                        message: 'Error: Details not successfully updated. '
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                            });
+};
+
+exports.updateOpHours = function (req, res) {
+
+    dateToday = now.format("DD/MM/YYYY hh:mm a");
+    var updateObj = {
+                                "Days" : req.body.Days,
+                                "FromTime" : req.body.FromTime,
+                                "ToTime": req.body.ToTime,
+                                "ModifiedOn": dateToday || "",        
+                            };
+                            // console.log("after", createObj);
+
+                            opHourCRUD.update({Id: req.body.Id}, updateObj,function (err, data) {
+
+                                if (!err) 
+                                {
+                                    var resdata = {
+                                        status: true,
+                                        value:data.insertId,
+                                        message: 'Details successfully updated',
+                                        date : dateToday
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                                else
+                                {
+                                    var resdata = {
+                                        status: false,
+                                        error: err,
+                                        message: 'Error: Details not successfully updated. '
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                            });
+};
+
+exports.addHoliday= function (req, res) {
+
+    dateToday = now.format("DD/MM/YYYY hh:mm a");
+        
+    var createObj = {
+                                "Title" : req.body.Title,
+                                "Description": req.body.Description,
+                                "CreatedOn": dateToday || "",        
+                            };
+                            // console.log("after", createObj);
+
+                            holidaysCRUD.create(createObj, function (err, data) {
+
+                                if (!err) 
+                                {
+                                    var resdata = {
+                                        status: true,
+                                        value:data.insertId,
+                                        message: 'Details successfully added',
+                                        date : dateToday
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                                else
+                                {
+                                    var resdata = {
+                                        status: false,
+                                        error: err,
+                                        message: 'Error: Details not successfully added. '
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                            });
+};
+
+exports.updateHoliday = function (req, res) {
+
+    dateToday = now.format("DD/MM/YYYY hh:mm a");
+    var updateObj = {
+                                "Title" : req.body.Title,
+                                "Description": req.body.Description,
+                                "ModifiedOn": dateToday || "",        
+                            };
+                            // console.log("after", createObj);
+
+                            holidaysCRUD.update({Id: req.body.Id}, updateObj,function (err, data) {
+
+                                if (!err) 
+                                {
+                                    var resdata = {
+                                        status: true,
+                                        value:data.insertId,
+                                        message: 'Details successfully updated',
+                                        date : dateToday
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                                else
+                                {
+                                    var resdata = {
+                                        status: false,
+                                        error: err,
+                                        message: 'Error: Details not successfully updated. '
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                            });
+};
+
+
+
+exports.deleteHoliday = function (req, res) {
+
+    dateToday = now.format("DD/MM/YYYY hh:mm a");
+    var id = req.params.id;
+    var updateObj = {
+                         "IsDeleted" :  '1',
+      
+                    };
+                            // console.log("after", createObj);
+
+                            voucherCRUD.update({Id: id}, updateObj,function (err, data) {
+
+                                if (!err) 
+                                {
+                                    var resdata = {
+                                        status: true,
+                                        value:data.insertId,
+                                        message: 'Details successfully deleted',
+                                        date : dateToday
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                                else
+                                {
+                                    var resdata = {
+                                        status: false,
+                                        error: err,
+                                        message: 'Error: Details not successfully deleted. '
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                            });
+};
+
 ///____________________END______________________
 
 function send_mail(usermail, subject, mailbody) {

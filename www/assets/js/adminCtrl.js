@@ -1019,6 +1019,80 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
 
    }
 
+     $scope.updateContact = function() {      
+
+
+                   $http.post(baseurl + 'updateContact', $scope.contact).success(function(data, status) {
+
+                  //      console.log('data',data)
+
+                        if (data.status == false) 
+                        {
+                            // $scope.alertmessage=data.message;
+                            // $("#alertmessage").show('slow');
+                        }
+                        else
+                        {
+                            window.location.href = "settings.html";
+                        }
+
+                    });  
+      
+          
+    } 
+
+        $scope.getOpHoursDetails = function() {
+
+       var url = window.location.href;
+       var parts = url.split("?");
+        if(parts.length>1){
+           $scope.hour = {};
+           var urlparams = parts[1];
+           var params = urlparams.split("&");
+           var id = urlparams.split("=");
+           $scope.hour.Id = id[1];
+          // console.log( $scope.visa.Id);
+      }
+      $http.get(baseurl + 'getOpHoursDetails/'+$scope.hour.Id).success(function (res) {
+
+              if (res.status == 'false') {
+
+              }
+              else {
+                 // console.log(res);
+                  $scope.hour = res;
+                 // $scope.registration.CountryId = $scope.countrylist[0].CountryId;
+                 //console.log($scope.countrylist);
+              }
+
+          }).error(function () {
+
+          });
+
+     } 
+
+
+         $scope.updateOpHours = function() {      
+
+
+                   $http.post(baseurl + 'updateOpHours', $scope.hour).success(function(data, status) {
+
+                  //      console.log('data',data)
+
+                        if (data.status == false) 
+                        {
+                            // $scope.alertmessage=data.message;
+                            // $("#alertmessage").show('slow');
+                        }
+                        else
+                        {
+                            window.location.href = "settings.html";
+                        }
+
+                    });  
+      
+          
+    }
 
 
 
