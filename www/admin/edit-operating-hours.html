@@ -97,41 +97,34 @@
                 </div>
             </div>
         </header>
-        <section id="andttr-form-wrap" ng-init="getAdminContactDetails()">
+        <section id="andttr-form-wrap" ng-init="getOpHoursDetails()">
           <div class="container">
             <div class="row">
               <div class="col-sm-12 col-md-12">
-               <form id="addtour" name="addtour" ng-submit="updateContact()">
+               <form id="addtour" name="addtour" ng-submit="updateOpHours()">
                   <div class="attractions-form profile signin-form info-form">
-                  <h2 class="text-center">Edit Contact Info</h2>
+                  <h2 class="text-center">Edit Operating Hours</h2>
         
-
+                    <h4>{{hour.Days}}</h4>
                     <div class="col-sm-2">
-                      <label><strong>Address : </strong></label>
+                     <!--  <label><strong>Days : </strong></label> -->
                     </div>
                     <div class="col-sm-10">
-                      <input type="text" name="address" ng-model="contact.Address" required="">
-                    </div>
-
-                    <div class="col-sm-2">
-                      <label><strong>Contact No : </strong></label>
-                    </div>
-                    <div class="col-sm-10">
-                      <input type="text" name="contact" ng-model="contact.ContactNo" required="">
+                      <!-- <input type="text" name="address" ng-model="hour.Days" required=""> -->
                     </div>
 
                     <div class="col-sm-2">
-                      <label><strong>Fax : </strong></label>
+                      <label><strong>From Time : </strong></label>
                     </div>
                     <div class="col-sm-10">
-                      <input type="text" name="fax" ng-model="contact.Fax" required="">
+                      <input type="text" name="contact" ng-model="hour.FromTime" required="">
                     </div>
 
                     <div class="col-sm-2">
-                      <label><strong>Email : </strong></label>
+                      <label><strong>To Time : </strong></label>
                     </div>
                     <div class="col-sm-10">
-                      <input type="email" name="email" ng-model="contact.Email" required="">
+                      <input type="text" name="fax" ng-model="hour.ToTime" required="">
                     </div>
              
                   <div class="col-sm-12 col-md-12">

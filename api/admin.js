@@ -926,7 +926,7 @@ exports.updateContact = function (req, res) {
                             };
                             // console.log("after", createObj);
 
-                            userCRUDr.update({UserId: req.body.UserId}, updateObj,function (err, data) {
+                            userCRUD.update({UserId: req.body.UserId}, updateObj,function (err, data) {
 
                                 if (!err) 
                                 {
