@@ -127,7 +127,8 @@ app.controller('contactcontroller', function ($scope, $location, $http, $window)
             }
             else {
                // console.log(res);
-                $scope.countrylist = res;
+                // $scope.countrylist = res;
+                 $scope.clist = res;
                // $scope.registration.CountryId = $scope.countrylist[0].CountryId;
                //console.log($scope.countrylist);
             }
