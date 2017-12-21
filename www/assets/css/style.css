@@ -1188,6 +1188,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 .total-amt h4{
   font-size: 37px;
   font-family: 'Lato', sans-serif; 
+  font-size: 12px;
 }
 
 
