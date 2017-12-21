@@ -1074,7 +1074,7 @@ exports.deleteHoliday = function (req, res) {
                     };
                             // console.log("after", createObj);
 
-                            voucherCRUD.update({Id: id}, updateObj,function (err, data) {
+                            holidaysCRUD.update({Id: id}, updateObj,function (err, data) {
 
                                 if (!err) 
                                 {

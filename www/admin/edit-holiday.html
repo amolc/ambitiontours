@@ -27,7 +27,7 @@
   <script type="text/javascript" src="../assets/js/adminCtrl.js"></script>
 </head>
 
-<body data-ng-app="80consult" data-ng-controller="admincontroller" ng-init="forminit();">
+<body data-ng-app="80consult" data-ng-controller="admincontroller" ng-init="getHolidayDetails()">
 <!-- Start Header -->
        <header id="top-header">
             <div class="orenge-logo-strip">
@@ -71,9 +71,10 @@
                                         <li><a href="visa.html" class="hvr-underline-reveal">Visa Details</a></li>
                                         <li><a href="gift-vouchers.html" class="hvr-underline-reveal">Gift Vouchers</a></li>
                                         <!-- <li><a href="changepassword.html" class="hvr-underline-reveal">Change Password</a></li>
-                                        <li><a href="javascript:void(0)" class="hvr-underline-reveal" ng-click="adminlogout();">Logout</a></li> -->
+                                        <li><a href="javascript:void(0)" class="hvr-underline-reveal" ng-click="adminlogout();">Logout</a></li>
+ -->
                                       </ul>
-                                      <ul class="nav navbar-nav navbar-right">
+                                       <ul class="nav navbar-nav navbar-right">
                                         <li class="dropdown">
                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                               <span>Welcome</span> 
@@ -98,55 +99,31 @@
                 </div>
             </div>
         </header>
-        <section id="andttr-form-wrap" ng-init="getAdminContactDetails()">
+        <section id="andttr-form-wrap">
           <div class="container">
-            <div class="row">
-              <div class="col-sm-12 col-md-12">
-               <form id="addtour" name="addtour" ng-submit="updateContact()">
-                  <div class="attractions-form profile signin-form info-form">
-                  <h2 class="text-center">Edit Contact Info</h2>
-        
+             <div class="row">
+        <div class="col-sm-12 col-md-12">
+          <div class="form-block">
+            <div class="signin-form profile">
+                          <h2>Edit Holiday</h2>
+                          <div class="login-form">
+                            <form method="post" ng-submit="updateHoliday()">
+                              <input type="text" name="holiday" ng-model="holiday.Title" placeholder="Date">
+                              <input type="text" name="description" ng-model="holiday.Description" placeholder="Reason">
 
-                    <div class="col-sm-2">
-                      <label><strong>Address : </strong></label>
-                    </div>
-                    <div class="col-sm-10">
-                      <input type="text" name="address" ng-model="contact.Address" required="">
-                    </div>
-
-                    <div class="col-sm-2">
-                      <label><strong>Contact No : </strong></label>
-                    </div>
-                    <div class="col-sm-10">
-                      <input type="text" name="contact" ng-model="contact.ContactNo" required="">
-                    </div>
-
-                    <div class="col-sm-2">
-                      <label><strong>Fax : </strong></label>
-                    </div>
-                    <div class="col-sm-10">
-                      <input type="text" name="fax" ng-model="contact.Fax" required="">
-                    </div>
-
-                    <div class="col-sm-2">
-                      <label><strong>Email : </strong></label>
-                    </div>
-                    <div class="col-sm-10">
-                      <input type="email" name="email" ng-model="contact.Email" required="">
-                    </div>
-             
-                  <div class="col-sm-12 col-md-12">
-                      <label id="alertmessage" hidden>{{alertmessage}}</label>
-                  </div>
-                  <div class="col-sm-12 col-md-12">
-                    <input type="submit" value="Save" class="small-btn brawon-btn">
-                  </div>
-                  
-                  <div class="clearfix"></div>
-                </div>
-               </form>
-              </div>
+                               <div class="form-group" id="alertmessage" hidden="">
+                                  <label>{{alertmessage}}</label>
+                                </div> 
+                              <div class="tp">
+                                <input type="submit" value="Save">
+                              </div>
+                            </form>
+                          </div>  
+                                                 
             </div>
+          </div>
+        </div>
+      </div>
           </div>
         </section>
 
@@ -196,30 +173,9 @@
         <footer  id="bottom-strip">
             <p>Copyright 2017- Ambition Tours - All Rights Reserved</p>
         </footer>
-  <script   type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQD-LT4-VzlsdNpf33yNDeT38EaF3Kz-g&libraries=places"></script>
-<script>
- 
-// google.maps.event.addDomListener(window, 'load', function () 
-// {
 
-//  var options = { types: ['(cities)']};
-//             var places = new google.maps.places.Autocomplete(document.getElementById('address'),options);
-//             google.maps.event.addListener(places, 'place_changed', function () { 
-
-//               var geocoder = new google.maps.Geocoder();
-//             var address = $("#address").val();
-
-//             geocoder.geocode( { 'address': address}, function(results, status) {
- 
-//             });             
-
-//       });
-                
-// });
-</script>
 
 </div>
 </body>
-
+  <script   type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
 </html>
