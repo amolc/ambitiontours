@@ -44,6 +44,7 @@ app.post('/api/consult', contact.consult);
 app.post('/api/customTour', contact.customTour);
 app.post('/api/airTicket', contact.airTicket);
 app.post('/api/visaEnquiry', contact.visaEnquiry);
+app.post('/api/booktour', contact.booktour);
 
 app.post('/api/apply', startup.apply);
 app.post('/api/invest', investor.invest);

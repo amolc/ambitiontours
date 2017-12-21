@@ -61,7 +61,7 @@
                                     <div class="collapse navbar-collapse pd0" id="bs-example-navbar-collapse-1">
                                       <ul class="nav navbar-nav">
                                         <!-- <li><a href="index.html" class="hvr-underline-reveal">Destinations</a></li> -->
-                                        <li class="dropdown" ng-init="getCountries()">
+                                        <li class="dropdown" ng-init="getattractioncountries()">
                                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Destinations <span class="caret"></span></a>
                                           <ul class="dropdown-menu">
                                             <!-- <li><a href="#">India</a></li>
@@ -116,8 +116,9 @@
                       <div class="panel panel-default">
                           <div class="panel-heading" role="tab" id="credit-card">
                               <h4 class="panel-title">
-                                  <a role="button" data-toggle="collapse" data-parent="#accordion" href="#credit-card-acco" aria-expanded="true" aria-controls="collapseOne">
-                                      <i class="more-less glyphicon glyphicon-minus"></i>
+                                  <!-- <a role="button" data-toggle="collapse" data-parent="#accordion" href="#credit-card-acco" aria-expanded="true" aria-controls="collapseOne">
+                                      <i class="more-less glyphicon glyphicon-minus"></i> -->
+                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="javascript:void(0)" aria-expanded="true" aria-controls="collapseOne">
                                       Credit Card Details
                                   </a>
                               </h4>
@@ -203,7 +204,7 @@
                               </div>
                           </div>
                       </div>
-                      <div class="panel panel-default">
+                      <div class="panel panel-default" hidden="">
                           <div class="panel-heading" role="tab" id="bank-transfer">
                               <h4 class="panel-title">
                                   <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#bank-transfer-acc" aria-expanded="false" aria-controls="collapseTwo">

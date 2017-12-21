@@ -150,7 +150,7 @@
                 </div>
             </div>
         </section>
-        <section id="country-box" class="bg-creem">
+        <section id="country-box" class="bg-creem" ng-init="gettourcountries()">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12 col-md-12">
@@ -158,7 +158,7 @@
                             <h3>Destinations</h3>
                         </div>
                     </div>
-                    <div class="col-sm-3" ng-repeat="c in countrylist | limitTo:4">
+                    <div class="col-sm-3" ng-repeat="c in clist | limitTo:4">
                         <figure class="hero-grid effect-move">
                                 <img class="hero-grid-image effect-image" src="../uploads/countries/{{c.CountryImage}}" alt="" />
                                 <figcaption class="hero-grid-content">
