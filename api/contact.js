@@ -117,7 +117,7 @@ exports.booktour = function (req, res) {
 
       if (!err){
 
-            var recipientEmail = req.body.email.',sadiarahman1@yahoo.com,nadyshaikh@gmail.com,ceo@80startups.com,office@80startups.com ,shital.talole@fountaintechies.com,komal.gaikwad@fountaintechies.com';
+            var recipientEmail = req.body.email+',sadiarahman1@yahoo.com,nadyshaikh@gmail.com,ceo@80startups.com,office@80startups.com ,shital.talole@fountaintechies.com,komal.gaikwad@fountaintechies.com';
             //var recipientEmail = 'komal.gaikwad@fountaintechies.com'; //,ceo@80startups.com,shital.talole@fountaintechies.com'; //,ceo@80startups.com,shital.talole@80startups.com
             var subject = "[ambitiontours.COM] Ambition Tours Booking";
             var mailbody = '<table>\
