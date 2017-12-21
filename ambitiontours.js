@@ -69,6 +69,7 @@ app.get('/api/getOperatingHours', admin.getOperatingHours);
 app.get('/api/getPublicHolidays', admin.getPublicHolidays);
 
 app.get('/api/getAllBookings', admin.getAllBookings);
+app.get('/api/getTourBookingDetails/:id', admin.getTourBookingDetails);
 
 app.get('/api/getAllTours', admin.getAllTours);
 app.get('/api/getCountryTours/:id', admin.getCountryTours);

@@ -234,6 +234,17 @@ exports.getAllBookings = function(req, res){
     
 };
 
+exports.getTourBookingDetails = function(req, res){
+
+  var id = req.params.id;
+  var sql = "SELECT * FROM `tbl_Bookings` WHERE BookingId= '"+id+"'";    
+  db.query(sql, function (err, data) {
+        res.json(data[0]);
+    });
+    
+};
+
+
 exports.getTourDetails = function(req, res){
 
   var tourid = req.params.id;

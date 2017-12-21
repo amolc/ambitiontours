@@ -24,7 +24,7 @@
   <script type="text/javascript" src="assets/js/payCtrl.js"></script>
   </head>
 
-<body data-ng-app="80consult" data-ng-controller="paymentcontroller">
+<body data-ng-app="80consult" data-ng-controller="paymentcontroller" ng-init="getPaymentDetails()">
 <!-- Start Header -->
        
         <header id="top-header">
@@ -128,69 +128,31 @@
                           </div>
                           <div id="credit-card-acco" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="credit-card">
                               <div class="panel-body">
-                                <form id="credit-card-form">
+                                <form id="credit-card-form" stripe-form="stripeCallback">
                                   <div class="col-sm-8 pd0">
                                     <div class="col-md-6">
                                        <div class="form-group">
                                         <label for="">Card Name :</label>
-                                        <input type="name" class="form-control" name="bank-name" id="fullname" placeholder="Card Holder's Name" required="">
+                                        <input type="name" class="form-control" name="bank-name" id="fullname" placeholder="Card Holder's Name" ng-model="cardname" required="">
                                       </div>
                                     </div>
                                     <div class="col-md-6">
                                        <div class="form-group">
                                         <label for="">Card Number :</label>
-                                        <input type="name" class="form-control" name="bank-name" id="fullname" placeholder="Debit/Credit Card Number" required="">
+                                        <input type="name" class="form-control" name="bank-name" id="fullname" placeholder="Debit/Credit Card Number" required="" ng-model="number" payments-validate="card" payments-type-model="type">
                                       </div>
                                     </div>
                                     <div class="col-md-6">
-                                       <div class="row">
-                                          <div class="col-sm-6">
-                                            <div class="form-group">
-                                              <label for="">Expiration :</label>
-                                              <select class="form-control" name="expiration-month" required="">
-                                                <option>Month</option>
-                                                <option>January</option>
-                                                <option>February</option>
-                                                <option>March</option>
-                                                <option>April</option>
-                                                <option>May</option>
-                                                <option>June</option>
-                                                <option>July</option>
-                                                <option>August</option>
-                                                <option>September</option>
-                                                <option>October</option>
-                                                <option>November</option>
-                                                <option>December</option>
-                                              </select>
-                                            </div>
-                                          </div>
-                                          <div class="col-sm-6">
-                                            <div class="form-group">
-                                              <label for="">&nbsp;</label>
-                                              <select class="form-control" name="expiration-month" required="">
-                                                <option>2017</option>
-                                                <option>2018</option>
-                                                <option>2019</option>
-                                                <option>2020</option>
-                                                <option>2021</option>
-                                                <option>2022</option>
-                                                <option>2023</option>
-                                                <option>2024</option>
-                                                <option>2025</option>
-                                                <option>2026</option>
-                                                <option>2027</option>
-                                                <option>2028</option>
-                                                <option>2029</option>
-                                                <option>2030</option>
-                                              </select>
-                                            </div>
-                                          </div>
-                                       </div>
+                                        <div class="form-group">
+                                         <label for="">Expiration :</label>
+                                         <input type="name" class="form-control" name="expiry" ng-model="expiry" payments-format="expiry" placeholder="Card Expiry">  
+                                        </div>
                                     </div>
+    
                                     <div class="col-sm-6 col-md-6">
                                       <div class="form-group">
                                         <label for="">Card CVV :</label>
-                                        <input type="name" class="form-control" name="bank-name" id="cvv-no"  placeholder="Security Code" required="">
+                                        <input type="name" class="form-control" name="bank-name" id="cvv-no"  placeholder="Security Code" required="" ng-model="cvv" maxlength="3" payments-format="cvc" >
                                       </div>
                                     </div>
                                     <div class="col-sm-12 col-md-12 text-center">
@@ -199,7 +161,8 @@
                                   </div>
                                   <div class="col-sm-4">
                                     <div class="total-amt text-center">
-                                      <h4>$1500</h4>
+                                     <!--  <h4>$1500</h4> -->
+                                      <h4>SGD ${{tourbook.TotalAmount}}</h4>
                                       <h5 class="">Total Amount</h5>
                                     </div>
                                   </div>
