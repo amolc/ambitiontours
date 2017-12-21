@@ -153,6 +153,20 @@ exports.getallcountries = function (req, res) {
     });
 };
 
+exports.gettourcountries = function (req, res) {
+    var sql = "SELECT `CountryId`,`CountryTitle`,`CountryImage` FROM `tbl_Countries` WHERE `IsDeleted` = '0' AND `Tour`=1";
+    db.query(sql, function (err, data) {
+        res.json(data);
+    });
+};
+
+exports.getattractioncountries = function (req, res) {
+    var sql = "SELECT `CountryId`,`CountryTitle`,`CountryImage` FROM `tbl_Countries` WHERE `IsDeleted` = '0' AND `Attraction`=1";
+    db.query(sql, function (err, data) {
+        res.json(data);
+    });
+};
+
 exports.getCountryId = function(req, res){
 
   var country = req.params.id;
@@ -166,7 +180,7 @@ exports.getCountryId = function(req, res){
 exports.getCountryDetails = function(req, res){
 
   var id = req.params.id;
-  var sql = "SELECT `CountryTitle`,`CountryImage` FROM `tbl_Countries` WHERE CountryId = '"+id+"'";    
+  var sql = "SELECT `CountryId`,`CountryTitle`,`CountryImage`,`Tour`,`Attraction` FROM `tbl_Countries` WHERE CountryId = '"+id+"'";    
   db.query(sql, function (err, data) {
         res.json(data[0]);
     });
@@ -372,6 +386,8 @@ exports.addCountry = function (req, res) {
     var createObj = {
                                 "CountryTitle" : req.body.CountryTitle,
                                 "CountryImage": fileName || "", 
+                                "Tour" : req.body.Tour,
+                                "Attraction" : req.body.Attraction,
                                 "CreatedOn": dateToday || "",        
                             };
                             // console.log("after", createObj);
@@ -403,6 +419,8 @@ exports.addCountry = function (req, res) {
 };
 
 exports.updateCountry = function (req, res) {
+
+   // console.log(req.body);
 
     dateToday = now.format("DD/MM/YYYY hh:mm a");
     date = now.format("DD/MM/YYYY");
@@ -436,9 +454,11 @@ exports.updateCountry = function (req, res) {
     var updateObj = {
                                 "CountryTitle" : req.body.CountryTitle,
                                 "CountryImage": fileName || "", 
+                                "Tour" : req.body.Tour,
+                                "Attraction" : req.body.Attraction,
                                 "ModifiedOn": dateToday || "",        
                             };
-                            // console.log("after", createObj);
+                             //console.log("after", updateObj);
 
                             countriesCRUD.update({CountryId: req.body.CountryId}, updateObj,function (err, data) {
 
@@ -446,12 +466,13 @@ exports.updateCountry = function (req, res) {
                                 {
                                     var resdata = {
                                         status: true,
-                                        value:data.insertId,
+                                        value:data,
                                         message: 'Details successfully updated',
                                         date : dateToday
                                     };
+                                   // console.log(resdata)
 
-                                    res.jsonp(resdata);
+                                   res.jsonp(resdata);
                                 }
                                 else
                                 {
@@ -460,6 +481,7 @@ exports.updateCountry = function (req, res) {
                                         error: err,
                                         message: 'Error: Details not successfully updated. '
                                     };
+                                    // console.log(resdata)
 
                                     res.jsonp(resdata);
                                 }

@@ -118,6 +118,47 @@ app.controller('contactcontroller', function ($scope, $location, $http, $window)
 
    }
 
+       $scope.gettourcountries = function() {
+
+    $http.get(baseurl + 'gettourcountries').success(function (res) {
+
+            if (res.status == 'false') {
+
+            }
+            else {
+               // console.log(res);
+                $scope.countrylist = res;
+               // $scope.registration.CountryId = $scope.countrylist[0].CountryId;
+               //console.log($scope.countrylist);
+            }
+
+        }).error(function () {
+
+        });
+
+   }
+
+
+   $scope.getattractioncountries = function() {
+
+    $http.get(baseurl + 'getattractioncountries').success(function (res) {
+
+            if (res.status == 'false') {
+
+            }
+            else {
+               // console.log(res);
+                $scope.countrylist = res;
+               // $scope.registration.CountryId = $scope.countrylist[0].CountryId;
+               //console.log($scope.countrylist);
+            }
+
+        }).error(function () {
+
+        });
+
+   }
+
    $scope.getAllVisaDetails = function() {
 
     $http.get(baseurl + 'getAllVisaDetails').success(function (res) {

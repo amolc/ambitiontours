@@ -22,7 +22,7 @@
         <script type="text/javascript" src="assets/js/app.js"></script>
         <script type="text/javascript" src="assets/js/contactCtrl.js"></script>
     </head>
-    <body data-ng-app="80consult" data-ng-controller="contactcontroller" ng-init="getCountries()">
+    <body data-ng-app="80consult" data-ng-controller="contactcontroller">
         <!-- Start Header -->
      
        
@@ -63,7 +63,7 @@
                                     <div class="collapse navbar-collapse pd0" id="bs-example-navbar-collapse-1">
                                       <ul class="nav navbar-nav">
                                         <!-- <li><a href="index.html" class="hvr-underline-reveal">Destinations</a></li> -->
-                                        <li class="dropdown" ng-init="getCountries()">
+                                        <li class="dropdown" ng-init="getattractioncountries()">
                                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Destinations <span class="caret"></span></a>
                                           <ul class="dropdown-menu">
                                             <!-- <li><a href="#">India</a></li>
@@ -101,7 +101,7 @@
                 </div>
             </div>
         </header>
-        <section id="country-box">
+        <section id="country-box" ng-init="gettourcountries">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
