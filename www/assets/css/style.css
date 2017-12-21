@@ -1152,6 +1152,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 }
 .payment-box .panel-body{
   background-color: #ffffff;
+  padding: 15px 15px 31px;
 }
 .payment-box .panel-default > .panel-heading {
   padding: 0;
@@ -1174,7 +1175,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 }
 /*According Css End */
 .total-amt{
-  padding: 74px 15px;
+  padding: 64px 15px;
   background-color: #ececec;
 }
 .total-amt h5{
