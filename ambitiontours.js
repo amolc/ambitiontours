@@ -15,6 +15,8 @@ var contact = require('./api/contact.js');
 var startup = require('./api/startup.js');
 var investor = require('./api/investor.js');
 var admin = require('./api/admin.js');
+var payment = require('./api/payment.js');
+
 
 /*app.use(function(req, res, next){
 	var url_parts = url.parse(req.url, true);
@@ -44,6 +46,7 @@ app.post('/api/consult', contact.consult);
 app.post('/api/customTour', contact.customTour);
 app.post('/api/airTicket', contact.airTicket);
 app.post('/api/visaEnquiry', contact.visaEnquiry);
+app.post('/api/booktour', contact.booktour);
 
 app.post('/api/apply', startup.apply);
 app.post('/api/invest', investor.invest);
@@ -66,6 +69,8 @@ app.get('/api/getOperatingHours', admin.getOperatingHours);
 app.get('/api/getPublicHolidays', admin.getPublicHolidays);
 
 app.get('/api/getAllBookings', admin.getAllBookings);
+app.get('/api/getTourBookingDetails/:id', admin.getTourBookingDetails);
+app.post('/api/tourPayment', payment.tourPayment);
 
 app.get('/api/getAllTours', admin.getAllTours);
 app.get('/api/getCountryTours/:id', admin.getCountryTours);
@@ -78,6 +83,8 @@ app.get('/api/deleteTour/:id', admin.deleteTour);
 
 app.get('/api/allcountries', admin.allcountries);
 app.get('/api/getallcountries', admin.getallcountries);
+app.get('/api/gettourcountries', admin.gettourcountries);
+app.get('/api/getattractioncountries', admin.getattractioncountries);
 app.get('/api/getCountryId/:id', admin.getCountryId);
 app.get('/api/getCountryDetails/:id', admin.getCountryDetails);
 app.post('/api/addCountry', admin.addCountry);

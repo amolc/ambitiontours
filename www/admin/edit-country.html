@@ -66,10 +66,10 @@
                                       <ul class="nav navbar-nav">
                                         <li><a href="dashboard.html" class="hvr-underline-reveal">Dashboard</a></li>
                                         <li><a href="attractions.html" class="hvr-underline-reveal">Attractions</a></li>
-                                        <li><a href="tours.html" class="hvr-underline-reveal">Tours</a></li>
+                                        <li><a href="tours.html" class="hvr-underline-reveal">Package Tours</a></li>
                                         <li><a href="countries.html" class="hvr-underline-reveal">Countries</a></li>
                                         <li><a href="visa.html" class="hvr-underline-reveal">Visa Details</a></li>
-                                        <li><a href="gift-vouchers.html" class="hvr-underline-reveal">Gift Vouchers</a></li>
+                                        <li><a href="gift-vouchers.html" class="hvr-underline-reveal">Travel Vouchers</a></li>
                                         <!-- <li><a href="changepassword.html" class="hvr-underline-reveal">Change Password</a></li>
                                         <li><a href="javascript:void(0)" class="hvr-underline-reveal" ng-click="adminlogout();">Logout</a></li> -->
                                       </ul>
@@ -106,11 +106,33 @@
                   <div class="attractions-form profile signin-form">
                   <h2 class="text-center">Edit Country</h2>
 
+                     <div class="col-sm-2 col-md-2">
+                   </div>
+
                   <div class="col-sm-8 col-md-8 pd0">
 
                   <div class="col-sm-12 col-md-12">
                     <input type="text" name="duration" placeholder="Country Name" required="" ng-model="Tour.CountryTitle">
                   </div>
+
+                   <div class="col-sm-12 col-md-12">
+                    <!-- <input type="text" name="duration" placeholder="Country Name" required="" ng-model="Tour.CountryTitle"> -->
+                    <label class="pull-left">Display Country In</label>
+                    </div>
+                    <div class="col-sm-12 col-md-12">
+                    <div class="col-sm-1">
+                      <input type="checkbox" ng-model="Tour.Attraction" name="attraction" ng-true-value="1" ng-false-value="0" id="attraction">
+                    </div>
+                    <div class="col-sm-2">
+                      <label style="font-size: 16px;margin-top: 1em;">Attraction</label>
+                    </div>
+                    <div class="col-sm-1">
+                      <input type="checkbox" ng-model="Tour.Tour" name="tour" ng-true-value="1" ng-false-value="0" id="tour">
+                    </div>
+                    <div class="col-sm-1">
+                      <label style="font-size: 16px;margin-top: 1em;">Tour</label>
+                    </div>
+                    </div>
 
                    <div class="col-sm-12 col-md-12">
                      <input id="file_browse1" class="form-control" type='file' name="productimage" onchange="angular.element(this).scope().updateattachment('file_browse1');   $('#imagepreview').children().remove();" accept="image/*">
@@ -124,16 +146,13 @@
 
                   
                   </div>
-                  <div class="col-sm-4 col-md-4">
                   
-                    
-                  </div>
                  
                   <div class="col-sm-12 col-md-12">
                       <label id="alertmessage" hidden>{{alertmessage}}</label>
                   </div>
-                  <div class="col-sm-6 col-md-6 ">
-                    <input type="submit" value="Save" class="small-btn brawon-btn pull-right">
+                  <div class="col-sm-12 col-md-12">
+                    <input type="submit" value="Save" class="small-btn brawon-btn">
                   </div>
                   
                   <div class="clearfix"></div>

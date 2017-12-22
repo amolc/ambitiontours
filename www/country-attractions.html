@@ -65,7 +65,7 @@
                                     <div class="collapse navbar-collapse pd0" id="bs-example-navbar-collapse-1">
                                       <ul class="nav navbar-nav">
                                         <!-- <li><a href="index.html" class="hvr-underline-reveal">Destinations</a></li> -->
-                                        <li class="dropdown" ng-init="getCountries()">
+                                        <li class="dropdown" ng-init="getattractioncountries()">
                                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Destinations <span class="caret"></span></a>
                                           <ul class="dropdown-menu">
                                             <!-- <li><a href="#">India</a></li>
@@ -141,14 +141,14 @@
                                     <div class="price-right-block">
                                         <span>From SGD</span>
                                         <h4>${{a.TourCost}}</h4>
-                                        <a href="#" ng-click="enquiryButton('Universal Studios Singapore One-Day Pass','76');" class="pakege-btn">Book Now</a>
+                                       <!--  <a href="#" ng-click="enquiryButton('Universal Studios Singapore One-Day Pass','76');" class="pakege-btn">Book Now</a> -->
+                                       <a href="booking.html?TourId={{a.TourId}}" class="pakege-btn">Book Now</a>
                                     </div>
                                 </div>
                             </div>
                             <div class="clearfix"></div>
                         </div>
                     </div>
-
 
                 </div>
             </div>
@@ -157,7 +157,7 @@
 
     <!-- End Header -->
 
-<!--
+     <!--
         <section id="header">
             <div class="container">
                 <div class="row">

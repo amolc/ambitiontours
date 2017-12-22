@@ -43,6 +43,51 @@ app.controller('contactcontroller', function ($scope, $location, $http, $window)
     location.href='/enquiry.html';
  }
 
+
+  $scope.booktour = function (req, res) {
+
+    $scope.alertmessage = '';
+
+    if (typeof $scope.Tour.adults === 'undefined') 
+    {
+         $scope.alertmessage = 'Please select no of adults';
+    }
+    else if(typeof $scope.Tour.Child === 'undefined') 
+    {
+         $scope.alertmessage = 'Please select no of children';
+    }
+    else if($scope.Tour.TourType === 'Attraction' && typeof $scope.Tour.paymenttype === 'undefined') 
+    {
+         $scope.alertmessage = 'Please select paymenttype';
+    }
+    else
+    {
+
+       $http.post(baseurl + 'booktour/', $scope.Tour).success(function (res) {
+          if (res.status == 'false') {
+          }
+          else
+          {
+            if ($scope.Tour.TourType == 'Attraction' && $scope.Tour.paymenttype=='Credit Card')
+            {
+                window.location.href = 'payment-option.html?BookId='+res.value;
+            }
+            else
+            {
+                $('#bookform').hide();
+                $('#thankyou').show('slow');
+            }
+
+          }
+        }).error(function () {
+          console.log("error");
+        })
+
+    }
+
+  }
+
+
   $scope.booknow = function (req, res) {
 
     console.info("in consult");
@@ -108,6 +153,48 @@ app.controller('contactcontroller', function ($scope, $location, $http, $window)
             else {
                 console.log(res);
                 $scope.clist = res;
+               // $scope.registration.CountryId = $scope.countrylist[0].CountryId;
+               //console.log($scope.countrylist);
+            }
+
+        }).error(function () {
+
+        });
+
+   }
+
+       $scope.gettourcountries = function() {
+
+    $http.get(baseurl + 'gettourcountries').success(function (res) {
+
+            if (res.status == 'false') {
+
+            }
+            else {
+               // console.log(res);
+                // $scope.countrylist = res;
+                 $scope.clist = res;
+               // $scope.registration.CountryId = $scope.countrylist[0].CountryId;
+               //console.log($scope.countrylist);
+            }
+
+        }).error(function () {
+
+        });
+
+   }
+
+
+   $scope.getattractioncountries = function() {
+
+    $http.get(baseurl + 'getattractioncountries').success(function (res) {
+
+            if (res.status == 'false') {
+
+            }
+            else {
+               // console.log(res);
+                $scope.countrylist = res;
                // $scope.registration.CountryId = $scope.countrylist[0].CountryId;
                //console.log($scope.countrylist);
             }
@@ -392,6 +479,43 @@ app.controller('contactcontroller', function ($scope, $location, $http, $window)
 
    }
 
+       $scope.getTourDetails = function() {             
+
+
+
+        var url = window.location.href;
+        var parts = url.split("?");
+        if(parts.length>1){
+
+           var urlparams = parts[1];
+           var params = urlparams.split("&");
+           var id = urlparams.split("=")
+           if (id[0]=='TourId') 
+           {
+             $http.get(baseurl + 'getTourDetails/'+id[1]).success(function (res) {
+
+                  if (res.status == 'false') {
+
+                  }
+                  else {
+                      $scope.Tour = res;
+                  }
+
+              }).error(function () {
+
+              });
+           }
+           else
+          {
+              window.location.href = 'index.html';
+          }
+        }
+        else
+        {
+            window.location.href = 'index.html';
+        }
+    } 
+
   $scope.customTour = function (req, res) {
 
     console.info("in consult");
@@ -480,6 +604,27 @@ app.controller('contactcontroller', function ($scope, $location, $http, $window)
     })
    
   }
+
+      $scope.getAllGiftVouchers = function() {
+
+    $http.get(baseurl + 'getAllGiftVouchers').success(function (res) {
+
+            if (res.status == 'false') {
+
+            }
+            else {
+               // console.log(res);
+                $scope.voucherlist = res;
+               // $scope.registration.CountryId = $scope.countrylist[0].CountryId;
+               //console.log($scope.countrylist);
+            }
+
+        }).error(function () {
+
+        });
+
+   }
+
 
 $scope.initfunc = function () {
      //$scope.data = {};

@@ -60,7 +60,7 @@
                                     <div class="collapse navbar-collapse pd0" id="bs-example-navbar-collapse-1">
                                       <ul class="nav navbar-nav">
                                         <!-- <li><a href="index.html" class="hvr-underline-reveal">Destinations</a></li> -->
-                                        <li class="dropdown" ng-init="getCountries()">
+                                        <li class="dropdown" ng-init="getattractioncountries()">
                                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Destinations <span class="caret"></span></a>
                                           <ul class="dropdown-menu">
                                             <!-- <li><a href="#">India</a></li>
@@ -102,7 +102,7 @@
    
  
 
-    <section id="voucher-wrap" class="bg-creem">
+    <section id="voucher-wrap" class="bg-creem" ng-init="getAllGiftVouchers()">
       <div class="container">
         <div class="row">
           <div class="col-sm-12 col-md-12 text-center">
@@ -113,7 +113,7 @@
               <p>Purchase travel vouchers here with just a few steps. Simply choose the amount that you want, fill in your particulars and any special requests that you may have. We will be in contact with you upon your purchase confirmation.</p>
             </div>
           </div>
-          <div class="col-sm-3">
+         <!--  <div class="col-sm-3">
             <div class="voucher-box">
               <div class="voucher-img">
                 <img src="assets/img/voucher-logo-img.jpg" alt="" title="">
@@ -127,97 +127,23 @@
                 </p>
               </div>
             </div>
-          </div>
-          <div class="col-sm-3">
+          </div> -->
+          <div class="col-sm-3" ng-repeat="voucher in voucherlist">
             <div class="voucher-box">
               <div class="voucher-img">
                 <img src="assets/img/voucher-logo-img.jpg" alt="" title="">
               </div>
               <div class="voucher-info">
                 <h5>Ambition Tours Travel Pte Ltd</h5>
-                <p><em>CODE: DT001-10</em></p>
+                <p><em>CODE: {{voucher.Code}}</em></p>
                 <p>
                   <span><input type="submit" class="orenge-btn color-white" value="Purchase"  data-toggle="modal" data-target="#vouchers-modal"></span>
-                  <span class="pull-right">$20</span>
+                  <span class="pull-right">${{voucher.Price}}</span>
                 </p>
               </div>
             </div>
           </div>
-          <div class="col-sm-3">
-            <div class="voucher-box">
-              <div class="voucher-img">
-                <img src="assets/img/voucher-logo-img.jpg" alt="" title="">
-              </div>
-              <div class="voucher-info">
-                <h5>Ambition Tours Travel Pte Ltd</h5>
-                <p><em>CODE: DT001-10</em></p>
-                <p>
-                  <span><input type="submit" class="orenge-btn color-white" value="Purchase"  data-toggle="modal" data-target="#vouchers-modal"></span>
-                  <span class="pull-right">$25</span>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-3">
-            <div class="voucher-box">
-              <div class="voucher-img">
-                <img src="assets/img/voucher-logo-img.jpg" alt="" title="">
-              </div>
-              <div class="voucher-info">
-                <h5>Ambition Tours Travel Pte Ltd</h5>
-                <p><em>CODE: DT001-10</em></p>
-                <p>
-                  <span><input type="submit" class="orenge-btn color-white" value="Purchase"  data-toggle="modal" data-target="#vouchers-modal"></span>
-                  <span class="pull-right">$50</span>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-3">
-            <div class="voucher-box">
-              <div class="voucher-img">
-                <img src="assets/img/voucher-logo-img.jpg" alt="" title="">
-              </div>
-              <div class="voucher-info">
-                <h5>Ambition Tours Travel Pte Ltd</h5>
-                <p><em>CODE: DT001-10</em></p>
-                <p>
-                  <span><input type="submit" class="orenge-btn color-white" value="Purchase"  data-toggle="modal" data-target="#vouchers-modal"></span>
-                  <span class="pull-right">$45</span>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-3">
-            <div class="voucher-box">
-              <div class="voucher-img">
-                <img src="assets/img/voucher-logo-img.jpg" alt="" title="">
-              </div>
-              <div class="voucher-info">
-                <h5>Ambition Tours Travel Pte Ltd</h5>
-                <p><em>CODE: DT001-10</em></p>
-                <p>
-                  <span><input type="submit" class="orenge-btn color-white" value="Purchase"  data-toggle="modal" data-target="#vouchers-modal"></span>
-                  <span class="pull-right">$100</span>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-3">
-            <div class="voucher-box">
-              <div class="voucher-img">
-                <img src="assets/img/voucher-logo-img.jpg" alt="" title="">
-              </div>
-              <div class="voucher-info">
-                <h5>Ambition Tours Travel Pte Ltd</h5>
-                <p><em>CODE: DT001-10</em></p>
-                <p>
-                  <span><input type="submit" class="orenge-btn color-white" value="Purchase"  data-toggle="modal" data-target="#vouchers-modal"></span>
-                  <span class="pull-right">$60</span>
-                </p>
-              </div>
-            </div>
-          </div>
+        
         </div> 
       </div> 
     </section>
@@ -236,26 +162,26 @@
                 <div class="col-sm-6 col-md-6">
                   <div class="form-group">
                     <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name">
+                    <input type="text" class="form-control" id="name" required="">
                   </div>
                 </div>
                 <div class="col-sm-6 col-md-6">
                   <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email">
+                    <input type="email" class="form-control" id="email" required="">
                   </div>
                 </div>
                 <div class="col-sm-6 col-md-6">
                   <div class="form-group">
                     <label for="contact-no  ">Contact</label>
-                    <input type="text" class="form-control" id="contact-no">
+                    <input type="text" class="form-control" id="contact-no" required="">
                   </div>
                 </div>
 
                 <div class="col-sm-6 col-md-6">
                   <div class="form-group">
                     <label for="contact-no  ">Quantity</label>
-                    <select class="form-control">
+                    <select class="form-control" required=""> 
                       <option>1</option>
                       <option>2</option>
                       <option>3</option>
@@ -267,7 +193,7 @@
                   <div class="col-sm-6 col-md-6">
                     <div class="form-group">
                       <label for="contact-no">Address</label>
-                      <textarea class="form-control" rows="3"></textarea>
+                      <textarea class="form-control" rows="3" required=""></textarea>
                     </div>
                   </div>
                   <div class="col-sm-6 col-md-6">

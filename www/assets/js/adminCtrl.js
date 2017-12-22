@@ -181,6 +181,47 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
 
    }
 
+    $scope.gettourcountries = function() {
+
+    $http.get(baseurl + 'gettourcountries').success(function (res) {
+
+            if (res.status == 'false') {
+
+            }
+            else {
+               // console.log(res);
+                $scope.countrylist = res;
+               // $scope.registration.CountryId = $scope.countrylist[0].CountryId;
+               //console.log($scope.countrylist);
+            }
+
+        }).error(function () {
+
+        });
+
+   }
+
+
+   $scope.getattractioncountries = function() {
+
+    $http.get(baseurl + 'getattractioncountries').success(function (res) {
+
+            if (res.status == 'false') {
+
+            }
+            else {
+               // console.log(res);
+                $scope.countrylist = res;
+               // $scope.registration.CountryId = $scope.countrylist[0].CountryId;
+               //console.log($scope.countrylist);
+            }
+
+        }).error(function () {
+
+        });
+
+   }
+
    $scope.getAllAttractions = function() {
 
     $http.get(baseurl + 'getAllAttractions').success(function (res) {
@@ -624,6 +665,8 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
      $scope.addCountry = function() {   
 
 
+          //console.log($scope.Tour);
+
 
              setTimeout(function() { 
 
@@ -670,6 +713,8 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
 
                   }
                   else {
+
+
                       $scope.Tour = res;
                       $scope.attachmentCount = {};
                       $scope.attachment = {};
@@ -694,7 +739,6 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
     $scope.updateCountry = function() {   
 
 
-
              setTimeout(function() { 
 
                if (Object.keys($scope.attachment).length>0) {
@@ -702,7 +746,7 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
               }else{
                 $scope.Tour.image = '';
               }
-             // console.log($scope.Tour);
+              console.log($scope.Tour);
 
             $http.post(baseurl + 'updateCountry/',$scope.Tour).success(function(res) {
                   
@@ -717,7 +761,7 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
                     
                 });
          
-              }, 1000);    
+               }, 1000);    
 
     }
 
