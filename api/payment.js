@@ -12,6 +12,7 @@ var db = mysql.createPool({
 
 var CRUD = require('mysql-crud');
 var bookCRUD = CRUD(db,'tbl_Bookings');
+var vbookCRUD = CRUD(db,'tbl_VoucherBooking');
 
 var nodemailer = require('nodemailer');
 var mg = require('nodemailer-mailgun-transport');
@@ -121,6 +122,134 @@ exports.tourPayment = function(req, res){
         // Send an email
 };
 
+
+exports.voucherPayment = function(req, res){
+        //console.log(req.body);
+        var token = req.body.stripeToken;
+        var amount = req.body.TotalAmount ;
+        var stripeToken = "" ;
+        // Charge the user's card:
+        var charge = stripe.charges.create({
+          amount: amount,
+          currency: "sgd",
+          description: req.body.Code,
+          source: token
+        }, function(err, charge) {
+          // asynchronously called
+        //  console.log('err',err);
+          if(!err){
+              //  console.log('charge',charge);
+                stripetoken = charge.id ;
+
+                 dateToday = now.format("DD/MM/YYYY hh:mm a");
+                 var updateObj = {
+
+                          'stripeToken': stripetoken,
+                          'PaymentStatus' : 'Paid',
+                          'PaymentDate' : dateToday
+                  };
+
+                vbookCRUD.update({VBookId: req.body.VBookId}, updateObj,function(err, val) {
+
+                    if (!err) 
+                    {
+
+                          var customerEmail = req.body.Email+',sadiarahman1@yahoo.com,nadyshaikh@gmail.com,ceo@80startups.com,office@80startups.com ,shital.talole@fountaintechies.com,komal.gaikwad@fountaintechies.com';
+                          var recipientEmail = 'sadia@ambitiontours.com,sadiarahman1@yahoo.com,nadyshaikh@gmail.com,ceo@80startups.com,office@80startups.com ,shital.talole@fountaintechies.com,komal.gaikwad@fountaintechies.com';
+                          //var customerEmail = req.body.Email; //,ceo@80startups.com,shital.talole@fountaintechies.com'; //,ceo@80startups.com,shital.talole@80startups.com
+                          //var recipientEmail = 'komal.gaikwad@fountaintechies.com';
+                          var subject = "New Travel Gift Vouchers Enquiry";
+                          var customersubject  = "Thank You for Your Enquiry!";
+
+                          var mailbody = '<table>\
+                                      <tr>\
+                                      <td><img src="https://ambitiontours.80startups.com/assets/img/logo.png"></td><br>\
+                                    </tr>\
+                                    <tr>\
+                                      <td><h1>Dear Ambition Tours,</td>\
+                                    </tr>\
+                                    <tr>\
+                                    </tr>\
+                                    <tr>\
+                                      <td>Gift Voucher Enquiry Details:</td>\
+                                    </tr>\
+                                    <tr>\
+                                      <td>The details are as follow :<br><br><strong> Name:   ' + req.body.Name + '</strong><br><br><strong> Email: ' + req.body.Email + '</strong>  <br><br><strong> Contact No:  ' + req.body.Contact + '</strong><br><br><strong> Address:   ' + req.body.Address + '</strong><br><br><strong> Request:   ' + req.body.Request + '</strong><br><br><strong> Voucher Code:   ' + req.body.Code + '</strong><br><br><strong> Price:   ' + req.body.Price + '</strong><br><br><strong> Quantity:   ' +  req.body.Quantity + '</strong><br><br><strong>Total Amount:   ' + req.body.TotalAmount + '</strong><br><br><strong> stripeToken:   ' + stripetoken + '</strong><br><br><strong> Payment Status:   Paid</strong><br><br></td>\
+                                    </tr>\
+                                    <tr>\
+                                      <td>Best wishes,</td>\
+                                    </tr>\
+                                    <tr>\
+                                      <td><h2>ambitiontours.com</h2></td>\
+                                    </tr>\
+                                    <tr>\
+                                      <td bgcolor="#000000"><font color ="white">This is a one-time email. Please do not reply to this email.</font></td>\
+                                    </tr>\
+                                  </table>';
+
+                        var customermailbody = '<table>\
+                                      <tr>\
+                                      <td><img src="https://ambitiontours.80startups.com/assets/img/logo.png"></td><br>\
+                                    </tr>\
+                                    <tr>\
+                                      <td><h1>Dear '+req.body.Name+',</td>\
+                                    </tr>\
+                                    <tr>\
+                                    </tr>\
+                                    <tr>\
+                                      <td>Gift Voucher Enquiry Details:</td>\
+                                    </tr>\
+                                    <tr>\
+                                      <td>The details are as follow :<br><br><strong> Name:   ' + req.body.Name + '</strong><br><br><strong> Email: ' + req.body.Email + '</strong>  <br><br><strong> Contact No:  ' + req.body.Contact + '</strong><br><br><strong> Address:   ' + req.body.Address + '</strong><br><br><strong> Request:   ' + req.body.Request + '</strong><br><br><strong> Voucher Code:   ' + req.body.Code + '</strong><br><br><strong> Price:   ' + req.body.Price + '</strong><br><br><strong> Quantity:   ' +  req.body.Quantity + '</strong><br><br><strong>Total Amount:   ' + req.body.TotalAmount + '</strong><br><br><strong> stripeToken:   ' + stripetoken + '</strong><br><br><strong> Payment Status:   Paid</strong><br><br></td>\
+                                    </tr>\
+                                    <tr>\
+                                      <td>Best wishes,</td>\
+                                    </tr>\
+                                    <tr>\
+                                      <td><h2>ambitiontours.com</h2></td>\
+                                    </tr>\
+                                    <tr>\
+                                      <td bgcolor="#000000"><font color ="white">This is a one-time email. Please do not reply to this email.</font></td>\
+                                    </tr>\
+                                  </table>';
+
+                        send_mail(recipientEmail, subject, mailbody);
+                        send_mail(customerEmail, customersubject, customermailbody);
+
+                        var resdata = {
+                            status: true,
+                            value:val,
+                            message: 'Details successfully updated'
+                        };
+
+                        res.jsonp(resdata);
+                    }
+                    else
+                    {
+                        var resdata = {
+                            status: false,
+                            error: err,
+                            message: 'Error: Details not successfully updated. '
+                        };
+
+                        res.jsonp(resdata);
+                    }
+
+                });
+                            
+
+                      }
+
+
+          else{
+                  console.log('err',err);
+                }
+
+        });
+
+
+        // Send an email
+};
 
 function send_mail(usermail, subject, mailbody) {
 

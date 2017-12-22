@@ -244,6 +244,16 @@ exports.getTourBookingDetails = function(req, res){
     
 };
 
+exports.getVoucherBookingDetails = function(req, res){
+
+  var id = req.params.id;
+  var sql = "SELECT * FROM `tbl_VoucherBooking` WHERE VBookId= '"+id+"'";    
+  db.query(sql, function (err, data) {
+        res.json(data[0]);
+    });
+    
+};
+
 
 exports.getTourDetails = function(req, res){
 

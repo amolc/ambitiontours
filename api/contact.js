@@ -16,6 +16,8 @@ var ctourCRUD = CRUD(db, 'tbl_CustomTours');
 var ticketCRUD = CRUD(db,'tbl_AirTickets');
 var venquiryCRUD = CRUD(db,'tbl_VisaEnquiries');
 var bookCRUD = CRUD(db,'tbl_Bookings');
+var vbookCRUD = CRUD(db,'tbl_VoucherBooking');
+
 
 var nodemailer = require('nodemailer');
 var mg = require('nodemailer-mailgun-transport');
@@ -391,6 +393,50 @@ exports.visaEnquiry = function (req, res) {
                 status: false,
                 error: err,
                 message: 'Error: Details not successfully updated. '
+            };
+
+            res.jsonp(resdata);
+        }
+
+    })
+    
+}
+
+
+exports.purchasevoucher = function (req, res) {
+
+   dateToday = now.format("DD/MM/YYYY hh:mm a");
+   vbookCRUD.create({
+      'VoucherId': req.body.Id,
+      'Code': req.body.Code,
+      'Price': req.body.Price ,
+      'Quantity': req.body.Quantity,
+      'TotalAmount':req.body.Price * req.body.Quantity,
+      'Name': req.body.Name,
+      'Contact': req.body.Contact,
+      'Email': req.body.Email,
+      'Request': req.body.Request,
+      'Address': req.body.Address,
+      'CreatedOn' : dateToday,
+    },function (err,val){
+
+      if (!err) 
+        {
+
+            var resdata = {
+                status: true,
+                value:val.insertId,
+                message: 'Details successfully added'
+            };
+
+            res.jsonp(resdata);
+        }
+        else
+        {
+            var resdata = {
+                status: false,
+                error: err,
+                message: 'Error: Details not successfully added. '
             };
 
             res.jsonp(resdata);

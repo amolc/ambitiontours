@@ -625,6 +625,31 @@ app.controller('contactcontroller', function ($scope, $location, $http, $window)
 
    }
 
+    $scope.showVoucher = function(voucher) {
+
+          $scope.vc = voucher;
+          $scope.vc.Quantity = 1;
+          $scope.vc.TotalAmount = $scope.vc.Price * $scope.vc.Quantity;
+   }
+
+  $scope.purchasevoucher = function() {
+
+    $http.post(baseurl + 'purchasevoucher',$scope.vc).success(function (res) {
+
+            if (res.status == 'false') {
+
+            }
+            else {
+               
+              window.location.href = 'payment-option.html?VoucherBookId='+res.value;
+            }
+
+        }).error(function () {
+
+        });
+
+   }
+
 
 $scope.initfunc = function () {
      //$scope.data = {};

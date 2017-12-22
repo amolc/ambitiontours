@@ -47,6 +47,10 @@ app.post('/api/customTour', contact.customTour);
 app.post('/api/airTicket', contact.airTicket);
 app.post('/api/visaEnquiry', contact.visaEnquiry);
 app.post('/api/booktour', contact.booktour);
+app.post('/api/purchasevoucher', contact.purchasevoucher);
+
+app.post('/api/tourPayment', payment.tourPayment);
+app.post('/api/voucherPayment', payment.voucherPayment);
 
 app.post('/api/apply', startup.apply);
 app.post('/api/invest', investor.invest);
@@ -70,7 +74,6 @@ app.get('/api/getPublicHolidays', admin.getPublicHolidays);
 
 app.get('/api/getAllBookings', admin.getAllBookings);
 app.get('/api/getTourBookingDetails/:id', admin.getTourBookingDetails);
-app.post('/api/tourPayment', payment.tourPayment);
 
 app.get('/api/getAllTours', admin.getAllTours);
 app.get('/api/getCountryTours/:id', admin.getCountryTours);
@@ -103,6 +106,7 @@ app.get('/api/getVoucherDetails/:id',admin.getVoucherDetails);
 app.post('/api/addVoucher', admin.addVoucher);
 app.post('/api/updateVoucher',admin.updateVoucher);
 app.get('/api/deleteVoucher/:id',admin.deleteVoucher);
+app.get('/api/getVoucherBookingDetails/:id', admin.getVoucherBookingDetails);
 
 
 app.listen(6008, function () {
