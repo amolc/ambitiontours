@@ -125,9 +125,12 @@
                     <input type="text" name="title" placeholder="Title" required="" ng-model="Tour.TourTitle">
                   </div>
                   <div class="col-sm-6 col-md-6">
-                    <input type="text" name="price" placeholder="Price" pattern="[0-9]{1,5}[.]{0,1}[0-9]{0,2}" oninvalid="setCustomValidity('Enter Valid Price')" onchange="try{setCustomValidity('')}catch(e){}" required="" ng-model="Tour.TourCost">
+                    <input type="text" name="price" placeholder="Adult Price" pattern="[0-9]{1,5}[.]{0,1}[0-9]{0,2}" oninvalid="setCustomValidity('Enter Valid Price')" onchange="try{setCustomValidity('')}catch(e){}" required="" ng-model="Tour.TourCost">
                   </div>
                   <div class="col-sm-6 col-md-6">
+                    <input type="text" name="price" placeholder="Child Price" pattern="[0-9]{1,5}[.]{0,1}[0-9]{0,2}" oninvalid="setCustomValidity('Enter Valid Price')" onchange="try{setCustomValidity('')}catch(e){}" required="" ng-model="Tour.ChildCost">
+                  </div>
+                  <div class="col-sm-12 col-md-12">
                     <input type="text" name="duration" placeholder="Duration" required="" ng-model="Tour.TourDuration">
                   </div>
                   <div class="col-sm-12 col-md-12">

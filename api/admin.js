@@ -591,6 +591,7 @@ exports.addTour = function (req, res) {
                                 "TourDuration": req.body.TourDuration || "",
                                 "TourImage": fileName || "", 
                                 "TourCost": req.body.TourCost || "", 
+                                "ChildCost" : req.body.ChildCost || "", 
                                 "CreatedOn": dateToday || "",        
                             };
                             // console.log("after", createObj);
@@ -664,7 +665,7 @@ exports.updateTour = function (req, res) {
                                 "TourLocation": req.body.TourLocation || "",
                                 "TourDuration": req.body.TourDuration || "",
                                 "TourImage": fileName || "", 
-                                "TourCost": req.body.TourCost || "", 
+                                "ChildCost" : req.body.ChildCost || "", 
                                 "ModifiedOn": dateToday || "",        
                             };
                             // console.log("after", createObj);
