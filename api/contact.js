@@ -490,7 +490,7 @@ exports.visaEnquiry = function (req, res) {
                                 <tr>\
                                 </tr>\
                                 <tr>\
-                                  <td>You have one enquiry from the following client:</td>\
+                                  <td>Visa Service Enquiry Details:</td>\
                                 </tr>\
                                 <tr>\
                                   <td><br><br><strong> Name:   ' + req.body.name + '</strong><br><br><strong> Email:   ' + req.body.email + '</strong><br><br><strong> Contact Number:   ' + req.body.phone + '</strong><br><br><strong> Country:   ' + req.body.Country + '</strong><br><br><strong>Visa Charge:   ' + req.body.VisaCharge + '</strong><br><br><strong>Working Days :   ' + req.body.WorkingDays + '</strong><br><br><strong>Message :   ' + req.body.message + '</strong><br><br></td>\
