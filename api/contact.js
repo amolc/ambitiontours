@@ -121,13 +121,10 @@ exports.booktour = function (req, res) {
 
       if (!err){
 
-          var sql = "SELECT `TourType` FROM `tbl_Tours` WHERE TourId = "+req.body.TourId;
-          db.query(sql, function (err1, data) {
-
-              if (data.TourType == 'Tour'){
+              if (req.body.TourType == 'Tour'){
 
                 var recipientEmail = req.body.email+',sadiarahman1@yahoo.com,nadyshaikh@gmail.com,ceo@80startups.com,office@80startups.com ,shital.talole@fountaintechies.com,komal.gaikwad@fountaintechies.com';
-                //var recipientEmail = 'komal.gaikwad@fountaintechies.com'; //,ceo@80startups.com,shital.talole@fountaintechies.com'; //,ceo@80startups.com,shital.talole@80startups.com
+               // var recipientEmail = 'komal.gaikwad@fountaintechies.com'; //,ceo@80startups.com,shital.talole@fountaintechies.com'; //,ceo@80startups.com,shital.talole@80startups.com
                 var subject = "Ambition Tours Booking";
                 var mailbody = '<table>\
                             <tr>\
@@ -142,7 +139,7 @@ exports.booktour = function (req, res) {
                             <td>You have one booking from the following client:</td>\
                           </tr>\
                           <tr>\
-                            <td>The details are as follow :<br><br><strong> Package Name:   ' + req.body.TourTitle + '</strong><br><br><strong> Package Price: SGD  ' + req.body.TourCost + '</strong>  <br><br><strong> Name:  ' + req.body.fullname + '</strong><br><br><strong> Email:   ' + req.body.email + '</strong><br><br><strong> Contact Number:   ' + req.body.phonenumber + '</strong><br><br><strong> No of Adults:   ' + req.body.adults + '</strong><br><br><strong> No of Child:   ' + req.body.Child + '</strong><br><br><strong> Travel Date:   ' +  req.body.travelDate.substring(0,10) + '</strong><br><br><strong>Message:   ' + req.body.message + '</strong><br><br><strong> Promo Code:   ' + code + '</strong><br><br><strong> Payment Status:   Pending</strong><br><br></td>\
+                            <td>The details are as follow :<br><br><strong> Package Name:   ' + req.body.TourTitle + '</strong><br><br><strong> Package Price: SGD  ' + req.body.TourCost + '</strong>  <br><br><strong> Name:  ' + req.body.fullname + '</strong><br><br><strong> Email:   ' + req.body.email + '</strong><br><br><strong> Contact Number:   ' + req.body.phonenumber + '</strong><br><br><strong> No of Adults:   ' + req.body.adults + '</strong><br><br><strong> No of Child:   ' + req.body.Child + '</strong><br><br><strong> Total Amount:   ' + req.body.TotalAmount + '</strong><br><br><strong> Travel Date:   ' +  req.body.travelDate.substring(0,10) + '</strong><br><br><strong>Message:   ' + req.body.message + '</strong><br><br><strong></td>\
                           </tr>\
                           <tr>\
                             <td>Best wishes,</td>\
@@ -165,8 +162,7 @@ exports.booktour = function (req, res) {
                 message: 'Details successfully updated'
               };
 
-              res.jsonp(resdata);
-          });     
+              res.jsonp(resdata);   
             
         }
         else
