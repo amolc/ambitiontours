@@ -123,12 +123,12 @@ exports.booktour = function (req, res) {
 
               if (req.body.TourType == 'Tour'){
 
-              //var customerEmail = req.body.email+',sadiarahman1@yahoo.com,nadyshaikh@gmail.com,ceo@80startups.com,office@80startups.com ,shital.talole@fountaintechies.com,komal.gaikwad@fountaintechies.com';
-              //var recipientEmail = 'sadia@ambitiontours.com,sadiarahman1@yahoo.com,nadyshaikh@gmail.com,ceo@80startups.com,office@80startups.com ,shital.talole@fountaintechies.com,komal.gaikwad@fountaintechies.com';
-              var customerEmail = req.body.email; //,ceo@80startups.com,shital.talole@fountaintechies.com'; //,ceo@80startups.com,shital.talole@80startups.com
-              var recipientEmail = 'komal.gaikwad@fountaintechies.com';
-              var subject = "New Travel Gift Vouchers Enquiry";
-              var customersubject  = "Thank You for Your Enquiry!";
+              var customerEmail = req.body.email+',sadiarahman1@yahoo.com,nadyshaikh@gmail.com,ceo@80startups.com,office@80startups.com ,shital.talole@fountaintechies.com,komal.gaikwad@fountaintechies.com';
+              var recipientEmail = 'sadia@ambitiontours.com,sadiarahman1@yahoo.com,nadyshaikh@gmail.com,ceo@80startups.com,office@80startups.com ,shital.talole@fountaintechies.com,komal.gaikwad@fountaintechies.com';
+           //   var customerEmail = req.body.email; //,ceo@80startups.com,shital.talole@fountaintechies.com'; //,ceo@80startups.com,shital.talole@80startups.com
+           //   var recipientEmail = 'komal.gaikwad@fountaintechies.com';
+              var subject = "New Package Tour Enquiry.";
+              var customersubject  = "Thank You for your enquiry!";
               
               var mailbody = '<table>\
                             <tr>\
@@ -140,10 +140,10 @@ exports.booktour = function (req, res) {
                           <tr>\
                           </tr>\
                           <tr>\
-                            <td>You have one booking from the following client:</td>\
+                            <td>Package Enquiry Details:</td>\
                           </tr>\
                           <tr>\
-                            <td>The details are as follow :<br><br><strong> Name:  ' + req.body.fullname + '</strong><br><br><strong> Email:   ' + req.body.email + '</strong><br><br><strong> Contact Number:   ' + req.body.phonenumber + '</strong><strong> Package Name:   ' + req.body.TourTitle + '</strong><br><br><strong> Price For Adult : SGD  ' + req.body.TourCost + '</strong><br><br><strong> Price For Child : SGD  ' + req.body.ChildCost + '</strong><br><br><br><br><strong> No of Adults:   ' + req.body.adults + '</strong><br><br><strong> No of Child:   ' + req.body.Child + '</strong><br><br><strong> Total Amount:   ' + req.body.TotalAmount + '</strong><br><br><strong> Travel Date:   ' +  req.body.travelDate.substring(0,10) + '</strong><br><br><strong>Message:   ' + req.body.message + '</strong><br><br><strong></td>\
+                            <td><br><br><strong> Name:  ' + req.body.fullname + '</strong><br><br><strong> Email:   ' + req.body.email + '</strong><br><br><strong> Contact Number:   ' + req.body.phonenumber + '</strong><strong> Package Name:   ' + req.body.TourTitle + '</strong><br><br><strong> Price For Adult : SGD  ' + req.body.TourCost + '</strong><br><br><strong> Price For Child : SGD  ' + req.body.ChildCost + '</strong><br><br><br><br><strong> No of Adults:   ' + req.body.adults + '</strong><br><br><strong> No of Child:   ' + req.body.Child + '</strong><br><br><strong> Total Amount:   ' + req.body.TotalAmount + '</strong><br><br><strong> Travel Date:   ' +  req.body.travelDate.substring(0,10) + '</strong><br><br><strong>Message:   ' + req.body.message + '</strong><br><br><strong></td>\
                           </tr>\
                           <tr>\
                             <td>Best wishes,</td>\
@@ -156,7 +156,35 @@ exports.booktour = function (req, res) {
                           </tr>\
                         </table>';
 
-                 send_mail(recipientEmail, subject, mailbody);
+
+                var customerEmail = '<table>\
+                            <tr>\
+                            <td><img src="https://ambitiontours.80startups.com/assets/img/logo.png"></td><br>\
+                          </tr>\
+                          <tr>\
+                            <td><h1>Dear ' + req.body.fullname + ',</td>\
+                          </tr>\
+                          <tr>\
+                          </tr>\
+                          <tr>\
+                            <td>Package Enquiry Details:</td>\
+                          </tr>\
+                          <tr>\
+                            <td><br><br><strong> Name:  ' + req.body.fullname + '</strong><br><br><strong> Email:   ' + req.body.email + '</strong><br><br><strong> Contact Number:   ' + req.body.phonenumber + '</strong><strong> Package Name:   ' + req.body.TourTitle + '</strong><br><br><strong> Price For Adult : SGD  ' + req.body.TourCost + '</strong><br><br><strong> Price For Child : SGD  ' + req.body.ChildCost + '</strong><br><br><br><br><strong> No of Adults:   ' + req.body.adults + '</strong><br><br><strong> No of Child:   ' + req.body.Child + '</strong><br><br><strong> Total Amount:   ' + req.body.TotalAmount + '</strong><br><br><strong> Travel Date:   ' +  req.body.travelDate.substring(0,10) + '</strong><br><br><strong>Message:   ' + req.body.message + '</strong><br><br><strong></td>\
+                          </tr>\
+                          <tr>\
+                            <td>Best wishes,</td>\
+                          </tr>\
+                          <tr>\
+                            <td><h2>ambitiontours.com</h2></td>\
+                          </tr>\
+                          <tr>\
+                            <td bgcolor="#000000"><font color ="white">This is a one-time email. Please do not reply to this email.</font></td>\
+                          </tr>\
+                        </table>';
+
+                        send_mail(recipientEmail, subject, mailbody);
+                        send_mail(customerEmail, customersubject, customermailbody);
 
               }
 
