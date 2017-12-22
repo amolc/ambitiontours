@@ -109,7 +109,7 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-12 col-md-12 text-center">
-          <h2 class="section-title">Payment Option</h2>
+          <h2 class="section-title">Make Payment</h2>
         </div>
         <div class="col-sm-offset-1 col-sm-10 col-md-offset-1 col-md-10 payment-block">
           <div class="payment-options">
@@ -128,7 +128,7 @@
                           </div>
                           <div id="credit-card-acco" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="credit-card">
                               <div class="panel-body">
-                                <form id="credit-card-form" stripe-form="stripeCallback">
+                                <form id="credit-card-form" name="credit-card-form" stripe-form="stripeCallback">
                                   <div class="col-sm-8 pd0">
                                     <div class="col-md-6">
                                        <div class="form-group">
@@ -139,7 +139,7 @@
                                     <div class="col-md-6">
                                        <div class="form-group">
                                         <label for="">Card Number :</label>
-                                        <input type="name" class="form-control" name="bank-name" id="fullname" placeholder="Debit/Credit Card Number" required="" ng-model="number" payments-validate="card" payments-type-model="type">
+                                        <input type="name" class="form-control" name="bank-name" placeholder="Debit/Credit Card Number" required="" ng-model="number" data-stripe="number">
                                       </div>
                                     </div>
                                     <div class="col-md-6">
@@ -152,9 +152,14 @@
                                     <div class="col-sm-6 col-md-6">
                                       <div class="form-group">
                                         <label for="">Card CVV :</label>
-                                        <input type="name" class="form-control" name="bank-name" id="cvv-no"  placeholder="Security Code" required="" ng-model="cvv" maxlength="3" payments-format="cvc" >
+                                        <input type="name" class="form-control" name="bank-name" id="cvv-no"  placeholder="Security Code" required="" ng-model="cvc" maxlength="3" payments-format="cvc" >
                                       </div>
                                     </div>
+                                    <div class="col-sm-12 col-md-12 text-center">
+                                     <div class="form-group">
+                                      <label>{{paymessage}}</label>
+                                    </div>
+                                    </div> 
                                     <div class="col-sm-12 col-md-12 text-center">
                                       <button class="btn btn-success orenge-btn" type="submit" value="Apply">PAY NOW</button>
                                     </div>

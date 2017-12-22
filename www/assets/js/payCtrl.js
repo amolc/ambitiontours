@@ -23,7 +23,7 @@ app.controller('paymentcontroller', function ($scope, $location, $http, $window)
                   }
                   else {
 
-                  		console.log(res);
+                  		//console.log(res);
                    
                         $scope.tourbook = res;
                   }
@@ -45,4 +45,46 @@ app.controller('paymentcontroller', function ($scope, $location, $http, $window)
 
    }
 
+         $scope.stripeCallback = function (code, result) {
+
+          console.log($scope.cardname);
+          console.log($scope.number);
+          console.log($scope.expiry);
+          console.log($scope.cvc);
+          console.log(result);
+
+          if (result.error) {
+               // window.alert('it failed! error: ' + result.error.message);
+                $scope.paymessage = result.error.message ;
+                $scope.transactionid = result.id ;
+
+          } else {
+
+          	if (typeof $scope.tourbook !== 'undefined')
+          	{
+
+          		$scope.tourbook.stripeToken = result.id ;
+          		$http.post(baseurl + 'tourPayment/',$scope.tourbook).success(function (res) {
+
+                  if (res.status == 'false') {
+
+                  }
+                  else {
+                       
+                       window.location.href = 'index.html';
+                  }
+
+              }).error(function () {
+
+              });
+
+
+          	}
+              
+
+          }
+
+      };
+
 });
+

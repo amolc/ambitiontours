@@ -70,6 +70,7 @@ app.get('/api/getPublicHolidays', admin.getPublicHolidays);
 
 app.get('/api/getAllBookings', admin.getAllBookings);
 app.get('/api/getTourBookingDetails/:id', admin.getTourBookingDetails);
+app.post('/api/tourPayment', payment.tourPayment);
 
 app.get('/api/getAllTours', admin.getAllTours);
 app.get('/api/getCountryTours/:id', admin.getCountryTours);
