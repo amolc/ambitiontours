@@ -57,10 +57,13 @@ exports.tourPayment = function(req, res){
                     if (!err) 
                     {
 
-                          var recipientEmail = req.body.email+',sadiarahman1@yahoo.com,nadyshaikh@gmail.com,ceo@80startups.com,office@80startups.com ,shital.talole@fountaintechies.com,komal.gaikwad@fountaintechies.com';
-                          //var recipientEmail = 'komal.gaikwad@fountaintechies.com'; //,ceo@80startups.com,shital.talole@fountaintechies.com'; //,ceo@80startups.com,shital.talole@80startups.com
-                          var subject = "Ambition Tours Payment";
-                          var mailbody = '<table>\
+                            var customerEmail = req.body.email+',sadiarahman1@yahoo.com,nadyshaikh@gmail.com,ceo@80startups.com,office@80startups.com ,shital.talole@fountaintechies.com,komal.gaikwad@fountaintechies.com';
+                            var recipientEmail = 'sadia@ambitiontours.com,sadiarahman1@yahoo.com,nadyshaikh@gmail.com,ceo@80startups.com,office@80startups.com ,shital.talole@fountaintechies.com,komal.gaikwad@fountaintechies.com';
+                            //var customerEmail = req.body.email; //,ceo@80startups.com,shital.talole@fountaintechies.com'; //,ceo@80startups.com,shital.talole@80startups.com
+                            //r recipientEmail = 'komal.gaikwad@fountaintechies.com';
+                            var subject = "New Attraction Booking";
+                            var customersubject  = "Thank You for your Booking!";
+                            var mailbody = '<table>\
                                       <tr>\
                                       <td><img src="https://ambitiontours.80startups.com/assets/img/logo.png"></td><br>\
                                     </tr>\
@@ -70,10 +73,37 @@ exports.tourPayment = function(req, res){
                                     <tr>\
                                     </tr>\
                                     <tr>\
-                                      <td>You have one Payment from the following client:</td>\
+                                      <td>Booking Details:</td>\
                                     </tr>\
                                     <tr>\
-                                      <td>The details are as follow :<br><br><strong> Package Name:   ' + req.body.TourTitle + '</strong><br><br><strong> Package Price: SGD  ' + req.body.TourCost + '</strong>  <br><br><strong> Name:  ' + req.body.fullName + '</strong><br><br><strong> Email:   ' + req.body.email + '</strong><br><br><strong> Contact Number:   ' + req.body.phoneNumber + '</strong><br><br><strong> No of Adults:   ' + req.body.adults + '</strong><br><br><strong> No of Child:   ' + req.body.Child + '</strong><br><br><strong> Travel Date:   ' +  req.body.travelDate.substring(0,10) + '</strong><br><br><strong>Message:   ' + req.body.message + '</strong><br><br><strong> Promo Code:   ' + req.body.promoCode + '</strong><br><br><strong> Stripe Token:   '+stripetoken+'</strong><br><br><strong> Payment Status:   Paid</strong><br><br></td>\
+                                      <td>The details are as follow :<br><br><strong> Name:  ' + req.body.fullName + '</strong><br><br><strong> Email:   ' + req.body.email + '</strong><br><br><strong> Contact Number:   ' + req.body.phoneNumber + '</strong><br><br><strong> Package Name:   ' + req.body.TourTitle + '</strong><br><br><strong> Price For Adult : SGD  ' + req.body.TourCost + '</strong><br><br><strong> Price For Child : SGD  ' + req.body.ChildCost + '</strong><br><br><strong> No of Adults:   ' + req.body.adults + '</strong><br><br><strong> No of Child:   ' + req.body.Child + '</strong><br><br><strong> Travel Date:   ' +  req.body.travelDate.substring(0,10) + '</strong><br><br><strong>Message:   ' + req.body.message + '</strong><br><br><strong> Total Amount:   ' + req.body.TotalAmount + '</strong><br><br><strong> Stripe Token:   '+stripetoken+'</strong><br><br><strong> Payment Status:   Paid</strong><br><br></td>\
+                                    </tr>\
+                                    <tr>\
+                                      <td>Best wishes,</td>\
+                                    </tr>\
+                                    <tr>\
+                                      <td><h2>ambitiontours.com</h2></td>\
+                                    </tr>\
+                                    <tr>\
+                                      <td bgcolor="#000000"><font color ="white">This is a one-time email. Please do not reply to this email.</font></td>\
+                                    </tr>\
+                                  </table>';
+
+
+                          var customermailbody = '<table>\
+                                      <tr>\
+                                      <td><img src="https://ambitiontours.80startups.com/assets/img/logo.png"></td><br>\
+                                    </tr>\
+                                    <tr>\
+                                      <td><h1>Dear '+req.body.fullName+',</td>\
+                                    </tr>\
+                                    <tr>\
+                                    </tr>\
+                                    <tr>\
+                                      <td>Booking Details:</td>\
+                                    </tr>\
+                                    <tr>\
+                                      <td>The details are as follow :<br><br><strong> Name:  ' + req.body.fullName + '</strong><br><br><strong> Email:   ' + req.body.email + '</strong><br><br><strong> Contact Number:   ' + req.body.phoneNumber + '</strong><br><br><strong> Package Name:   ' + req.body.TourTitle + '</strong><br><br><strong> Price For Adult : SGD  ' + req.body.TourCost + '</strong><br><br><strong> Price For Child : SGD  ' + req.body.ChildCost + '</strong><br><br><strong> No of Adults:   ' + req.body.adults + '</strong><br><br><strong> No of Child:   ' + req.body.Child + '</strong><br><br><strong> Travel Date:   ' +  req.body.travelDate.substring(0,10) + '</strong><br><br><strong>Message:   ' + req.body.message + '</strong><br><br><strong> Total Amount:   ' + req.body.TotalAmount + '</strong><br><br><strong> Stripe Token:   '+stripetoken+'</strong><br><br><strong> Payment Status:   Paid</strong><br><br></td>\
                                     </tr>\
                                     <tr>\
                                       <td>Best wishes,</td>\
@@ -87,6 +117,8 @@ exports.tourPayment = function(req, res){
                                   </table>';
 
                         send_mail(recipientEmail, subject, mailbody);
+                        send_mail(customerEmail, customersubject, customermailbody);
+
                         var resdata = {
                             status: true,
                             value:val,
