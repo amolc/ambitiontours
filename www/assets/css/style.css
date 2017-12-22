@@ -1133,12 +1133,19 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 .policy-content p{
   text-align: justify;
 }
+.policy-content a{
+  display: block;
+  color: #ffffff;
+  font-size: 15px;
+  margin-top: 15px;
+  text-transform: uppercase;
+}
+.policy-content a:hover{
+  color: #f76829;
+}
 .policy-content h5{
   font-size: 21px;
   margin: 23px 0 8px;
-}
-.foot-text a{
-  color: #f76829;
 }
 .traval-wrap iframe img{
   display: none !important;
