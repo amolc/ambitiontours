@@ -94,7 +94,7 @@ console.log(req.body);
                       </tr>\
                     </table>';
 
-    //  send_mail(recipientEmail, subject, mailbody);
+      send_mail(recipientEmail, subject, mailbody);
 }
 
 exports.booktour = function (req, res) {
