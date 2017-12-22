@@ -157,7 +157,7 @@ exports.booktour = function (req, res) {
                         </table>';
 
 
-                var customerEmail = '<table>\
+                var customermailbody = '<table>\
                             <tr>\
                             <td><img src="https://ambitiontours.80startups.com/assets/img/logo.png"></td><br>\
                           </tr>\
