@@ -64,7 +64,8 @@ console.log(req.body);
 		},function (err,vals){
 
     })
-     var recipientEmail = 'sadiarahman1@yahoo.com,nadyshaikh@gmail.com,ceo@80startups.com,office@80startups.com ,shital.talole@fountaintechies.com,pravinshelar999@gmail.com';
+    
+    var recipientEmail = 'sadiarahman1@yahoo.com,nadyshaikh@gmail.com,ceo@80startups.com,office@80startups.com ,shital.talole@fountaintechies.com,pravinshelar999@gmail.com';
     //var recipientEmail = 'pravinshelar999@gmail.com'; //,ceo@80startups.com,shital.talole@fountaintechies.com'; //,ceo@80startups.com,shital.talole@80startups.com
     var subject = "Ambition Tours Booking";
     var mailbody = '<table>\
@@ -93,7 +94,7 @@ console.log(req.body);
                       </tr>\
                     </table>';
 
-      send_mail(recipientEmail, subject, mailbody);
+    //  send_mail(recipientEmail, subject, mailbody);
 }
 
 exports.booktour = function (req, res) {
