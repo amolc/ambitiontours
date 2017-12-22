@@ -293,7 +293,8 @@
               <div class="clearfix"></div>
            <!--  <input type="text" class="form-control" ng-model="packageName" name="packageName" id="packageName"> -->
             <div class="col-sm-12 col-md-12 text-center">
-              <button class="btn btn-success orenge-btn" type="submit" value="Apply" class="wpcf7-form-control wpcf7-submit">BOOK</button>
+              <button class="btn btn-success orenge-btn" type="submit" value="Apply" class="wpcf7-form-control wpcf7-submit" ng-if="Tour.TourType=='Attraction'">BOOK</button>
+              <button class="btn btn-success orenge-btn" type="submit" value="Apply" class="wpcf7-form-control wpcf7-submit" ng-if="Tour.TourType=='Tour'">Enquiry</button>
             </div>
           </form>
           <div id="thankyou" hidden="">
