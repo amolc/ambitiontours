@@ -64,7 +64,7 @@ console.log(req.body);
     })
      var recipientEmail = 'sadiarahman1@yahoo.com,nadyshaikh@gmail.com,ceo@80startups.com,office@80startups.com ,shital.talole@fountaintechies.com,pravinshelar999@gmail.com';
     //var recipientEmail = 'pravinshelar999@gmail.com'; //,ceo@80startups.com,shital.talole@fountaintechies.com'; //,ceo@80startups.com,shital.talole@80startups.com
-    var subject = "[ambitiontours.COM] Ambition Tours Booking";
+    var subject = "Ambition Tours Booking";
     var mailbody = '<table>\
                         <tr>\
                         <td><img src="https://ambitiontours.80startups.com/assets/img/logo.png"></td><br>\
@@ -119,7 +119,7 @@ exports.booktour = function (req, res) {
 
             var recipientEmail = req.body.email+',sadiarahman1@yahoo.com,nadyshaikh@gmail.com,ceo@80startups.com,office@80startups.com ,shital.talole@fountaintechies.com,komal.gaikwad@fountaintechies.com';
             //var recipientEmail = 'komal.gaikwad@fountaintechies.com'; //,ceo@80startups.com,shital.talole@fountaintechies.com'; //,ceo@80startups.com,shital.talole@80startups.com
-            var subject = "[ambitiontours.COM] Ambition Tours Booking";
+            var subject = "Ambition Tours Booking";
             var mailbody = '<table>\
                         <tr>\
                         <td><img src="https://ambitiontours.80startups.com/assets/img/logo.png"></td><br>\
@@ -206,7 +206,7 @@ exports.customTour = function (req, res) {
 
             var recipientEmail = 'sadiarahman1@yahoo.com,nadyshaikh@gmail.com,ceo@80startups.com,shital.talole@fountaintechies.com,office@80startups.com,komal.gaikwad@fountaintechies.com';
           //var recipientEmail = 'komal.gaikwad@fountaintechies.com'; //,ceo@80startups.com,shital.talole@fountaintechies.com'; //,ceo@80startups.com,shital.talole@80startups.com
-          var subject = "[ambitiontours.COM] Ambition Tours Custom Tour Enquiry";
+          var subject = "Ambition Tours Custom Tour Enquiry";
           var mailbody = '<table>\
                               <tr>\
                               <td><img src="https://ambitiontours.80startups.com/assets/img/logo.png"></td><br>\
@@ -281,7 +281,7 @@ exports.airTicket = function (req, res) {
 
              var recipientEmail = 'sadiarahman1@yahoo.com,nadyshaikh@gmail.com,ceo@80startups.com,shital.talole@fountaintechies.com,office@80startups.com,komal.gaikwad@fountaintechies.com';
              //var recipientEmail = 'komal.gaikwad@fountaintechies.com'; //,ceo@80startups.com,shital.talole@fountaintechies.com'; //,ceo@80startups.com,shital.talole@80startups.com
-              var subject = "[ambitiontours.COM] Ambition Tours Air Ticket Enquiry";
+              var subject = "Ambition Tours Air Ticket Enquiry";
               var mailbody = '<table>\
                                   <tr>\
                                   <td><img src="https://ambitiontours.80startups.com/assets/img/logo.png"></td><br>\
@@ -349,7 +349,7 @@ exports.visaEnquiry = function (req, res) {
 
              var recipientEmail = 'sadiarahman1@yahoo.com,nadyshaikh@gmail.com,ceo@80startups.com,shital.talole@fountaintechies.com,office@80startups.com,komal.gaikwad@fountaintechies.com';
             // var recipientEmail = 'komal.gaikwad@fountaintechies.com'; //,ceo@80startups.com,shital.talole@fountaintechies.com'; //,ceo@80startups.com,shital.talole@80startups.com
-              var subject = "[ambitiontours.COM] Ambition Tours Visa Enquiry";
+              var subject = "Ambition Tours Visa Enquiry";
               var mailbody = '<table>\
                                   <tr>\
                                   <td><img src="https://ambitiontours.80startups.com/assets/img/logo.png"></td><br>\

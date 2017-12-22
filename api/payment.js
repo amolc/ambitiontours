@@ -58,7 +58,7 @@ exports.tourPayment = function(req, res){
 
                           var recipientEmail = req.body.email+',sadiarahman1@yahoo.com,nadyshaikh@gmail.com,ceo@80startups.com,office@80startups.com ,shital.talole@fountaintechies.com,komal.gaikwad@fountaintechies.com';
                           //var recipientEmail = 'komal.gaikwad@fountaintechies.com'; //,ceo@80startups.com,shital.talole@fountaintechies.com'; //,ceo@80startups.com,shital.talole@80startups.com
-                          var subject = "[ambitiontours.COM] Ambition Tours Payment";
+                          var subject = "Ambition Tours Payment";
                           var mailbody = '<table>\
                                       <tr>\
                                       <td><img src="https://ambitiontours.80startups.com/assets/img/logo.png"></td><br>\

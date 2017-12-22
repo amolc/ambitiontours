@@ -605,6 +605,27 @@ app.controller('contactcontroller', function ($scope, $location, $http, $window)
    
   }
 
+      $scope.getAllGiftVouchers = function() {
+
+    $http.get(baseurl + 'getAllGiftVouchers').success(function (res) {
+
+            if (res.status == 'false') {
+
+            }
+            else {
+               // console.log(res);
+                $scope.voucherlist = res;
+               // $scope.registration.CountryId = $scope.countrylist[0].CountryId;
+               //console.log($scope.countrylist);
+            }
+
+        }).error(function () {
+
+        });
+
+   }
+
+
 $scope.initfunc = function () {
      //$scope.data = {};
     console.log(window.localStorage.getItem("packagename"));
