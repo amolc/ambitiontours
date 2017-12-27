@@ -245,17 +245,18 @@ app.controller('contactcontroller', function ($scope, $location, $http, $window)
 
    }
 
-   $scope.getVisaDetails = function() {
+   $scope.getVisaDetails = function(id) {
 
+    //alert(id);
 
-    $http.get(baseurl + 'getVisaDetails/'+$scope.visa.Id).success(function (res) {
+    $http.get(baseurl + 'getVisaDetails/'+id).success(function (res) {
 
             if (res.status == 'false') {
 
             }
             else {
                // console.log(res);
-                $scope.visa = res;
+                $scope.visadetails = res;
                // $scope.registration.CountryId = $scope.countrylist[0].CountryId;
                //console.log($scope.countrylist);
             }
@@ -595,10 +596,10 @@ app.controller('contactcontroller', function ($scope, $location, $http, $window)
 
     $scope.visaEnquiry = function (req, res) {
 
-    //console.log($scope.visa);
+    //console.log($scope.visadetails);
 
 
-    $http.post(baseurl + 'visaEnquiry/', $scope.visa).success(function (res) {
+    $http.post(baseurl + 'visaEnquiry/', $scope.visadetails).success(function (res) {
       if (res.status == 'false') {
 
 
