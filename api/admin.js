@@ -19,7 +19,7 @@ var visaCRUD = CRUD(db, 'tbl_VisaDetails');
 var voucherCRUD = CRUD(db, 'tbl_GiftVoucher');
 var opHourCRUD = CRUD(db, 'tbl_OperatingHours');
 var holidaysCRUD = CRUD(db, 'tbl_PublicHolidays');
-
+var socialCRUD = CRUD(db, 'tbl_SocialIcons');
 
 var nodemailer = require('nodemailer');
 var mg = require('nodemailer-mailgun-transport');
@@ -316,6 +316,25 @@ exports.getHolidayDetails = function(req, res){
 
   var id = req.params.id;
   var sql = "SELECT `Id`,`Title`,`Description` FROM `tbl_PublicHolidays` WHERE Id = '"+id+"'";    
+  db.query(sql, function (err, data) {
+        res.json(data[0]);
+    });
+    
+};
+
+exports.getSocial = function(req, res){ 
+
+  var sql = "SELECT `Id`,`Link`,`Image` FROM `tbl_SocialIcons` WHERE `IsDeleted` = '0'";
+    db.query(sql, function (err, data) {
+        res.json(data);
+    });
+    
+};
+
+exports.getSocialDetails = function(req, res){
+
+  var id = req.params.id;
+  var sql = "SELECT `Id`,`Link`,`Image` FROM `tbl_SocialIcons` WHERE Id = '"+id+"'";    
   db.query(sql, function (err, data) {
         res.json(data[0]);
     });
@@ -1143,6 +1162,175 @@ exports.deleteHoliday = function (req, res) {
                                 }
                             });
 };
+
+
+exports.addSocial = function (req, res) {
+
+    dateToday = now.format("DD/MM/YYYY hh:mm a");
+    date = now.format("DD/MM/YYYY");
+
+     verifycode = randomString();
+     if (req.body.image) {
+         var imagedata = req.body.image;
+         var matches = "";
+
+         function decodeBase64Image(dataString) {
+             var matches = dataString.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/),
+                 response = {};
+             if (matches.length !== 3) {
+                 return new Error('Invalid input string');
+             }
+             response.type = matches[1];
+             response.data = new Buffer(matches[2], 'base64');
+             return response;
+         }
+         var decodedImg = decodeBase64Image(imagedata);
+         var imageBuffer = decodedImg.data;
+         var type = decodedImg.type;
+         fileName = verifycode+'_'+req.body.TourImage;
+         fs.writeFileSync('www/uploads/social/' + fileName, imageBuffer, 'utf8');
+
+     }else {
+         fileName = '';
+         console.log("image not present");
+     }
+        
+    var createObj = {
+                                "Link" : req.body.Link,
+                                "Image": fileName || "", 
+                                "CreatedOn": dateToday || "",        
+                            };
+                            // console.log("after", createObj);
+
+                            socialCRUD.create(createObj, function (err, data) {
+
+                                if (!err) 
+                                {
+                                    var resdata = {
+                                        status: true,
+                                        value:data,
+                                        message: 'Details successfully added',
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                                else
+                                {
+                                    var resdata = {
+                                        status: false,
+                                        error: err,
+                                        message: 'Error: Details not successfully added. '
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                            });
+};
+
+exports.updateSocial = function (req, res) {
+
+   // console.log(req.body);
+
+    dateToday = now.format("DD/MM/YYYY hh:mm a");
+    date = now.format("DD/MM/YYYY");
+    // console.log(req.body.TourImage);
+
+     verifycode = randomString();
+     if (req.body.image) {
+         var imagedata = req.body.image;
+         var matches = "";
+
+         function decodeBase64Image(dataString) {
+             var matches = dataString.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/),
+                 response = {};
+             if (matches.length !== 3) {
+                 return new Error('Invalid input string');
+             }
+             response.type = matches[1];
+             response.data = new Buffer(matches[2], 'base64');
+             return response;
+         }
+         var decodedImg = decodeBase64Image(imagedata);
+         var imageBuffer = decodedImg.data;
+         var type = decodedImg.type;
+         fileName = verifycode+'_'+req.body.TourImage;
+         fs.writeFileSync('www/uploads/social/' + fileName, imageBuffer, 'utf8');
+     }else {
+         fileName = req.body.Image;
+         console.log("image not present");
+     }
+        
+    var updateObj = {
+                                "Link" : req.body.Link,
+                                "Image": fileName || "", 
+                                "ModifiedOn": dateToday || "",        
+                            };
+                             //console.log("after", updateObj);
+
+                            socialCRUD.update({Id: req.body.Id}, updateObj,function (err, data) {
+
+                                if (!err) 
+                                {
+                                    var resdata = {
+                                        status: true,
+                                        value:data,
+                                        message: 'Details successfully updated',
+                                    };
+                                   // console.log(resdata)
+
+                                   res.jsonp(resdata);
+                                }
+                                else
+                                {
+                                    var resdata = {
+                                        status: false,
+                                        error: err,
+                                        message: 'Error: Details not successfully updated. '
+                                    };
+                                    // console.log(resdata)
+
+                                    res.jsonp(resdata);
+                                }
+                            });
+};
+
+
+
+exports.deleteSocial = function (req, res) {
+
+    dateToday = now.format("DD/MM/YYYY hh:mm a");
+    var id = req.params.id;
+    var updateObj = {
+                         "IsDeleted" :  '1',
+      
+                    };
+                            // console.log("after", createObj);
+
+                            socialCRUD.update({Id: id}, updateObj,function (err, data) {
+
+                                if (!err) 
+                                {
+                                    var resdata = {
+                                        status: true,
+                                        value:data,
+                                        message: 'Details successfully deleted',
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                                else
+                                {
+                                    var resdata = {
+                                        status: false,
+                                        error: err,
+                                        message: 'Error: Details not successfully deleted. '
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                            });
+};
+
 
 ///____________________END______________________
 

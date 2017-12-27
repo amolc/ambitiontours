@@ -27,7 +27,7 @@
   <script type="text/javascript" src="../assets/js/adminCtrl.js"></script>
 </head>
 
-<body data-ng-app="80consult" data-ng-controller="admincontroller">
+<body data-ng-app="80consult" data-ng-controller="admincontroller" ng-init="forminit();">
 <!-- Start Header -->
        <header id="top-header">
             <div class="orenge-logo-strip">
@@ -73,7 +73,6 @@
 <li><a href="settings.html" class="hvr-underline-reveal">Settings</a></li>
                                         <!-- <li><a href="changepassword.html" class="hvr-underline-reveal">Change Password</a></li>
                                         <li><a href="javascript:void(0)" class="hvr-underline-reveal" ng-click="adminlogout();">Logout</a></li> -->
-
                                       </ul>
                                       <ul class="nav navbar-nav navbar-right">
                                         <li class="dropdown">
@@ -100,74 +99,48 @@
                 </div>
             </div>
         </header>
-        <section>
+        <section id="andttr-form-wrap">
           <div class="container">
             <div class="row">
-             <div class="col-sm-12">
-                        <h2 class="section-title">
-                            Settings
-                        </h2>
-                    </div>
-            <div class="col-sm-12 col-md-12">
-              <div class="contact-right-block" ng-init="getAdminContactDetails()">
-                <p><span>Address: </span><span>{{contact.Address}}</span></p>
-                <p><span>Main Line : </span><span>{{contact.ContactNo}}</span></p>
-                <p><span>Fax : </span><span>{{contact.Fax}}</span></p>
-                <p><span>Email : </span><span><a href="mailto:{{contact.Email}}">{{contact.Email}}</a></span></p>
-                <a href="edit-contact.html" class="pakege-btn yellow-btn" style="width: auto;">Edit Contact Info</a>
-              </div>
-              <div class="contact-right-block mr-t20" ng-init="getOperatingHours()">
-                <h5>Operating Hours</h5>
-                <div class="responsive">
-                 <table id="table" class="table">
-                      <tbody>
-                        <tr ng-repeat="h in hours">
-                          <td>{{h.Days}}</td>
-                          <td>{{h.FromTime}} - {{h.ToTime}}</td>
-                          <td><a href="edit-operating-hours.html?id={{h.Id}}"><i class="fa fa-pencil"></i></a></td>
-                        </tr>
-                      </tbody>
-                    </table>
+              <div class="col-sm-12 col-md-12">
+               <form id="addtour" name="addtour" ng-submit="addSocial()">
+                  <div class="attractions-form profile signin-form info-form">
+                  <h2 class="text-center">Add Social Platform</h2>
+
+                   <div class="col-sm-2 col-md-2">
                    </div>
-              </div> 
-              <div class="contact-right-block mr-t20" ng-init="getPublicHolidays()">
-                <h5>Public Holiday</h5>
-                <div class="responsive">
-                 <table id="table" class="table">
-                      <tbody>
-                        <tr ng-repeat="ph in holidays">
-                          <td>{{ph.Title}}</td>
-                          <td>{{ph.Description}}</td>
-                          <td><a href="edit-holiday.html?id={{ph.Id}}"><i class="fa fa-pencil"></i></a></td>
-                          <td><a href="javascript:void" ng-click="deleteHoliday(ph.Id)"><i class="fa fa-trash"></i></a></td>
-                        </tr>
-                         <tr>
-                      </tbody>
-                    </table>
+                  <div class="col-sm-8 col-md-8 pd0">
+
+                  <div class="col-sm-12 col-md-12">
+                    <input type="URL" name="duration" placeholder="Link" required="" ng-model="Tour.Link">
+                  </div>
+
+
+                   <div class="col-sm-12 col-md-12">
+                     <input id="file_browse1" class="form-control" type='file' name="productimage" onchange="angular.element(this).scope().updateattachment('file_browse1');   $('#imagepreview').children().remove();" accept="image/*" required="">
+                      <input type="hidden" name="imagename" ng-model="Tour.imagename">
+                  </div>
+                   <div class="col-sm-12 col-md-12 ">
+                     <div id="imagepreview">
+                       
+                     </div>
                    </div>
-                <a href="add-holiday.html" class="pakege-btn yellow-btn" style="width: auto;">Add Holiday</a>
-              </div>   
-              <div class="contact-right-block mr-t20" ng-init="getSocial()">
-                <h5>Social Platforms</h5>
-                <div class="responsive">
-                 <table id="table" class="table">
-                      <tbody>
-                        <tr ng-repeat="social in sociallist">
-                          <td><img src="../uploads/social/{{social.Image}}" style="height: 20px;width: 20px"></td>
-                          <td>{{social.Link}}</td>
-                          <td><a href="edit-social-platform.html?SocialId={{social.Id}}"><i class="fa fa-pencil"></i></a></td>
-                          <td><a href="javascript:void" ng-click="deleteSocial(social.Id)"><i class="fa fa-trash"></i></a></td>
-                        </tr>
-                         <tr>
-                      </tbody>
-                    </table>
-                   </div>
-                <a href="add-social-platform.html" class="pakege-btn yellow-btn" style="width: auto;">Add Social Platform</a>
-              </div>  
-            </div>
-              
-                    
+                    <div class="col-sm-12 col-md-12">
+                      <label id="alertmessage" hidden>{{alertmessage}}</label>
+                  </div>
+                  <div class="col-sm-12 col-md-12 ">
+                    <input type="submit" value="Save" class="small-btn brawon-btn">
+                  </div>
+
                   
+                  </div>
+                 
+                 
+                  
+                  <div class="clearfix"></div>
+                </div>
+               </form>
+              </div>
             </div>
           </div>
         </section>
@@ -218,12 +191,8 @@
         <footer  id="bottom-strip">
             <p>Copyright 2017- Ambition Tours - All Rights Reserved</p>
         </footer>
-
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQD-LT4-VzlsdNpf33yNDeT38EaF3Kz-g&libraries=places"></script>
-<script  type="text/javascript"  src="../assets/js/jquery.min.js"></script>
   <script   type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
-  <script  type="text/javascript"  src="../assets/js/main.js"></script>
- <script src="assets/js/custom.js"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQD-LT4-VzlsdNpf33yNDeT38EaF3Kz-g&libraries=places"></script>
 <script>
  
 // google.maps.event.addDomListener(window, 'load', function () 

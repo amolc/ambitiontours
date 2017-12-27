@@ -1227,6 +1227,154 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
               }
      }
 
+       $scope.getSocial = function() {
+
+    $http.get(baseurl + 'getSocial').success(function (res) {
+
+            if (res.status == 'false') {
+
+            }
+            else {
+               // console.log(res);
+                $scope.sociallist = res;
+               // $scope.registration.CountryId = $scope.countrylist[0].CountryId;
+               //console.log($scope.countrylist);
+            }
+
+        }).error(function () {
+
+        });
+
+   }
+
+
+      $scope.addSocial = function() {   
+
+
+          //console.log($scope.Tour);
+
+
+             setTimeout(function() { 
+
+               if (Object.keys($scope.attachment).length>0) {
+                $scope.Tour.image = $scope.attachment.images[0];
+              }else{
+                $scope.Tour.image = '';
+              }
+
+
+            $http.post(baseurl + 'addSocial/',$scope.Tour).success(function(res) {
+                  
+                //console.log(res);
+                if (res.status == true) 
+                {
+                  
+                    window.location.href = 'settings.html';
+                }
+
+                }).error(function() {
+                    
+                });
+         
+              }, 1000);    
+
+    }
+
+        $scope.getSocialDetails = function() {             
+
+
+
+        var url = window.location.href;
+        var parts = url.split("?");
+        if(parts.length>1){
+
+           var urlparams = parts[1];
+           var params = urlparams.split("&");
+           var id = urlparams.split("=")
+           if (id[0]=='SocialId') 
+           {
+             $http.get(baseurl + 'getSocialDetails/'+id[1]).success(function (res) {
+
+                  if (res.status == 'false') {
+
+                  }
+                  else {
+
+
+                      $scope.Tour = res;
+                      $scope.attachmentCount = {};
+                      $scope.attachment = {};
+                      $scope.imgSrc = "";
+                  }
+
+              }).error(function () {
+
+              });
+           }
+           else
+          {
+              window.location.href = 'settings.html';
+          }
+        }
+        else
+        {
+            window.location.href = 'settings.html';
+        }
+    } 
+
+    $scope.updateSocial = function() {   
+
+
+             setTimeout(function() { 
+
+               if (Object.keys($scope.attachment).length>0) {
+                $scope.Tour.image = $scope.attachment.images[0];
+              }else{
+                $scope.Tour.image = '';
+              }
+              console.log($scope.Tour);
+
+            $http.post(baseurl + 'updateSocial/',$scope.Tour).success(function(res) {
+                  
+                //console.log(res);
+                if (res.status == true) 
+                {
+                  
+                    window.location.href = 'settings.html';
+                }
+
+                }).error(function() {
+                    
+                });
+         
+               }, 1000);    
+
+    }
+
+    $scope.deleteSocial = function(id) {    
+
+
+       var r = confirm("Are You Sure You want to Delete It?");
+        if (r == true) 
+        { 
+          $http.get(baseurl + 'deleteSocial/'+id).success(function(res) {
+
+                  
+               if (res.status == true) 
+                {
+
+                    window.location.href = 'settings.html';
+                }
+
+          }).error(function() {
+                      // alert("Please check your internet connection or data source..");
+         });
+            
+        }         
+         
+    }
+
+
 
 
 
