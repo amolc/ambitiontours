@@ -7,8 +7,8 @@
                    window.location.href="index.html";
                 }
     </script>
-
 <head>
+
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -29,7 +29,7 @@
   <script type="text/javascript" src="../assets/js/adminCtrl.js"></script>
 </head>
 
-<body data-ng-app="80consult" data-ng-controller="admincontroller" ng-init="getAllBookings();">
+<body data-ng-app="80consult" data-ng-controller="admincontroller">
 <!-- Start Header -->
        <header id="top-header">
             <div class="orenge-logo-strip">
@@ -106,7 +106,14 @@
           <div class="container">
             <div class="row">
               <div class="col-sm-12 col-md-12">
-                <div class="attractions-form profile signin-form">
+              <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#home"><h4>Bookings</h4></a></li>
+                <li><a data-toggle="tab" href="#menu1"><h4>Enquiries</h4></a></li>
+              </ul>
+
+              <div class="tab-content">
+                <div id="home" class="tab-pane fade in active">
+                 <div class="attractions-form profile signin-form"  ng-init="getAllBookings();">
                   <h2 class="text-center">Bookings</h2>
                   <div class="dashboard-table">
                  <table id="table">
@@ -115,7 +122,9 @@
                         <th>Name</th>
                         <th>Email Id</th>
                         <th>Mobile No.</th>
-                        <th>Travel Date</th>
+                        <th>Type</th>
+                        <th></th>
+                        <th></th>
                         </tr>
                       </thead>
                       <tbody>
@@ -124,7 +133,9 @@
                           <td>{{book.fullName}}</td>
                           <td>{{book.email}}</td>
                           <td>{{book.phoneNumber}}</td>
-                          <td>{{book.travelDate | limitTo : 10}}</td>
+                          <td></td>
+                          <td><i class="fa fa-eye"></i></td>
+                          <td><i class="fa fa-trash"></i></td>
                         </tr>
                         <!-- <tr>
                           <td>Pravin Shelar</td>
@@ -145,6 +156,55 @@
                    </div>
                   <div class="clearfix"></div>
                 </div>
+                </div>
+                <div id="menu1" class="tab-pane fade">
+                 <div class="attractions-form profile signin-form"  ng-init="getAllBookings();">
+                  <h2 class="text-center">Enquiries</h2>
+                  <div class="dashboard-table">
+                 <table id="table">
+                      <thead>
+                        <tr>
+                        <th>Name</th>
+                        <th>Email Id</th>
+                        <th>Mobile No.</th>
+                        <th>Type</th>
+                        <th></th>
+                        <th></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+
+                      <tr ng-repeat="book in bookinglist">
+                          <td>{{book.fullName}}</td>
+                          <td>{{book.email}}</td>
+                          <td>{{book.phoneNumber}}</td>
+                          <td></td>
+                          <td><i class="fa fa-eye"></i></td>
+                          <td><i class="fa fa-trash"></i></td>
+                        </tr>
+                        <!-- <tr>
+                          <td>Pravin Shelar</td>
+                          <td>Pravinshelar.demo@gmail.com</td>
+                          <td>9503254562</td>
+                          <td>23-12-2017</td>
+                        </tr>
+
+                        <tr>
+                          <td>Pravin Shelar</td>
+                          <td>Pravinshelar.demo@gmail.com</td>
+                          <td>9503254562</td>
+                          <td>23-12-2017</td>
+                        </tr> -->
+
+                      </tbody>
+                    </table>
+                   </div>
+                  <div class="clearfix"></div>
+                </div>
+                </div>
+                
+              </div>
+                
               </div>
             </div>
           </div>
