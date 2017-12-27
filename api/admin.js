@@ -20,6 +20,11 @@ var voucherCRUD = CRUD(db, 'tbl_GiftVoucher');
 var opHourCRUD = CRUD(db, 'tbl_OperatingHours');
 var holidaysCRUD = CRUD(db, 'tbl_PublicHolidays');
 var socialCRUD = CRUD(db, 'tbl_SocialIcons');
+var ctourCRUD = CRUD(db, 'tbl_CustomTours');
+var ticketCRUD = CRUD(db,'tbl_AirTickets');
+var venquiryCRUD = CRUD(db,'tbl_VisaEnquiries');
+var bookCRUD = CRUD(db,'tbl_Bookings');
+var vbookCRUD = CRUD(db,'tbl_VoucherBooking');
 
 var nodemailer = require('nodemailer');
 var mg = require('nodemailer-mailgun-transport');
@@ -1399,6 +1404,180 @@ exports.deleteSocial = function (req, res) {
                             });
 };
 
+exports.deleteBookings = function (req, res) {
+
+    dateToday = now.format("DD/MM/YYYY hh:mm a");
+    var id = req.params.id;
+    var updateObj = {
+                         "IsDeleted" :  '1',
+      
+                    };
+                            // console.log("after", createObj);
+
+                            bookCRUD.update({BookingId: id}, updateObj,function (err, data) {
+
+                                if (!err) 
+                                {
+                                    var resdata = {
+                                        status: true,
+                                        value:data,
+                                        message: 'Details successfully deleted',
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                                else
+                                {
+                                    var resdata = {
+                                        status: false,
+                                        error: err,
+                                        message: 'Error: Details not successfully deleted. '
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                            });
+};
+
+exports.deleteCustomTourEnquiries = function (req, res) {
+
+    dateToday = now.format("DD/MM/YYYY hh:mm a");
+    var id = req.params.id;
+    var updateObj = {
+                         "IsDeleted" :  '1',
+      
+                    };
+                            // console.log("after", createObj);
+
+                            ctourCRUD.update({CTourId: id}, updateObj,function (err, data) {
+
+                                if (!err) 
+                                {
+                                    var resdata = {
+                                        status: true,
+                                        value:data,
+                                        message: 'Details successfully deleted',
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                                else
+                                {
+                                    var resdata = {
+                                        status: false,
+                                        error: err,
+                                        message: 'Error: Details not successfully deleted. '
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                            });
+};
+
+exports.deleteAirTicketEnquiries = function (req, res) {
+
+    dateToday = now.format("DD/MM/YYYY hh:mm a");
+    var id = req.params.id;
+    var updateObj = {
+                         "IsDeleted" :  '1',
+      
+                    };
+                            // console.log("after", createObj);
+
+                            ticketCRUD.update({Id: id}, updateObj,function (err, data) {
+
+                                if (!err) 
+                                {
+                                    var resdata = {
+                                        status: true,
+                                        value:data,
+                                        message: 'Details successfully deleted',
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                                else
+                                {
+                                    var resdata = {
+                                        status: false,
+                                        error: err,
+                                        message: 'Error: Details not successfully deleted. '
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                            });
+};
+
+exports.deleteVisaEnquiries = function (req, res) {
+
+    dateToday = now.format("DD/MM/YYYY hh:mm a");
+    var id = req.params.id;
+    var updateObj = {
+                         "IsDeleted" :  '1',
+      
+                    };
+                            // console.log("after", createObj);
+
+                            venquiryCRUD.update({EnquiryId: id}, updateObj,function (err, data) {
+
+                                if (!err) 
+                                {
+                                    var resdata = {
+                                        status: true,
+                                        value:data,
+                                        message: 'Details successfully deleted',
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                                else
+                                {
+                                    var resdata = {
+                                        status: false,
+                                        error: err,
+                                        message: 'Error: Details not successfully deleted. '
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                            });
+};
+
+exports.deleteVoucherBookings = function (req, res) {
+
+    dateToday = now.format("DD/MM/YYYY hh:mm a");
+    var id = req.params.id;
+    var updateObj = {
+                         "IsDeleted" :  '1',
+      
+                    };
+                            // console.log("after", createObj);
+
+                            vbookCRUD.update({VBookId: id}, updateObj,function (err, data) {
+
+                                if (!err) 
+                                {
+                                    var resdata = {
+                                        status: true,
+                                        value:data,
+                                        message: 'Details successfully deleted',
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                                else
+                                {
+                                    var resdata = {
+                                        status: false,
+                                        error: err,
+                                        message: 'Error: Details not successfully deleted. '
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                            });
+};
 
 ///____________________END______________________
 

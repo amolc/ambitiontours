@@ -137,7 +137,7 @@
                           <td>{{book.email}}</td>
                           <td>{{book.phoneNumber}}</td>
                           <td><i class="fa fa-eye"></i></td>
-                          <td><i class="fa fa-trash"></i></td>
+                          <td><a href="javascript:void(0)" ng-click="deleteAttractionBookings(book.BookingId)"><i class="fa fa-trash"></i></a></td>
                         </tr>
                       </tbody>
                     </table>
@@ -166,7 +166,7 @@
                           <td>{{book.email}}</td>
                           <td>{{book.phoneNumber}}</td>
                           <td><i class="fa fa-eye"></i></td>
-                          <td><i class="fa fa-trash"></i></td>
+                           <td><a href="javascript:void(0)" ng-click="deleteTourEnquiries(book.BookingId)"><i class="fa fa-trash"></i></a></td>
                         </tr>
                         <!-- <tr>
                           <td>Pravin Shelar</td>
@@ -210,7 +210,7 @@
                           <td>{{book.EmailId}}</td>
                           <td>{{book.phoneNumber}}</td>
                           <td><i class="fa fa-eye"></i></td>
-                          <td><i class="fa fa-trash"></i></td>
+                          <td><a href="javascript:void(0)" ng-click="deleteCustomTourEnquiries(book.CTourId)"><i class="fa fa-trash"></i></a></td>
                         </tr>
                         <!-- <tr>
                           <td>Pravin Shelar</td>
@@ -254,7 +254,7 @@
                           <td>{{book.Email}}</td>
                           <td>{{book.Contact}}</td>
                           <td><i class="fa fa-eye"></i></td>
-                          <td><i class="fa fa-trash"></i></td>
+                         <td><a href="javascript:void(0)" ng-click="deleteAirTicketEnquiries(book.Id)"><i class="fa fa-trash"></i></a></td>
                         </tr>
                         <!-- <tr>
                           <td>Pravin Shelar</td>
@@ -298,7 +298,7 @@
                           <td>{{book.Email}}</td>
                           <td>{{book.Contact}}</td>
                           <td><i class="fa fa-eye"></i></td>
-                          <td><i class="fa fa-trash"></i></td>
+                           <td><a href="javascript:void(0)" ng-click="deleteVisaEnquiries(book.EnquiryId)"><i class="fa fa-trash"></i></a></td>
                         </tr>
                         <!-- <tr>
                           <td>Pravin Shelar</td>
@@ -342,7 +342,7 @@
                           <td>{{book.Email}}</td>
                           <td>{{book.Contact}}</td>
                           <td><i class="fa fa-eye"></i></td>
-                          <td><i class="fa fa-trash"></i></td>
+                           <td><a href="javascript:void(0)" ng-click="deleteVoucherBookings(book.VBookId)"><i class="fa fa-trash"></i></a></td>
                         </tr>
                         <!-- <tr>
                           <td>Pravin Shelar</td>

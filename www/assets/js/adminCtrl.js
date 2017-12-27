@@ -1484,6 +1484,156 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
          
     }
 
+     $scope.deleteAttractionBookings = function(id) {    
+
+
+       var r = confirm("Are You Sure You want to Delete It?");
+        if (r == true) 
+        { 
+          $http.get(baseurl + 'deleteAttractionBookings/'+id).success(function(res) {
+
+                  
+               if (res.status == true) 
+                {
+
+                  $scope.getAttractionBookings();
+                  
+                }
+
+          }).error(function() {
+                      // alert("Please check your internet connection or data source..");
+         });
+            
+        }         
+
+         
+    }
+
+     $scope.deleteTourEnquiries = function(id) {    
+
+
+       var r = confirm("Are You Sure You want to Delete It?");
+        if (r == true) 
+        { 
+          $http.get(baseurl + 'deleteTourEnquiries/'+id).success(function(res) {
+
+                  
+               if (res.status == true) 
+                {
+
+                  $scope.getTourEnquiries();
+                  
+                }
+
+          }).error(function() {
+                      // alert("Please check your internet connection or data source..");
+         });
+            
+        }         
+
+         
+    }
+
+     $scope.deleteCustomTourEnquiries = function(id) {    
+
+
+       var r = confirm("Are You Sure You want to Delete It?");
+        if (r == true) 
+        { 
+          $http.get(baseurl + 'deleteCustomTourEnquiries/'+id).success(function(res) {
+
+                  
+               if (res.status == true) 
+                {
+
+                  $scope.getCustomTourEnquiries();
+                  
+                }
+
+          }).error(function() {
+                      // alert("Please check your internet connection or data source..");
+         });
+            
+        }         
+
+         
+    }
+
+     $scope.deleteAirTicketEnquiries = function(id) {    
+
+
+       var r = confirm("Are You Sure You want to Delete It?");
+        if (r == true) 
+        { 
+          $http.get(baseurl + 'deleteAirTicketEnquiries/'+id).success(function(res) {
+
+                  
+               if (res.status == true) 
+                {
+
+                  $scope.getAirTicketEnquiries();
+                  
+                }
+
+          }).error(function() {
+                      // alert("Please check your internet connection or data source..");
+         });
+            
+        }         
+
+         
+    }
+
+     $scope.deleteVisaEnquiries = function(id) {    
+
+
+       var r = confirm("Are You Sure You want to Delete It?");
+        if (r == true) 
+        { 
+          $http.get(baseurl + 'deleteVisaEnquiries/'+id).success(function(res) {
+
+                  
+               if (res.status == true) 
+                {
+
+                  $scope.getVisaEnquiries();
+                  
+                }
+
+          }).error(function() {
+                      // alert("Please check your internet connection or data source..");
+         });
+            
+        }         
+
+         
+    }
+
+     $scope.deleteVoucherBookings = function(id) {    
+
+
+       var r = confirm("Are You Sure You want to Delete It?");
+        if (r == true) 
+        { 
+          $http.get(baseurl + 'deleteVoucherBookings/'+id).success(function(res) {
+
+                  
+               if (res.status == true) 
+                {
+
+                  $scope.getVoucherBookings();
+                  
+                }
+
+          }).error(function() {
+                      // alert("Please check your internet connection or data source..");
+         });
+            
+        }         
+
+         
+    }
+
 
 
 

@@ -86,6 +86,13 @@ app.get('/api/getAirTicketEnquiries', admin.getAirTicketEnquiries);
 app.get('/api/getVisaEnquiries', admin.getVisaEnquiries);
 app.get('/api/getVoucherBookings', admin.getVoucherBookings);
 
+app.get('/api/deleteAttractionBookings/:id', admin.deleteBookings);
+app.get('/api/deleteTourEnquiries/:id', admin.deleteBookings);
+app.get('/api/deleteCustomTourEnquiries/:id', admin.deleteCustomTourEnquiries);
+app.get('/api/deleteAirTicketEnquiries/:id', admin.deleteAirTicketEnquiries);
+app.get('/api/deleteVisaEnquiries/:id', admin.deleteVisaEnquiries);
+app.get('/api/deleteVoucherBookings/:id', admin.deleteVoucherBookings);
+
 app.get('/api/getTourBookingDetails/:id', admin.getTourBookingDetails);
 
 app.get('/api/getAllTours', admin.getAllTours);
