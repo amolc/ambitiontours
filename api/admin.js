@@ -310,7 +310,7 @@ exports.getVoucherBookings = function(req, res){
 exports.getTourBookingDetails = function(req, res){
 
   var id = req.params.id;
-  var sql = "SELECT * FROM `tbl_Bookings` WHERE BookingId= '"+id+"'";    
+  var sql = "SELECT b.*,t.`TourType`,t.`TourImage`,t.`TourTitle` FROM `tbl_Bookings` as b LEFT JOIN `tbl_Tours` as t ON b.`TourId` = t.`TourId` WHERE BookingId= '"+id+"'";    
   db.query(sql, function (err, data) {
         res.json(data[0]);
     });

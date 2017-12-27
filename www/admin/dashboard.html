@@ -136,7 +136,7 @@
                           <td>{{book.fullName}}</td>
                           <td>{{book.email}}</td>
                           <td>{{book.phoneNumber}}</td>
-                          <td><i class="fa fa-eye"></i></td>
+                          <td><a href="booking-detail.html?Id={{book.BookingId}}"><i class="fa fa-eye"></i></a></td>
                           <td><a href="javascript:void(0)" ng-click="deleteAttractionBookings(book.BookingId)"><i class="fa fa-trash"></i></a></td>
                         </tr>
                       </tbody>
@@ -165,7 +165,7 @@
                           <td>{{book.fullName}}</td>
                           <td>{{book.email}}</td>
                           <td>{{book.phoneNumber}}</td>
-                          <td><i class="fa fa-eye"></i></td>
+                          <td><a href="booking-detail.html?Id={{book.BookingId}}"><i class="fa fa-eye"></i></a></td>
                            <td><a href="javascript:void(0)" ng-click="deleteTourEnquiries(book.BookingId)"><i class="fa fa-trash"></i></a></td>
                         </tr>
                         <!-- <tr>

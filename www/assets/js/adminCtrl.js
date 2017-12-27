@@ -1635,6 +1635,38 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
     }
 
 
+     $scope.getTourBookingDetails = function() {             
+
+        var url = window.location.href;
+        var parts = url.split("?");
+        if(parts.length>1){
+
+           var urlparams = parts[1];
+           var params = urlparams.split("&");
+           var id = urlparams.split("=")
+
+             $http.get(baseurl + 'getTourBookingDetails/'+id[1]).success(function (res) {
+
+                  if (res.status == 'false') {
+
+                  }
+                  else {
+                      $scope.book = res;
+                      console.log($scope.book);
+                  }
+
+              }).error(function () {
+
+              });
+          
+        }
+        else
+        {
+            window.location.href = 'dashboard.html';
+        }
+    } 
+
+
 
 
 
