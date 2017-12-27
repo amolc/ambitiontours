@@ -663,7 +663,25 @@ app.controller('contactcontroller', function ($scope, $location, $http, $window)
         });
 
    }
+       $scope.getSocial = function() {
 
+    $http.get(baseurl + 'getSocial').success(function (res) {
+
+            if (res.status == 'false') {
+
+            }
+            else {
+               // console.log(res);
+                $scope.sociallist = res;
+               // $scope.registration.CountryId = $scope.countrylist[0].CountryId;
+               //console.log($scope.countrylist);
+            }
+
+        }).error(function () {
+
+        });
+
+   }
 
 $scope.initfunc = function () {
      //$scope.data = {};

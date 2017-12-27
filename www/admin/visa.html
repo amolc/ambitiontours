@@ -131,7 +131,7 @@
                       <tr ng-repeat="visa in visalist">
                           <td>{{$index+1}}</td>
                           <td>{{visa.Country}}</td>
-                          <td>{{visa.VisaCharge}}</td>
+                          <td>${{visa.VisaCharge}}</td>
                           <td>{{visa.WorkingDays}}</td>
                           <td><a href="edit-visa.html?id={{visa.Id}}"><i class="fa fa-pencil"></i></a></td>
                           <td><a href="javascript:void(0)" ng-click="deleteVisa(visa.Id)"><i class="fa fa-trash"></i></a></td>
