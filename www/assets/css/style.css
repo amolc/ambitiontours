@@ -255,8 +255,9 @@ section#footer {
 .foot-text ul li{
     list-style-type: none; 
     float: left;
+    margin-right: 9px;
 }
-.foot-text ul li a{
+/*.foot-text ul li a{
     color: #171717;
     display: inline-block; 
     font-size: 20px; 
@@ -272,7 +273,7 @@ section#footer {
     -moz-transition: all 0.2s linear 0s; 
     -ms-transition: all 0.2s linear 0s; 
     -o-transition: all 0.2s linear 0s;
-}
+}*/
 .foot-text ul li:last-child a{
     margin: 0px;
 }
@@ -329,7 +330,6 @@ section#footer {
 
 .section-title{
     font-size: 33px;
-    text-align: center;
     margin-bottom: 50px;
     color: #280f0a;
 }
@@ -553,7 +553,7 @@ section#footer {
     list-style-type: none;
     float: left;
 }
-.social-links ul li a{
+/*.social-links ul li a{
     width: 25px;
     height: 25px;
     background: #000;
@@ -563,7 +563,7 @@ section#footer {
     line-height: 25px;
     margin-right: 7px;
     color: #FFF;
-}
+}*/
 .social-links ul li a:hover{
     background: #ff6624;
 }
@@ -977,9 +977,13 @@ iframe #mastHead{
 }
 .foot-social-icon .foot-text ul li a{
   color: #ffffff;
+  width: 35px;
+  height: 35px;
+  overflow: hidden;
+  display: inline-block;
 }
 
-.foot-social-icon .foot-text ul li:nth-child(1) a{
+/*.foot-social-icon .foot-text ul li:nth-child(1) a{
   background-color: #3b5998;
 }
 .foot-social-icon .foot-text ul li:nth-child(2) a{
@@ -1008,7 +1012,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 .foot-social-icon .foot-text ul li a:hover{
   background-color: #ffffff;
   color: #000000;
-}
+}*/
 .voucher-box{
   background-color: #ffffff;
   padding: 10px 10px 20px;
@@ -1072,16 +1076,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 .Voucher-para{
   font-size: 15px;
   color: #000000;
-  width: 75%;
+  width: 100%;
   margin: 20px auto 50px;
-  text-align: center;
 }
 #home-banner img{
   width: 100%;
   height: auto;
-}
-.about-content{
-  text-align: center;
 }
 .services-box h4{
   font-size: 18px;
