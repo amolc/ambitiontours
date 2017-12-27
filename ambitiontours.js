@@ -68,9 +68,15 @@ app.get('/api/getHolidayDetails/:id', admin.getHolidayDetails);
 app.post('/api/updateHoliday', admin.updateHoliday);
 app.get('/api/deleteHoliday/:id', admin.deleteHoliday);
 
+app.post('/api/addSocial', admin.addSocial);
+app.get('/api/getSocialDetails/:id', admin.getSocialDetails);
+app.post('/api/updateSocial', admin.updateSocial);
+app.get('/api/deleteSocial/:id', admin.deleteSocial);
+
 app.get('/api/getAdminContactDetails', admin.getAdminContactDetails);
 app.get('/api/getOperatingHours', admin.getOperatingHours);
 app.get('/api/getPublicHolidays', admin.getPublicHolidays);
+app.get('/api/getSocial', admin.getSocial);
 
 app.get('/api/getAllBookings', admin.getAllBookings);
 app.get('/api/getTourBookingDetails/:id', admin.getTourBookingDetails);
