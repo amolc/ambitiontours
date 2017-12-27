@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Ambition Tours</title>
+
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/responsive.css" rel="stylesheet">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+
+  <script type="text/javascript" src="assets/js/angular.min.js"></script>
+  <script type="text/javascript" src="assets/js/angular-storage.min.js"></script>
+  <script type="text/javascript" src="assets/js/app.js"></script>
+  <script type="text/javascript" src="assets/js/contactCtrl.js"></script>
+</head>
+<body data-ng-app="80consult" data-ng-controller="contactcontroller">
+<!-- Start Header -->
+       
+        <header id="top-header">
+            <div class="orenge-logo-strip">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="logo-img">
+                                <a href="index.html">
+                                    <img src="assets/img/logo.png" alt="" title="">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="navigation-strip">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="top-nav">
+                                <nav class="navbar navbar-default">
+                                  <div class="container-fluid pd0">
+                                    <!-- Brand and toggle get grouped for better mobile display -->
+                                    <div class="navbar-header">
+                                      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                      </button>
+                                      <!-- <a class="navbar-brand" href="#">Brand</a> -->
+                                    </div>
+
+
+                                    <!-- Collect the nav links, forms, and other content for toggling -->
+                                    <div class="collapse navbar-collapse pd0" id="bs-example-navbar-collapse-1">
+                                      <ul class="nav navbar-nav">
+                                        <li>
+                                          <a href="index.html">About Us</a>
+                                        </li>
+                                        <!-- <li><a href="index.html" class="hvr-underline-reveal">Destinations</a></li> -->
+                                        <li class="dropdown" ng-init="getattractioncountries()">
+                                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Destinations <span class="caret"></span></a>
+                                          <ul class="dropdown-menu">
+                                            <!-- <li><a href="#">India</a></li>
+                                            <li><a href="#">Malaysia</a></li>
+                                            <li><a href="#">Thailand</a></li>
+                                            <li><a href="#">Combodia</a></li>
+                                            <li><a href="#">Hong Kong</a></li> -->
+                                            <li ng-repeat="c in countrylist">
+                                             <a href="country-attractions.html?country={{c.CountryId}}">{{c.CountryTitle}}</a>
+                                            </li>
+                                          </ul>
+                                        </li>
+                                       <!--  <li><a href="asia.html" class="hvr-underline-reveal">Our Services</a></li> -->
+                                         <li class="dropdown">
+                                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Our Services<span class="caret"></span></a>
+                                          <ul class="dropdown-menu">
+                                            <li><a href="asia.html">Package Tours</a></li>
+                                            <li><a href="custom-tour.html">Custom Tours</a></li>
+                                            <li><a href="air-ticket.html">Air Ticketing</a></li>
+                                            <li><a href="visa-services.html">Visa Services</a></li>
+                                            <li><a href="voucher.html">Travel Gift Vouchers</a></li>
+                                            <li><a href="travel-insurance.html">Travel Insurance</a></li>
+                                          </ul>
+                                        </li>
+                                       <!--  <li><a href="europe.html" class="hvr-underline-reveal">Europe</a></li>
+                                        <li><a href="visa.html" class="hvr-underline-reveal">Visa</a></li> -->
+                                        <li><a href="contact-us.html" class="hvr-underline-reveal">Contact Us</a></li>
+                                      </ul>
+                                    </div><!-- /.navbar-collapse -->
+                                  </div><!-- /.container-fluid -->
+                                </nav>
+                            </div>
+                        </div >
+                    </div>
+                </div>
+            </div>
+        </header>
+    <!-- End Header -->
+  <div>
+<!--
+  <section id="header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="jumbotron">
+            <h3>Bonne Route Travels</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+-->
+
+
+<!--
+  <section id="context">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 box-context">
+          <div class="context-head text-center">
+            <h3>Book Now</h3>
+          </div>
+
+          <form class="" name="contactform"  ng-controller="contactcontroller" ng-submit="booknow()">
+            <div class="form-group">
+              <label for="name">Name:</label>
+              <input type="name" class="form-control" id="name">
+            </div>
+            <div class="form-group">
+              <label for="phoneno">Phone Number:</label>
+              <input type="phoneno" class="form-control" id="phoneno">
+            </div>
+            <div class="form-group">
+              <label for="email">Email address:</label>
+              <input type="email" class="form-control" id="email">
+            </div>
+            <div class="form-group">
+              <label for="pwd">Travel Date</label>
+              <div class="input-append date">
+              <input type="date" class="span2"><span class="add-on"><i class="icon-th"></i></span>
+            </div>
+            <div class="form-group">
+              <label for="pwd">Special Request</label>
+              <div class="input-append date">
+                <textarea rows="4" cols="50">
+
+                  </textarea>
+            </div>
+            </div>
+
+            <button type="submit" class="btn btn-default">Submit</button>
+            <input type="submit" value="Apply" class="wpcf7-form-control wpcf7-submit"/>
+          </form>
+
+        </div>
+
+        <div class="col-md-6 box-context">
+
+        </div>
+
+
+
+
+
+
+      </div>
+    </div>
+  </section>
+-->
+<div class="clearfix"></div>
+  <section id="booking-details-wrap" class="bg-creem">
+    <div class="container">
+       
+      <div class="row">
+        <div class="col-sm-offset-1 col-sm-10 col-md-offset-1 col-md-10">
+          <div class="attractions-form">
+            <div class="col-sm-6 col-md-6">
+              <div class="tour-place-img">
+                <img src="assets/img/hong-kong.jpg" alt="" title=""> 
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-6" ng-init="getAdminContactDetails()">
+              <div class="contact-right-block">
+                <h2>Hong Kong Tour</h2>
+                <p><span>Name : </span><span>Komal Gaikwad</span></p>
+                <p><span>Email : </span><span> <a href="#">komal@magnusideas.com</a></span></p>
+                <p><span>Contact Number : </span><span><a href="#">9586958695</a></span></p>
+                <p><span>Package Name : </span><span>Singapore Night Safari</span></p>
+                <p><span>Price For Adult : </span><span>SGD 43</span></p>
+                <p><span>Price For Child : </span><span>SGD 50 </span></p>
+                <p><span>No of Adults : </span><span>3 </span></p>
+                <p><span>No of Child : </span><span>1 </span></p>
+                <p><span>Travel Date :  </span><span>2017-12-29</span></p>
+                <p><span>Message : </span><span>Testing Attraction </span></p>
+                <p><span>Total Amount : </span><span>SGD 179 </span></p>
+                <p><span>Stripe Token : </span><span>asdfasd</span></p>
+                <p><span>Payment Status :  </span><span>Paid </span></p>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+      <div class="clearfix"></div>
+  </section>
+
+
+
+
+
+
+
+<section id="footer">
+            <div class="container">
+                <div class="row">
+                   <!--  <div class="col-sm-4 col-md-4">
+                        <div class="foot-text">
+                            <h4>About us</h4>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                        </div>
+                    </div> -->
+                    <div class="col-sm-3 col-md-3">
+                        <div class="foot-text">
+                              <h4>Contact Us</h4>
+                              <h5>Ambition Tours & Travel Pte. Ltd</h5>
+                              <p>#06-67, 1 Rochor Canal Rd,</p>
+                              <p>Sim Lim Square, </p>
+                              <p>Singapore 188504</p>
+
+                       </div>
+                    </div>
+                    <div class="col-sm-5 col-md-5 pd-l80">
+                    
+                    </div>
+                   <div class="col-sm-4 col-md-4 pd-l70" ng-init="getSocial()">
+                        <div class="foot-social-icon">
+                            <div class="foot-text">
+                                <h4>Contact With Us</h4>
+                                <ul>
+                                    <li ng-repeat="social in sociallist">
+                                        <a href="{{social.Link}}">
+                                            <img src="../uploads/social/{{social.Image}}" alt="" title="">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="policy-content">
+                          <p>
+                            <a href="privacy-policy.html">Privacy Policy</a>
+                          </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer  id="bottom-strip">
+            <p>Copyright 2017- Ambition Tours - All Rights Reserved</p>
+        </footer>
+
+  <script  type="text/javascript"  src="assets/js/jquery.min.js"></script>
+  <script   type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+  <script  type="text/javascript"  src="assets/js/main.js"></script>
+ <script src="assets/js/custom.js"></script>
+
+<!-- <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script> -->
+<script>
+   /* $(function(){
+         // Find any date inputs and override their functionality
+         $('input[type="date"]').datepicker();
+    });*/
+</script>
+
+</div>
+</body>
+
+</html>
