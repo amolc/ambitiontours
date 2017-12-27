@@ -227,9 +227,11 @@ exports.getCountryAttractions = function(req, res){
 
 exports.getAllBookings = function(req, res){
 
-  var sql = "SELECT b.`BookingId`  as Id,b.`fullName` as name,b.`email` as email,b.`phoneNumber` as phone,b.`createDate` as date,t.`TourType` as Type FROM `tbl_Bookings` as b LEFT JOIN b.`TourId` = t.`TourId` WHERE t.`TourType` = 'Attraction' AND b.`IsDeleted` = '0' UNION SELECT v.`VBookId` as Id,v.`Name` as name,v.`Email` as email,v.`Contact` as phone,v.`CreatedOn` as date,'Voucher' as Type FROM `tbl_VoucherBooking` as v WHERE v.`IsDeleted` = '0' ORDER BY date DESC";
-    console.log(sql);
+  //var sql = "SELECT b.`BookingId`  as Id,b.`fullName` as name,b.`email` as email,b.`phoneNumber` as phone,b.`createDate` as date,t.`TourType` as Type FROM `tbl_Bookings` as b LEFT JOIN b.`TourId` = t.`TourId` WHERE t.`TourType` = 'Attraction' AND b.`IsDeleted` = '0' UNION SELECT v.`VBookId` as Id,v.`Name` as name,v.`Email` as email,v.`Contact` as phone,v.`CreatedOn` as date,'Voucher' as Type FROM `tbl_VoucherBooking` as v WHERE v.`IsDeleted` = '0' ORDER BY date DESC";
+    var sql = "SELECT b.`BookingId` as Id,b.`fullName` as name,b.`email` as email,b.`phoneNumber` as phone,b.`createDate` as date,t.`TourType` as Type FROM `tbl_Bookings` as b LEFT JOIN `tbl_tours` as t ON b.`TourId` = t.`TourId` WHERE t.`TourType` = 'Attraction' AND b.`IsDeleted` = '0' UNION SELECT v.`VBookId` as Id,v.`Name` as name,v.`Email` as email,v.`Contact` as phone,v.`CreatedOn` as date,'Voucher' as Type FROM `tbl_VoucherBooking` as v WHERE v.`IsDeleted` = '0' ORDER BY date DESC";
+   // console.log(sql);
     db.query(sql, function (err, data) {
+        console.log(data);
         res.json(data);
     });
     

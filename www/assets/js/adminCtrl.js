@@ -365,6 +365,7 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
 
             }
             else {
+                console.log(res);
                 $scope.bookinglist = res;
             }
 
