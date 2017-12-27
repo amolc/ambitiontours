@@ -1652,7 +1652,7 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
                   }
                   else {
                       $scope.book = res;
-                      console.log($scope.book);
+                     // console.log($scope.book);
                   }
 
               }).error(function () {
@@ -1665,6 +1665,136 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
             window.location.href = 'dashboard.html';
         }
     } 
+
+         $scope.getCustomTourDetails = function() {             
+
+        var url = window.location.href;
+        var parts = url.split("?");
+        if(parts.length>1){
+
+           var urlparams = parts[1];
+           var params = urlparams.split("&");
+           var id = urlparams.split("=")
+
+             $http.get(baseurl + 'getCustomTourDetails/'+id[1]).success(function (res) {
+
+                  if (res.status == 'false') {
+
+                  }
+                  else {
+                      $scope.book = res;
+                     // console.log($scope.book);
+                  }
+
+              }).error(function () {
+
+              });
+          
+        }
+        else
+        {
+            window.location.href = 'dashboard.html';
+        }
+    } 
+
+
+
+       $scope.getAirTicketDetails = function() {             
+
+        var url = window.location.href;
+        var parts = url.split("?");
+        if(parts.length>1){
+
+           var urlparams = parts[1];
+           var params = urlparams.split("&");
+           var id = urlparams.split("=")
+
+             $http.get(baseurl + 'getAirTicketDetails/'+id[1]).success(function (res) {
+
+                  if (res.status == 'false') {
+
+                  }
+                  else {
+                      $scope.book = res;
+                     console.log($scope.book);
+                  }
+
+              }).error(function () {
+
+              });
+          
+        }
+        else
+        {
+            window.location.href = 'dashboard.html';
+        }
+    } 
+
+
+   $scope.getVisaEnquiriesDetails = function() {             
+
+        var url = window.location.href;
+        var parts = url.split("?");
+        if(parts.length>1){
+
+           var urlparams = parts[1];
+           var params = urlparams.split("&");
+           var id = urlparams.split("=")
+
+             $http.get(baseurl + 'getVisaEnquiriesDetails/'+id[1]).success(function (res) {
+
+                  if (res.status == 'false') {
+
+                  }
+                  else {
+                      $scope.book = res;
+                     // console.log($scope.book);
+                  }
+
+              }).error(function () {
+
+              });
+          
+        }
+        else
+        {
+            window.location.href = 'dashboard.html';
+        }
+    } 
+
+
+   $scope.getVoucherBookingDetails = function() {             
+
+        var url = window.location.href;
+        var parts = url.split("?");
+        if(parts.length>1){
+
+           var urlparams = parts[1];
+           var params = urlparams.split("&");
+           var id = urlparams.split("=")
+
+             $http.get(baseurl + 'getVoucherBookingDetails/'+id[1]).success(function (res) {
+
+                  if (res.status == 'false') {
+
+                  }
+                  else {
+                      $scope.book = res;
+                     // console.log($scope.book);
+                  }
+
+              }).error(function () {
+
+              });
+          
+        }
+        else
+        {
+            window.location.href = 'dashboard.html';
+        }
+    } 
+
+
 
 
 

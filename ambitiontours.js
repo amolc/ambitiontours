@@ -94,6 +94,9 @@ app.get('/api/deleteVisaEnquiries/:id', admin.deleteVisaEnquiries);
 app.get('/api/deleteVoucherBookings/:id', admin.deleteVoucherBookings);
 
 app.get('/api/getTourBookingDetails/:id', admin.getTourBookingDetails);
+app.get('/api/getCustomTourDetails/:id', admin.getCustomTourDetails);
+app.get('/api/getAirTicketDetails/:id', admin.getAirTicketDetails);
+app.get('/api/getVisaEnquiriesDetails/:id', admin.getVisaEnquiriesDetails);
 
 app.get('/api/getAllTours', admin.getAllTours);
 app.get('/api/getCountryTours/:id', admin.getCountryTours);

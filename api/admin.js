@@ -317,6 +317,36 @@ exports.getTourBookingDetails = function(req, res){
     
 };
 
+exports.getCustomTourDetails = function(req, res){
+
+  var id = req.params.id;
+  var sql = "SELECT * FROM `tbl_CustomTours` WHERE CTourId= '"+id+"'";    
+  db.query(sql, function (err, data) {
+        res.json(data[0]);
+    });
+    
+};
+
+exports.getAirTicketDetails = function(req, res){
+
+  var id = req.params.id;
+  var sql = "SELECT * FROM `tbl_AirTickets` WHERE Id= '"+id+"'";    
+  db.query(sql, function (err, data) {
+        res.json(data[0]);
+    });
+    
+};
+
+exports.getVisaEnquiriesDetails = function(req, res){
+
+  var id = req.params.id;
+  var sql = "SELECT v.*,d.`Country`,d.`VisaCharge`,d.`WorkingDays` FROM `tbl_VisaEnquiries` as v LEFT JOIN `tbl_VisaDetails` as d ON v.`VisaDetailId` = d.`Id` WHERE EnquiryId= '"+id+"'";    
+  db.query(sql, function (err, data) {
+        res.json(data[0]);
+    });
+    
+};
+
 exports.getVoucherBookingDetails = function(req, res){
 
   var id = req.params.id;
