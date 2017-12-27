@@ -626,7 +626,8 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
                       window.location.href = 'country-tour.html?country='+$scope.Tour.CountryId;
                     //window.location.href = 'tours.html';
                   if ($scope.Tour.TourType == 'Attraction')
-                    window.location.href = 'attractions.html';
+                    window.location.href = 'country-attractions.html?country='+$scope.Tour.CountryId;
+                    //window.location.href = 'attractions.html';
                 }
 
                 }).error(function() {
@@ -650,7 +651,7 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
                       $scope.getCountryTours();
                     //window.location.href = 'tours.html';
                   if (type == 'Attraction')
-                    window.location.href = 'attractions.html';
+                    $scope.getCountryAttractions();
                 }
 
           }).error(function() {

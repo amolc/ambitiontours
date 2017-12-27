@@ -2,6 +2,26 @@ app.controller('paymentcontroller', function ($scope, $location, $http, $window)
 
 	$window.Stripe.setPublishableKey('pk_test_OhQmkdGJBvsyyfACNGMcGFXw');
 
+     $scope.getattractioncountries = function() {
+
+    $http.get(baseurl + 'getattractioncountries').success(function (res) {
+
+            if (res.status == 'false') {
+
+            }
+            else {
+               // console.log(res);
+                $scope.countrylist = res;
+               // $scope.registration.CountryId = $scope.countrylist[0].CountryId;
+               //console.log($scope.countrylist);
+            }
+
+        }).error(function () {
+
+        });
+
+   }
+
 
 	$scope.getPaymentDetails = function() {
 
@@ -22,10 +42,34 @@ app.controller('paymentcontroller', function ($scope, $location, $http, $window)
 
                   }
                   else {
+                 		//console.log(res);
+                    if (res.PaymentStatus=='Pending')
+                      $scope.tourbook = res;
+                    else if (res.PaymentStatus=='Paid')
+                      window.location.href = 'index.html';
+                  
+                  }
 
-                  		//console.log(res);
-                   
-                        $scope.tourbook = res;
+              }).error(function () {
+
+              });
+
+           }
+          else if (id[0]=='VoucherBookId') 
+           {
+
+              $http.get(baseurl + 'getVoucherBookingDetails/'+id[1]).success(function (res) {
+
+                  if (res.status == 'false') {
+
+                  }
+                  else {
+                    //console.log(res);
+                    if (res.PaymentStatus=='Pending')
+                      $scope.voucherbook = res;
+                    else if (res.PaymentStatus=='Paid')
+                      window.location.href = 'index.html';
+                  
                   }
 
               }).error(function () {
@@ -47,11 +91,11 @@ app.controller('paymentcontroller', function ($scope, $location, $http, $window)
 
          $scope.stripeCallback = function (code, result) {
 
-          console.log($scope.cardname);
-          console.log($scope.number);
-          console.log($scope.expiry);
-          console.log($scope.cvc);
-          console.log(result);
+          // console.log($scope.cardname);
+          // console.log($scope.number);
+          // console.log($scope.expiry);
+          // console.log($scope.cvc);
+          // console.log(result);
 
           if (result.error) {
                // window.alert('it failed! error: ' + result.error.message);
@@ -80,6 +124,26 @@ app.controller('paymentcontroller', function ($scope, $location, $http, $window)
 
 
           	}
+            else if(typeof $scope.voucherbook !== 'undefined')
+            {
+
+              $scope.voucherbook.stripeToken = result.id ;
+              $http.post(baseurl + 'voucherPayment/',$scope.voucherbook).success(function (res) {
+
+                  if (res.status == 'false') {
+
+                  }
+                  else {
+                       
+                       window.location.href = 'index.html';
+                  }
+
+              }).error(function () {
+
+              });
+
+
+            }
               
 
           }

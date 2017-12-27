@@ -191,18 +191,37 @@
               <div class="packeg-details-text">
                     <h5><a href="#">{{Tour.TourTitle}}</a></h5>
                                  <!--    <p>{{Tour.TourDescription}}</p> -->
-                    <div class="right-blck">
+                   <!--  <div class="right-blck">
                         <p class="gray-small-text"><span>Location: {{Tour.TourLocation}} <br>
                                             Duration: {{Tour.TourDuration}}</span>
                         </p>
-                    </div>
+                    </div> -->
                     <div class="price-right-block">
                     <span>From SGD</span>
                     <h4>${{Tour.TourCost}}</h4>
                     </div>
+                    <div class="table-responsive">          
+                    <table class="table table-bordered">
+                      <tbody>
+                        <tr>
+                          <td>{{Tour.adults}} Adults</td>
+                          <td>{{Tour.AdultPrice}}</td>
+                        </tr>
+                         <tr>
+                          <td>{{Tour.Child}} Children</td>
+                          <td>{{Tour.ChildPrice}}</td>
+                        </tr>
+                        <tr>
+                          <td>Total Amount</td>
+                          <td>{{Tour.TotalAmount}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    </div>
                   </div>
-             </div>
-             </div>              
+                   
+             </div>   
+             </div>           
       </div>
      
         <div class="col-md-8">
@@ -230,38 +249,38 @@
             </div>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-4">
             <div class="form-group">
               <label for="pwd">No of Adult :</label>
 
-              <select ng-model="Tour.adults" name="adults" id="adults" class="form-control" required>
+              <select ng-model="Tour.adults" name="adults" id="adults" class="form-control" required ng-change="calculateAmt()">
                   <option ng-repeat="item in adults" value="{{item}}">{{item}}</option>
               </select>
             </div>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-4">
             <div class="form-group">
               <label for="pwd">No of Child :</label>
-              <select ng-model="Tour.Child" name="Child" id="Child" class="form-control">
+              <select ng-model="Tour.Child" name="Child" id="Child" class="form-control" ng-change="calculateAmt()">
                   <option ng-repeat="item in child" value="{{item}}">{{item}}</option>
               </select>
             </div>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-4">
             <div class="form-group">
               <label for="pwd">Travel Date :</label>
               <input type="date" class="form-control" ng-model="Tour.travelDate" name="travelDate" id="travelDate" required>
             </div>
             </div>
 
-            <div class="col-md-6">
+            <!-- <div class="col-md-6">
              <div class="form-group">
               <label for="pwd">Promo Code :</label>
               <input type="text" class="form-control" ng-model="Tour.promoCode" name="promoCode" id="promoCode">
             </div>
-            </div>
+            </div> -->
             
             <div class="col-md-12">
             <div class="form-group">

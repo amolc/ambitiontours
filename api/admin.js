@@ -244,6 +244,16 @@ exports.getTourBookingDetails = function(req, res){
     
 };
 
+exports.getVoucherBookingDetails = function(req, res){
+
+  var id = req.params.id;
+  var sql = "SELECT * FROM `tbl_VoucherBooking` WHERE VBookId= '"+id+"'";    
+  db.query(sql, function (err, data) {
+        res.json(data[0]);
+    });
+    
+};
+
 
 exports.getTourDetails = function(req, res){
 
@@ -581,6 +591,7 @@ exports.addTour = function (req, res) {
                                 "TourDuration": req.body.TourDuration || "",
                                 "TourImage": fileName || "", 
                                 "TourCost": req.body.TourCost || "", 
+                                "ChildCost" : req.body.ChildCost || "", 
                                 "CreatedOn": dateToday || "",        
                             };
                             // console.log("after", createObj);
@@ -654,7 +665,7 @@ exports.updateTour = function (req, res) {
                                 "TourLocation": req.body.TourLocation || "",
                                 "TourDuration": req.body.TourDuration || "",
                                 "TourImage": fileName || "", 
-                                "TourCost": req.body.TourCost || "", 
+                                "ChildCost" : req.body.ChildCost || "", 
                                 "ModifiedOn": dateToday || "",        
                             };
                             // console.log("after", createObj);

@@ -70,6 +70,7 @@
                                         <li><a href="countries.html" class="hvr-underline-reveal">Countries</a></li>
                                         <li><a href="visa.html" class="hvr-underline-reveal">Visa Details</a></li>
                                         <li><a href="gift-vouchers.html" class="hvr-underline-reveal">Travel Vouchers</a></li>
+<li><a href="settings.html" class="hvr-underline-reveal">Settings</a></li>
                                         <!-- <li><a href="changepassword.html" class="hvr-underline-reveal">Change Password</a></li>
                                         <li><a href="javascript:void(0)" class="hvr-underline-reveal" ng-click="adminlogout();">Logout</a></li> -->
                                       </ul>
@@ -83,7 +84,7 @@
                                               <span>Sadia Rahman</span>
                                               <span class="caret"></span></a>
                                             <ul class="dropdown-menu">
-                                             <li><a href="settings.html" class="hvr-underline-reveal">Settings</a></li>
+                                           
                                               <li><a href="changepassword.html" class="hvr-underline-reveal">Change Password</a></li>
                                               <li><a href="javascript:void(0)" class="hvr-underline-reveal" ng-click="adminlogout();">Logout</a></li>
                                             </ul>
@@ -125,9 +126,12 @@
                     <input type="text" name="title" placeholder="Title" required="" ng-model="Tour.TourTitle">
                   </div>
                   <div class="col-sm-6 col-md-6">
-                    <input type="text" name="price" placeholder="Price" pattern="[0-9]{1,5}[.]{0,1}[0-9]{0,2}" oninvalid="setCustomValidity('Enter Valid Price')" onchange="try{setCustomValidity('')}catch(e){}" required="" ng-model="Tour.TourCost">
+                    <input type="text" name="price" placeholder="Adult Price" pattern="[0-9]{1,5}[.]{0,1}[0-9]{0,2}" oninvalid="setCustomValidity('Enter Valid Price')" onchange="try{setCustomValidity('')}catch(e){}" required="" ng-model="Tour.TourCost">
                   </div>
                   <div class="col-sm-6 col-md-6">
+                    <input type="text" name="price" placeholder="Child Price" pattern="[0-9]{1,5}[.]{0,1}[0-9]{0,2}" oninvalid="setCustomValidity('Enter Valid Price')" onchange="try{setCustomValidity('')}catch(e){}" required="" ng-model="Tour.ChildCost">
+                  </div>
+                  <div class="col-sm-12 col-md-12">
                     <input type="text" name="duration" placeholder="Duration" required="" ng-model="Tour.TourDuration">
                   </div>
                   <div class="col-sm-12 col-md-12">

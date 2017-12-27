@@ -167,7 +167,8 @@
                                   <div class="col-sm-4">
                                     <div class="total-amt text-center">
                                      <!--  <h4>$1500</h4> -->
-                                      <h4>SGD ${{tourbook.TotalAmount}}</h4>
+                                      <h4 ng-if="tourbook.TotalAmount">SGD ${{tourbook.TotalAmount}}</h4>
+                                      <h4 ng-if="voucherbook.TotalAmount">SGD ${{voucherbook.TotalAmount}}</h4>
                                       <h5 class="">Total Amount</h5>
                                     </div>
                                   </div>

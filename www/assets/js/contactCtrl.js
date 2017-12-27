@@ -2,7 +2,7 @@ app.controller('contactcontroller', function ($scope, $location, $http, $window)
 
   //----------- Book Now ------------------------///
 
-  $scope.adults = ['0','1','2','3','4','5','6','7','8','9','10'];
+  $scope.adults = ['1','2','3','4','5','6','7','8','9','10'];
   $scope.child = ['0','1','2','3','4','5','6','7','8','9','10'];
  // $scope.urlParams = $location.search();
  // console.log($location.search());
@@ -499,6 +499,12 @@ app.controller('contactcontroller', function ($scope, $location, $http, $window)
                   }
                   else {
                       $scope.Tour = res;
+                      $scope.Tour.adults = 2;
+                      $scope.Tour.Child = 2;
+                      $scope.Tour.AdultPrice = $scope.Tour.adults * $scope.Tour.TourCost;
+                      $scope.Tour.ChildPrice = $scope.Tour.Child * $scope.Tour.ChildCost;
+                      $scope.Tour.TotalAmount = $scope.Tour.AdultPrice + $scope.Tour.ChildPrice;
+
                   }
 
               }).error(function () {
@@ -515,6 +521,14 @@ app.controller('contactcontroller', function ($scope, $location, $http, $window)
             window.location.href = 'index.html';
         }
     } 
+
+    $scope.calculateAmt = function (req, res) {
+
+       $scope.Tour.AdultPrice = $scope.Tour.adults * $scope.Tour.TourCost;
+       $scope.Tour.ChildPrice = $scope.Tour.Child * $scope.Tour.ChildCost;
+       $scope.Tour.TotalAmount = $scope.Tour.AdultPrice + $scope.Tour.ChildPrice;
+
+    }
 
   $scope.customTour = function (req, res) {
 
@@ -617,6 +631,31 @@ app.controller('contactcontroller', function ($scope, $location, $http, $window)
                 $scope.voucherlist = res;
                // $scope.registration.CountryId = $scope.countrylist[0].CountryId;
                //console.log($scope.countrylist);
+            }
+
+        }).error(function () {
+
+        });
+
+   }
+
+    $scope.showVoucher = function(voucher) {
+
+          $scope.vc = voucher;
+          $scope.vc.Quantity = 1;
+          $scope.vc.TotalAmount = $scope.vc.Price * $scope.vc.Quantity;
+   }
+
+  $scope.purchasevoucher = function() {
+
+    $http.post(baseurl + 'purchasevoucher',$scope.vc).success(function (res) {
+
+            if (res.status == 'false') {
+
+            }
+            else {
+               
+              window.location.href = 'payment-option.html?VoucherBookId='+res.value;
             }
 
         }).error(function () {
