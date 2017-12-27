@@ -64,6 +64,18 @@
                                           <a href="index.html">About Us</a>
                                         </li>
                                         <!-- <li><a href="index.html" class="hvr-underline-reveal">Destinations</a></li> -->
+                                       <!--  <li><a href="asia.html" class="hvr-underline-reveal">Our Services</a></li> -->
+                                         <li class="dropdown">
+                                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Our Services<span class="caret"></span></a>
+                                          <ul class="dropdown-menu">
+                                            <li><a href="asia.html">Package Tours</a></li>
+                                            <li><a href="custom-tour.html">Custom Tours</a></li>
+                                            <li><a href="air-ticket.html">Air Ticketing</a></li>
+                                            <li><a href="visa-services.html">Visa Services</a></li>
+                                            <li><a href="voucher.html">Travel Gift Vouchers</a></li>
+                                            <li><a href="travel-insurance.html">Travel Insurance</a></li>
+                                          </ul>
+                                        </li>
                                         <li class="dropdown" ng-init="getattractioncountries()">
                                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Destinations <span class="caret"></span></a>
                                           <ul class="dropdown-menu">
@@ -75,20 +87,6 @@
                                             <li ng-repeat="c in countrylist">
                                              <a href="country-attractions.html?country={{c.CountryId}}">{{c.CountryTitle}}</a>
                                             </li>
-                                          </ul>
-                                        </li>
-
-                                        
-                                       <!--  <li><a href="asia.html" class="hvr-underline-reveal">Our Services</a></li> -->
-                                         <li class="dropdown">
-                                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Our Services<span class="caret"></span></a>
-                                          <ul class="dropdown-menu">
-                                            <li><a href="asia.html">Package Tours</a></li>
-                                            <li><a href="custom-tour.html">Custom Tours</a></li>
-                                            <li><a href="air-ticket.html">Air Ticketing</a></li>
-                                            <li><a href="visa-services.html">Visa Services</a></li>
-                                            <li><a href="voucher.html">Travel Gift Vouchers</a></li>
-                                            <li><a href="travel-insurance.html">Travel Insurance</a></li>
                                           </ul>
                                         </li>
                                        <!--  <li><a href="europe.html" class="hvr-underline-reveal">Europe</a></li>
@@ -184,9 +182,10 @@
             <div class="row">
               <div class="col-sm-12 col-md-12">
                 <div class="attractions-form signin-form">
-                  <h2 class="section-title text-center">Visa Detail</h2>
+                  <h2 class="section-title text-center">Visa Services</h2>
                   <div class="dashboard-table">
                  <table id="table">
+                  
                       <thead>
                         <tr>
                         <th class="text-center">No.</th>
@@ -200,8 +199,8 @@
                       <tbody>
 
                       <tr ng-repeat="visa in visalist">
-                          <td class="text-center">{{$index+1}}</td>
-                          <td class="text-center">{{visa.Country}}</td>
+                          <td>{{$index+1}}</td>
+                          <td>{{visa.Country}}</td>
                           <td class="text-center">${{visa.VisaCharge}}</td>
                           <td class="text-center">{{visa.WorkingDays}}</td>
                           <td class="text-center">

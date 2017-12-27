@@ -41,7 +41,7 @@
                     </div>
                 </div>
             </div>
-            <div class="navigation-strip">
+           <div class="navigation-strip">
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-12">
@@ -67,6 +67,18 @@
                                           <a href="index.html">About Us</a>
                                         </li>
                                         <!-- <li><a href="index.html" class="hvr-underline-reveal">Destinations</a></li> -->
+                                       <!--  <li><a href="asia.html" class="hvr-underline-reveal">Our Services</a></li> -->
+                                         <li class="dropdown">
+                                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Our Services<span class="caret"></span></a>
+                                          <ul class="dropdown-menu">
+                                            <li><a href="asia.html">Package Tours</a></li>
+                                            <li><a href="custom-tour.html">Custom Tours</a></li>
+                                            <li><a href="air-ticket.html">Air Ticketing</a></li>
+                                            <li><a href="visa-services.html">Visa Services</a></li>
+                                            <li><a href="voucher.html">Travel Gift Vouchers</a></li>
+                                            <li><a href="travel-insurance.html">Travel Insurance</a></li>
+                                          </ul>
+                                        </li>
                                         <li class="dropdown" ng-init="getattractioncountries()">
                                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Destinations <span class="caret"></span></a>
                                           <ul class="dropdown-menu">
@@ -78,18 +90,6 @@
                                             <li ng-repeat="c in countrylist">
                                              <a href="country-attractions.html?country={{c.CountryId}}">{{c.CountryTitle}}</a>
                                             </li>
-                                          </ul>
-                                        </li>
-                                       <!--  <li><a href="asia.html" class="hvr-underline-reveal">Our Services</a></li> -->
-                                         <li class="dropdown">
-                                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Our Services<span class="caret"></span></a>
-                                          <ul class="dropdown-menu">
-                                            <li><a href="asia.html">Package Tours</a></li>
-                                            <li><a href="custom-tour.html">Custom Tours</a></li>
-                                            <li><a href="air-ticket.html">Air Ticketing</a></li>
-                                            <li><a href="visa-services.html">Visa Services</a></li>
-                                            <li><a href="voucher.html">Travel Gift Vouchers</a></li>
-                                            <li><a href="travel-insurance.html">Travel Insurance</a></li>
                                           </ul>
                                         </li>
                                        <!--  <li><a href="europe.html" class="hvr-underline-reveal">Europe</a></li>

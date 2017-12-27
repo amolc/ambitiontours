@@ -102,7 +102,7 @@
             </div>
         </header>
     <!-- End Header -->
-  <div data-ng-init="initfunc()">
+  <div>
 <!--
   <section id="header">
     <div class="container">
@@ -174,56 +174,38 @@
   </section>
 -->
 <div class="clearfix"></div>
-  <section id="book-now">
+  <section id="booking-details-wrap" class="bg-creem">
     <div class="container">
+       
       <div class="row">
-        <div class="col-md-12 text-center">
-           <h2 class="section-title">Custom Tour</h2>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <form name="contactform" id="contactform"  ng-controller="contactcontroller" ng-submit="customTour()">
-             <div class="col-md-6"><div class="form-group">
-              <label for="">Name :</label>
-              <input type="name" class="form-control" ng-model="fullname" name="fullname" id="fullname" required>
-            </div>
-            <div class="form-group">
-              <label for="phoneno">Phone Number:</label>
-              <input type="phoneno" class="form-control" ng-model="phonenumber" name="phonenumber" id="phonenumber" required>
-            </div>
-            <div class="form-group">
-              <label for="email">Email Address:</label>
-              <input type="email" class="form-control" ng-model="email" name="email" id="email" required>
-            </div>            
-            <div class="form-group">
-              <label for="pwd">Travel Date :</label>
-              <input type="date" class="form-control" ng-model="travelDate" name="travelDate" id="travelDate" required>
-              <!-- <span class="icon-position"><i class="fa fa-calendar" aria-hidden="true"></i></span> -->
-            </div>
+        <div class="col-sm-offset-1 col-sm-10 col-md-offset-1 col-md-10">
+          <div class="attractions-form">
+            <div class="col-sm-6 col-md-6">
+              <div class="tour-place-img">
+                <img src="assets/img/hong-kong.jpg" alt="" title=""> 
               </div>
-            <div class="col-md-6">
-            <div class="form-group">
-              <label for="pwd">Special Request</label>
-              <textarea class="form-control mb19" name="message" ng-model="message" id="message" cols="30" rows="13"></textarea>
             </div>
+            <div class="col-sm-6 col-md-6" ng-init="getAdminContactDetails()">
+              <div class="contact-right-block">
+                <h2>Hong Kong Tour</h2>
+                <p><span>Name : </span><span>Komal Gaikwad</span></p>
+                <p><span>Email : </span><span> <a href="#">komal@magnusideas.com</a></span></p>
+                <p><span>Contact Number : </span><span><a href="#">9586958695</a></span></p>
+                <p><span>Package Name : </span><span>Singapore Night Safari</span></p>
+                <p><span>Price For Adult : </span><span>SGD 43</span></p>
+                <p><span>Price For Child : </span><span>SGD 50 </span></p>
+                <p><span>No of Adults : </span><span>3 </span></p>
+                <p><span>No of Child : </span><span>1 </span></p>
+                <p><span>Travel Date :  </span><span>2017-12-29</span></p>
+                <p><span>Message : </span><span>Testing Attraction </span></p>
+                <p><span>Total Amount : </span><span>SGD 179 </span></p>
+                <p><span>Stripe Token : </span><span>asdfasd</span></p>
+                <p><span>Payment Status :  </span><span>Paid </span></p>
+              </div>
             </div>
-              <div class="clearfix"></div>
-           <!--  <input type="text" class="form-control" ng-model="packageName" name="packageName" id="packageName"> -->
-<!--              <input type="hidden" class="form-control" ng-model="packagename" value="{{packagename}}" name="packageName" id="packageName">
- -->            <div class="col-sm-12 col-md-12 text-center">
-                  <button class="btn btn-success orenge-btn" type="submit" value="Apply" class="wpcf7-form-control wpcf7-submit">SUBMIT</button>
-                </div>
-          </form>
-          <div id="thankyou">
-            <div class="thankyou">
-                <div class="item">
-                    <span><h4><b><font>Submitted Successfully!</font></b></h4></span>
-                </div>
-            </div>
+            <div class="clearfix"></div>
+          </div>
         </div>
-        </div>
-
       </div>
     </div>
       <div class="clearfix"></div>
