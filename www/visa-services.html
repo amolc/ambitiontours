@@ -311,34 +311,14 @@
                     <div class="col-sm-5 col-md-5 pd-l80">
                     
                     </div>
-                    <div class="col-sm-4 col-md-4 pd-l70">
+                   <div class="col-sm-4 col-md-4 pd-l70" ng-init="getSocial()">
                         <div class="foot-social-icon">
                             <div class="foot-text">
                                 <h4>Contact With Us</h4>
                                 <ul>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-facebook" aria-hidden="true"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-twitter" aria-hidden="true"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-instagram" aria-hidden="true"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-youtube-play" aria-hidden="true"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-linkedin" aria-hidden="true"></i>
+                                    <li ng-repeat="social in sociallist">
+                                        <a href="{{social.Link}}">
+                                            <img src="../uploads/social/{{social.Image}}" alt="" title="">
                                         </a>
                                     </li>
                                 </ul>
