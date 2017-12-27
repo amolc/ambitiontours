@@ -79,6 +79,13 @@ app.get('/api/getPublicHolidays', admin.getPublicHolidays);
 app.get('/api/getSocial', admin.getSocial);
 
 app.get('/api/getAllBookings', admin.getAllBookings);
+app.get('/api/getAttractionBookings', admin.getAttractionBookings);
+app.get('/api/getTourEnquiries', admin.getTourEnquiries);
+app.get('/api/getCustomTourEnquiries', admin.getCustomTourEnquiries);
+app.get('/api/getAirTicketEnquiries', admin.getAirTicketEnquiries);
+app.get('/api/getVisaEnquiries', admin.getVisaEnquiries);
+app.get('/api/getVoucherBookings', admin.getVoucherBookings);
+
 app.get('/api/getTourBookingDetails/:id', admin.getTourBookingDetails);
 
 app.get('/api/getAllTours', admin.getAllTours);

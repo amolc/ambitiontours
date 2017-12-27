@@ -365,7 +365,7 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
 
             }
             else {
-                console.log(res);
+                //console.log(res);
                 $scope.bookinglist = res;
             }
 
@@ -374,6 +374,115 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
         });
 
    }
+   $scope.getAttractionBookings = function() {
+
+    $http.get(baseurl + 'getAttractionBookings').success(function (res) {
+
+            if (res.status == 'false') {
+
+            }
+            else {
+                //console.log(res);
+                $scope.abooking = res;
+            }
+
+        }).error(function () {
+
+        });
+
+   }
+
+     $scope.getTourEnquiries = function() {
+
+    $http.get(baseurl + 'getTourEnquiries').success(function (res) {
+
+            if (res.status == 'false') {
+
+            }
+            else {
+                //console.log(res);
+                $scope.tbooking = res;
+            }
+
+        }).error(function () {
+
+        });
+
+   }
+
+    $scope.getCustomTourEnquiries = function() {
+
+    $http.get(baseurl + 'getCustomTourEnquiries').success(function (res) {
+
+            if (res.status == 'false') {
+
+            }
+            else {
+                //console.log(res);
+                $scope.cbooking = res;
+            }
+
+        }).error(function () {
+
+        });
+
+   }
+
+    $scope.getAirTicketEnquiries = function() {
+
+    $http.get(baseurl + 'getAirTicketEnquiries').success(function (res) {
+
+            if (res.status == 'false') {
+
+            }
+            else {
+                //console.log(res);
+                $scope.atbooking = res;
+            }
+
+        }).error(function () {
+
+        });
+
+   }
+
+    $scope.getVisaEnquiries = function() {
+
+    $http.get(baseurl + 'getVisaEnquiries').success(function (res) {
+
+            if (res.status == 'false') {
+
+            }
+            else {
+                //console.log(res);
+                $scope.vbooking = res;
+            }
+
+        }).error(function () {
+
+        });
+
+   }
+
+    $scope.getVoucherBookings = function() {
+
+    $http.get(baseurl + 'getVoucherBookings').success(function (res) {
+
+            if (res.status == 'false') {
+
+            }
+            else {
+                //console.log(res);
+                $scope.tvbooking = res;
+            }
+
+        }).error(function () {
+
+        });
+
+   }
+
+
 
     var attachmentfile1 = [];
     var filelength;
