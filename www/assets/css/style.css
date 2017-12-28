@@ -1293,3 +1293,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 {
   color: #000;
 }
+.foot-text ul li a img{
+  width: 30px;
+  height: 30px;
+}
