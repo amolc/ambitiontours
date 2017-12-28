@@ -1294,10 +1294,19 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
   color: #000;
 }
 .foot-text ul li a img{
-  width: 30px;
-  height: 30px;
+  width: 30px !important;
+  height: 30px !important;
 }
 .place-img a img{
+  width: 230px !important;
+  height: 241px!important;
+}
+.place-img img{
   width: 230px;
   height: 241px;
+}
+.packeg-details-text img
+{
+  width: 400px;
+  height: 316px;
 }
