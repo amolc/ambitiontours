@@ -1207,6 +1207,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
   border-bottom: 2px solid transparent;
   border: 0px;
   color: #000000;
+  padding: 17px 13px;
 }
 .nav-tabs>li.active>a,
 .nav-tabs>li.active>a:focus, 
