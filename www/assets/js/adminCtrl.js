@@ -572,6 +572,9 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
 
     $scope.updateattachment = function(file_browse) {
 
+
+        //alert(type);
+
         var fileDisplayArea = document.getElementById('fileDisplayArea');
         // console.log(fileDisplayArea)
         if (file_browse == 'file_browse1') {
@@ -587,18 +590,57 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
 
             reader.addEventListener("load", function () {
               var image = new Image();
-              image.height = 100;
+               //  image.height = 100;
               image.title = file.name;
               image.class = 'avatar img-circle img-thumbnail';
               image.src = this.result;
-              //attachmentfile1.push(this.result); 
-              attachmentfile1[0] = this.result;
-              $scope.Tour.TourImage = file.name;
-              
-              /*if(filelength==index){
-                callback(attachmentfile1);
-              }*/
-              imagepreview.appendChild( image );
+              image.onload = function () {
+                 //alert("Width:" + this.width + "   Height: " + this.height);
+                 var ratio = this.width/this.height;
+                 //alert(ratio);
+                 if (ratio >= 0.99 && ratio <= 1.1) 
+                 {
+                    //attachmentfile1.push(this.result); 
+                    attachmentfile1[0] = this.result;
+                    $scope.Tour.TourImage = file.name;
+                    
+                    /*if(filelength==index){
+                      callback(attachmentfile1);
+                    }*/
+                    imagepreview.appendChild( image );
+                 }
+                 // else if (ratio >= 0.99 && ratio <= 1.3 && type == 'country') 
+                 // {
+                 //    alert('yes');
+                 //                //attachmentfile1.push(this.result); 
+                 //    attachmentfile1[0] = this.result;
+                 //    $scope.Tour.TourImage = file.name;
+                    
+                 //    /*if(filelength==index){
+                 //      callback(attachmentfile1);
+                 //    }*/
+                 //    imagepreview.appendChild( image );
+                 // }
+                 // else if (ratio >= 0.94 && ratio <= 1 && type == 'tour') 
+                 // {
+                 //    alert('yes');
+                 //                //attachmentfile1.push(this.result); 
+                 //    attachmentfile1[0] = this.result;
+                 //    $scope.Tour.TourImage = file.name;
+                    
+                 //    /*if(filelength==index){
+                 //      callback(attachmentfile1);
+                 //    }*/
+                 //    imagepreview.appendChild( image );
+                 // }
+                 else
+                 {
+                    alert('Please upload square shaped images');
+                    $('#file_browse1').val(''); 
+                 }
+              };
+           
+
             }, false);
 
             reader.readAsDataURL(file);
