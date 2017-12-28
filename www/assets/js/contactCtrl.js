@@ -686,8 +686,6 @@ app.controller('contactcontroller', function ($scope, $location, $http, $window)
 
       $scope.getTourDetails = function() {             
 
-
-
         var url = window.location.href;
         var parts = url.split("?");
         if(parts.length>1){

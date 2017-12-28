@@ -159,7 +159,7 @@ exports.getallcountries = function (req, res) {
 };
 
 exports.gettourcountries = function (req, res) {
-    var sql = "SELECT `CountryId`,`CountryTitle`,`CountryImage` FROM `tbl_Countries` WHERE `IsDeleted` = '0' AND `Tour`=1";
+    var sql = "SELECT `CountryId`,`CountryTitle`,`CountryImage` FROM `tbl_Countries` WHERE `IsDeleted` = '0'";
     db.query(sql, function (err, data) {
         res.json(data);
     });
@@ -529,8 +529,6 @@ exports.addCountry = function (req, res) {
     var createObj = {
                                 "CountryTitle" : req.body.CountryTitle,
                                 "CountryImage": fileName || "", 
-                                "Tour" : req.body.Tour,
-                                "Attraction" : req.body.Attraction,
                                 "CreatedOn": dateToday || "",        
                             };
                             // console.log("after", createObj);
@@ -597,8 +595,6 @@ exports.updateCountry = function (req, res) {
     var updateObj = {
                                 "CountryTitle" : req.body.CountryTitle,
                                 "CountryImage": fileName || "", 
-                                "Tour" : req.body.Tour,
-                                "Attraction" : req.body.Attraction,
                                 "ModifiedOn": dateToday || "",        
                             };
                              //console.log("after", updateObj);
