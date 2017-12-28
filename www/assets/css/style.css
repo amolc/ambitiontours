@@ -1302,11 +1302,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
   height: 241px!important;
 }
 .place-img img{
-  width: 230px;
-  height: 241px;
+  width: 230px !important;
+  height: 241px !important;
 }
 .countryimage
 {
-  width: 400px;
-  height: 316px;
+  /*width: 400px;
+  height: 316px;*/
 }

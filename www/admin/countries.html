@@ -141,7 +141,7 @@
                       <div class="col-sm-3" ng-repeat="c in tcountrylist">
                                 <div class="packeg-details-text">
                                     <h5><a href="#">{{c.CountryTitle}}</a></h5>
-                                    <img src="../uploads/countries/{{c.CountryImage}}">
+                                    <img src="../uploads/countries/{{c.CountryImage}}" class="countryimage">
                                     <p style="margin-top: 10px">
                                        <a href="edit-country.html?CountryId={{c.CountryId}}" class="pakege-btn yellow-btn">Edit</a>
                                        <a href="javascript:void(0)" ng-click="deleteCountry(c.CountryId)" class="pakege-btn yellow-btn">Delete</a>
