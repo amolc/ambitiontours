@@ -1307,6 +1307,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 }
 .countryimage
 {
-  /*width: 400px;
-  height: 316px;*/
+  width: 250px;
+  height: 198px;
 }
