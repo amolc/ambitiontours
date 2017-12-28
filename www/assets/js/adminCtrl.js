@@ -191,6 +191,7 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
             else {
                // console.log(res);
                 $scope.countrylist = res;
+                $scope.tcountrylist = res;
                // $scope.registration.CountryId = $scope.countrylist[0].CountryId;
                //console.log($scope.countrylist);
             }
@@ -212,6 +213,7 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
             else {
                // console.log(res);
                 $scope.countrylist = res;
+                $scope.acountrylist = res;
                // $scope.registration.CountryId = $scope.countrylist[0].CountryId;
                //console.log($scope.countrylist);
             }
@@ -899,6 +901,134 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
          
     }
 
+
+     $scope.addAttractionCountry = function() {   
+
+
+          //console.log($scope.Tour);
+
+
+             setTimeout(function() { 
+
+               if (Object.keys($scope.attachment).length>0) {
+                $scope.Tour.image = $scope.attachment.images[0];
+              }else{
+                $scope.Tour.image = '';
+              }
+
+
+            $http.post(baseurl + 'addAttractionCountry/',$scope.Tour).success(function(res) {
+                  
+                //console.log(res);
+                if (res.status == true) 
+                {
+                  
+                    window.location.href = 'countries.html';
+                }
+
+                }).error(function() {
+                    
+                });
+         
+              }, 1000);    
+
+    }
+
+        $scope.getAttractionCountryDetails = function() {             
+
+
+
+        var url = window.location.href;
+        var parts = url.split("?");
+        if(parts.length>1){
+
+           var urlparams = parts[1];
+           var params = urlparams.split("&");
+           var id = urlparams.split("=")
+           if (id[0]=='CountryId') 
+           {
+             $http.get(baseurl + 'getAttractionCountryDetails/'+id[1]).success(function (res) {
+
+                  if (res.status == 'false') {
+
+                  }
+                  else {
+
+
+                      $scope.Tour = res;
+                      $scope.attachmentCount = {};
+                      $scope.attachment = {};
+                      $scope.imgSrc = "";
+                  }
+
+              }).error(function () {
+
+              });
+           }
+           else
+          {
+              window.location.href = 'countries.html';
+          }
+        }
+        else
+        {
+            window.location.href = 'countries.html';
+        }
+    } 
+
+    $scope.updateAttractionCountry = function() {   
+
+
+             setTimeout(function() { 
+
+               if (Object.keys($scope.attachment).length>0) {
+                $scope.Tour.image = $scope.attachment.images[0];
+              }else{
+                $scope.Tour.image = '';
+              }
+              console.log($scope.Tour);
+
+            $http.post(baseurl + 'updateAttractionCountry/',$scope.Tour).success(function(res) {
+                  
+                //console.log(res);
+                if (res.status == true) 
+                {
+                  
+                    window.location.href = 'countries.html';
+                }
+
+                }).error(function() {
+                    
+                });
+         
+               }, 1000);    
+
+    }
+
+    $scope.deleteAttractionCountry = function(id) {    
+
+
+       var r = confirm("Are You Sure You want to Delete It?");
+        if (r == true) 
+        { 
+          $http.get(baseurl + 'deleteAttractionCountry/'+id).success(function(res) {
+
+                  
+               if (res.status == true) 
+                {
+
+                    window.location.href = 'countries.html';
+                }
+
+          }).error(function() {
+                      // alert("Please check your internet connection or data source..");
+         });
+            
+        }         
+         
+    }
+
+
     $scope.getAllVisaDetails = function() {
 
     $http.get(baseurl + 'getAllVisaDetails').success(function (res) {
@@ -1482,6 +1612,356 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
             
         }         
          
+    }
+
+     $scope.deleteAttractionBookings = function(id) {    
+
+
+       var r = confirm("Are You Sure You want to Delete It?");
+        if (r == true) 
+        { 
+          $http.get(baseurl + 'deleteAttractionBookings/'+id).success(function(res) {
+
+                  
+               if (res.status == true) 
+                {
+
+                  $scope.getAttractionBookings();
+                  
+                }
+
+          }).error(function() {
+                      // alert("Please check your internet connection or data source..");
+         });
+            
+        }         
+
+         
+    }
+
+     $scope.deleteTourEnquiries = function(id) {    
+
+
+       var r = confirm("Are You Sure You want to Delete It?");
+        if (r == true) 
+        { 
+          $http.get(baseurl + 'deleteTourEnquiries/'+id).success(function(res) {
+
+                  
+               if (res.status == true) 
+                {
+
+                  $scope.getTourEnquiries();
+                  
+                }
+
+          }).error(function() {
+                      // alert("Please check your internet connection or data source..");
+         });
+            
+        }         
+
+         
+    }
+
+     $scope.deleteCustomTourEnquiries = function(id) {    
+
+
+       var r = confirm("Are You Sure You want to Delete It?");
+        if (r == true) 
+        { 
+          $http.get(baseurl + 'deleteCustomTourEnquiries/'+id).success(function(res) {
+
+                  
+               if (res.status == true) 
+                {
+
+                  $scope.getCustomTourEnquiries();
+                  
+                }
+
+          }).error(function() {
+                      // alert("Please check your internet connection or data source..");
+         });
+            
+        }         
+
+         
+    }
+
+     $scope.deleteAirTicketEnquiries = function(id) {    
+
+
+       var r = confirm("Are You Sure You want to Delete It?");
+        if (r == true) 
+        { 
+          $http.get(baseurl + 'deleteAirTicketEnquiries/'+id).success(function(res) {
+
+                  
+               if (res.status == true) 
+                {
+
+                  $scope.getAirTicketEnquiries();
+                  
+                }
+
+          }).error(function() {
+                      // alert("Please check your internet connection or data source..");
+         });
+            
+        }         
+
+         
+    }
+
+     $scope.deleteVisaEnquiries = function(id) {    
+
+
+       var r = confirm("Are You Sure You want to Delete It?");
+        if (r == true) 
+        { 
+          $http.get(baseurl + 'deleteVisaEnquiries/'+id).success(function(res) {
+
+                  
+               if (res.status == true) 
+                {
+
+                  $scope.getVisaEnquiries();
+                  
+                }
+
+          }).error(function() {
+                      // alert("Please check your internet connection or data source..");
+         });
+            
+        }         
+
+         
+    }
+
+     $scope.deleteVoucherBookings = function(id) {    
+
+
+       var r = confirm("Are You Sure You want to Delete It?");
+        if (r == true) 
+        { 
+          $http.get(baseurl + 'deleteVoucherBookings/'+id).success(function(res) {
+
+                  
+               if (res.status == true) 
+                {
+
+                  $scope.getVoucherBookings();
+                  
+                }
+
+          }).error(function() {
+                      // alert("Please check your internet connection or data source..");
+         });
+            
+        }         
+
+         
+    }
+
+
+     $scope.getTourBookingDetails = function() {             
+
+        var url = window.location.href;
+        var parts = url.split("?");
+        if(parts.length>1){
+
+           var urlparams = parts[1];
+           var params = urlparams.split("&");
+           var id = urlparams.split("=")
+
+             $http.get(baseurl + 'getTourBookingDetails/'+id[1]).success(function (res) {
+
+                  if (res.status == 'false') {
+
+                  }
+                  else {
+                      $scope.book = res;
+                     // console.log($scope.book);
+                  }
+
+              }).error(function () {
+
+              });
+          
+        }
+        else
+        {
+            window.location.href = 'dashboard.html';
+        }
+    } 
+
+         $scope.getCustomTourDetails = function() {             
+
+        var url = window.location.href;
+        var parts = url.split("?");
+        if(parts.length>1){
+
+           var urlparams = parts[1];
+           var params = urlparams.split("&");
+           var id = urlparams.split("=")
+
+             $http.get(baseurl + 'getCustomTourDetails/'+id[1]).success(function (res) {
+
+                  if (res.status == 'false') {
+
+                  }
+                  else {
+                      $scope.book = res;
+                     // console.log($scope.book);
+                  }
+
+              }).error(function () {
+
+              });
+          
+        }
+        else
+        {
+            window.location.href = 'dashboard.html';
+        }
+    } 
+
+
+
+       $scope.getAirTicketDetails = function() {             
+
+        var url = window.location.href;
+        var parts = url.split("?");
+        if(parts.length>1){
+
+           var urlparams = parts[1];
+           var params = urlparams.split("&");
+           var id = urlparams.split("=")
+
+             $http.get(baseurl + 'getAirTicketDetails/'+id[1]).success(function (res) {
+
+                  if (res.status == 'false') {
+
+                  }
+                  else {
+                      $scope.book = res;
+                     console.log($scope.book);
+                  }
+
+              }).error(function () {
+
+              });
+          
+        }
+        else
+        {
+            window.location.href = 'dashboard.html';
+        }
+    } 
+
+
+   $scope.getVisaEnquiriesDetails = function() {             
+
+        var url = window.location.href;
+        var parts = url.split("?");
+        if(parts.length>1){
+
+           var urlparams = parts[1];
+           var params = urlparams.split("&");
+           var id = urlparams.split("=")
+
+             $http.get(baseurl + 'getVisaEnquiriesDetails/'+id[1]).success(function (res) {
+
+                  if (res.status == 'false') {
+
+                  }
+                  else {
+                      $scope.book = res;
+                     // console.log($scope.book);
+                  }
+
+              }).error(function () {
+
+              });
+          
+        }
+        else
+        {
+            window.location.href = 'dashboard.html';
+        }
+    } 
+
+
+   $scope.getVoucherBookingDetails = function() {             
+
+        var url = window.location.href;
+        var parts = url.split("?");
+        if(parts.length>1){
+
+           var urlparams = parts[1];
+           var params = urlparams.split("&");
+           var id = urlparams.split("=")
+
+             $http.get(baseurl + 'getVoucherBookingDetails/'+id[1]).success(function (res) {
+
+                  if (res.status == 'false') {
+
+                  }
+                  else {
+                      $scope.book = res;
+                     // console.log($scope.book);
+                  }
+
+              }).error(function () {
+
+              });
+          
+        }
+        else
+        {
+            window.location.href = 'dashboard.html';
+        }
+    } 
+
+
+    $scope.getAboutUs = function() {             
+
+             $http.get(baseurl + 'getAboutUs').success(function (res) {
+
+                  if (res.status == 'false') {
+
+                  }
+                  else {
+
+                      $scope.about = res;
+                      var Content = $scope.about.Content.replace(/\n\r?/g, '<br />');
+                      $('#about').html(Content);
+                  }
+
+              }).error(function () {
+
+              });
+         
+    } 
+
+    $scope.updateAboutUs = function() {   
+
+
+            $http.post(baseurl + 'updateAboutUs/',$scope.about).success(function(res) {
+                  
+                //console.log(res);
+                if (res.status == true) 
+                {
+                  
+                    window.location.href = 'settings.html';
+                }
+
+                }).error(function() {
+                    
+                });
+         
+
     }
 
 

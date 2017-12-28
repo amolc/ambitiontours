@@ -15,11 +15,18 @@ var CRUD = require('mysql-crud');
 var userCRUD = CRUD(db, 'tbl_Users');
 var tourCRUD = CRUD(db, 'tbl_Tours');
 var countriesCRUD = CRUD(db, 'tbl_Countries');
+var acountriesCRUD = CRUD(db, 'tbl_AttractionCountries');
 var visaCRUD = CRUD(db, 'tbl_VisaDetails');
 var voucherCRUD = CRUD(db, 'tbl_GiftVoucher');
 var opHourCRUD = CRUD(db, 'tbl_OperatingHours');
 var holidaysCRUD = CRUD(db, 'tbl_PublicHolidays');
 var socialCRUD = CRUD(db, 'tbl_SocialIcons');
+var ctourCRUD = CRUD(db, 'tbl_CustomTours');
+var ticketCRUD = CRUD(db,'tbl_AirTickets');
+var venquiryCRUD = CRUD(db,'tbl_VisaEnquiries');
+var bookCRUD = CRUD(db,'tbl_Bookings');
+var vbookCRUD = CRUD(db,'tbl_VoucherBooking');
+var aboutCRUD = CRUD(db,'tbl_AboutUs');
 
 var nodemailer = require('nodemailer');
 var mg = require('nodemailer-mailgun-transport');
@@ -153,15 +160,22 @@ exports.getallcountries = function (req, res) {
     });
 };
 
+exports.getAboutUs = function (req, res) {
+    var sql = "SELECT * FROM `tbl_AboutUs`";
+    db.query(sql, function (err, data) {
+        res.json(data[0]);
+    });
+};
+
 exports.gettourcountries = function (req, res) {
-    var sql = "SELECT `CountryId`,`CountryTitle`,`CountryImage` FROM `tbl_Countries` WHERE `IsDeleted` = '0' AND `Tour`=1";
+    var sql = "SELECT `CountryId`,`CountryTitle`,`CountryImage` FROM `tbl_Countries` WHERE `IsDeleted` = '0'";
     db.query(sql, function (err, data) {
         res.json(data);
     });
 };
 
 exports.getattractioncountries = function (req, res) {
-    var sql = "SELECT `CountryId`,`CountryTitle`,`CountryImage` FROM `tbl_Countries` WHERE `IsDeleted` = '0' AND `Attraction`=1";
+    var sql = "SELECT `CountryId`,`CountryTitle`,`CountryImage` FROM `tbl_AttractionCountries` WHERE `IsDeleted` = '0'";
     db.query(sql, function (err, data) {
         res.json(data);
     });
@@ -180,7 +194,17 @@ exports.getCountryId = function(req, res){
 exports.getCountryDetails = function(req, res){
 
   var id = req.params.id;
-  var sql = "SELECT `CountryId`,`CountryTitle`,`CountryImage`,`Tour`,`Attraction` FROM `tbl_Countries` WHERE CountryId = '"+id+"'";    
+  var sql = "SELECT `CountryId`,`CountryTitle`,`CountryImage` FROM `tbl_Countries` WHERE CountryId = '"+id+"'";    
+  db.query(sql, function (err, data) {
+        res.json(data[0]);
+    });
+    
+};
+
+exports.getAttractionCountryDetails = function(req, res){
+
+  var id = req.params.id;
+  var sql = "SELECT `CountryId`,`CountryTitle`,`CountryImage` FROM `tbl_AttractionCountries` WHERE CountryId = '"+id+"'";    
   db.query(sql, function (err, data) {
         res.json(data[0]);
     });
@@ -218,7 +242,7 @@ exports.getAllAttractions = function(req, res){
 exports.getCountryAttractions = function(req, res){
 
   var CountryId = req.params.id;
-  var sql = "SELECT t.*,c.`CountryId`,c.`CountryTitle` FROM `tbl_Tours` as t LEFT JOIN `tbl_Countries` as c ON c.`CountryId` = t.`CountryId` WHERE t.`TourType` = 'Attraction' AND t.`IsDeleted` = '0' AND t.`CountryId` = "+CountryId+" ORDER BY t.`TourId` DESC";
+  var sql = "SELECT t.*,c.`CountryId`,c.`CountryTitle` FROM `tbl_Tours` as t LEFT JOIN `tbl_AttractionCountries` as c ON c.`CountryId` = t.`CountryId` WHERE t.`TourType` = 'Attraction' AND t.`IsDeleted` = '0' AND t.`CountryId` = "+CountryId+" ORDER BY t.`TourId` DESC";
     db.query(sql, function (err, data) {
         res.json(data);
     });
@@ -238,7 +262,7 @@ exports.getAllBookings = function(req, res){
 exports.getAttractionBookings = function(req, res){
 
   //var sql = "SELECT b.`BookingId`  as Id,b.`fullName` as name,b.`email` as email,b.`phoneNumber` as phone,b.`createDate` as date,t.`TourType` as Type FROM `tbl_Bookings` as b LEFT JOIN b.`TourId` = t.`TourId` WHERE t.`TourType` = 'Attraction' AND b.`IsDeleted` = '0' UNION SELECT v.`VBookId` as Id,v.`Name` as name,v.`Email` as email,v.`Contact` as phone,v.`CreatedOn` as date,'Voucher' as Type FROM `tbl_VoucherBooking` as v WHERE v.`IsDeleted` = '0' ORDER BY date DESC";
-    var sql = "SELECT b.`BookingId`,b.`fullName`,b.`email`,b.`phoneNumber` FROM `tbl_Bookings` as b LEFT JOIN `tbl_Tours` as t ON b.`TourId` = t.`TourId`  WHERE t.`TourType`= 'Attraction' AND b.`IsDeleted`='0' ORDER BY b.`BookingId` DESC";
+    var sql = "SELECT b.`BookingId`,b.`fullName`,b.`email`,b.`phoneNumber`,b.`TourTitle`,b.`TourCost`,b.`ChildCost`,b.`adults`,b.`Child`,b.`TotalAmount` FROM `tbl_Bookings` as b LEFT JOIN `tbl_Tours` as t ON b.`TourId` = t.`TourId`  WHERE t.`TourType`= 'Attraction' AND b.`IsDeleted`='0' ORDER BY b.`BookingId` DESC";
     //console.log(sql);
     db.query(sql, function (err, data) {
         res.json(data);
@@ -249,7 +273,7 @@ exports.getAttractionBookings = function(req, res){
 exports.getTourEnquiries = function(req, res){
 
   //var sql = "SELECT b.`BookingId`  as Id,b.`fullName` as name,b.`email` as email,b.`phoneNumber` as phone,b.`createDate` as date,t.`TourType` as Type FROM `tbl_Bookings` as b LEFT JOIN b.`TourId` = t.`TourId` WHERE t.`TourType` = 'Attraction' AND b.`IsDeleted` = '0' UNION SELECT v.`VBookId` as Id,v.`Name` as name,v.`Email` as email,v.`Contact` as phone,v.`CreatedOn` as date,'Voucher' as Type FROM `tbl_VoucherBooking` as v WHERE v.`IsDeleted` = '0' ORDER BY date DESC";
-    var sql = "SELECT b.`BookingId`,b.`fullName`,b.`email`,b.`phoneNumber` FROM `tbl_Bookings` as b LEFT JOIN `tbl_Tours` as t ON b.`TourId` = t.`TourId`  WHERE t.`TourType`= 'Tour' AND b.`IsDeleted`='0' ORDER BY b.`BookingId` DESC";
+    var sql = "SELECT b.`BookingId`,b.`fullName`,b.`email`,b.`phoneNumber`,b.`TourTitle`,b.`TourCost`,b.`ChildCost`,b.`adults`,b.`Child`,b.`TotalAmount` FROM `tbl_Bookings` as b LEFT JOIN `tbl_Tours` as t ON b.`TourId` = t.`TourId`  WHERE t.`TourType`= 'Tour' AND b.`IsDeleted`='0' ORDER BY b.`BookingId` DESC";
     //console.log(sql);
     db.query(sql, function (err, data) {
         res.json(data);
@@ -282,7 +306,7 @@ exports.getAirTicketEnquiries = function(req, res){
 exports.getVisaEnquiries = function(req, res){
 
   //var sql = "SELECT b.`BookingId`  as Id,b.`fullName` as name,b.`email` as email,b.`phoneNumber` as phone,b.`createDate` as date,t.`TourType` as Type FROM `tbl_Bookings` as b LEFT JOIN b.`TourId` = t.`TourId` WHERE t.`TourType` = 'Attraction' AND b.`IsDeleted` = '0' UNION SELECT v.`VBookId` as Id,v.`Name` as name,v.`Email` as email,v.`Contact` as phone,v.`CreatedOn` as date,'Voucher' as Type FROM `tbl_VoucherBooking` as v WHERE v.`IsDeleted` = '0' ORDER BY date DESC";
-    var sql = "SELECT b.`EnquiryId`,b.`Name`,b.`Email`,b.`Contact` FROM `tbl_VisaEnquiries` as b WHERE b.`IsDeleted`='0' ORDER BY b.`EnquiryId` DESC";
+    var sql = "SELECT b.`EnquiryId`,b.`Name`,b.`Email`,b.`Contact`,v.`Country`,v.`VisaCharge` FROM `tbl_VisaEnquiries` as b LEFT JOIN `tbl_VisaDetails` as v ON b.`VisaDetailId` =v.`Id` WHERE b.`IsDeleted`='0' ORDER BY b.`EnquiryId` DESC";
     //console.log(sql);
     db.query(sql, function (err, data) {
         res.json(data);
@@ -293,7 +317,7 @@ exports.getVisaEnquiries = function(req, res){
 exports.getVoucherBookings = function(req, res){
 
   //var sql = "SELECT b.`BookingId`  as Id,b.`fullName` as name,b.`email` as email,b.`phoneNumber` as phone,b.`createDate` as date,t.`TourType` as Type FROM `tbl_Bookings` as b LEFT JOIN b.`TourId` = t.`TourId` WHERE t.`TourType` = 'Attraction' AND b.`IsDeleted` = '0' UNION SELECT v.`VBookId` as Id,v.`Name` as name,v.`Email` as email,v.`Contact` as phone,v.`CreatedOn` as date,'Voucher' as Type FROM `tbl_VoucherBooking` as v WHERE v.`IsDeleted` = '0' ORDER BY date DESC";
-    var sql = "SELECT b.`VBookId`,b.`Name`,b.`Email`,b.`Contact` FROM `tbl_VoucherBooking` as b WHERE b.`IsDeleted`='0' ORDER BY b.`VBookId` DESC";
+    var sql = "SELECT b.`VBookId`,b.`Name`,b.`Email`,b.`Contact`,b.`Price`,b.`Quantity`,b.`TotalAmount` FROM `tbl_VoucherBooking` as b WHERE b.`IsDeleted`='0' ORDER BY b.`VBookId` DESC";
     //console.log(sql);
     db.query(sql, function (err, data) {
         res.json(data);
@@ -305,7 +329,37 @@ exports.getVoucherBookings = function(req, res){
 exports.getTourBookingDetails = function(req, res){
 
   var id = req.params.id;
-  var sql = "SELECT * FROM `tbl_Bookings` WHERE BookingId= '"+id+"'";    
+  var sql = "SELECT b.*,t.`TourType`,t.`TourImage`,t.`TourTitle` FROM `tbl_Bookings` as b LEFT JOIN `tbl_Tours` as t ON b.`TourId` = t.`TourId` WHERE BookingId= '"+id+"'";    
+  db.query(sql, function (err, data) {
+        res.json(data[0]);
+    });
+    
+};
+
+exports.getCustomTourDetails = function(req, res){
+
+  var id = req.params.id;
+  var sql = "SELECT * FROM `tbl_CustomTours` WHERE CTourId= '"+id+"'";    
+  db.query(sql, function (err, data) {
+        res.json(data[0]);
+    });
+    
+};
+
+exports.getAirTicketDetails = function(req, res){
+
+  var id = req.params.id;
+  var sql = "SELECT * FROM `tbl_AirTickets` WHERE Id= '"+id+"'";    
+  db.query(sql, function (err, data) {
+        res.json(data[0]);
+    });
+    
+};
+
+exports.getVisaEnquiriesDetails = function(req, res){
+
+  var id = req.params.id;
+  var sql = "SELECT v.*,d.`Country`,d.`VisaCharge`,d.`WorkingDays` FROM `tbl_VisaEnquiries` as v LEFT JOIN `tbl_VisaDetails` as d ON v.`VisaDetailId` = d.`Id` WHERE EnquiryId= '"+id+"'";    
   db.query(sql, function (err, data) {
         res.json(data[0]);
     });
@@ -494,8 +548,6 @@ exports.addCountry = function (req, res) {
     var createObj = {
                                 "CountryTitle" : req.body.CountryTitle,
                                 "CountryImage": fileName || "", 
-                                "Tour" : req.body.Tour,
-                                "Attraction" : req.body.Attraction,
                                 "CreatedOn": dateToday || "",        
                             };
                             // console.log("after", createObj);
@@ -562,8 +614,6 @@ exports.updateCountry = function (req, res) {
     var updateObj = {
                                 "CountryTitle" : req.body.CountryTitle,
                                 "CountryImage": fileName || "", 
-                                "Tour" : req.body.Tour,
-                                "Attraction" : req.body.Attraction,
                                 "ModifiedOn": dateToday || "",        
                             };
                              //console.log("after", updateObj);
@@ -634,6 +684,176 @@ exports.deleteCountry = function (req, res) {
                             });
 };
 
+
+exports.addAttractionCountry = function (req, res) {
+
+    dateToday = now.format("DD/MM/YYYY hh:mm a");
+    date = now.format("DD/MM/YYYY");
+
+     verifycode = randomString();
+     if (req.body.image) {
+         var imagedata = req.body.image;
+         var matches = "";
+
+         function decodeBase64Image(dataString) {
+             var matches = dataString.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/),
+                 response = {};
+             if (matches.length !== 3) {
+                 return new Error('Invalid input string');
+             }
+             response.type = matches[1];
+             response.data = new Buffer(matches[2], 'base64');
+             return response;
+         }
+         var decodedImg = decodeBase64Image(imagedata);
+         var imageBuffer = decodedImg.data;
+         var type = decodedImg.type;
+         fileName = verifycode+'_'+req.body.TourImage;
+         fs.writeFileSync('www/uploads/attcountries/' + fileName, imageBuffer, 'utf8');
+
+     }else {
+         fileName = '';
+         console.log("image not present");
+     }
+        
+    var createObj = {
+                                "CountryTitle" : req.body.CountryTitle,
+                                "CountryImage": fileName || "", 
+                                "CreatedOn": dateToday || "",        
+                            };
+                            // console.log("after", createObj);
+
+                            acountriesCRUD.create(createObj, function (err, data) {
+
+                                if (!err) 
+                                {
+                                    var resdata = {
+                                        status: true,
+                                        value:data.insertId,
+                                        message: 'Details successfully added',
+                                        date : dateToday
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                                else
+                                {
+                                    var resdata = {
+                                        status: false,
+                                        error: err,
+                                        message: 'Error: Details not successfully added. '
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                            });
+};
+
+exports.updateAttractionCountry = function (req, res) {
+
+   // console.log(req.body);
+
+    dateToday = now.format("DD/MM/YYYY hh:mm a");
+    date = now.format("DD/MM/YYYY");
+    // console.log(req.body.TourImage);
+
+     verifycode = randomString();
+     if (req.body.image) {
+         var imagedata = req.body.image;
+         var matches = "";
+
+         function decodeBase64Image(dataString) {
+             var matches = dataString.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/),
+                 response = {};
+             if (matches.length !== 3) {
+                 return new Error('Invalid input string');
+             }
+             response.type = matches[1];
+             response.data = new Buffer(matches[2], 'base64');
+             return response;
+         }
+         var decodedImg = decodeBase64Image(imagedata);
+         var imageBuffer = decodedImg.data;
+         var type = decodedImg.type;
+         fileName = verifycode+'_'+req.body.TourImage;
+         fs.writeFileSync('www/uploads/attcountries/' + fileName, imageBuffer, 'utf8');
+     }else {
+         fileName = req.body.CountryImage;
+         console.log("image not present");
+     }
+        
+    var updateObj = {
+                                "CountryTitle" : req.body.CountryTitle,
+                                "CountryImage": fileName || "", 
+                                "ModifiedOn": dateToday || "",        
+                            };
+                             //console.log("after", updateObj);
+
+                            acountriesCRUD.update({CountryId: req.body.CountryId}, updateObj,function (err, data) {
+
+                                if (!err) 
+                                {
+                                    var resdata = {
+                                        status: true,
+                                        value:data,
+                                        message: 'Details successfully updated',
+                                        date : dateToday
+                                    };
+                                   // console.log(resdata)
+
+                                   res.jsonp(resdata);
+                                }
+                                else
+                                {
+                                    var resdata = {
+                                        status: false,
+                                        error: err,
+                                        message: 'Error: Details not successfully updated. '
+                                    };
+                                    // console.log(resdata)
+
+                                    res.jsonp(resdata);
+                                }
+                            });
+};
+
+
+
+exports.deleteAttractionCountry = function (req, res) {
+
+    dateToday = now.format("DD/MM/YYYY hh:mm a");
+    var id = req.params.id;
+    var updateObj = {
+                         "IsDeleted" :  '1',
+      
+                    };
+                            // console.log("after", createObj);
+
+                            acountriesCRUD.update({CountryId: id}, updateObj,function (err, data) {
+
+                                if (!err) 
+                                {
+                                    var resdata = {
+                                        status: true,
+                                        value:data.insertId,
+                                        message: 'Details successfully deleted',
+                                        date : dateToday
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                                else
+                                {
+                                    var resdata = {
+                                        status: false,
+                                        error: err,
+                                        message: 'Error: Details not successfully deleted. '
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                            });
+};
 
 exports.addTour = function (req, res) {
 
@@ -1393,6 +1613,222 @@ exports.deleteSocial = function (req, res) {
                                         error: err,
                                         message: 'Error: Details not successfully deleted. '
                                     };
+
+                                    res.jsonp(resdata);
+                                }
+                            });
+};
+
+exports.deleteBookings = function (req, res) {
+
+    dateToday = now.format("DD/MM/YYYY hh:mm a");
+    var id = req.params.id;
+    var updateObj = {
+                         "IsDeleted" :  '1',
+      
+                    };
+                            // console.log("after", createObj);
+
+                            bookCRUD.update({BookingId: id}, updateObj,function (err, data) {
+
+                                if (!err) 
+                                {
+                                    var resdata = {
+                                        status: true,
+                                        value:data,
+                                        message: 'Details successfully deleted',
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                                else
+                                {
+                                    var resdata = {
+                                        status: false,
+                                        error: err,
+                                        message: 'Error: Details not successfully deleted. '
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                            });
+};
+
+exports.deleteCustomTourEnquiries = function (req, res) {
+
+    dateToday = now.format("DD/MM/YYYY hh:mm a");
+    var id = req.params.id;
+    var updateObj = {
+                         "IsDeleted" :  '1',
+      
+                    };
+                            // console.log("after", createObj);
+
+                            ctourCRUD.update({CTourId: id}, updateObj,function (err, data) {
+
+                                if (!err) 
+                                {
+                                    var resdata = {
+                                        status: true,
+                                        value:data,
+                                        message: 'Details successfully deleted',
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                                else
+                                {
+                                    var resdata = {
+                                        status: false,
+                                        error: err,
+                                        message: 'Error: Details not successfully deleted. '
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                            });
+};
+
+exports.deleteAirTicketEnquiries = function (req, res) {
+
+    dateToday = now.format("DD/MM/YYYY hh:mm a");
+    var id = req.params.id;
+    var updateObj = {
+                         "IsDeleted" :  '1',
+      
+                    };
+                            // console.log("after", createObj);
+
+                            ticketCRUD.update({Id: id}, updateObj,function (err, data) {
+
+                                if (!err) 
+                                {
+                                    var resdata = {
+                                        status: true,
+                                        value:data,
+                                        message: 'Details successfully deleted',
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                                else
+                                {
+                                    var resdata = {
+                                        status: false,
+                                        error: err,
+                                        message: 'Error: Details not successfully deleted. '
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                            });
+};
+
+exports.deleteVisaEnquiries = function (req, res) {
+
+    dateToday = now.format("DD/MM/YYYY hh:mm a");
+    var id = req.params.id;
+    var updateObj = {
+                         "IsDeleted" :  '1',
+      
+                    };
+                            // console.log("after", createObj);
+
+                            venquiryCRUD.update({EnquiryId: id}, updateObj,function (err, data) {
+
+                                if (!err) 
+                                {
+                                    var resdata = {
+                                        status: true,
+                                        value:data,
+                                        message: 'Details successfully deleted',
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                                else
+                                {
+                                    var resdata = {
+                                        status: false,
+                                        error: err,
+                                        message: 'Error: Details not successfully deleted. '
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                            });
+};
+
+exports.deleteVoucherBookings = function (req, res) {
+
+    dateToday = now.format("DD/MM/YYYY hh:mm a");
+    var id = req.params.id;
+    var updateObj = {
+                         "IsDeleted" :  '1',
+      
+                    };
+                            // console.log("after", createObj);
+
+                            vbookCRUD.update({VBookId: id}, updateObj,function (err, data) {
+
+                                if (!err) 
+                                {
+                                    var resdata = {
+                                        status: true,
+                                        value:data,
+                                        message: 'Details successfully deleted',
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                                else
+                                {
+                                    var resdata = {
+                                        status: false,
+                                        error: err,
+                                        message: 'Error: Details not successfully deleted. '
+                                    };
+
+                                    res.jsonp(resdata);
+                                }
+                            });
+};
+
+
+exports.updateAboutUs = function (req, res) {
+
+   // console.log(req.body);
+
+    dateToday = now.format("DD/MM/YYYY hh:mm a");
+
+    var updateObj = {
+                                "Content" : req.body.Content,
+                                "ModifiedOn": dateToday || "",        
+                            };
+                             //console.log("after", updateObj);
+
+                            aboutCRUD.update({Id: req.body.Id}, updateObj,function (err, data) {
+
+                                if (!err) 
+                                {
+                                    var resdata = {
+                                        status: true,
+                                        value:data,
+                                        message: 'Details successfully updated',
+                                        date : dateToday
+                                    };
+                                   // console.log(resdata)
+
+                                   res.jsonp(resdata);
+                                }
+                                else
+                                {
+                                    var resdata = {
+                                        status: false,
+                                        error: err,
+                                        message: 'Error: Details not successfully updated. '
+                                    };
+                                    // console.log(resdata)
 
                                     res.jsonp(resdata);
                                 }

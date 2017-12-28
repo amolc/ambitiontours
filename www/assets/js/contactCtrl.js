@@ -28,6 +28,26 @@ app.controller('contactcontroller', function ($scope, $location, $http, $window)
 
 
  }
+ $scope.getAboutUs = function() {             
+
+             $http.get(baseurl + 'getAboutUs').success(function (res) {
+
+                  if (res.status == 'false') {
+
+                  }
+                  else {
+
+                      $scope.about = res;
+                      var Content = $scope.about.Content.replace(/\n\r?/g, '<br />');
+                      $('#about').html(Content);
+                  }
+
+              }).error(function () {
+
+              });
+         
+    } 
+
 
  $scope.enquiryButton = function(packagename,price){
  // alert(+"--"+price);
@@ -683,6 +703,41 @@ app.controller('contactcontroller', function ($scope, $location, $http, $window)
         });
 
    }
+
+      $scope.getTourDetails = function() {             
+
+        var url = window.location.href;
+        var parts = url.split("?");
+        if(parts.length>1){
+
+           var urlparams = parts[1];
+           var params = urlparams.split("&");
+           var id = urlparams.split("=")
+           if (id[0]=='TourId') 
+           {
+             $http.get(baseurl + 'getTourDetails/'+id[1]).success(function (res) {
+
+                  if (res.status == 'false') {
+
+                  }
+                  else {
+                      $scope.Tour = res;
+                  }
+
+              }).error(function () {
+
+              });
+           }
+           else
+          {
+              window.location.href = 'index.html';
+          }
+        }
+        else
+        {
+            window.location.href = 'index.html';
+        }
+    } 
 
 $scope.initfunc = function () {
      //$scope.data = {};

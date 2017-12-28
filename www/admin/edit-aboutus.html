@@ -27,7 +27,7 @@
   <script type="text/javascript" src="../assets/js/adminCtrl.js"></script>
 </head>
 
-<body data-ng-app="80consult" data-ng-controller="admincontroller" ng-init="forminit();">
+<body data-ng-app="80consult" data-ng-controller="admincontroller" ng-init="getAboutUs();">
 <!-- Start Header -->
        <header id="top-header">
             <div class="orenge-logo-strip">
@@ -103,56 +103,25 @@
           <div class="container">
             <div class="row">
               <div class="col-sm-12 col-md-12">
-               <form id="addtour" name="addtour" ng-submit="addCountry()">
-                  <div class="attractions-form profile signin-form info-form">
-                  <h2 class="text-center">Add Country</h2>
+               <form id="addtour" name="addtour" ng-submit="updateAboutUs()">
+                  <div class="attractions-form profile signin-form">
+                  <h2 class="text-center">Edit About Us</h2>
 
-                   <div class="col-sm-2 col-md-2">
-                   </div>
-                  <div class="col-sm-8 col-md-8 pd0">
+
+
 
                   <div class="col-sm-12 col-md-12">
-                    <input type="text" name="duration" placeholder="Country Name" required="" ng-model="Tour.CountryTitle">
-                  </div>
-
-                 <!--  <div class="col-sm-12 col-md-12">
-                    <label class="pull-left">Display Country In</label>
-                    </div>
-                    <div class="col-sm-12 col-md-12">
-                    <div class="col-sm-1">
-                      <input type="checkbox" ng-model="Tour.Attraction" name="attraction" ng-true-value="1" ng-false-value="0" id="attraction">
-                    </div>
-                    <div class="col-sm-2">
-                      <label style="font-size: 16px;margin-top: 1em;">Attraction</label>
-                    </div>
-                    <div class="col-sm-1">
-                      <input type="checkbox" ng-model="Tour.Tour" name="tour" ng-true-value="1" ng-false-value="0" id="tour">
-                    </div>
-                    <div class="col-sm-1">
-                      <label style="font-size: 16px;margin-top: 1em;">Tour</label>
-                    </div>
-                    </div>
- -->
-                   <div class="col-sm-12 col-md-12">
-                     <input id="file_browse1" class="form-control" type='file' name="productimage" onchange="angular.element(this).scope().updateattachment('file_browse1');   $('#imagepreview').children().remove();" accept="image/*" required="">
-                      <input type="hidden" name="imagename" ng-model="Tour.imagename">
-                  </div>
-                   <div class="col-sm-12 col-md-12 ">
-                     <div id="imagepreview">
-                       
-                     </div>
-                   </div>
-                    <div class="col-sm-12 col-md-12">
-                      <label id="alertmessage" hidden>{{alertmessage}}</label>
-                  </div>
-                  <div class="col-sm-12 col-md-12 ">
-                    <input type="submit" value="Save" class="small-btn brawon-btn">
+                    <textarea placeholder="About Us" required="" ng-model="about.Content" rows="12">{{about.Content}}</textarea>
                   </div>
 
                   
+                 
+                  <div class="col-sm-12 col-md-12">
+                      <label id="alertmessage" hidden>{{alertmessage}}</label>
                   </div>
-                 
-                 
+                  <div class="col-sm-12 col-md-12">
+                    <input type="submit" value="Save" class="small-btn brawon-btn">
+                  </div>
                   
                   <div class="clearfix"></div>
                 </div>

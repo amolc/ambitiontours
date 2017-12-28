@@ -123,9 +123,12 @@
                  <table id="table">
                       <thead>
                         <tr>
+                        <th>#</th>
                         <th>Name</th>
-                        <th>Email Id</th>
-                        <th>Mobile No.</th>
+                        <th>Package Name</th>
+                        <th>Adults Price</th>
+                        <th>Child Price</th>
+                        <th>Total Amount</th>
                         <th></th>
                         <th></th>
                         </tr>
@@ -133,11 +136,14 @@
                       <tbody>
 
                       <tr ng-repeat="book in abooking">
+                          <td>{{$index+1}}</td>
                           <td>{{book.fullName}}</td>
-                          <td>{{book.email}}</td>
-                          <td>{{book.phoneNumber}}</td>
-                          <td><i class="fa fa-eye"></i></td>
-                          <td><i class="fa fa-trash"></i></td>
+                          <td>{{book.TourTitle}}</td>
+                          <td>${{book.adults * book.TourCost}}</td>
+                          <td>${{book.Child * book.ChildCost}}</td>
+                          <td>${{book.TotalAmount}}</td>
+                          <td><a href="booking-detail.html?Id={{book.BookingId}}"><i class="fa fa-eye"></i></a></td>
+                          <td><a href="javascript:void(0)" ng-click="deleteAttractionBookings(book.BookingId)"><i class="fa fa-trash"></i></a></td>
                         </tr>
                       </tbody>
                     </table>
@@ -152,21 +158,27 @@
                  <table id="table">
                       <thead>
                         <tr>
-                        <th>Name</th>
-                        <th>Email Id</th>
-                        <th>Mobile No.</th>
+                        <th>#</th>
+                         <th>Name</th>
+                        <th>Package Name</th>
+                        <th>Adults Price</th>
+                        <th>Child Price</th>
+                        <th>Total Amount</th>
                         <th></th>
                         <th></th>
                         </tr>
                       </thead>
                       <tbody>
 
-                      <tr ng-repeat="book in tbooking">
-                          <td>{{book.fullName}}</td>
-                          <td>{{book.email}}</td>
-                          <td>{{book.phoneNumber}}</td>
-                          <td><i class="fa fa-eye"></i></td>
-                          <td><i class="fa fa-trash"></i></td>
+                       <tr ng-repeat="book in tbooking">
+                         <td>{{$index+1}}</td>
+                         <td>{{book.fullName}}</td>
+                          <td>{{book.TourTitle}}</td>
+                          <td>${{book.adults * book.TourCost}}</td>
+                          <td>${{book.Child * book.ChildCost}}</td>
+                          <td>${{book.TotalAmount}}</td>
+                          <td><a href="booking-detail.html?Id={{book.BookingId}}"><i class="fa fa-eye"></i></a></td>
+                           <td><a href="javascript:void(0)" ng-click="deleteTourEnquiries(book.BookingId)"><i class="fa fa-trash"></i></a></td>
                         </tr>
                         <!-- <tr>
                           <td>Pravin Shelar</td>
@@ -196,6 +208,7 @@
                  <table id="table">
                       <thead>
                         <tr>
+                        <th>#</th>
                         <th>Name</th>
                         <th>Email Id</th>
                         <th>Mobile No.</th>
@@ -206,11 +219,12 @@
                       <tbody>
 
                       <tr ng-repeat="book in cbooking">
+                          <td>{{$index+1}}</td>
                           <td>{{book.fullName}}</td>
                           <td>{{book.EmailId}}</td>
                           <td>{{book.phoneNumber}}</td>
-                          <td><i class="fa fa-eye"></i></td>
-                          <td><i class="fa fa-trash"></i></td>
+                          <td><a href="custom-tour-detail.html?Id={{book.CTourId}}"><i class="fa fa-eye"></i></a></td>
+                          <td><a href="javascript:void(0)" ng-click="deleteCustomTourEnquiries(book.CTourId)"><i class="fa fa-trash"></i></a></td>
                         </tr>
                         <!-- <tr>
                           <td>Pravin Shelar</td>
@@ -240,6 +254,7 @@
                  <table id="table">
                       <thead>
                         <tr>
+                        <th>#</th>
                         <th>Name</th>
                         <th>Email Id</th>
                         <th>Mobile No.</th>
@@ -250,11 +265,12 @@
                       <tbody>
 
                       <tr ng-repeat="book in atbooking">
+                          <td>{{$index+1}}</td>
                           <td>{{book.Name}}</td>
                           <td>{{book.Email}}</td>
                           <td>{{book.Contact}}</td>
-                          <td><i class="fa fa-eye"></i></td>
-                          <td><i class="fa fa-trash"></i></td>
+                          <td><a href="air-ticket-detail.html?Id={{book.Id}}"><i class="fa fa-eye"></i></a></td>
+                         <td><a href="javascript:void(0)" ng-click="deleteAirTicketEnquiries(book.Id)"><i class="fa fa-trash"></i></a></td>
                         </tr>
                         <!-- <tr>
                           <td>Pravin Shelar</td>
@@ -284,9 +300,10 @@
                  <table id="table">
                       <thead>
                         <tr>
+                        <th>#</th>
                         <th>Name</th>
-                        <th>Email Id</th>
-                        <th>Mobile No.</th>
+                        <th>Country</th>
+                        <th>Visa Charges</th>
                         <th></th>
                         <th></th>
                         </tr>
@@ -294,11 +311,12 @@
                       <tbody>
 
                        <tr ng-repeat="book in vbooking">
+                          <td>{{$index+1}}</td>
                           <td>{{book.Name}}</td>
-                          <td>{{book.Email}}</td>
-                          <td>{{book.Contact}}</td>
-                          <td><i class="fa fa-eye"></i></td>
-                          <td><i class="fa fa-trash"></i></td>
+                          <td>{{book.Country}}</td>
+                          <td>${{book.VisaCharge}}</td>
+                          <td><a href="visa-enquiry-detail.html?Id={{book.EnquiryId}}"><i class="fa fa-eye"></i></a></td>
+                           <td><a href="javascript:void(0)" ng-click="deleteVisaEnquiries(book.EnquiryId)"><i class="fa fa-trash"></i></a></td>
                         </tr>
                         <!-- <tr>
                           <td>Pravin Shelar</td>
@@ -328,9 +346,11 @@
                  <table id="table">
                       <thead>
                         <tr>
+                        <th>#</th>
                         <th>Name</th>
-                        <th>Email Id</th>
-                        <th>Mobile No.</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total Amount</th>
                         <th></th>
                         <th></th>
                         </tr>
@@ -338,11 +358,13 @@
                       <tbody>
 
                       <tr ng-repeat="book in tvbooking">
+                          <td>{{$index+1}}</td>
                           <td>{{book.Name}}</td>
-                          <td>{{book.Email}}</td>
-                          <td>{{book.Contact}}</td>
-                          <td><i class="fa fa-eye"></i></td>
-                          <td><i class="fa fa-trash"></i></td>
+                          <td>${{book.Price}}</td>
+                          <td>{{book.Quantity}}</td>
+                          <td>${{book.TotalAmount}}</td>
+                          <td><a href="voucher-booking-detail.html?Id={{book.VBookId}}"><i class="fa fa-eye"></i></a></td>
+                           <td><a href="javascript:void(0)" ng-click="deleteVoucherBookings(book.VBookId)"><i class="fa fa-trash"></i></a></td>
                         </tr>
                         <!-- <tr>
                           <td>Pravin Shelar</td>

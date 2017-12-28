@@ -86,7 +86,17 @@ app.get('/api/getAirTicketEnquiries', admin.getAirTicketEnquiries);
 app.get('/api/getVisaEnquiries', admin.getVisaEnquiries);
 app.get('/api/getVoucherBookings', admin.getVoucherBookings);
 
+app.get('/api/deleteAttractionBookings/:id', admin.deleteBookings);
+app.get('/api/deleteTourEnquiries/:id', admin.deleteBookings);
+app.get('/api/deleteCustomTourEnquiries/:id', admin.deleteCustomTourEnquiries);
+app.get('/api/deleteAirTicketEnquiries/:id', admin.deleteAirTicketEnquiries);
+app.get('/api/deleteVisaEnquiries/:id', admin.deleteVisaEnquiries);
+app.get('/api/deleteVoucherBookings/:id', admin.deleteVoucherBookings);
+
 app.get('/api/getTourBookingDetails/:id', admin.getTourBookingDetails);
+app.get('/api/getCustomTourDetails/:id', admin.getCustomTourDetails);
+app.get('/api/getAirTicketDetails/:id', admin.getAirTicketDetails);
+app.get('/api/getVisaEnquiriesDetails/:id', admin.getVisaEnquiriesDetails);
 
 app.get('/api/getAllTours', admin.getAllTours);
 app.get('/api/getCountryTours/:id', admin.getCountryTours);
@@ -100,12 +110,16 @@ app.get('/api/deleteTour/:id', admin.deleteTour);
 app.get('/api/allcountries', admin.allcountries);
 app.get('/api/getallcountries', admin.getallcountries);
 app.get('/api/gettourcountries', admin.gettourcountries);
-app.get('/api/getattractioncountries', admin.getattractioncountries);
 app.get('/api/getCountryId/:id', admin.getCountryId);
 app.get('/api/getCountryDetails/:id', admin.getCountryDetails);
 app.post('/api/addCountry', admin.addCountry);
 app.post('/api/updateCountry', admin.updateCountry);
 app.get('/api/deleteCountry/:id', admin.deleteCountry);
+app.get('/api/getattractioncountries', admin.getattractioncountries);
+app.post('/api/addAttractionCountry', admin.addAttractionCountry);
+app.post('/api/updateAttractionCountry', admin.updateAttractionCountry);
+app.get('/api/deleteAttractionCountry/:id', admin.deleteAttractionCountry);
+app.get('/api/getAttractionCountryDetails/:id', admin.getAttractionCountryDetails);
 
 app.get('/api/getAllVisaDetails', admin.getAllVisaDetails);
 app.get('/api/getVisa',admin.getVisa);
@@ -120,6 +134,9 @@ app.post('/api/addVoucher', admin.addVoucher);
 app.post('/api/updateVoucher',admin.updateVoucher);
 app.get('/api/deleteVoucher/:id',admin.deleteVoucher);
 app.get('/api/getVoucherBookingDetails/:id', admin.getVoucherBookingDetails);
+
+app.get('/api/getAboutUs', admin.getAboutUs);
+app.post('/api/updateAboutUs',admin.updateAboutUs);
 
 
 app.listen(6008, function () {

@@ -20,7 +20,7 @@
   <script type="text/javascript" src="assets/js/app.js"></script>
   <script type="text/javascript" src="assets/js/contactCtrl.js"></script>
 </head>
-<body data-ng-app="80consult" data-ng-controller="contactcontroller">
+<body data-ng-app="80consult" data-ng-controller="contactcontroller" ng-init="getTourDetails()">
 <!-- Start Header -->
        
         <header id="top-header">
@@ -182,45 +182,46 @@
           <div class="attractions-form">
             <div class="col-sm-4 col-md-4">
               <div class="tour-place-img">
-                <img src="assets/img/hong-kong.jpg" alt="" title=""> 
+                <img src="../uploads/tours/{{Tour.TourImage}}" ng-if="Tour.TourType=='Tour'">
+                        <img src="../uploads/attractions/{{Tour.TourImage}}" ng-if="Tour.TourType=='Attraction'">
               </div>
             </div>
-            <div class="col-sm-8 col-md-8" ng-init="getAdminContactDetails()">
+            <div class="col-sm-8 col-md-8">
               <div class=" ">
-                <h4 class="color-orenge">Trick Eye Museum</h4>
+                <h4 class="color-orenge">{{Tour.TourTitle}}</h4>
                 <p>
-                  World renowned 4D Museum now in Singapore! Trick Eye Museum brings you closer to art through the use of optical illusions. Immerse yourself in different settings at 6 themed zones and recreate into memorable photographs with your imagination.
+                 {{Tour.TourDescription}}
                 </p>
                 <p>
                   <span>
                     <strong>
-                      Location: Waterfront @ Resorts World Sentosa, 26 Sentosa Gateway, Singapore 098138 
+                      Location:{{Tour.TourLocation}}
                     </strong>
                   </span>
                 </p>
                 <p>
                   <span>
                     <strong>
-                      Duration: 1 day
+                      Duration: {{Tour.TourDuration}}
                     </strong>
                   </span>
                 </p>
                 <p>
                   <span>
                     <strong>
-                      Adult Price : SGD$50
+                      Adult Price : SGD${{Tour.TourCost}}
                     </strong>
                   </span>
                 </p>
                 <p>
                   <span>
                     <strong>
-                      Child Price : SGD$20
+                      Child Price : SGD${{Tour.ChildCost}}
                     </strong>
                   </span>
                 </p>
                 <div class="col-sm-12 col-md-12 text-right pd0">
-                  <button class="btn btn-success orenge-btn" type="submit" value="Apply">BOOK NOW</button>
+                  <a href="booking.html?TourId={{Tour.TourId}}"><button class="btn btn-success orenge-btn" type="submit" value="Apply">BOOK NOW</button></a>
                 </div>
               </div>
             </div>

@@ -18,7 +18,6 @@ var venquiryCRUD = CRUD(db,'tbl_VisaEnquiries');
 var bookCRUD = CRUD(db,'tbl_Bookings');
 var vbookCRUD = CRUD(db,'tbl_VoucherBooking');
 
-
 var nodemailer = require('nodemailer');
 var mg = require('nodemailer-mailgun-transport');
 var transporter = nodemailer.createTransport({
