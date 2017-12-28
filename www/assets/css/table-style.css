@@ -72,7 +72,8 @@ table td {
 }
 
 table th {
-    background: #e74c3c;
+    /*background: #e74c3c;*/
+    background-color: #989898;
     color: #fff;
     text-transform: uppercase;
 }
@@ -280,4 +281,8 @@ table {
 .table_horizontal thead > tr:last-child > td {
   border-bottom-width: 0;
 }
-
+.admin-tabs{
+  background-color: #ffffff;
+  padding: 30px 20px;
+  margin-top: 3px;
+}
