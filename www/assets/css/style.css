@@ -1270,3 +1270,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 .pd-l80{
   padding-left: 80px;
 }
+.color-black
+{
+  color: #000;
+}
