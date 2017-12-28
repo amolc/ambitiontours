@@ -191,6 +191,7 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
             else {
                // console.log(res);
                 $scope.countrylist = res;
+                $scope.tcountrylist = res;
                // $scope.registration.CountryId = $scope.countrylist[0].CountryId;
                //console.log($scope.countrylist);
             }
@@ -212,6 +213,7 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
             else {
                // console.log(res);
                 $scope.countrylist = res;
+                $scope.acountrylist = res;
                // $scope.registration.CountryId = $scope.countrylist[0].CountryId;
                //console.log($scope.countrylist);
             }
@@ -915,7 +917,7 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
               }
 
 
-            $http.post(baseurl + 'addCountry/',$scope.Tour).success(function(res) {
+            $http.post(baseurl + 'addAttractionCountry/',$scope.Tour).success(function(res) {
                   
                 //console.log(res);
                 if (res.status == true) 
@@ -945,7 +947,7 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
            var id = urlparams.split("=")
            if (id[0]=='CountryId') 
            {
-             $http.get(baseurl + 'getCountryDetails/'+id[1]).success(function (res) {
+             $http.get(baseurl + 'getAttractionCountryDetails/'+id[1]).success(function (res) {
 
                   if (res.status == 'false') {
 
@@ -986,7 +988,7 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
               }
               console.log($scope.Tour);
 
-            $http.post(baseurl + 'updateCountry/',$scope.Tour).success(function(res) {
+            $http.post(baseurl + 'updateAttractionCountry/',$scope.Tour).success(function(res) {
                   
                 //console.log(res);
                 if (res.status == true) 
@@ -1009,7 +1011,7 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
        var r = confirm("Are You Sure You want to Delete It?");
         if (r == true) 
         { 
-          $http.get(baseurl + 'deleteCountry/'+id).success(function(res) {
+          $http.get(baseurl + 'deleteAttractionCountry/'+id).success(function(res) {
 
                   
                if (res.status == true) 

@@ -167,7 +167,7 @@ exports.gettourcountries = function (req, res) {
 };
 
 exports.getattractioncountries = function (req, res) {
-    var sql = "SELECT `CountryId`,`CountryTitle`,`CountryImage` FROM `tbl_AttractionCountries` WHERE `IsDeleted` = '0' AND `Attraction`=1";
+    var sql = "SELECT `CountryId`,`CountryTitle`,`CountryImage` FROM `tbl_AttractionCountries` WHERE `IsDeleted` = '0'";
     db.query(sql, function (err, data) {
         res.json(data);
     });
@@ -701,7 +701,7 @@ exports.addAttractionCountry = function (req, res) {
          var imageBuffer = decodedImg.data;
          var type = decodedImg.type;
          fileName = verifycode+'_'+req.body.TourImage;
-         fs.writeFileSync('www/uploads/countries/' + fileName, imageBuffer, 'utf8');
+         fs.writeFileSync('www/uploads/attcountries/' + fileName, imageBuffer, 'utf8');
 
      }else {
          fileName = '';
@@ -768,7 +768,7 @@ exports.updateAttractionCountry = function (req, res) {
          var imageBuffer = decodedImg.data;
          var type = decodedImg.type;
          fileName = verifycode+'_'+req.body.TourImage;
-         fs.writeFileSync('www/uploads/countries/' + fileName, imageBuffer, 'utf8');
+         fs.writeFileSync('www/uploads/attcountries/' + fileName, imageBuffer, 'utf8');
      }else {
          fileName = req.body.CountryImage;
          console.log("image not present");

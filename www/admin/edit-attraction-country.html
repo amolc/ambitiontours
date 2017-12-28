@@ -27,7 +27,7 @@
   <script type="text/javascript" src="../assets/js/adminCtrl.js"></script>
 </head>
 
-<body data-ng-app="80consult" data-ng-controller="admincontroller" ng-init="getCountryDetails();">
+<body data-ng-app="80consult" data-ng-controller="admincontroller" ng-init="getAttractionCountryDetails();">
 <!-- Start Header -->
        <header id="top-header">
             <div class="orenge-logo-strip">
@@ -103,7 +103,7 @@
           <div class="container">
             <div class="row">
               <div class="col-sm-12 col-md-12">
-               <form id="addtour" name="addtour" ng-submit="updateCountry()">
+               <form id="addtour" name="addtour" ng-submit="updateAttractionCountry()">
                   <div class="attractions-form profile signin-form">
                   <h2 class="text-center">Edit Country</h2>
 
@@ -141,7 +141,7 @@
                   </div>
                    <div class="col-sm-12 col-md-12 ">
                      <div id="imagepreview">
-                       <img src="../uploads/countries/{{Tour.CountryImage}}">
+                       <img src="../uploads/attcountries/{{Tour.CountryImage}}">
                      </div>
                    </div>
 
