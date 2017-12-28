@@ -135,6 +135,9 @@ app.post('/api/updateVoucher',admin.updateVoucher);
 app.get('/api/deleteVoucher/:id',admin.deleteVoucher);
 app.get('/api/getVoucherBookingDetails/:id', admin.getVoucherBookingDetails);
 
+app.get('/api/getAboutUs', admin.getAboutUs);
+app.post('/api/updateAboutUs',admin.updateAboutUs);
+
 
 app.listen(6008, function () {
   console.log('CORS-enabled web server listening on port 6008')

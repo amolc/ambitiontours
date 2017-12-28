@@ -1925,6 +1925,44 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
     } 
 
 
+    $scope.getAboutUs = function() {             
+
+             $http.get(baseurl + 'getAboutUs').success(function (res) {
+
+                  if (res.status == 'false') {
+
+                  }
+                  else {
+
+                      $scope.about = res;
+                      var Content = $scope.about.Content.replace(/\n\r?/g, '<br />');
+                      $('#about').html(Content);
+                  }
+
+              }).error(function () {
+
+              });
+         
+    } 
+
+    $scope.updateAboutUs = function() {   
+
+
+            $http.post(baseurl + 'updateAboutUs/',$scope.about).success(function(res) {
+                  
+                //console.log(res);
+                if (res.status == true) 
+                {
+                  
+                    window.location.href = 'settings.html';
+                }
+
+                }).error(function() {
+                    
+                });
+         
+
+    }
 
 
 

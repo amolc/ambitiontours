@@ -28,6 +28,26 @@ app.controller('contactcontroller', function ($scope, $location, $http, $window)
 
 
  }
+ $scope.getAboutUs = function() {             
+
+             $http.get(baseurl + 'getAboutUs').success(function (res) {
+
+                  if (res.status == 'false') {
+
+                  }
+                  else {
+
+                      $scope.about = res;
+                      var Content = $scope.about.Content.replace(/\n\r?/g, '<br />');
+                      $('#about').html(Content);
+                  }
+
+              }).error(function () {
+
+              });
+         
+    } 
+
 
  $scope.enquiryButton = function(packagename,price){
  // alert(+"--"+price);

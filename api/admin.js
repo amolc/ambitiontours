@@ -26,6 +26,7 @@ var ticketCRUD = CRUD(db,'tbl_AirTickets');
 var venquiryCRUD = CRUD(db,'tbl_VisaEnquiries');
 var bookCRUD = CRUD(db,'tbl_Bookings');
 var vbookCRUD = CRUD(db,'tbl_VoucherBooking');
+var aboutCRUD = CRUD(db,'tbl_AboutUs');
 
 var nodemailer = require('nodemailer');
 var mg = require('nodemailer-mailgun-transport');
@@ -156,6 +157,13 @@ exports.getallcountries = function (req, res) {
     var sql = "SELECT `CountryId`,`CountryTitle`,`CountryImage` FROM `tbl_Countries` WHERE `IsDeleted` = '0' AND `CountryTitle`!='Singapore'";
     db.query(sql, function (err, data) {
         res.json(data);
+    });
+};
+
+exports.getAboutUs = function (req, res) {
+    var sql = "SELECT * FROM `tbl_AboutUs`";
+    db.query(sql, function (err, data) {
+        res.json(data[0]);
     });
 };
 
@@ -1785,6 +1793,48 @@ exports.deleteVoucherBookings = function (req, res) {
                                 }
                             });
 };
+
+
+exports.updateAboutUs = function (req, res) {
+
+   // console.log(req.body);
+
+    dateToday = now.format("DD/MM/YYYY hh:mm a");
+
+    var updateObj = {
+                                "Content" : req.body.Content,
+                                "ModifiedOn": dateToday || "",        
+                            };
+                             //console.log("after", updateObj);
+
+                            aboutCRUD.update({Id: req.body.Id}, updateObj,function (err, data) {
+
+                                if (!err) 
+                                {
+                                    var resdata = {
+                                        status: true,
+                                        value:data,
+                                        message: 'Details successfully updated',
+                                        date : dateToday
+                                    };
+                                   // console.log(resdata)
+
+                                   res.jsonp(resdata);
+                                }
+                                else
+                                {
+                                    var resdata = {
+                                        status: false,
+                                        error: err,
+                                        message: 'Error: Details not successfully updated. '
+                                    };
+                                    // console.log(resdata)
+
+                                    res.jsonp(resdata);
+                                }
+                            });
+};
+
 
 ///____________________END______________________
 
