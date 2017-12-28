@@ -123,7 +123,7 @@
                             <div class="col-sm-7">
                                 <div class="packeg-details-text">
                                     <h5><a href="#">{{Tour.TourTitle}}</a></h5>
-                                    <p> {{Tour.TourDescription}}</p>
+                                    <p> {{Tour.TourDescription| limitTo : 120}}...</p>
                                     <div class="right-blck">
                                         <p class="gray-small-text"><span>Location: {{Tour.TourLocation}}<br>
                                             Duration: {{Tour.TourDuration}}</span>
