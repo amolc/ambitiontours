@@ -659,13 +659,16 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
             $http.post(baseurl + 'addTour/',$scope.Tour).success(function(res) {
                   
                 //console.log(res);
-                if (res.status == true) 
+               if (res.status == true) 
                 {
                   if ($scope.Tour.TourType == 'Tour')
-                    window.location.href = 'tours.html';
+                      window.location.href = 'country-tour.html?country='+$scope.Tour.CountryId;
+                    //window.location.href = 'tours.html';
                   if ($scope.Tour.TourType == 'Attraction')
-                    window.location.href = 'attractions.html';
+                    window.location.href = 'country-attractions.html?country='+$scope.Tour.CountryId;
+                    //window.location.href = 'attractions.html';
                 }
+
 
                 }).error(function() {
                     
