@@ -110,12 +110,16 @@ app.get('/api/deleteTour/:id', admin.deleteTour);
 app.get('/api/allcountries', admin.allcountries);
 app.get('/api/getallcountries', admin.getallcountries);
 app.get('/api/gettourcountries', admin.gettourcountries);
-app.get('/api/getattractioncountries', admin.getattractioncountries);
 app.get('/api/getCountryId/:id', admin.getCountryId);
 app.get('/api/getCountryDetails/:id', admin.getCountryDetails);
 app.post('/api/addCountry', admin.addCountry);
 app.post('/api/updateCountry', admin.updateCountry);
 app.get('/api/deleteCountry/:id', admin.deleteCountry);
+app.get('/api/getattractioncountries', admin.getattractioncountries);
+app.post('/api/addAttractionCountry', admin.addAttractionCountry);
+app.post('/api/updateAttractionCountry', admin.updateAttractionCountry);
+app.get('/api/deleteAttractionCountry/:id', admin.deleteAttractionCountry);
+app.get('/api/getAttractionCountryDetails/:id', admin.getAttractionCountryDetails);
 
 app.get('/api/getAllVisaDetails', admin.getAllVisaDetails);
 app.get('/api/getVisa',admin.getVisa);

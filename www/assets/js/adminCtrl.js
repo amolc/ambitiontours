@@ -899,6 +899,134 @@ app.controller('admincontroller', function ($scope, $location, $http, $window) {
          
     }
 
+
+     $scope.addAttractionCountry = function() {   
+
+
+          //console.log($scope.Tour);
+
+
+             setTimeout(function() { 
+
+               if (Object.keys($scope.attachment).length>0) {
+                $scope.Tour.image = $scope.attachment.images[0];
+              }else{
+                $scope.Tour.image = '';
+              }
+
+
+            $http.post(baseurl + 'addCountry/',$scope.Tour).success(function(res) {
+                  
+                //console.log(res);
+                if (res.status == true) 
+                {
+                  
+                    window.location.href = 'countries.html';
+                }
+
+                }).error(function() {
+                    
+                });
+         
+              }, 1000);    
+
+    }
+
+        $scope.getAttractionCountryDetails = function() {             
+
+
+
+        var url = window.location.href;
+        var parts = url.split("?");
+        if(parts.length>1){
+
+           var urlparams = parts[1];
+           var params = urlparams.split("&");
+           var id = urlparams.split("=")
+           if (id[0]=='CountryId') 
+           {
+             $http.get(baseurl + 'getCountryDetails/'+id[1]).success(function (res) {
+
+                  if (res.status == 'false') {
+
+                  }
+                  else {
+
+
+                      $scope.Tour = res;
+                      $scope.attachmentCount = {};
+                      $scope.attachment = {};
+                      $scope.imgSrc = "";
+                  }
+
+              }).error(function () {
+
+              });
+           }
+           else
+          {
+              window.location.href = 'countries.html';
+          }
+        }
+        else
+        {
+            window.location.href = 'countries.html';
+        }
+    } 
+
+    $scope.updateAttractionCountry = function() {   
+
+
+             setTimeout(function() { 
+
+               if (Object.keys($scope.attachment).length>0) {
+                $scope.Tour.image = $scope.attachment.images[0];
+              }else{
+                $scope.Tour.image = '';
+              }
+              console.log($scope.Tour);
+
+            $http.post(baseurl + 'updateCountry/',$scope.Tour).success(function(res) {
+                  
+                //console.log(res);
+                if (res.status == true) 
+                {
+                  
+                    window.location.href = 'countries.html';
+                }
+
+                }).error(function() {
+                    
+                });
+         
+               }, 1000);    
+
+    }
+
+    $scope.deleteAttractionCountry = function(id) {    
+
+
+       var r = confirm("Are You Sure You want to Delete It?");
+        if (r == true) 
+        { 
+          $http.get(baseurl + 'deleteCountry/'+id).success(function(res) {
+
+                  
+               if (res.status == true) 
+                {
+
+                    window.location.href = 'countries.html';
+                }
+
+          }).error(function() {
+                      // alert("Please check your internet connection or data source..");
+         });
+            
+        }         
+         
+    }
+
+
     $scope.getAllVisaDetails = function() {
 
     $http.get(baseurl + 'getAllVisaDetails').success(function (res) {
