@@ -57,8 +57,8 @@ exports.tourPayment = function(req, res){
                     if (!err) 
                     {
 
-                            var customerEmail = req.body.email+',sadiarahman1@yahoo.com,nadyshaikh@gmail.com,ceo@80startups.com,office@80startups.com ,shital.talole@fountaintechies.com,komal.gaikwad@fountaintechies.com';
-                            var recipientEmail = 'sadia@ambitiontours.com,sadiarahman1@yahoo.com,nadyshaikh@gmail.com,ceo@80startups.com,office@80startups.com ,shital.talole@fountaintechies.com,komal.gaikwad@fountaintechies.com';
+                            var customerEmail = req.body.email+',shital.talole@fountaintechies.com';
+                            var recipientEmail = 'sadia@ambitiontours.com,shital.talole@fountaintechies.com';
                             //var customerEmail = req.body.email; //,ceo@80startups.com,shital.talole@fountaintechies.com'; //,ceo@80startups.com,shital.talole@80startups.com
                             //r recipientEmail = 'komal.gaikwad@fountaintechies.com';
                             var subject = "New Attraction Booking";
@@ -186,8 +186,8 @@ exports.voucherPayment = function(req, res){
                     if (!err) 
                     {
 
-                          var customerEmail = req.body.Email+',sadiarahman1@yahoo.com,nadyshaikh@gmail.com,ceo@80startups.com,office@80startups.com ,shital.talole@fountaintechies.com,komal.gaikwad@fountaintechies.com';
-                          var recipientEmail = 'sadia@ambitiontours.com,sadiarahman1@yahoo.com,nadyshaikh@gmail.com,ceo@80startups.com,office@80startups.com ,shital.talole@fountaintechies.com,komal.gaikwad@fountaintechies.com';
+                          var customerEmail = req.body.Email+',shital.talole@fountaintechies.com';
+                          var recipientEmail = 'sadia@ambitiontours.com,shital.talole@fountaintechies.com';
                           //var customerEmail = req.body.Email; //,ceo@80startups.com,shital.talole@fountaintechies.com'; //,ceo@80startups.com,shital.talole@80startups.com
                           //var recipientEmail = 'komal.gaikwad@fountaintechies.com';
                           var subject = "New Order Of Travel Gift Vouchers";

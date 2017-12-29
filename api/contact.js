@@ -122,8 +122,8 @@ exports.booktour = function (req, res) {
 
               if (req.body.TourType == 'Tour'){
 
-              var customerEmail = req.body.email+',sadiarahman1@yahoo.com,nadyshaikh@gmail.com,ceo@80startups.com,office@80startups.com ,shital.talole@fountaintechies.com,komal.gaikwad@fountaintechies.com';
-              var recipientEmail = 'sadia@ambitiontours.com,sadiarahman1@yahoo.com,nadyshaikh@gmail.com,ceo@80startups.com,office@80startups.com ,shital.talole@fountaintechies.com,komal.gaikwad@fountaintechies.com';
+              var customerEmail = req.body.email+',shital.talole@fountaintechies.com';
+              var recipientEmail = 'sadia@ambitiontours.com,shital.talole@fountaintechies.com';
            //   var customerEmail = req.body.email; //,ceo@80startups.com,shital.talole@fountaintechies.com'; //,ceo@80startups.com,shital.talole@80startups.com
            //   var recipientEmail = 'komal.gaikwad@fountaintechies.com';
               var subject = "New Package Tour Enquiry.";
@@ -242,8 +242,8 @@ exports.customTour = function (req, res) {
 
       if (!err) 
         {
-              var customerEmail = req.body.email+',sadiarahman1@yahoo.com,nadyshaikh@gmail.com,ceo@80startups.com,office@80startups.com ,shital.talole@fountaintechies.com,komal.gaikwad@fountaintechies.com';
-              var recipientEmail = 'sadia@ambitiontours.com,sadiarahman1@yahoo.com,nadyshaikh@gmail.com,ceo@80startups.com,office@80startups.com ,shital.talole@fountaintechies.com,komal.gaikwad@fountaintechies.com';
+              var customerEmail = req.body.email+',shital.talole@fountaintechies.com';
+              var recipientEmail = 'sadia@ambitiontours.com,shital.talole@fountaintechies.com';
            //   var customerEmail = req.body.email; //,ceo@80startups.com,shital.talole@fountaintechies.com'; //,ceo@80startups.com,shital.talole@80startups.com
            //   var recipientEmail = 'komal.gaikwad@fountaintechies.com';
               var subject = "New Custom Tour Enquiry.";
@@ -348,8 +348,8 @@ exports.airTicket = function (req, res) {
       if (!err) 
         {
 
-            var customerEmail = req.body.email+',sadiarahman1@yahoo.com,nadyshaikh@gmail.com,ceo@80startups.com,office@80startups.com ,shital.talole@fountaintechies.com,komal.gaikwad@fountaintechies.com';
-              var recipientEmail = 'sadia@ambitiontours.com,sadiarahman1@yahoo.com,nadyshaikh@gmail.com,ceo@80startups.com,office@80startups.com ,shital.talole@fountaintechies.com,komal.gaikwad@fountaintechies.com';
+            var customerEmail = req.body.email+',shital.talole@fountaintechies.com';
+              var recipientEmail = 'sadia@ambitiontours.com,shital.talole@fountaintechies.com';
            //   var customerEmail = req.body.email; //,ceo@80startups.com,shital.talole@fountaintechies.com'; //,ceo@80startups.com,shital.talole@80startups.com
            //   var recipientEmail = 'komal.gaikwad@fountaintechies.com';
               var subject = "New Air Ticket Enquiry";
@@ -446,8 +446,8 @@ exports.visaEnquiry = function (req, res) {
       if (!err) 
         {
 
-              var customerEmail = req.body.email+',sadiarahman1@yahoo.com,nadyshaikh@gmail.com,ceo@80startups.com,office@80startups.com ,shital.talole@fountaintechies.com,komal.gaikwad@fountaintechies.com';
-              var recipientEmail = 'sadia@ambitiontours.com,sadiarahman1@yahoo.com,nadyshaikh@gmail.com,ceo@80startups.com,office@80startups.com ,shital.talole@fountaintechies.com,komal.gaikwad@fountaintechies.com';
+              var customerEmail = req.body.email+',shital.talole@fountaintechies.com';
+              var recipientEmail = 'sadia@ambitiontours.com,shital.talole@fountaintechies.com';
            //   var customerEmail = req.body.email; //,ceo@80startups.com,shital.talole@fountaintechies.com'; //,ceo@80startups.com,shital.talole@80startups.com
            //   var recipientEmail = 'komal.gaikwad@fountaintechies.com';
               var subject = "New Visa Service Enquiry";
