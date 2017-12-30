@@ -1310,3 +1310,49 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
   width: 250px;
   height: 198px;
 }
+
+
+/*Responsive media query Start*/
+@media (max-width: 767px) {
+  section{padding: 30px 0px;}
+  .attractions-form{width: 100%; padding: 15px;}
+  .section-title{font-size: 23px; margin-bottom: 20px;}
+  .dashboard-table table{margin: 0px;}
+  .dashboard-table table th, .dashboard-table table td{font-size: 12px; padding: 6px 8px;}
+  .dashboard-table .orenge-btn{font-size: 11px; padding: 6px;}
+  .logo-img img{width: 124px;}
+  .orenge-logo-strip{padding: 10px 0px;}
+  .navbar-toggle{padding: 5px 3px;}
+  .navigation-strip{border-top: 2px solid #fe6828;}
+  .navbar{min-height: 100%;}
+  .navbar-default .navbar-toggle{border-color: #fff}
+  .navbar-default .navbar-toggle .icon-bar{background-color: #fff;}
+  .navbar-default .navbar-toggle:focus, 
+  .navbar-default .navbar-toggle:hover{background-color: transparent;}
+  .foot-text h4{margin-bottom: 10px; font-size: 15px;}
+  .foot-text h5{font-size: 14px;}
+  .foot-text h5, .foot-text p{margin-bottom: 6px;}
+  section#footer{padding: 20px 0px;}
+  .col-sm-4.col-md-4.pd-l70{padding-left: 15px; margin-top: 12px;}
+  .policy-content a{margin-top: 0px;}
+  #bottom-strip p{font-size: 12px;}
+  .top-nav .container-fluid.pd0{padding: 0px 15px;}
+  .navbar-nav{margin: 0px;}
+  .navbar-nav>li>a{padding: 8px 5px;}
+  .navigation-strip .navbar-default .navbar-nav > li > a{line-height: 23px;}
+ 
+
+}
+@media (min-width:768px) and (max-width: 991px) {
+
+}
+@media (min-width:992px) and (max-width: 1024px) {
+
+}
+@media (min-width: 1025px) and (max-width: 1199px) {
+
+
+}
+@media (min-width: 1200px) {
+
+}
