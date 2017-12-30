@@ -1349,6 +1349,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 }
 @media (min-width:768px) and (max-width: 991px) {
   .attractions-form{width: 100%;}
+  .section-title{margin-bottom: 10px;}
 }
 @media (min-width:992px) and (max-width: 1024px) {
 
