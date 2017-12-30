@@ -1353,6 +1353,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
   section#footer{padding: 20px 0px;}
   section {padding: 40px 0px;}
   .foot-text h4{margin-bottom: 16px;}
+  .dashboard-table .orenge-btn{padding: 5px 8px;}
+  table th, table td{padding: 8px 12px;}
 }
 @media (min-width:992px) and (max-width: 1024px) {
 
