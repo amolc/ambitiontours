@@ -1293,3 +1293,20 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 {
   color: #000;
 }
+.foot-text ul li a img{
+  width: 30px !important;
+  height: 30px !important;
+}
+.place-img a img{
+  width: 230px !important;
+  height: 241px!important;
+}
+.place-img img{
+  width: 230px !important;
+  height: 241px !important;
+}
+.countryimage
+{
+  width: 250px;
+  height: 198px;
+}
