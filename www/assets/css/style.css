@@ -1347,7 +1347,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
   .signin-form{width: 90%; padding: 20px;}
   .profile h2{margin: 0px;}
   .login-form{margin: 1em 0 0.5em;}
- 
+  .signin-form input[type="submit"]{font-size: 13px;}
 
 }
 @media (min-width:768px) and (max-width: 991px) {
