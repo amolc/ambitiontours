@@ -1344,7 +1344,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
   .navbar-default .navbar-nav .open .dropdown-menu>li>a{font-size: 15px; color: #ffffff;}
   .navbar-nav .open .dropdown-menu .dropdown-header, 
   .navbar-nav .open .dropdown-menu>li>a{padding: 5px 15px 5px 4px;}
-  .signin-form{width: 100%; padding: 20px;}
+  .signin-form{width: 90%; padding: 20px;}
   .profile h2{margin: 0px;}
   .login-form{margin: 1em 0 0.5em;}
  
