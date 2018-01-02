@@ -1344,6 +1344,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
   .navbar-default .navbar-nav .open .dropdown-menu>li>a{font-size: 15px; color: #ffffff;}
   .navbar-nav .open .dropdown-menu .dropdown-header, 
   .navbar-nav .open .dropdown-menu>li>a{padding: 5px 15px 5px 4px;}
+  .signin-form{width: 100%; padding: 20px;}
+  .profile h2{margin: 0px;}
+  .login-form{margin: 1em 0 0.5em;}
  
 
 }
@@ -1355,7 +1358,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
   .foot-text h4{margin-bottom: 16px;}
   .dashboard-table .orenge-btn{padding: 5px 8px;}
   table th, table td{padding: 8px 12px;}
-  .signin-form{width: 100%;}
+
 }
 @media (min-width:992px) and (max-width: 1024px) {
 
