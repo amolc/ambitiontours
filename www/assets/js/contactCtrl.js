@@ -7,7 +7,16 @@ app.controller('contactcontroller', function ($scope, $location, $http, $window)
  // $scope.urlParams = $location.search();
  // console.log($location.search());
  // $scope.data = {};
-  $scope.hide = window.sessionStorage.getItem('hide');
+ // $scope.hide = window.sessionStorage.getItem('hide');
+ 
+
+ $scope.hide = window.localStorage.getItem('hide');
+ //alert($scope.hide);
+ if ($scope.hide == null) 
+ {
+    $('#form-wrap').show();
+ }
+ 
 
   $scope.checkPassword = function(password){
  
@@ -20,7 +29,8 @@ app.controller('contactcontroller', function ($scope, $location, $http, $window)
        if (password == 'ambitiontours')
        {
          $('#form-wrap').hide();
-         window.sessionStorage.setItem('hide','hidden');
+         //window.sessionStorage.setItem('hide','hidden');
+         window.localStorage.setItem('hide','hidden');
          $scope.hide = 'hidden';
        }
        else

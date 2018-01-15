@@ -2,9 +2,16 @@ app.controller('paymentcontroller', function ($scope, $location, $http, $window)
 
 	$window.Stripe.setPublishableKey('pk_test_OhQmkdGJBvsyyfACNGMcGFXw');
 
-   $scope.hide = window.sessionStorage.getItem('hide');
+  // $scope.hide = window.sessionStorage.getItem('hide');
 
-  
+   // $scope.hide = window.sessionStorage.getItem('hide');
+ $scope.hide = window.localStorage.getItem('hide');
+ if ($scope.hide == null) 
+ {
+    $('#form-wrap').show();
+ }
+ 
+
   $scope.checkPassword = function(password){
  
       //console.log(password);
@@ -16,7 +23,8 @@ app.controller('paymentcontroller', function ($scope, $location, $http, $window)
        if (password == 'ambitiontours')
        {
          $('#form-wrap').hide();
-         window.sessionStorage.setItem('hide','hidden');
+         //window.sessionStorage.setItem('hide','hidden');
+         window.localStorage.setItem('hide','hidden');
          $scope.hide = 'hidden';
        }
        else
