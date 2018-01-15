@@ -4,6 +4,7 @@ app.controller('paymentcontroller', function ($scope, $location, $http, $window)
 
    $scope.hide = window.sessionStorage.getItem('hide');
 
+  
   $scope.checkPassword = function(password){
  
       //console.log(password);
@@ -22,6 +23,7 @@ app.controller('paymentcontroller', function ($scope, $location, $http, $window)
         $('#alert').show();
 
 
+ }
 
      $scope.getattractioncountries = function() {
 
