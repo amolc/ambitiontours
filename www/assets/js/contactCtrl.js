@@ -8,8 +8,6 @@ app.controller('contactcontroller', function ($scope, $location, $http, $window)
  // console.log($location.search());
  // $scope.data = {};
  // $scope.hide = window.sessionStorage.getItem('hide');
- 
-
  $scope.hide = window.localStorage.getItem('hide');
  //alert($scope.hide);
  if ($scope.hide == null) 
