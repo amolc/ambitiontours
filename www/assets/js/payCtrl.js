@@ -2,6 +2,27 @@ app.controller('paymentcontroller', function ($scope, $location, $http, $window)
 
 	$window.Stripe.setPublishableKey('pk_test_OhQmkdGJBvsyyfACNGMcGFXw');
 
+   $scope.hide = window.sessionStorage.getItem('hide');
+
+  $scope.checkPassword = function(password){
+ 
+      //console.log(password);
+      $('#alert').hide();
+      // if ($scope.password == 'ambitiontours')
+      //   $('#form-wrap').hide();
+      // else
+      //   $('#alert').show();
+       if (password == 'ambitiontours')
+       {
+         $('#form-wrap').hide();
+         window.sessionStorage.setItem('hide','hidden');
+         $scope.hide = 'hidden';
+       }
+       else
+        $('#alert').show();
+
+
+
      $scope.getattractioncountries = function() {
 
     $http.get(baseurl + 'getattractioncountries').success(function (res) {

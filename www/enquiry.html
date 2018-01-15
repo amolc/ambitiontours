@@ -303,6 +303,33 @@
             <p>Copyright 2017- Ambition Tours - All Rights Reserved</p>
         </footer>
 
+         <section id="form-wrap" ng-style="{'display': hide=='hidden' ? 'none' : 'block'}">
+    <div class="container" ng-if="!hide">
+      <div class="row">
+        <div class="col-sm-12 col-md-12">
+          <div class="form-block">
+            <div class="signin-form profile">
+                          <h2>WelCome</h2>
+
+                          <div class="login-form">
+                            <form method="post" ng-submit="checkPassword(password)">
+                              <input type="password" name="password" placeholder="Password" required="" ng-model="password">
+                              <label id="alert" hidden="">Password Incorrect</label>
+                              <div class="tp">
+                                <input type="submit" value="ENTER" class="brawon-btn large-btn">
+                              </div>
+                            </form>
+                          </div>   
+                          <div class="login-logo">
+                            <img src="../assets/img/logo.png">
+                          </div>                         
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <script  type="text/javascript"  src="assets/js/jquery.min.js"></script>
   <script   type="text/javascript" src="assets/js/bootstrap.min.js"></script>
   <script  type="text/javascript"  src="assets/js/main.js"></script>

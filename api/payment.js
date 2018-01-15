@@ -29,7 +29,7 @@ var transporter = nodemailer.createTransport({
 exports.tourPayment = function(req, res){
         //console.log(req.body);
         var token = req.body.stripeToken;
-        var amount = req.body.TotalAmount ;
+        var amount = req.body.TotalAmount * 100 ;
         var stripeToken = "" ;
         // Charge the user's card:
         var charge = stripe.charges.create({
@@ -158,7 +158,7 @@ exports.tourPayment = function(req, res){
 exports.voucherPayment = function(req, res){
         //console.log(req.body);
         var token = req.body.stripeToken;
-        var amount = req.body.TotalAmount ;
+        var amount = req.body.TotalAmount * 100 ;
         var stripeToken = "" ;
         // Charge the user's card:
         var charge = stripe.charges.create({
