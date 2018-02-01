@@ -12,14 +12,14 @@ var startupCRUD = CRUD(db, 'startup');
 
 var nodemailer = require('nodemailer');
 var mg = require('nodemailer-mailgun-transport');
-var transporter = nodemailer.createTransport({
-  host: 'in-v3.mailjet.com',
-  port: '587',
-  auth: {
-    user: '66ca4479851e0bd9cedc629bdff36ee6',
-    pass: 'a3ec60f55a89f7fab98891e86818c8db'
-  }
-});
+var transporter = nodemailer.createTransport( {
+    host: 'in-v3.mailjet.com',
+    port: '587',
+    auth: {
+      user: '66ca4479851e0bd9cedc629bdff36ee6',
+      pass: 'a3ec60f55a89f7fab98891e86818c8db'
+    }
+  } );
 
 ////-----------------APPLY-----------------
 
