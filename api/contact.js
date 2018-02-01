@@ -64,7 +64,7 @@ console.log(req.body);
 
     })
     
-    var recipientEmail = 'sadiarahman1@yahoo.com,nadyshaikh@gmail.com,ceo@80startups.com,office@80startups.com ,shital.talole@fountaintechies.com,pravinshelar999@gmail.com';
+    var recipientEmail = 'sadiarahman1@yahoo.com,nadyshaikh@gmail.com,ceo@80startups.com,office@80startups.com ,shital.talole@fountaintechies.com,magnusideas5@gmail.com';
     //var recipientEmail = 'pravinshelar999@gmail.com'; //,ceo@80startups.com,shital.talole@fountaintechies.com'; //,ceo@80startups.com,shital.talole@80startups.com
     var subject = "Ambition Tours Booking";
     var mailbody = '<table>\
@@ -123,7 +123,7 @@ exports.booktour = function (req, res) {
               if (req.body.TourType == 'Tour'){
 
               var customerEmail = req.body.email+',shital.talole@fountaintechies.com';
-              var recipientEmail = 'sadia@ambitiontours.com,shital.talole@fountaintechies.com';
+              var recipientEmail = 'sadia@ambitiontours.com,shital.talole@fountaintechies.com,magnusideas5@gmail.com';
            //   var customerEmail = req.body.email; //,ceo@80startups.com,shital.talole@fountaintechies.com'; //,ceo@80startups.com,shital.talole@80startups.com
            //   var recipientEmail = 'komal.gaikwad@fountaintechies.com';
               var subject = "New Package Tour Enquiry.";
@@ -243,7 +243,7 @@ exports.customTour = function (req, res) {
       if (!err) 
         {
               var customerEmail = req.body.email+',shital.talole@fountaintechies.com';
-              var recipientEmail = 'sadia@ambitiontours.com,shital.talole@fountaintechies.com';
+              var recipientEmail = 'sadia@ambitiontours.com,shital.talole@fountaintechies.com,magnusideas5@gmail.com';
            //   var customerEmail = req.body.email; //,ceo@80startups.com,shital.talole@fountaintechies.com'; //,ceo@80startups.com,shital.talole@80startups.com
            //   var recipientEmail = 'komal.gaikwad@fountaintechies.com';
               var subject = "New Custom Tour Enquiry.";
@@ -349,7 +349,7 @@ exports.airTicket = function (req, res) {
         {
 
             var customerEmail = req.body.email+',shital.talole@fountaintechies.com';
-              var recipientEmail = 'sadia@ambitiontours.com,shital.talole@fountaintechies.com';
+              var recipientEmail = 'sadia@ambitiontours.com,shital.talole@fountaintechies.com,magnusideas5@gmail.com';
            //   var customerEmail = req.body.email; //,ceo@80startups.com,shital.talole@fountaintechies.com'; //,ceo@80startups.com,shital.talole@80startups.com
            //   var recipientEmail = 'komal.gaikwad@fountaintechies.com';
               var subject = "New Air Ticket Enquiry";
@@ -447,7 +447,7 @@ exports.visaEnquiry = function (req, res) {
         {
 
               var customerEmail = req.body.email+',shital.talole@fountaintechies.com';
-              var recipientEmail = 'sadia@ambitiontours.com,shital.talole@fountaintechies.com';
+              var recipientEmail = 'sadia@ambitiontours.com,shital.talole@fountaintechies.com,magnusideas5@gmail.com';
            //   var customerEmail = req.body.email; //,ceo@80startups.com,shital.talole@fountaintechies.com'; //,ceo@80startups.com,shital.talole@80startups.com
            //   var recipientEmail = 'komal.gaikwad@fountaintechies.com';
               var subject = "New Visa Service Enquiry";
@@ -578,18 +578,26 @@ exports.purchasevoucher = function (req, res) {
 
 function send_mail(usermail, subject, mailbody) {
 
-  var auth = {
+  /*var auth = {
     auth: {
       api_key: 'key-b4687b67307cb2598abad76006bd7a4a',
       domain: '80startups.com'
     }
-  }
+  }*/
 
+  var auth = {
+      auth: {
+        api_key: 'key-b4687b67307cb2598abad76006bd7a4a',
+        domain: '80startups.com'
+      }
+    }
+
+  //var nodemailerMailgun = nodemailer.createTransport(mg(auth));
   var nodemailerMailgun = nodemailer.createTransport(mg(auth));
 
   nodemailerMailgun.sendMail({
-    //from: 'operations@80startups.com',
-    from: 'sadia@ambitiontours.com',
+    from: 'operations@80startups.com',
+    //from: 'sadia@ambitiontours.com',
     to: usermail, // An array if you have multiple recipients.
     subject: subject,
     //'h:Reply-To': 'operations@80startups.com',
